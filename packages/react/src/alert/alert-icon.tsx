@@ -7,8 +7,8 @@ import {
   ExclamationCircleIcon,
   InfoFilledIcon,
   InfoIcon,
-} from '@luna-ui/icons';
-import { cx } from '@luna-ui/theme';
+} from '@alice-ui/icons';
+import { cx } from '@alice-ui/theme';
 
 export interface AlertIconProps extends Omit<React.HTMLAttributes<SVGSVGElement>, 'color'> {
   type?: 'info' | 'success' | 'warning' | 'error';
@@ -27,7 +27,7 @@ const AlertIcon = (props: AlertIconProps) => {
 
   const Icon = filled ? ICONS[type].solid : ICONS[type].outline;
 
-  return <Icon className={cx('shrink-0 w-6 h-6', className)} {...rest} />;
+  return <Icon className={cx('h-6 w-6 shrink-0', className)} {...rest} />;
 };
 
 export default AlertIcon;

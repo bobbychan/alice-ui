@@ -1,7 +1,7 @@
 {
-  "name": "@luna-ui/docs",
+  "name": "@alice-ui/docs",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "vite": "vite",
@@ -15,8 +15,8 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@luna-ui/react": "workspace:*",
-    "@luna-ui/theme": "workspace:*"
+    "@alice-ui/react": "workspace:*",
+    "@alice-ui/theme": "workspace:*"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.4.0",

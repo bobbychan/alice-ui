@@ -1,6 +1,6 @@
-import type { AlertVariantProps } from '@luna-ui/theme';
+import type { AlertVariantProps } from '@alice-ui/theme';
 
-import { alert } from '@luna-ui/theme';
+import { alert } from '@alice-ui/theme';
 import { forwardRef, useMemo } from 'react';
 
 export interface AlertProps

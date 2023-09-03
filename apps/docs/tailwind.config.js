@@ -1,4 +1,4 @@
-const { lunaui } = require("@luna-ui/theme")
+const { aliceui } = require("@alice-ui/theme")
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -11,6 +11,6 @@ export default {
     extend: {},
   },
   darkMode: "class",
-  plugins: [lunaui()],
+  plugins: [aliceui()],
 }
 

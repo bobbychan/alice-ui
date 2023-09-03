@@ -22,7 +22,7 @@ import { flattenThemeObject } from './utils/object';
  * @returns "light" | "dark
  */
 const isBaseTheme = (theme: string) => theme === 'light' || theme === 'dark';
-const DEFAULT_PREFIX = 'lunaui';
+const DEFAULT_PREFIX = 'aliceui';
 
 // @internal
 const resolveConfig = (
@@ -190,7 +190,7 @@ const corePlugin = (
   );
 };
 
-export const lunaui = (config: PluginConfig = {}): ReturnType<typeof plugin> => {
+export const aliceui = (config: PluginConfig = {}): ReturnType<typeof plugin> => {
   const {
     themes: themeObject = {},
     defaultTheme = 'light',

@@ -1,11 +1,11 @@
-# @luna-ui/theme
+# @alice-ui/theme
 
-NextUI theme primitives, here you can find the TailwindCSS `plugin`, `colors`, `layout`, `spacing`, `typography` and some other utilities.
+AliceUI theme primitives, here you can find the TailwindCSS `plugin`, `colors`, `layout`, `spacing`, `typography` and some other utilities.
 
 ## Installation
 
 ```sh
-yarn add @luna-ui/theme
+yarn add @alice-ui/theme
 # or
-npm i @luna-ui/theme
+npm i @alice-ui/theme
 ```

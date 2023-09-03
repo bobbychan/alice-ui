@@ -1,16 +1,16 @@
-# @luna-ui/icons
+# @alice-ui/icons
 
-Luna UI Icons
+Alice UI Icons
 
 ## Installation
 
 ```sh
-yarn add @luna-ui/icons
+yarn add @alice-ui/icons
 # or
-npm i @luna-ui/icons
+npm i @alice-ui/icons
 ```
 
 ## Licence
 
 This project is licensed under the terms of the
-[MIT license](https://github.com/bobbychan/luna-ui/blob/main/LICENSE).
+[MIT license](https://github.com/bobbychan/alice-ui/blob/main/LICENSE).

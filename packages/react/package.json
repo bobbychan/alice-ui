@@ -1,7 +1,13 @@
 {
-  "name": "@luna-ui/react",
+  "name": "@alice-ui/react",
   "version": "0.1.0",
   "main": "src/index.ts",
+  "keywords": [
+    "react",
+    "react-component",
+    "react-ui",
+    "typescript"
+  ],
   "sideEffects": false,
   "license": "MIT",
   "files": [
@@ -9,6 +15,11 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobbychan/alice-ui.git",
+    "directory": "packages/react"
   },
   "scripts": {
     "build": "tsup src --dts",
@@ -21,8 +32,8 @@
     "postpack": "clean-package restore"
   },
   "dependencies": {
-    "@luna-ui/theme": "workspace:*",
-    "@luna-ui/icons": "workspace:*"
+    "@alice-ui/theme": "workspace:*",
+    "@alice-ui/icons": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.2.0",

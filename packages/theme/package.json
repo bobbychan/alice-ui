@@ -1,7 +1,7 @@
 {
-  "name": "@luna-ui/theme",
+  "name": "@alice-ui/theme",
   "version": "1.0.0",
-  "description": "The default theme for LunaUI components",
+  "description": "The default theme for AliceUI components",
   "license": "MIT",
   "main": "src/index",
   "sideEffects": false,
@@ -14,6 +14,11 @@
   ],
   "publishConfig": {
     "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobbychan/alice-ui.git",
+    "directory": "packages/theme"
   },
   "scripts": {
     "build": "tsup src --dts",

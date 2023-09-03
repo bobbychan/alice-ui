@@ -1,7 +1,7 @@
 {
-  "name": "@luna-ui/icons",
-  "version": "1.0.0",
-  "description": "Luna UI Icons",
+  "name": "@alice-ui/icons",
+  "version": "0.1.0",
+  "description": "Alice UI Icons",
   "license": "MIT",
   "main": "src/index.ts",
   "sideEffects": false,
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bobbychan/luna-ui.git",
+    "url": "git+https://github.com/bobbychan/alice-ui.git",
     "directory": "packages/icons"
   },
   "scripts": {
