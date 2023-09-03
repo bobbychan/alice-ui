@@ -1,0 +1,37 @@
+{
+  "name": "@luna-ui/icons",
+  "version": "1.0.0",
+  "description": "Luna UI Icons",
+  "license": "MIT",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobbychan/luna-ui.git",
+    "directory": "packages/icons"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast -- --watch",
+    "clean": "rimraf .turbo dist",
+    "typecheck": "tsc --noEmit",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "peerDependencies": {
+    "react": ">=18"
+  },
+  "devDependencies": {
+    "clean-package": "^2.2.0",
+    "react": "^18.2.0",
+    "@types/react": "^18.2.20"
+  },
+  "clean-package": "../../clean-package.config.json"
+}

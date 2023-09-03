@@ -1,0 +1,62 @@
+{
+  "name": "@luna-ui/theme",
+  "version": "1.0.0",
+  "description": "The default theme for LunaUI components",
+  "license": "MIT",
+  "main": "src/index",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "plugin.js",
+    "plugin.d.ts",
+    "colors.js",
+    "colors.d.ts"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "tsup src --watch",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "tsup": {
+    "clean": true,
+    "target": "es2019",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  },
+  "dependencies": {
+    "@types/color": "^3.0.3",
+    "@types/flat": "^5.0.2",
+    "@types/lodash.foreach": "^4.5.7",
+    "@types/lodash.get": "^4.4.7",
+    "@types/lodash.kebabcase": "^4.1.7",
+    "@types/lodash.mapkeys": "^4.6.7",
+    "@types/lodash.omit": "^4.5.7",
+    "color": "^4.2.3",
+    "color2k": "^2.0.2",
+    "cva": "1.0.0-beta.1",
+    "deepmerge": "4.3.1",
+    "flat": "^5.0.2",
+    "lodash.foreach": "^4.5.0",
+    "lodash.get": "^4.4.2",
+    "lodash.kebabcase": "^4.1.1",
+    "lodash.mapkeys": "^4.6.0",
+    "lodash.omit": "^4.5.0",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss": "^3.3.3"
+  },
+  "peerDependencies": {
+    "tailwindcss": "*"
+  },
+  "devDependencies": {
+    "clean-package": "^2.2.0"
+  }
+}

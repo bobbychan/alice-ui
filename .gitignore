@@ -34,3 +34,15 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# turbo
+.turbo
+packages/**/.turbo
+
+# clean-package
+packages/**/*.backup
+packages/**/*.backup.ts
+
+# production
+dist/
+storybook-static

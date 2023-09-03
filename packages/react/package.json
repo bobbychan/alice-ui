@@ -1,0 +1,34 @@
+{
+  "name": "@luna-ui/react",
+  "version": "0.1.0",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast -- --watch",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "clean": "rimraf .turbo node_modules dist",
+    "typecheck": "tsc --noEmit",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "dependencies": {
+    "@luna-ui/theme": "workspace:*",
+    "@luna-ui/icons": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "clean-package": "^2.2.0",
+    "react": "^18.2.0"
+  },
+  "clean-package": "../../clean-package.config.json"
+}
