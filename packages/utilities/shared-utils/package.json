@@ -1,0 +1,47 @@
+{
+  "name": "@alice-ui/shared-utils",
+  "version": "1.0.0",
+  "description": "A set of AliceUI utilities",
+  "keywords": [
+    "shared-utils"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/bobbychan/alice-ui#readme",
+  "main": "src/index.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobbychan/alice-ui.git",
+    "directory": "packages/utilities/shared-utils"
+  },
+  "bugs": {
+    "url": "https://github.com/bobbychan/alice-ui/issues"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "dev": "pnpm build:fast -- --watch",
+    "clean": "rimraf dist .turbo",
+    "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "devDependencies": {
+    "clean-package": "2.2.0"
+  },
+  "clean-package": "../../../clean-package.config.json",
+  "tsup": {
+    "clean": true,
+    "target": "es2019",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  }
+}

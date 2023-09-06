@@ -40,7 +40,7 @@ export default meta;
 type Story = StoryObj<typeof Alert>;
 
 const Template = (args: AlertProps) => (
-  <div className="flex flex-col gap-4 items-center">
+  <div className="flex flex-col items-center gap-4">
     <Alert {...args}>
       <AlertIcon />
       New software update available.
@@ -70,7 +70,7 @@ const Template = (args: AlertProps) => (
 
 export const Default: Story = {
   args: {
-    children: 'A simple default alert — check it out!',
+    children: <div className="[mask-image: `${}`]">A simple default alert — check it out!</div>,
   },
 };
 

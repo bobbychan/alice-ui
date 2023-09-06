@@ -2,6 +2,7 @@
   "name": "@alice-ui/theme",
   "version": "1.0.0",
   "description": "The default theme for AliceUI components",
+  "homepage": "https://github.com/bobbychan/alice-ui#readme",
   "license": "MIT",
   "main": "src/index",
   "sideEffects": false,

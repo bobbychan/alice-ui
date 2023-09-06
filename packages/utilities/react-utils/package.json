@@ -1,9 +1,12 @@
 {
-  "name": "@alice-ui/icons",
-  "version": "0.1.0",
-  "description": "Alice UI Icons",
-  "homepage": "https://github.com/bobbychan/alice-ui#readme",
+  "name": "@alice-ui/react-utils",
+  "version": "1.0.0",
+  "description": "A set of utilities for react",
+  "keywords": [
+    "react-utils"
+  ],
   "license": "MIT",
+  "homepage": "https://github.com/bobbychan/alice-ui#readme",
   "main": "src/index.ts",
   "sideEffects": false,
   "files": [
@@ -15,14 +18,17 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bobbychan/alice-ui.git",
-    "directory": "packages/icons"
+    "directory": "packages/utilities/react-utils"
+  },
+  "bugs": {
+    "url": "https://github.com/bobbychan/alice-ui/issues"
   },
   "scripts": {
     "build": "tsup src --dts",
-    "build:fast": "tsup src",
     "dev": "pnpm build:fast -- --watch",
-    "clean": "rimraf .turbo dist",
+    "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",
+    "build:fast": "tsup src",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
@@ -30,8 +36,7 @@
     "react": ">=18"
   },
   "devDependencies": {
-    "clean-package": "^2.2.0",
-    "react": "^18.2.0"
+    "clean-package": "2.2.0"
   },
-  "clean-package": "../../clean-package.config.json"
+  "clean-package": "../../../clean-package.config.json"
 }

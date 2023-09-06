@@ -1,11 +1,14 @@
 {
-  "name": "@alice-ui/hooks",
+  "name": "@alice-ui/ripple",
   "version": "1.0.0",
-  "description": "A set of react hooks for state and UI management",
+  "description": "A simple implementation to display a ripple animation when the source component is clicked",
+  "keywords": [
+    "ripple"
+  ],
   "homepage": "https://github.com/bobbychan/alice-ui#readme",
   "license": "MIT",
-  "main": "src/index.ts",
   "sideEffects": false,
+  "main": "src/index.ts",
   "files": [
     "dist"
   ],
@@ -15,26 +18,28 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bobbychan/alice-ui.git",
-    "directory": "packages/hooks"
+    "directory": "packages/components/ripple"
   },
   "scripts": {
     "build": "tsup src --dts",
     "build:fast": "tsup src",
-    "dev": "pnpm build:fast -- --watch",
-    "clean": "rimraf .turbo dist",
+    "dev": "yarn build:fast -- --watch",
+    "clean": "rimraf dist .turbo",
     "typecheck": "tsc --noEmit",
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
   "peerDependencies": {
-    "react": ">=18"
+    "react": ">=18",
+    "framer-motion": ">=4.0.0"
   },
   "dependencies": {
-    "@alice-ui/shared-utils": "workspace:*"
+    "@alice-ui/theme": "workspace:*"
   },
   "devDependencies": {
-    "clean-package": "^2.2.0",
+    "clean-package": "2.2.0",
+    "framer-motion": "^10.16.1",
     "react": "^18.2.0"
   },
-  "clean-package": "../../clean-package.config.json"
+  "clean-package": "../../../clean-package.config.json"
 }

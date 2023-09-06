@@ -1,15 +1,16 @@
 {
   "name": "@alice-ui/react",
   "version": "0.1.0",
-  "main": "src/index.ts",
   "keywords": [
     "react",
     "react-component",
     "react-ui",
     "typescript"
   ],
+  "homepage": "https://github.com/bobbychan/alice-ui#readme",
   "sideEffects": false,
   "license": "MIT",
+  "main": "src/index.ts",
   "files": [
     "dist"
   ],
@@ -31,15 +32,19 @@
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "dependencies": {
     "@alice-ui/theme": "workspace:*",
-    "@alice-ui/icons": "workspace:*"
+    "@alice-ui/icons": "workspace:*",
+    "@alice-ui/hooks": "workspace:*",
+    "@alice-ui/shared-utils": "workspace:*",
+    "@alice-ui/react-utils": "workspace:*"
   },
   "devDependencies": {
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0",
-    "clean-package": "^2.2.0",
-    "react": "^18.2.0"
+    "clean-package": "^2.2.0"
   },
   "clean-package": "../../clean-package.config.json"
 }
