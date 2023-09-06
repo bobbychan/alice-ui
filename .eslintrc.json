@@ -6,12 +6,12 @@
     "node": true
   },
   "extends": [
-    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:prettier/recommended",
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended"
   ],
+  "plugins": ["react", "@typescript-eslint", "prettier", "jsx-a11y"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -24,5 +24,19 @@
     "react": {
       "version": "detect"
     }
+  },
+  "rules": {
+    "no-console": "warn",
+    "react/prop-types": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "args": "after-used",
+        "ignoreRestSiblings": false,
+        "argsIgnorePattern": "^_.*?$"
+      }
+    ]
   }
 }

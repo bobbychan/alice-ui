@@ -220,7 +220,7 @@ export const aliceui = (config: PluginConfig = {}): ReturnType<typeof plugin> =>
   };
 
   // get other themes from the config different from light and dark
-  let otherThemes = omit(themeObject, ['light', 'dark']) || {};
+  const otherThemes = omit(themeObject, ['light', 'dark']) || {};
 
   forEach(otherThemes, ({ extend, colors, layout }, themeName) => {
     const baseTheme = extend && isBaseTheme(extend) ? extend : defaultExtendTheme;
