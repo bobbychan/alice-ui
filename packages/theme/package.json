@@ -30,14 +30,6 @@
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
-  "tsup": {
-    "clean": true,
-    "target": "es2019",
-    "format": [
-      "cjs",
-      "esm"
-    ]
-  },
   "dependencies": {
     "@types/color": "^3.0.3",
     "@types/flat": "^5.0.2",
@@ -64,5 +56,13 @@
   },
   "devDependencies": {
     "clean-package": "^2.2.0"
+  },
+  "tsup": {
+    "clean": true,
+    "target": "es2019",
+    "format": [
+      "cjs",
+      "esm"
+    ]
   }
 }
