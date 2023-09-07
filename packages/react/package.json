@@ -1,6 +1,6 @@
 {
   "name": "@alice-ui/react",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "keywords": [
     "react",
     "react-component",
@@ -23,7 +23,7 @@
     "directory": "packages/react"
   },
   "scripts": {
-    "build": "tsup src --dts",
+    "build": "tsup src --dts && rimraf dist/**/*.stories.*",
     "build:fast": "tsup src",
     "dev": "pnpm build:fast -- --watch",
     "lint": "eslint \"src/**/*.ts*\"",
@@ -33,18 +33,19 @@
     "postpack": "clean-package restore"
   },
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "framer-motion": ">=4.0.0",
+    "react": ">=18"
   },
   "dependencies": {
-    "@alice-ui/theme": "workspace:*",
-    "@alice-ui/icons": "workspace:*",
     "@alice-ui/hooks": "workspace:*",
+    "@alice-ui/icons": "workspace:*",
+    "@alice-ui/react-utils": "workspace:*",
     "@alice-ui/shared-utils": "workspace:*",
-    "@alice-ui/react-utils": "workspace:*"
+    "@alice-ui/theme": "workspace:*"
   },
   "devDependencies": {
-    "clean-package": "^2.2.0"
+    "clean-package": "^2.2.0",
+    "rimraf": "^5.0.1"
   },
   "clean-package": "../../clean-package.config.json"
 }
