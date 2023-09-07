@@ -24,7 +24,7 @@
     "release": "changeset publish",
     "version:dev": "changeset version --snapshot dev-v2",
     "release:dev": "changeset publish --snapshot --no-git-tag --tag dev-v2",
-    "postinstall": "husky install && pnpm --filter @alice-ui/theme build"
+    "postinstall": "husky install"
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.2",

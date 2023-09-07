@@ -1,6 +1,6 @@
 {
   "name": "@alice-ui/ripple",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple implementation to display a ripple animation when the source component is clicked",
   "keywords": [
     "ripple"
