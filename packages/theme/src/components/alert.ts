@@ -5,13 +5,11 @@ import { cva } from '../utils/cva';
 /**
  * Alert component
  *
- * const classNames = alert({...})
+ * const styles = alert({...})
  *
  * @example
- * <div
- *  className={classNames())}
- * >
- *   alert content
+ * <div className={styles()}>
+ *   // alert content
  * </div>
  */
 const alert = cva({

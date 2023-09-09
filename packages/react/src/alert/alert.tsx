@@ -1,7 +1,7 @@
 import type { AlertVariantProps } from '@alice-ui/theme';
 
 import { alert } from '@alice-ui/theme';
-import { forwardRef, useMemo } from 'react';
+import { ForwardedRef, forwardRef, useMemo } from 'react';
 
 export interface AlertProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'color'>,
@@ -10,7 +10,7 @@ export interface AlertProps
 /**
  * Alert informs users about important events.
  */
-const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
+function Alert(props: AlertProps, ref: ForwardedRef<HTMLDivElement>) {
   const { className, variant, color, radius, children, ...rest } = props;
 
   const styles = useMemo(
@@ -29,8 +29,8 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
       {children}
     </div>
   );
-});
+}
 
-Alert.displayName = 'Alert';
+const _Alert = forwardRef(Alert);
 
-export default Alert;
+export { _Alert as Alert };

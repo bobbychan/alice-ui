@@ -2,7 +2,7 @@
 .next/*
 *.css
 .changeset
-dist
+dist/*
 esm/*
 public/*
 tests/*
