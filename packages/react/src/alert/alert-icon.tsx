@@ -30,4 +30,4 @@ const AlertIcon = (props: AlertIconProps) => {
   return <Icon className={cx('h-6 w-6 shrink-0', className)} {...rest} />;
 };
 
-export default AlertIcon;
+export { AlertIcon };

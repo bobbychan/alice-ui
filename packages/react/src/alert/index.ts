@@ -1,5 +1,5 @@
-import Alert from './alert';
-import AlertIcon from './alert-icon';
+import { Alert } from './alert';
+import { AlertIcon } from './alert-icon';
 
 // export types
 export type { AlertProps } from './alert';
