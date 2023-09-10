@@ -6,3 +6,4 @@ export * from './alert';
 export * from './number-input';
 export * from './ripple';
 export * from './skeleton';
+export * from './spinner';
