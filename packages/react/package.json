@@ -33,15 +33,22 @@
     "postpack": "clean-package restore"
   },
   "peerDependencies": {
-    "framer-motion": ">=4.0.0",
-    "react": ">=18"
+    "react": ">=18",
+    "framer-motion": ">=4.0.0"
   },
   "dependencies": {
     "@alice-ui/hooks": "workspace:*",
     "@alice-ui/icons": "workspace:*",
     "@alice-ui/react-utils": "workspace:*",
     "@alice-ui/shared-utils": "workspace:*",
-    "@alice-ui/theme": "workspace:*"
+    "@alice-ui/theme": "workspace:*",
+    "@react-aria/focus": "^3.14.1",
+    "@react-aria/interactions": "^3.18.0",
+    "@react-aria/utils": "^3.20.0",
+    "@react-types/shared": "^3.20.0",
+    "framer-motion": "^10.16.1",
+    "react-aria": "^3.28.0",
+    "react-stately": "^3.26.0"
   },
   "devDependencies": {
     "clean-package": "^2.2.0",
