@@ -1,4 +1,4 @@
-type Args<T extends Function> = T extends (...args: infer R) => any ? R : never;
+type Args<T extends (...args: any[]) => any> = T extends (...args: infer R) => any ? R : never;
 
 type AnyFunction<T = any> = (...args: T[]) => any;
 

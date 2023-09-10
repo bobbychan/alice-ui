@@ -15,6 +15,7 @@ const spinner = cva({
   base: 'relative',
   variants: {
     color: {
+      current: 'text-current',
       default: 'text-default',
       primary: 'text-primary',
       secondary: 'text-secondary',

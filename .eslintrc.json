@@ -30,6 +30,7 @@
     "no-console": "warn",
     "react/prop-types": "off",
     "react/jsx-uses-react": "off",
+    "prefer-const": "off",
     "react/react-in-jsx-scope": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
