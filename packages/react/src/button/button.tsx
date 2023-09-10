@@ -1,16 +1,49 @@
 import type { ButtonVariantProps } from '@alice-ui/theme';
 import { button } from '@alice-ui/theme';
-import { ForwardedRef, forwardRef, useCallback, useMemo } from 'react';
+import {
+  ForwardedRef,
+  ReactNode,
+  cloneElement,
+  forwardRef,
+  isValidElement,
+  useCallback,
+  useMemo,
+} from 'react';
 import { Ripple, useRipple } from '../ripple';
+import type { SpinnerProps } from '../spinner';
+import { Spinner } from '../spinner';
 import type { BaseButtonProps } from './base-button';
 import { BaseButton } from './base-button';
 
-export interface ButtonProps extends BaseButtonProps, ButtonVariantProps {
+export interface ButtonProps
+  extends BaseButtonProps,
+    Omit<ButtonVariantProps, 'isInGroup' | 'isIconOnly'> {
   /**
    * Whether the button should display a ripple effect on press.
    * @default false
    */
   disableRipple?: boolean;
+  /**
+   * Adds icon before button label.
+   */
+  leftIcon?: ReactNode;
+  /**
+   * Adds icon after button label.
+   */
+  rightIcon?: ReactNode;
+  /**
+   * Spinner to display when loading.
+   */
+  spinner?: ReactNode;
+  /**
+   * Props to pass to the spinner.
+   */
+  spinnerProps?: SpinnerProps;
+  /**
+   * The spinner placement.
+   * @default "start"
+   */
+  spinnerPlacement?: 'start' | 'end';
   /**
    * Whether the button should display a loading spinner.
    * @default false
@@ -22,11 +55,15 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
   const {
     variant,
     color,
-    size,
+    size = 'md',
     radius,
     isDisabled,
-    isIconOnly,
     fullWidth,
+    isLoading,
+    spinner = <Spinner color="current" size="sm" {...props.spinnerProps} />,
+    spinnerPlacement = 'start',
+    leftIcon,
+    rightIcon,
     disableAnimation,
     disableRipple,
     className,
@@ -35,12 +72,13 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
   } = props;
 
   const { onClick: onRippleClickHandler, ripples } = useRipple();
+
   const handleClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
-      if (disableRipple || isDisabled || disableAnimation) return;
+      if (disableRipple || disableAnimation || isLoading) return;
       onRippleClickHandler(e);
     },
-    [disableRipple, isDisabled, disableAnimation, onRippleClickHandler],
+    [disableRipple, disableAnimation, isLoading, onRippleClickHandler],
   );
 
   const styles = useMemo(
@@ -53,17 +91,35 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
         fullWidth,
         isDisabled,
         disableAnimation,
-        isIconOnly,
         className,
       }),
-    [className, color, disableAnimation, fullWidth, isDisabled, isIconOnly, radius, size, variant],
+    [className, color, disableAnimation, fullWidth, isDisabled, radius, size, variant],
   );
+
+  const getIconClone = (icon: ReactNode) =>
+    isValidElement(icon)
+      ? cloneElement<any>(icon, {
+          'aria-hidden': true,
+          focusable: false,
+          tabIndex: -1,
+        })
+      : null;
+
+  const leftIconNode = getIconClone(leftIcon);
+  const rightIconNode = getIconClone(rightIcon);
 
   return (
     <BaseButton ref={ref} className={styles} {...otherProps} onClick={handleClick}>
-      <>{children}</>
-      <span>bob</span>
-      {!disableRipple && <Ripple ripples={ripples} />}
+      {({ isDisabled }) => (
+        <>
+          {leftIconNode}
+          {isLoading && spinnerPlacement === 'start' && <div className="shrink-0">{spinner}</div>}
+          <>{children}</>
+          {isLoading && spinnerPlacement === 'end' && spinner}
+          {rightIconNode}
+          {(!disableRipple || !isDisabled) && <Ripple ripples={ripples} />}
+        </>
+      )}
     </BaseButton>
   );
 }

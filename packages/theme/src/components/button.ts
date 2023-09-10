@@ -82,7 +82,6 @@ const button = cva({
     },
     isIconOnly: {
       true: 'px-0 !gap-0',
-      false: '[&>svg]:max-w-[2rem]',
     },
     disableAnimation: {
       true: '!transition-none',
@@ -345,17 +344,17 @@ const button = cva({
     {
       isIconOnly: true,
       size: 'sm',
-      class: 'w-8 h-8',
+      class: 'min-w-[32px] w-8 h-8 text-[20px]',
     },
     {
       isIconOnly: true,
       size: 'md',
-      class: 'w-10 h-10',
+      class: 'min-w-[40px] w-10 h-10 text-[24px]',
     },
     {
       isIconOnly: true,
       size: 'lg',
-      class: 'w-12 h-12',
+      class: 'min-w-[48px] w-12 h-12 text-[28px]',
     },
   ],
 });

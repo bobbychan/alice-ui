@@ -45,7 +45,7 @@ function Spinner(props: SpinnerProps, ref: ForwardedRef<SVGSVGElement>) {
     [className, color, size],
   );
 
-  return <SpinnerComponent className={styles} ref={ref} {...spinnerProps} />;
+  return <SpinnerComponent role="presentation" className={styles} ref={ref} {...spinnerProps} />;
 }
 
 const _Spinner = forwardRef(Spinner);
