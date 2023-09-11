@@ -1,6 +1,6 @@
-import type { VariantProps } from 'cva';
+import type { VariantProps } from 'tailwind-variants';
 import { dataFocusVisibleClasses } from '../utils';
-import { cva } from '../utils/cva';
+import { tv } from '../utils/tv';
 
 /**
  * Link component
@@ -8,7 +8,7 @@ import { cva } from '../utils/cva';
  * @example
  * <a className={link({ color: "secondary", isBlock: true })} href="#" />
  */
-const link = cva({
+const link = tv({
   base: [
     'relative inline-flex items-center outline-none tap-highlight-transparent',
     // focus ring

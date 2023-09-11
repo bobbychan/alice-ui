@@ -8,7 +8,7 @@ import {
   InfoFilledIcon,
   InfoIcon,
 } from '@alice-ui/icons';
-import { cx } from '@alice-ui/theme';
+import { clsx } from '@alice-ui/shared-utils';
 
 export interface AlertIconProps extends Omit<React.HTMLAttributes<SVGSVGElement>, 'color'> {
   type?: 'info' | 'success' | 'warning' | 'error';
@@ -27,7 +27,7 @@ const AlertIcon = (props: AlertIconProps) => {
 
   const Icon = filled ? ICONS[type].filled : ICONS[type].outline;
 
-  return <Icon className={cx('h-6 w-6 shrink-0', className)} {...rest} />;
+  return <Icon className={clsx('h-6 w-6 shrink-0', className)} {...rest} />;
 };
 
 export { AlertIcon };

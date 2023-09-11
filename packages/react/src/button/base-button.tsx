@@ -1,3 +1,4 @@
+import { dataAttr } from '@alice-ui/shared-utils';
 import { filterDOMProps } from '@react-aria/utils';
 import { ForwardedRef, createContext, forwardRef } from 'react';
 import { AriaButtonProps, mergeProps, useButton, useFocusRing, useHover } from 'react-aria';
@@ -5,7 +6,6 @@ import {
   ContextValue,
   RenderProps,
   SlotProps,
-  dataAttr,
   useContextProps,
   useRenderProps,
 } from '../_util/utils';

@@ -1,5 +1,5 @@
-import type { VariantProps } from 'cva';
-import { cva } from '../utils/cva';
+import type { VariantProps } from 'tailwind-variants';
+import { tv } from '../utils/tv';
 
 /**
  * Spinner component
@@ -11,7 +11,7 @@ import { cva } from '../utils/cva';
  *   // spinner content
  * </div>
  */
-const spinner = cva({
+const spinner = tv({
   base: 'relative',
   variants: {
     color: {

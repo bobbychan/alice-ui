@@ -6,24 +6,24 @@ export default {
   /**
    * Scroll Hide
    */
-  ".scrollbar-hide": {
+  '.scrollbar-hide': {
     /* IE and Edge */
-    "-ms-overflow-style": "none",
+    '-ms-overflow-style': 'none',
     /* Firefox */
-    "scrollbar-width": "none",
+    'scrollbar-width': 'none',
     /* Safari and Chrome */
-    "&::-webkit-scrollbar": {
-      display: "none",
+    '&::-webkit-scrollbar': {
+      display: 'none',
     },
   },
-  ".scrollbar-default": {
+  '.scrollbar-default': {
     /* IE and Edge */
-    "-ms-overflow-style": "auto",
+    '-ms-overflow-style': 'auto',
     /* Firefox */
-    "scrollbar-width": "auto",
+    'scrollbar-width': 'auto',
     /* Safari and Chrome */
-    "&::-webkit-scrollbar": {
-      display: "block",
+    '&::-webkit-scrollbar': {
+      display: 'block',
     },
   },
 };

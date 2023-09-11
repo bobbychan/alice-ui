@@ -371,8 +371,3 @@ export function createHideableComponent<T, P = Record<string, never>>(
   Wrapper.displayName = fn.displayName || fn.name;
   return (React.forwardRef as forwardRefType)(Wrapper);
 }
-
-type Booleanish = boolean | 'true' | 'false';
-
-export const dataAttr = (condition: boolean | undefined) =>
-  (condition ? 'true' : undefined) as Booleanish;

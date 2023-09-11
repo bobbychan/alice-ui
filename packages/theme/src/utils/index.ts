@@ -1,3 +1,4 @@
 export * from './classes';
-export * from './cva';
+export * from './tv';
+export * from './types';
 export * from './variants';

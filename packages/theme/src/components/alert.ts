@@ -1,6 +1,6 @@
-import type { VariantProps } from 'cva';
+import type { VariantProps } from 'tailwind-variants';
 import { colorVariants } from '../utils';
-import { cva } from '../utils/cva';
+import { tv } from '../utils/tv';
 
 /**
  * Alert component
@@ -12,7 +12,7 @@ import { cva } from '../utils/cva';
  *   // alert content
  * </div>
  */
-const alert = cva({
+const alert = tv({
   base: 'flex relative overflow-hidden items-center w-full gap-4 px-4 py-3',
   variants: {
     variant: {
