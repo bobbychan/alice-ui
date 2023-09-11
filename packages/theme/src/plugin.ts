@@ -174,6 +174,9 @@ const corePlugin = (
             medium: `var(--${prefix}-radius-medium)`,
             large: `var(--${prefix}-radius-large)`,
           },
+          opacity: {
+            disabled: `var(--${prefix}-disabled-opacity)`,
+          },
           boxShadow: {
             small: `var(--${prefix}-box-shadow-small)`,
             medium: `var(--${prefix}-box-shadow-medium)`,
