@@ -82,12 +82,16 @@ const resolveConfig = (
       if (!colorValue) return;
 
       try {
-        const [h, s, l] = Color(colorValue).hsl().round().array();
+        const [h, s, l, defaultAlphaValue] = Color(colorValue).hsl().round().array();
         const nextuiColorVariable = `--${prefix}-${colorName}`;
+        const nextuiOpacityVariable = `--${prefix}-${colorName}-opacity`;
 
         // set the css variable in "@layer utilities"
         resolved.utilities[cssSelector]![nextuiColorVariable] = `${h} ${s}% ${l}%`;
-
+        // if an alpha value was provided in the color definition, store it in a css variable
+        if (typeof defaultAlphaValue === 'number') {
+          resolved.utilities[cssSelector]![nextuiOpacityVariable] = defaultAlphaValue.toFixed(2);
+        }
         // set the dynamic color in tailwind config theme.colors
         resolved.colors[colorName] = ({ opacityVariable, opacityValue }) => {
           // if the opacity is set  with a slash (e.g. bg-primary/90), use the provided value
@@ -99,10 +103,10 @@ const resolveConfig = (
           // over the tw class based opacity(e.g. "bg-opacity-90")
           // This is how tailwind behaves as for v3.2.4
           if (opacityVariable) {
-            return `hsl(var(${nextuiColorVariable}) / var(${opacityVariable}))`;
+            return `hsl(var(${nextuiColorVariable}) / var(${nextuiOpacityVariable}, var(${opacityVariable})))`;
           }
 
-          return `hsl(var(${nextuiColorVariable}))`;
+          return `hsl(var(${nextuiColorVariable}) / var(${nextuiOpacityVariable}, 1))`;
         };
       } catch (error: any) {
         // eslint-disable-next-line no-console
@@ -162,6 +166,12 @@ const corePlugin = (
           colors: {
             ...(addCommonColors ? commonColors : {}),
             ...resolved.colors,
+          },
+          height: {
+            divider: `var(--${prefix}-divider-weight)`,
+          },
+          width: {
+            divider: `var(--${prefix}-divider-weight)`,
           },
           fontSize: {
             tiny: [`var(--${prefix}-font-size-tiny)`, `var(--${prefix}-line-height-tiny)`],
