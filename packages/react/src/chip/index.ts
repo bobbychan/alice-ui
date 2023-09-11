@@ -1,3 +1,5 @@
+import { Chip } from './chip';
+
 // export types
 export type { ChipProps } from './chip';
 
@@ -5,4 +7,4 @@ export type { ChipProps } from './chip';
 export { ChipContext } from './chip';
 
 // export component
-export { Chip } from './chip';
+export { Chip };

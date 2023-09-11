@@ -2,6 +2,7 @@ import { CloseFilledIcon } from '@alice-ui/icons';
 import { clsx } from '@alice-ui/shared-utils';
 import type { ChipSlots, ChipVariantProps, SlotsToClasses } from '@alice-ui/theme';
 import { chip, filterVariantProps } from '@alice-ui/theme';
+import { filterDOMProps } from '@react-aria/utils';
 import React, {
   ElementType,
   ForwardedRef,
@@ -163,7 +164,11 @@ function Chip(props: ChipProps, ref: ForwardedRef<HTMLDivElement>) {
   }, [classNames?.closeButton, closeFocusProps, closePressProps, endContent, isCloseable, slots]);
 
   return (
-    <Component className={slots.base({ class: baseStyles })} {...chipProps} ref={ref}>
+    <Component
+      ref={ref}
+      className={slots.base({ class: baseStyles })}
+      {...filterDOMProps(chipProps)}
+    >
       {start}
       <span className={slots.content({ class: classNames?.content })}>{children}</span>
       {end}
