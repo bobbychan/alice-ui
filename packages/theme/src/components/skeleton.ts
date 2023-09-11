@@ -1,5 +1,5 @@
-import type { VariantProps } from 'cva';
-import { cva } from '../utils/cva';
+import type { VariantProps } from 'tailwind-variants';
+import { tv } from '../utils/tv';
 
 /**
  * Skeleton component
@@ -11,7 +11,7 @@ import { cva } from '../utils/cva';
  *   // skeleton content
  * </div>
  */
-const skeleton = cva({
+const skeleton = tv({
   base: [
     'group',
     'relative',

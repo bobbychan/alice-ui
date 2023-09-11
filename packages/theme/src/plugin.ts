@@ -82,7 +82,7 @@ const resolveConfig = (
       if (!colorValue) return;
 
       try {
-        const [h, s, l, defaultAlphaValue] = Color(colorValue).hsl().round().array();
+        const [h, s, l] = Color(colorValue).hsl().round().array();
         const nextuiColorVariable = `--${prefix}-${colorName}`;
 
         // set the css variable in "@layer utilities"

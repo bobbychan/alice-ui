@@ -1,4 +1,4 @@
-import { VariantProps, cva } from '@alice-ui/theme';
+import { VariantProps, tv } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Link, LinkProps } from '.';
@@ -171,7 +171,7 @@ export const BlockLink: Story = {
   },
 };
 
-const customLink = cva({
+const customLink = tv({
   variants: {
     color: {
       teal: 'text-teal-600',

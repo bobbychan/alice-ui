@@ -1,6 +1,6 @@
-import type { VariantProps } from 'cva';
+import type { VariantProps } from 'tailwind-variants';
 import { colorVariants, dataFocusVisibleClasses } from '../utils';
-import { cva } from '../utils/cva';
+import { tv } from '../utils/tv';
 
 /**
  * Button component
@@ -20,7 +20,7 @@ import { cva } from '../utils/cva';
  * </button>
  */
 
-const button = cva({
+const button = tv({
   base: [
     'z-0',
     'group',
@@ -369,7 +369,7 @@ const button = cva({
  *   // button elements
  * </div>
  */
-const buttonGroup = cva({
+const buttonGroup = tv({
   base: 'inline-flex items-center justify-center h-auto',
   variants: {
     fullWidth: {
