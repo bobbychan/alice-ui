@@ -49,6 +49,7 @@ export interface ButtonProps
    * @default false
    */
   isLoading?: boolean;
+  className?: string;
 }
 
 function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
