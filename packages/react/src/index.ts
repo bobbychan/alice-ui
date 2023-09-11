@@ -3,6 +3,7 @@ export type { ContextValue, SlotProps } from './_util/utils';
 
 // component exports
 export * from './alert';
+export * from './avatar';
 export * from './button';
 export * from './image';
 export * from './link';
