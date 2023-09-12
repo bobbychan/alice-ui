@@ -17,7 +17,7 @@ function Link(props: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) {
         underline,
         isBlock,
         isDisabled,
-        className,
+        className: typeof className === 'function' ? '' : className,
       }),
     [className, color, isBlock, isDisabled, size, underline],
   );
@@ -25,5 +25,5 @@ function Link(props: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) {
   return <BaseLink className={styles} {...otherProps} ref={ref} />;
 }
 
-const _Link = /*#__PURE__*/ forwardRef(Link);
+const _Link = forwardRef(Link);
 export { _Link as Link };

@@ -34,6 +34,12 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement>, ImageVa
    */
   loading?: NativeImageProps['loading'];
   /**
+   * Whether to remove the wrapper element. This will cause the image to be rendered as a direct child of the parent element.
+   * If you set this prop as `true` neither the skeleton nor the zoom effect will work.
+   * @default false
+   */
+  removeWrapper?: boolean;
+  /**
    * Classname or List of classes to change the classNames of the element.
    * if `className` is passed, it will be added to the base slot.
    *
@@ -63,6 +69,7 @@ function Image(props: ImageProps, ref: ForwardedRef<HTMLDivElement>) {
     fallbackSrc,
     disableSkeleton = !!fallbackSrc,
     loading,
+    removeWrapper,
     onLoad,
     onError,
     ...otherProps
@@ -120,6 +127,10 @@ function Image(props: ImageProps, ref: ForwardedRef<HTMLDivElement>) {
       {...otherProps}
     />
   );
+
+  if (removeWrapper) {
+    return img;
+  }
 
   const zoomed = (
     <div className={slots.zoomedWrapper({ class: classNames?.zoomedWrapper })}>{img}</div>

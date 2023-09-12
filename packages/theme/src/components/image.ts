@@ -19,7 +19,7 @@ import { tv } from '../utils/tv';
  */
 const image = tv({
   slots: {
-    wrapper: 'relative shadow-black/5',
+    wrapper: 'relative shadow-black/5 shrink-0',
     zoomedWrapper: 'relative overflow-hidden rounded-inherit',
     img: 'relative z-10 opacity-0 shadow-black/5 data-[loaded=true]:opacity-100 transition-transform-opacity motion-reduce:transition-none !duration-300',
   },
