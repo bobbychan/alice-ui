@@ -112,5 +112,5 @@ function BaseLink(props: BaseLinkProps, ref: ForwardedRef<HTMLAnchorElement>) {
  * A link allows a user to navigate to another page or resource within a web page
  * or application.
  */
-const _BaseLink = /*#__PURE__*/ (forwardRef as forwardRefType)(BaseLink);
+const _BaseLink = (forwardRef as forwardRefType)(BaseLink);
 export { _BaseLink as BaseLink };

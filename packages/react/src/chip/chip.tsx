@@ -85,6 +85,10 @@ function Chip(props: ChipProps, ref: ForwardedRef<HTMLDivElement>) {
   const variantProps = filterVariantProps(props, chip.variantKeys);
 
   const Component = (elementType || 'div') as ElementType;
+  let componentProps = chipProps;
+  if (typeof Component === 'string') {
+    componentProps = filterDOMProps(chipProps);
+  }
 
   const baseStyles = clsx(classNames?.base, className);
   const isCloseable = !!onClose;
@@ -164,11 +168,7 @@ function Chip(props: ChipProps, ref: ForwardedRef<HTMLDivElement>) {
   }, [classNames?.closeButton, closeFocusProps, closePressProps, endContent, isCloseable, slots]);
 
   return (
-    <Component
-      ref={ref}
-      className={slots.base({ class: baseStyles })}
-      {...filterDOMProps(chipProps)}
-    >
+    <Component ref={ref} className={slots.base({ class: baseStyles })} {...componentProps}>
       {start}
       <span className={slots.content({ class: classNames?.content })}>{children}</span>
       {end}
