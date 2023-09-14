@@ -8,9 +8,9 @@ import {
   forwardRefType,
   useContextProps,
   useRenderProps,
-} from '../_util/utils';
+} from '../_utils/utils';
 
-export interface BaseLinkProps
+export interface LinkProps
   extends Omit<AriaLinkOptions, 'elementType'>,
     RenderProps<LinkRenderProps>,
     SlotProps {
@@ -50,9 +50,9 @@ export interface LinkRenderProps {
   isDisabled: boolean;
 }
 
-export const LinkContext = createContext<ContextValue<BaseLinkProps, HTMLAnchorElement>>(null);
+export const LinkContext = createContext<ContextValue<LinkProps, HTMLAnchorElement>>(null);
 
-function BaseLink(props: BaseLinkProps, ref: ForwardedRef<HTMLAnchorElement>) {
+function Link(props: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) {
   [props, ref] = useContextProps(props, ref, LinkContext);
 
   let elementType =
@@ -112,5 +112,5 @@ function BaseLink(props: BaseLinkProps, ref: ForwardedRef<HTMLAnchorElement>) {
  * A link allows a user to navigate to another page or resource within a web page
  * or application.
  */
-const _BaseLink = (forwardRef as forwardRefType)(BaseLink);
-export { _BaseLink as BaseLink };
+const _Link = (forwardRef as forwardRefType)(Link);
+export { _Link as Link };

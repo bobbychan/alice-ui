@@ -1,0 +1,63 @@
+{
+  "name": "@alice-ui/react-aria-components",
+  "version": "1.0.0-beta.0",
+  "description": "A library of styleable components built using React Aria",
+  "keywords": [
+    "react",
+    "react-aria",
+    "react-aria-component",
+    "react-component",
+    "react-ui"
+  ],
+  "homepage": "https://github.com/bobbychan/alice-ui#readme",
+  "sideEffects": false,
+  "license": "MIT",
+  "main": "src/index.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobbychan/alice-ui.git",
+    "directory": "packages/react-aria-components"
+  },
+  "scripts": {
+    "build": "tsup src --dts",
+    "build:fast": "tsup src",
+    "dev": "pnpm build:fast -- --watch",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "clean": "rimraf .turbo node_modules dist",
+    "typecheck": "tsc --noEmit",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "dependencies": {
+    "@react-aria/focus": "^3.14.1",
+    "@react-aria/interactions": "^3.18.0",
+    "@react-aria/utils": "^3.20.0",
+    "@react-types/shared": "^3.20.0",
+    "react-aria": "^3.28.0",
+    "react-stately": "^3.26.0",
+    "use-sync-external-store": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/use-sync-external-store": "^0.0.4",
+    "clean-package": "^2.2.0"
+  },
+  "clean-package": "../../clean-package.config.json",
+  "tsup": {
+    "clean": true,
+    "target": "es2019",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  }
+}

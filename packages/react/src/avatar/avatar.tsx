@@ -1,4 +1,5 @@
 import { useImage } from '@alice-ui/hooks';
+import { ContextValue, useContextProps } from '@alice-ui/react-aria-components';
 import { clsx, dataAttr } from '@alice-ui/shared-utils';
 import { AvatarSlots, AvatarVariantProps, SlotsToClasses, avatar } from '@alice-ui/theme';
 import {
@@ -10,7 +11,6 @@ import {
   useMemo,
 } from 'react';
 import { mergeProps, useFocusRing, useHover } from 'react-aria';
-import { ContextValue, useContextProps } from '../_util/utils';
 import { AvatarContextValue } from './avatar-group';
 import { AvatarIcon } from './avatar-icon';
 

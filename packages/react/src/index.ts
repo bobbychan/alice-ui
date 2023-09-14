@@ -1,5 +1,5 @@
-export { Provider, useContextProps, useSlottedContext } from './_util/utils';
-export type { ContextValue, SlotProps } from './_util/utils';
+export { Provider, useContextProps, useSlottedContext } from './_utils/utils';
+export type { ContextValue, SlotProps } from './_utils/utils';
 
 // component exports
 export * from './alert';

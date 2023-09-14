@@ -1,14 +1,15 @@
-import { dataAttr } from '@alice-ui/shared-utils';
 import { filterDOMProps } from '@react-aria/utils';
-import { ForwardedRef, createContext, forwardRef } from 'react';
+import { ForwardedRef, createContext } from 'react';
 import { AriaButtonProps, mergeProps, useButton, useFocusRing, useHover } from 'react-aria';
 import {
   ContextValue,
   RenderProps,
   SlotProps,
+  createHideableComponent,
+  dataAttr,
   useContextProps,
   useRenderProps,
-} from '../_util/utils';
+} from '../_utils/utils';
 
 export interface ButtonRenderProps {
   /**
@@ -38,7 +39,7 @@ export interface ButtonRenderProps {
   isDisabled: boolean;
 }
 
-export interface BaseButtonProps
+export interface ButtonProps
   extends Omit<AriaButtonProps, 'children' | 'href' | 'target' | 'rel' | 'elementType'>,
     SlotProps,
     RenderProps<ButtonRenderProps> {
@@ -67,7 +68,7 @@ export interface BaseButtonProps
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-interface ButtonContextValue extends BaseButtonProps {
+interface ButtonContextValue extends ButtonProps {
   isPressed?: boolean;
 }
 
@@ -84,7 +85,7 @@ const additionalButtonHTMLAttributes = new Set([
 
 export const ButtonContext = createContext<ContextValue<ButtonContextValue, HTMLButtonElement>>({});
 
-function BaseButton(props: BaseButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
+function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
   [props, ref] = useContextProps(props, ref, ButtonContext);
   let ctx = props as ButtonContextValue;
   let { buttonProps, isPressed } = useButton(props, ref);
@@ -122,5 +123,5 @@ function BaseButton(props: BaseButtonProps, ref: ForwardedRef<HTMLButtonElement>
 /**
  * A button allows a user to perform an action, with mouse, touch, and keyboard interactions.
  */
-const _BaseButton = forwardRef(BaseButton);
-export { _BaseButton as BaseButton };
+const _Button = createHideableComponent(Button);
+export { _Button as Button };

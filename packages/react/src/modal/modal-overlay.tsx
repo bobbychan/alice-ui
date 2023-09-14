@@ -8,7 +8,7 @@ import {
   useEnterAnimation,
   useExitAnimation,
   useRenderProps,
-} from '../_util/utils';
+} from '../_utils/utils';
 import { ModalOverlayProps } from './modal';
 import { InternalModalContext, ModalContext, ModalContextValue } from './modal-content';
 
