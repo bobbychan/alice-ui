@@ -1,5 +1,11 @@
 # @alice-ui/docs
 
+## 1.0.2
+
+### Patch Changes
+
+- @alice-ui/react@1.0.5
+
 ## 1.0.1
 
 ### Patch Changes
