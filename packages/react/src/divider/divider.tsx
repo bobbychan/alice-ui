@@ -1,3 +1,4 @@
+import { ContextValue, useContextProps } from '@alice-ui/react-aria-components';
 import { divider } from '@alice-ui/theme';
 import {
   ElementType,
@@ -8,7 +9,6 @@ import {
   useMemo,
 } from 'react';
 import { SeparatorProps, useSeparator } from 'react-aria';
-import { ContextValue, useContextProps } from '../_util/utils';
 
 export interface DividerProps extends HTMLAttributes<HTMLHRElement>, SeparatorProps {
   elementType?: string;

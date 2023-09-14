@@ -1,3 +1,5 @@
+import type { ButtonProps as AriaButtonProps } from '@alice-ui/react-aria-components';
+import { Button as AriaButton } from '@alice-ui/react-aria-components';
 import type { ButtonVariantProps } from '@alice-ui/theme';
 import { button } from '@alice-ui/theme';
 import {
@@ -12,11 +14,9 @@ import {
 import { Ripple, useRipple } from '../ripple';
 import type { SpinnerProps } from '../spinner';
 import { Spinner } from '../spinner';
-import type { BaseButtonProps } from './base-button';
-import { BaseButton } from './base-button';
 
 export interface ButtonProps
-  extends BaseButtonProps,
+  extends AriaButtonProps,
     Omit<ButtonVariantProps, 'isInGroup' | 'isIconOnly'> {
   /**
    * Whether the button should display a ripple effect on press.
@@ -110,7 +110,7 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
   const rightIconNode = getIconClone(rightIcon);
 
   return (
-    <BaseButton ref={ref} className={styles} {...otherProps} onClick={handleClick}>
+    <AriaButton ref={ref} className={styles} {...otherProps} onClick={handleClick}>
       {({ isDisabled }) => (
         <>
           {leftIconNode}
@@ -121,7 +121,7 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
           {(!disableRipple || !isDisabled) && <Ripple ripples={ripples} />}
         </>
       )}
-    </BaseButton>
+    </AriaButton>
   );
 }
 

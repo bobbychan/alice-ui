@@ -37,6 +37,7 @@
     "framer-motion": ">=4.0.0"
   },
   "dependencies": {
+    "@alice-ui/react-aria-components": "workspace:*",
     "@alice-ui/hooks": "workspace:*",
     "@alice-ui/icons": "workspace:*",
     "@alice-ui/react-utils": "workspace:*",

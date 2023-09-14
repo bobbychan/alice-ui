@@ -1,10 +1,10 @@
+import type { LinkProps as AriaLinkProps } from '@alice-ui/react-aria-components';
+import { Link as AriaLink } from '@alice-ui/react-aria-components';
 import type { LinkVariantProps } from '@alice-ui/theme';
 import { link } from '@alice-ui/theme';
 import { ForwardedRef, forwardRef, useMemo } from 'react';
-import type { BaseLinkProps } from './base-link';
-import { BaseLink } from './base-link';
 
-export interface LinkProps extends BaseLinkProps, LinkVariantProps {}
+export interface LinkProps extends AriaLinkProps, LinkVariantProps {}
 
 function Link(props: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) {
   const { className, size, color, underline, isBlock, isDisabled, ...otherProps } = props;
@@ -22,7 +22,7 @@ function Link(props: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) {
     [className, color, isBlock, isDisabled, size, underline],
   );
 
-  return <BaseLink className={styles} {...otherProps} ref={ref} />;
+  return <AriaLink className={styles} {...otherProps} ref={ref} />;
 }
 
 const _Link = forwardRef(Link);

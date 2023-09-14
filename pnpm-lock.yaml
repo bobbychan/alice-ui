@@ -222,6 +222,9 @@ importers:
       '@alice-ui/icons':
         specifier: workspace:*
         version: link:../icons
+      '@alice-ui/react-aria-components':
+        specifier: workspace:*
+        version: link:../react-aria-components
       '@alice-ui/react-utils':
         specifier: workspace:*
         version: link:../utilities/react-utils
@@ -262,6 +265,43 @@ importers:
       rimraf:
         specifier: ^5.0.1
         version: 5.0.1
+
+  packages/react-aria-components:
+    dependencies:
+      '@react-aria/focus':
+        specifier: ^3.14.1
+        version: 3.14.1(react@18.2.0)
+      '@react-aria/interactions':
+        specifier: ^3.18.0
+        version: 3.18.0(react@18.2.0)
+      '@react-aria/utils':
+        specifier: ^3.20.0
+        version: 3.20.0(react@18.2.0)
+      '@react-types/shared':
+        specifier: ^3.20.0
+        version: 3.20.0(react@18.2.0)
+      react:
+        specifier: ^18.0.0
+        version: 18.2.0
+      react-aria:
+        specifier: ^3.28.0
+        version: 3.28.0(react-dom@18.2.0)(react@18.2.0)
+      react-dom:
+        specifier: ^18.0.0
+        version: 18.2.0(react@18.2.0)
+      react-stately:
+        specifier: ^3.26.0
+        version: 3.26.0(react@18.2.0)
+      use-sync-external-store:
+        specifier: ^1.2.0
+        version: 1.2.0(react@18.2.0)
+    devDependencies:
+      '@types/use-sync-external-store':
+        specifier: ^0.0.4
+        version: 0.0.4
+      clean-package:
+        specifier: ^2.2.0
+        version: 2.2.0
 
   packages/theme:
     dependencies:
@@ -5788,6 +5828,10 @@ packages:
 
   /@types/unist@2.0.8:
     resolution: {integrity: sha512-d0XxK3YTObnWVp6rZuev3c49+j4Lo8g4L1ZRm9z5L0xpoZycUPshHgczK5gsUMaZOstjVYYi09p5gYvUtfChYw==}
+    dev: true
+
+  /@types/use-sync-external-store@0.0.4:
+    resolution: {integrity: sha512-DMBc2WDEfaGsWXqH/Sk2oBaUkvlUwqgt/YEygpqX0MaiEjqR7afd1QgE4Pq2zBr/TRz0Mpu92eBBo5UQjtTD5Q==}
     dev: true
 
   /@types/yargs-parser@21.0.0:
@@ -12270,6 +12314,14 @@ packages:
       react: 18.2.0
       tslib: 2.6.2
     dev: true
+
+  /use-sync-external-store@1.2.0(react@18.2.0):
+    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}

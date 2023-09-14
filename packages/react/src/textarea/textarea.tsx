@@ -1,7 +1,7 @@
 import { dataAttr } from '@alice-ui/shared-utils';
 import { ForwardedRef, TextareaHTMLAttributes, createContext, forwardRef } from 'react';
 import { mergeProps, useFocusRing, useHover } from 'react-aria';
-import { ContextValue, StyleRenderProps, useContextProps, useRenderProps } from '../_util/utils';
+import { ContextValue, StyleRenderProps, useContextProps, useRenderProps } from '../_utils/utils';
 import { InputRenderProps } from '../input';
 
 export interface TextAreaProps

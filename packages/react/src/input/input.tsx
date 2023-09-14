@@ -7,7 +7,7 @@ import {
   StyleRenderProps,
   useContextProps,
   useRenderProps,
-} from '../_util/utils';
+} from '../_utils/utils';
 
 export interface InputRenderProps {
   /**

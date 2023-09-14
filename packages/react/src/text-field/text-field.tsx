@@ -12,7 +12,7 @@ import {
   useContextProps,
   useRenderProps,
   useSlot,
-} from '../_util/utils';
+} from '../_utils/utils';
 import { InputContext } from '../input';
 import { LabelContext } from '../label';
 import { TextContext } from '../text';
