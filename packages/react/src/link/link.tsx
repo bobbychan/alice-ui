@@ -1,8 +1,8 @@
-import type { LinkProps as AriaLinkProps } from '@alice-ui/react-aria-components';
-import { Link as AriaLink } from '@alice-ui/react-aria-components';
 import type { LinkVariantProps } from '@alice-ui/theme';
 import { link } from '@alice-ui/theme';
 import { ForwardedRef, forwardRef, useMemo } from 'react';
+import type { LinkProps as AriaLinkProps } from 'react-aria-components';
+import { Link as AriaLink } from 'react-aria-components';
 
 export interface LinkProps extends AriaLinkProps, LinkVariantProps {}
 

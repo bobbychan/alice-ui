@@ -9,6 +9,7 @@ import {
   SlotProps,
   dataAttr,
   forwardRefType,
+  removeDataAttributes,
   useContextProps,
   useRenderProps,
   useSlot,
@@ -52,7 +53,7 @@ function TextField(props: TextFieldProps, ref: ForwardedRef<HTMLDivElement>) {
   const [inputElementType, setInputElementType] = useState('input');
   const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField<any>(
     {
-      ...props,
+      ...removeDataAttributes(props),
       inputElementType,
       label,
     },

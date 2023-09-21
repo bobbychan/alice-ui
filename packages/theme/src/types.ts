@@ -168,7 +168,7 @@ export type PluginConfig = {
    */
   prefix?: string;
   /**
-   * If true, the common nextui colors (e.g. "blue", "green", "purple") will not be extended on the theme.
+   * If true, the common aliceui colors (e.g. "blue", "green", "purple") will not be extended on the theme.
    * @default false
    */
   addCommonColors?: boolean;

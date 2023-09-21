@@ -14,6 +14,7 @@ import {
   RenderProps,
   SlotProps,
   forwardRefType,
+  removeDataAttributes,
   useContextProps,
   useRenderProps,
 } from '../_utils/utils';
@@ -86,7 +87,7 @@ function Radio(props: RadioProps, ref: ForwardedRef<HTMLInputElement>) {
     isPressed: isPressedKeyboard,
   } = useRadio(
     {
-      ...props,
+      ...removeDataAttributes<RadioProps>(props),
       // ReactNode type doesn't allow function children.
       children: typeof props.children === 'function' ? true : props.children,
     },

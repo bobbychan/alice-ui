@@ -13,13 +13,14 @@ import {
 import { useToggleState } from 'react-stately';
 import {
   ContextValue,
+  dataAttr,
   forwardRefType,
   RenderProps,
   SlotProps,
   useContextProps,
   useRenderProps,
 } from '../_utils/utils';
-import { InternalCheckboxGroupContext } from './checkbox-group';
+import { CheckboxGroupStateContext } from './checkbox-group';
 
 export interface CheckboxProps
   extends Omit<AriaCheckboxProps, 'children' | 'validationState'>,
@@ -83,7 +84,11 @@ export const CheckboxContext = createContext<ContextValue<CheckboxProps, HTMLInp
 
 function Checkbox(props: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) {
   [props, ref] = useContextProps(props, ref, CheckboxContext);
-  let groupState = useContext(InternalCheckboxGroupContext);
+  let groupState = useContext(CheckboxGroupStateContext);
+
+  let ctx = useContext(CheckboxContext);
+  console.log(ctx, 'ctx');
+
   let {
     inputProps,
     isSelected,
@@ -163,16 +168,17 @@ function Checkbox(props: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) {
     <label
       {...mergeProps(DOMProps, pressProps, hoverProps, renderProps)}
       slot={props.slot}
-      data-selected={isSelected || undefined}
-      data-indeterminate={props.isIndeterminate || undefined}
-      data-pressed={pressed || undefined}
-      data-hovered={isHovered || undefined}
-      data-focused={isFocused || undefined}
-      data-focus-visible={isFocusVisible || undefined}
-      data-disabled={isDisabled || undefined}
-      data-readonly={isReadOnly || undefined}
+      data-selected={dataAttr(isSelected)}
+      data-indeterminate={dataAttr(props.isIndeterminate)}
+      data-pressed={dataAttr(pressed)}
+      data-hovered={dataAttr(isHovered)}
+      data-focused={dataAttr(isFocused)}
+      data-focus-visible={dataAttr(isFocusVisible)}
+      data-disabled={dataAttr(isDisabled)}
+      data-readonly={dataAttr(isReadOnly)}
       data-invalid={props.isInvalid || groupState?.isInvalid || undefined}
-      data-required={props.isRequired || undefined}
+      data-required={dataAttr(props.isRequired)}
+      data-scope="checkbox"
     >
       <VisuallyHidden elementType="span">
         <input {...inputProps} {...focusProps} ref={ref} />

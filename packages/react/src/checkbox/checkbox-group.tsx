@@ -1,117 +1,105 @@
-import { createContext, ForwardedRef, forwardRef } from 'react';
-import { AriaCheckboxGroupProps, useCheckboxGroup } from 'react-aria';
-import { CheckboxGroupState, useCheckboxGroupState } from 'react-stately';
-import {
-  ContextValue,
-  forwardRefType,
-  Provider,
-  RenderProps,
-  SlotProps,
-  useContextProps,
-  useRenderProps,
-  useSlot,
-} from '../_utils/utils';
-import { LabelContext } from '../label';
-import { TextContext } from '../text';
+import { clsx } from '@alice-ui/shared-utils';
+import type { CheckboxGroupSlots, SlotsToClasses } from '@alice-ui/theme';
+import { checkboxGroup } from '@alice-ui/theme';
+import type { Orientation } from '@react-types/shared';
+import { ForwardedRef, forwardRef, useMemo } from 'react';
+import type { CheckboxGroupProps as AriaCheckboxGroupProps } from 'react-aria-components';
+import { CheckboxGroup as AriaCheckboxGroup, Label, Text } from 'react-aria-components';
+import { CheckboxProps } from './checkbox';
 
 export interface CheckboxGroupProps
-  extends Omit<
-      AriaCheckboxGroupProps,
-      'children' | 'label' | 'description' | 'errorMessage' | 'validationState'
-    >,
-    RenderProps<CheckboxGroupRenderProps>,
-    SlotProps {}
-
-export interface CheckboxGroupRenderProps {
+  extends AriaCheckboxGroupProps,
+    Partial<Pick<CheckboxProps, 'color' | 'size' | 'radius' | 'lineThrough' | 'isDisabled'>> {
   /**
-   * Whether the checkbox group is disabled.
-   * @selector [data-disabled]
+   * The axis the checkbox group items should align with.
+   * @default "vertical"
    */
-  isDisabled: boolean;
+  orientation?: Orientation;
+  label?: string;
+  description?: string;
+  errorMessage?: string;
   /**
-   * Whether the checkbox group is read only.
-   * @selector [data-readonly]
+   * Classname or List of classes to change the classNames of the element.
+   * if `className` is passed, it will be added to the base slot.
+   *
+   * @example
+   * ```ts
+   * <CheckboxGroup classNames={{
+   *    base:"base-classes",
+   *    label: "label-classes",
+   *    wrapper: "wrapper-classes", // checkboxes wrapper
+   * }} >
+   *  // checkboxes
+   * </CheckboxGroup>
+   * ```
    */
-  isReadOnly: boolean;
-  /**
-   * Whether the checkbox group is required.
-   * @selector [data-required]
-   */
-  isRequired: boolean;
-  /**
-   * Whether the checkbox group is invalid.
-   * @selector [data-invalid]
-   */
-  isInvalid: boolean;
-  /**
-   * State of the checkbox group.
-   */
-  state: CheckboxGroupState;
+  classNames?: SlotsToClasses<CheckboxGroupSlots>;
 }
 
-export const CheckboxGroupContext =
-  createContext<ContextValue<CheckboxGroupProps, HTMLDivElement>>(null);
-export const InternalCheckboxGroupContext = createContext<CheckboxGroupState | null>(null);
-
 function CheckboxGroup(props: CheckboxGroupProps, ref: ForwardedRef<HTMLDivElement>) {
-  [props, ref] = useContextProps(props, ref, CheckboxGroupContext);
-  let state = useCheckboxGroupState(props);
-  let [labelRef, label] = useSlot();
-  let { groupProps, labelProps, descriptionProps, errorMessageProps } = useCheckboxGroup(
-    {
-      ...props,
-      label,
-    },
-    state,
+  const {
+    orientation = 'vertical',
+    isRequired,
+    isInvalid,
+    label,
+    description,
+    errorMessage,
+    className,
+    classNames,
+    children,
+    ...otherProps
+  } = props;
+
+  const slots = useMemo(
+    () =>
+      checkboxGroup({
+        isRequired,
+        isInvalid,
+      }),
+    [isInvalid, isRequired],
   );
 
-  let renderProps = useRenderProps({
-    ...props,
-    values: {
-      isDisabled: state.isDisabled,
-      isReadOnly: state.isReadOnly,
-      isRequired: props.isRequired || false,
-      isInvalid: state.isInvalid,
-      state,
-    },
-    defaultClassName: 'react-aria-CheckboxGroup',
-  });
+  const baseStyles = clsx(classNames?.base, className);
 
   return (
-    <div
-      {...groupProps}
-      {...renderProps}
-      ref={ref}
-      slot={props.slot}
-      data-readonly={state.isReadOnly || undefined}
-      data-required={props.isRequired || undefined}
-      data-invalid={state.isInvalid || undefined}
-      data-disabled={props.isDisabled || undefined}
-    >
-      <Provider
-        values={[
-          [InternalCheckboxGroupContext, state],
-          [LabelContext, { ...labelProps, ref: labelRef, elementType: 'span' }],
-          [
-            TextContext,
-            {
-              slots: {
-                description: descriptionProps,
-                errorMessage: errorMessageProps,
-              },
-            },
-          ],
-        ]}
-      >
-        {renderProps.children}
-      </Provider>
-    </div>
+    <AriaCheckboxGroup ref={ref} className={slots.base({ class: baseStyles })} {...props}>
+      {(renderProps) => (
+        <>
+          {label && <Label className={slots.label({ class: classNames?.label })}>{label}</Label>}
+          {children && (
+            <div
+              data-orientation={orientation}
+              className={slots.wrapper({ class: classNames?.wrapper })}
+            >
+              {typeof children === 'function' ? children(renderProps) : children}
+            </div>
+          )}
+
+          {!renderProps.isInvalid && description && (
+            <Text
+              slot="description"
+              className={slots.description({ class: classNames?.description })}
+            >
+              {description}
+            </Text>
+          )}
+          {renderProps.isInvalid && errorMessage && (
+            <Text
+              slot="errorMessage"
+              className={slots.errorMessage({ class: classNames?.errorMessage })}
+            >
+              {errorMessage}
+            </Text>
+          )}
+        </>
+      )}
+    </AriaCheckboxGroup>
   );
 }
 
 /**
  * A checkbox group allows a user to select multiple items from a list of options.
  */
-const _CheckboxGroup = /*#__PURE__*/ (forwardRef as forwardRefType)(CheckboxGroup);
+const _CheckboxGroup = forwardRef(CheckboxGroup);
 
 export { _CheckboxGroup as CheckboxGroup };

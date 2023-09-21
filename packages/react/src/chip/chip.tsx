@@ -1,5 +1,4 @@
 import { CloseFilledIcon } from '@alice-ui/icons';
-import { ContextValue, useContextProps } from '@alice-ui/react-aria-components';
 import { clsx } from '@alice-ui/shared-utils';
 import type { ChipSlots, ChipVariantProps, SlotsToClasses } from '@alice-ui/theme';
 import { chip, filterVariantProps } from '@alice-ui/theme';
@@ -16,6 +15,7 @@ import React, {
   useMemo,
 } from 'react';
 import { PressEvent, mergeProps, useFocusRing, usePress } from 'react-aria';
+import { ContextValue, useContextProps } from 'react-aria-components';
 
 export interface ChipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'color'>, ChipVariantProps {
   elementType?: string;

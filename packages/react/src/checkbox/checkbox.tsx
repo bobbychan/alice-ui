@@ -1,184 +1,88 @@
-import { filterDOMProps } from '@react-aria/utils';
-import { createContext, ForwardedRef, forwardRef, useContext, useState } from 'react';
-import {
-  AriaCheckboxProps,
-  mergeProps,
-  useCheckbox,
-  useCheckboxGroupItem,
-  useFocusRing,
-  useHover,
-  usePress,
-  VisuallyHidden,
-} from 'react-aria';
-import { useToggleState } from 'react-stately';
-import {
-  ContextValue,
-  forwardRefType,
-  RenderProps,
-  SlotProps,
-  useContextProps,
-  useRenderProps,
-} from '../_utils/utils';
-import { InternalCheckboxGroupContext } from './checkbox-group';
+import { clsx } from '@alice-ui/shared-utils';
+import type { CheckboxSlots, CheckboxVariantProps, SlotsToClasses } from '@alice-ui/theme';
+import { checkbox } from '@alice-ui/theme';
+import { ForwardedRef, ReactElement, ReactNode, cloneElement, forwardRef, useMemo } from 'react';
+import type { CheckboxProps as AriaCheckboxProps } from 'react-aria-components';
+import { Checkbox as AriaCheckbox } from 'react-aria-components';
+import { CheckboxIcon, CheckboxIconProps } from './checkbox-icon';
 
-export interface CheckboxProps
-  extends Omit<AriaCheckboxProps, 'children' | 'validationState'>,
-    RenderProps<CheckboxRenderProps>,
-    SlotProps {}
-
-export interface CheckboxRenderProps {
+export interface CheckboxProps extends AriaCheckboxProps, CheckboxVariantProps {
   /**
-   * Whether the checkbox is selected.
-   * @selector [data-selected]
+   * The icon to be displayed when the checkbox is checked.
    */
-  isSelected: boolean;
+  icon?: ReactNode | ((props: CheckboxIconProps) => ReactNode);
   /**
-   * Whether the checkbox is indeterminate.
-   * @selector [data-indeterminate]
+   * Classname or List of classes to change the classNames of the element.
+   * if `className` is passed, it will be added to the base slot.
+   *
+   * @example
+   * ```ts
+   * <Checkbox classNames={{
+   *    base:"base-classes",
+   *    control: "control-classes",
+   *    icon: "icon-classes",
+   *    label: "label-classes",
+   * }} />
+   * ```
    */
-  isIndeterminate: boolean;
-  /**
-   * Whether the checkbox is currently hovered with a mouse.
-   * @selector [data-hovered]
-   */
-  isHovered: boolean;
-  /**
-   * Whether the checkbox is currently in a pressed state.
-   * @selector [data-pressed]
-   */
-  isPressed: boolean;
-  /**
-   * Whether the checkbox is focused, either via a mouse or keyboard.
-   * @selector [data-focused]
-   */
-  isFocused: boolean;
-  /**
-   * Whether the checkbox is keyboard focused.
-   * @selector [data-focus-visible]
-   */
-  isFocusVisible: boolean;
-  /**
-   * Whether the checkbox is disabled.
-   * @selector [data-disabled]
-   */
-  isDisabled: boolean;
-  /**
-   * Whether the checkbox is read only.
-   * @selector [data-readonly]
-   */
-  isReadOnly: boolean;
-  /**
-   * Whether the checkbox invalid.
-   * @selector [data-invalid]
-   */
-  isInvalid: boolean;
-  /**
-   * Whether the checkbox is required.
-   * @selector [data-required]
-   */
-  isRequired: boolean;
+  classNames?: SlotsToClasses<CheckboxSlots>;
+  className?: string;
 }
 
-export const CheckboxContext = createContext<ContextValue<CheckboxProps, HTMLInputElement>>(null);
-
 function Checkbox(props: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) {
-  [props, ref] = useContextProps(props, ref, CheckboxContext);
-  let groupState = useContext(InternalCheckboxGroupContext);
-  let {
-    inputProps,
-    isSelected,
-    isDisabled,
-    isReadOnly,
-    isPressed: isPressedKeyboard,
-  } = groupState
-    ? // eslint-disable-next-line react-hooks/rules-of-hooks
-      useCheckboxGroupItem(
-        {
-          ...props,
-          // Value is optional for standalone checkboxes, but required for CheckboxGroup items;
-          // it's passed explicitly here to avoid typescript error (requires ignore).
-          // @ts-ignore
-          value: props.value,
-          // ReactNode type doesn't allow function children.
-          children: typeof props.children === 'function' ? true : props.children,
-        },
-        groupState,
-        ref,
-      )
-    : // eslint-disable-next-line react-hooks/rules-of-hooks
-      useCheckbox(
-        { ...props, children: typeof props.children === 'function' ? true : props.children },
-        // eslint-disable-next-line react-hooks/rules-of-hooks
-        useToggleState(props),
-        ref,
-      );
-  let { isFocused, isFocusVisible, focusProps } = useFocusRing();
-  let isInteractionDisabled = isDisabled || isReadOnly;
+  const {
+    icon = <CheckboxIcon />,
+    color,
+    size,
+    radius,
+    lineThrough,
+    className,
+    classNames,
+    children,
+    ...otherProps
+  } = props;
 
-  // Handle press state for full label. Keyboard press state is returned by useCheckbox
-  // since it is handled on the <input> element itself.
-  let [isPressed, setPressed] = useState(false);
-  let { pressProps } = usePress({
-    isDisabled: isInteractionDisabled,
-    onPressStart(e) {
-      if (e.pointerType !== 'keyboard') {
-        setPressed(true);
-      }
-    },
-    onPressEnd(e) {
-      if (e.pointerType !== 'keyboard') {
-        setPressed(false);
-      }
-    },
-  });
+  const slots = useMemo(
+    () =>
+      checkbox({
+        color,
+        size,
+        radius,
+        lineThrough,
+      }),
+    [color, lineThrough, radius, size],
+  );
 
-  let { hoverProps, isHovered } = useHover({
-    isDisabled: isInteractionDisabled,
-  });
-
-  let pressed = isInteractionDisabled ? false : isPressed || isPressedKeyboard;
-
-  let renderProps = useRenderProps({
-    // TODO: should data attrs go on the label or on the <input>? useCheckbox passes them to the input...
-    ...props,
-    defaultClassName: 'react-aria-Checkbox',
-    values: {
-      isSelected,
-      isIndeterminate: props.isIndeterminate || false,
-      isPressed: pressed,
-      isHovered,
-      isFocused,
-      isFocusVisible,
-      isDisabled,
-      isReadOnly,
-      isInvalid: props.isInvalid || groupState?.isInvalid || false,
-      isRequired: props.isRequired || false,
-    },
-  });
-
-  let DOMProps = filterDOMProps(props);
-  delete DOMProps.id;
+  const baseStyles = clsx(classNames?.base, className);
 
   return (
-    <label
-      {...mergeProps(DOMProps, pressProps, hoverProps, renderProps)}
-      slot={props.slot}
-      data-selected={isSelected || undefined}
-      data-indeterminate={props.isIndeterminate || undefined}
-      data-pressed={pressed || undefined}
-      data-hovered={isHovered || undefined}
-      data-focused={isFocused || undefined}
-      data-focus-visible={isFocusVisible || undefined}
-      data-disabled={isDisabled || undefined}
-      data-readonly={isReadOnly || undefined}
-      data-invalid={props.isInvalid || groupState?.isInvalid || undefined}
-      data-required={props.isRequired || undefined}
-    >
-      <VisuallyHidden elementType="span">
-        <input {...inputProps} {...focusProps} ref={ref} />
-      </VisuallyHidden>
-      {renderProps.children}
-    </label>
+    <AriaCheckbox ref={ref} className={slots.base({ class: baseStyles })} {...otherProps}>
+      {(renderProps) => {
+        const iconProps = {
+          'data-checked': String(renderProps.isSelected),
+          isSelected: renderProps.isSelected,
+          isIndeterminate: renderProps.isIndeterminate,
+          className: slots.icon({ class: classNames?.icon }),
+        };
+        const clonedIcon =
+          typeof icon === 'function'
+            ? icon(iconProps)
+            : cloneElement(icon as ReactElement, iconProps);
+
+        return (
+          <>
+            <span aria-hidden="true" className={slots.control({ class: classNames?.control })}>
+              {clonedIcon}
+            </span>
+            {children && (
+              <span className={slots.label({ class: classNames?.label })}>
+                {typeof children === 'function' ? children(renderProps) : children}
+              </span>
+            )}
+          </>
+        );
+      }}
+    </AriaCheckbox>
   );
 }
 
@@ -186,6 +90,6 @@ function Checkbox(props: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) {
  * A checkbox allows a user to select multiple items from a list of individual items, or
  * to mark one individual item as selected.
  */
-const _Checkbox = /*#__PURE__*/ (forwardRef as forwardRefType)(Checkbox);
+const _Checkbox = forwardRef(Checkbox);
 
 export { _Checkbox as Checkbox };

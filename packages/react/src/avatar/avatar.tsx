@@ -1,7 +1,7 @@
 import { useImage } from '@alice-ui/hooks';
-import { ContextValue, useContextProps } from '@alice-ui/react-aria-components';
 import { clsx, dataAttr } from '@alice-ui/shared-utils';
 import { AvatarSlots, AvatarVariantProps, SlotsToClasses, avatar } from '@alice-ui/theme';
+import { filterDOMProps } from '@react-aria/utils';
 import {
   ElementType,
   ForwardedRef,
@@ -11,6 +11,7 @@ import {
   useMemo,
 } from 'react';
 import { mergeProps, useFocusRing, useHover } from 'react-aria';
+import { ContextValue, useContextProps } from 'react-aria-components';
 import { AvatarContextValue } from './avatar-group';
 import { AvatarIcon } from './avatar-icon';
 
@@ -170,7 +171,7 @@ function Avatar(props: AvatarProps, ref: ForwardedRef<HTMLSpanElement>) {
 
   return (
     <Component
-      {...mergeProps(avatarProps, focusProps, hoverProps)}
+      {...mergeProps(filterDOMProps(avatarProps), focusProps, hoverProps)}
       ref={ref}
       data-hovered={dataAttr(isHovered)}
       data-focused={dataAttr(isFocused)}

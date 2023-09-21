@@ -1,21 +1,17 @@
 import type { ButtonVariantProps } from '@alice-ui/theme';
 import { button } from '@alice-ui/theme';
 import { ForwardedRef, cloneElement, forwardRef, isValidElement, useMemo } from 'react';
-import type { BaseButtonProps } from './base-button';
-import { BaseButton } from './base-button';
+import type { ButtonProps as AriaButtonProps } from 'react-aria-components';
+import { Button as AriaButton } from 'react-aria-components';
 
 export interface IconButtonProps
-  extends BaseButtonProps,
+  extends Omit<AriaButtonProps, 'className'>,
     Omit<ButtonVariantProps, 'isInGroup' | 'fullWidth'> {
-  /**
-   * Whether the button should display a ripple effect on press.
-   * @default false
-   */
-  disableRipple?: boolean;
   /**
    * A11y: A label that describes the button
    */
   'aria-label': string;
+  className: string;
 }
 
 function IconButton(props: IconButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
@@ -55,9 +51,9 @@ function IconButton(props: IconButtonProps, ref: ForwardedRef<HTMLButtonElement>
     : null;
 
   return (
-    <BaseButton ref={ref} className={styles} {...otherProps}>
+    <AriaButton ref={ref} className={styles} {...otherProps}>
       {_children}
-    </BaseButton>
+    </AriaButton>
   );
 }
 

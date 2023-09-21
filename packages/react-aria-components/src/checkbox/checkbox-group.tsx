@@ -3,6 +3,7 @@ import { AriaCheckboxGroupProps, useCheckboxGroup } from 'react-aria';
 import { CheckboxGroupState, useCheckboxGroupState } from 'react-stately';
 import {
   ContextValue,
+  dataAttr,
   forwardRefType,
   Provider,
   RenderProps,
@@ -51,7 +52,7 @@ export interface CheckboxGroupRenderProps {
 
 export const CheckboxGroupContext =
   createContext<ContextValue<CheckboxGroupProps, HTMLDivElement>>(null);
-export const InternalCheckboxGroupContext = createContext<CheckboxGroupState | null>(null);
+export const CheckboxGroupStateContext = createContext<CheckboxGroupState | null>(null);
 
 function CheckboxGroup(props: CheckboxGroupProps, ref: ForwardedRef<HTMLDivElement>) {
   [props, ref] = useContextProps(props, ref, CheckboxGroupContext);
@@ -64,6 +65,8 @@ function CheckboxGroup(props: CheckboxGroupProps, ref: ForwardedRef<HTMLDivEleme
     },
     state,
   );
+
+  console.log(props, 'props');
 
   let renderProps = useRenderProps({
     ...props,
@@ -83,14 +86,14 @@ function CheckboxGroup(props: CheckboxGroupProps, ref: ForwardedRef<HTMLDivEleme
       {...renderProps}
       ref={ref}
       slot={props.slot}
-      data-readonly={state.isReadOnly || undefined}
-      data-required={props.isRequired || undefined}
-      data-invalid={state.isInvalid || undefined}
-      data-disabled={props.isDisabled || undefined}
+      data-readonly={dataAttr(state.isReadOnly)}
+      data-required={dataAttr(props.isRequired)}
+      data-invalid={dataAttr(state.isInvalid)}
+      data-disabled={dataAttr(props.isDisabled)}
     >
       <Provider
         values={[
-          [InternalCheckboxGroupContext, state],
+          [CheckboxGroupStateContext, state],
           [LabelContext, { ...labelProps, ref: labelRef, elementType: 'span' }],
           [
             TextContext,
