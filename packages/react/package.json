@@ -33,11 +33,10 @@
     "postpack": "clean-package restore"
   },
   "peerDependencies": {
-    "react": ">=18",
-    "framer-motion": ">=4.0.0"
+    "framer-motion": ">=4.0.0",
+    "react": ">=18"
   },
   "dependencies": {
-    "@alice-ui/react-aria-components": "workspace:*",
     "@alice-ui/hooks": "workspace:*",
     "@alice-ui/icons": "workspace:*",
     "@alice-ui/react-utils": "workspace:*",
@@ -49,6 +48,7 @@
     "@react-types/shared": "^3.20.0",
     "framer-motion": "^10.16.1",
     "react-aria": "^3.28.0",
+    "react-aria-components": "1.0.0-beta.0",
     "react-stately": "^3.26.0"
   },
   "devDependencies": {

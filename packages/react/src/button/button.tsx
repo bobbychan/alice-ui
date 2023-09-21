@@ -1,5 +1,3 @@
-import type { ButtonProps as AriaButtonProps } from '@alice-ui/react-aria-components';
-import { Button as AriaButton } from '@alice-ui/react-aria-components';
 import type { ButtonVariantProps } from '@alice-ui/theme';
 import { button } from '@alice-ui/theme';
 import {
@@ -11,6 +9,8 @@ import {
   useCallback,
   useMemo,
 } from 'react';
+import type { ButtonProps as AriaButtonProps } from 'react-aria-components';
+import { Button as AriaButton } from 'react-aria-components';
 import { Ripple, useRipple } from '../ripple';
 import type { SpinnerProps } from '../spinner';
 import { Spinner } from '../spinner';

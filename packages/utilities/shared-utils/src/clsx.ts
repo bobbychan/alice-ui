@@ -1,50 +1,13 @@
-/* eslint-disable no-shadow-restricted-names */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-var */
-function toVal(mix: any) {
-  var k,
-    y,
-    str = '';
+import type { ClassValue } from 'clsx';
+import { clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
-  if (typeof mix === 'string' || typeof mix === 'number') {
-    str += mix;
-  } else if (typeof mix === 'object') {
-    if (Array.isArray(mix)) {
-      for (k = 0; k < mix.length; k++) {
-        if (mix[k]) {
-          if ((y = toVal(mix[k]))) {
-            str && (str += ' ');
-            str += y;
-          }
-        }
-      }
-    } else {
-      for (k in mix) {
-        if (mix[k]) {
-          str && (str += ' ');
-          str += k;
-        }
-      }
-    }
-  }
+export type { ClassValue };
 
-  return str;
-}
+export { clsx, twMerge };
 
-export function clsx(...args: any[]) {
-  var i = 0,
-    tmp,
-    x,
-    str = '';
-
-  while (i < args.length) {
-    if ((tmp = args[i++])) {
-      if ((x = toVal(tmp))) {
-        str && (str += ' ');
-        str += x;
-      }
-    }
-  }
-
-  return str;
+export function cn<T>(className?: string | ((values: T) => string), ...inputs: ClassValue[]) {
+  return typeof className === 'function'
+    ? (val: T) => clsx(...inputs, className(val))
+    : clsx(...inputs, className);
 }

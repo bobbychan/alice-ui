@@ -32,6 +32,10 @@
     "prepack": "clean-package",
     "postpack": "clean-package restore"
   },
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^1.14.0"
+  },
   "devDependencies": {
     "clean-package": "2.2.0"
   },

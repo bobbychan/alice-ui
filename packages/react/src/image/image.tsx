@@ -2,6 +2,7 @@ import { useImage as useImageBase } from '@alice-ui/hooks';
 import { clsx, dataAttr } from '@alice-ui/shared-utils';
 import type { ImageSlots, ImageVariantProps, SlotsToClasses } from '@alice-ui/theme';
 import { filterVariantProps, image } from '@alice-ui/theme';
+import { filterDOMProps } from '@react-aria/utils';
 import { ForwardedRef, ImgHTMLAttributes, forwardRef, useMemo } from 'react';
 
 type NativeImageProps = ImgHTMLAttributes<HTMLImageElement>;
@@ -124,7 +125,7 @@ function Image(props: ImageProps, ref: ForwardedRef<HTMLDivElement>) {
       sizes={sizes}
       crossOrigin={crossOrigin}
       data-loaded={dataAttr(isImgLoaded)}
-      {...otherProps}
+      {...filterDOMProps(otherProps)}
     />
   );
 

@@ -3,6 +3,7 @@ export type { ContextValue, SlotProps } from './_utils/utils';
 
 // component exports
 export * from './button';
+export * from './checkbox';
 export * from './collection';
 export * from './dialog';
 export * from './file-trigger';
