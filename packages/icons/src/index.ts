@@ -7,3 +7,7 @@ export * from './exclamation-circle';
 export * from './exclamation-circle-filled';
 export * from './info';
 export * from './info-filled';
+export * from './moon';
+export * from './moon-filled';
+export * from './sun';
+export * from './sun-filled';
