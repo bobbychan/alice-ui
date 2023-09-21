@@ -9,3 +9,4 @@ export * from './image';
 export * from './link';
 export * from './skeleton';
 export * from './spinner';
+export * from './toggle';
