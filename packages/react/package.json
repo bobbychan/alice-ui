@@ -48,7 +48,7 @@
     "@react-types/shared": "^3.20.0",
     "framer-motion": "^10.16.1",
     "react-aria": "^3.28.0",
-    "react-aria-components": "1.0.0-beta.0",
+    "react-aria-components": "1.0.0-nightly.4153",
     "react-stately": "^3.26.0"
   },
   "devDependencies": {

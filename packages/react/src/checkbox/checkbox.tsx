@@ -1,9 +1,18 @@
 import { clsx } from '@alice-ui/shared-utils';
 import type { CheckboxSlots, CheckboxVariantProps, SlotsToClasses } from '@alice-ui/theme';
 import { checkbox } from '@alice-ui/theme';
-import { ForwardedRef, ReactElement, ReactNode, cloneElement, forwardRef, useMemo } from 'react';
+import {
+  ForwardedRef,
+  ReactElement,
+  ReactNode,
+  cloneElement,
+  forwardRef,
+  useContext,
+  useMemo,
+} from 'react';
 import type { CheckboxProps as AriaCheckboxProps } from 'react-aria-components';
 import { Checkbox as AriaCheckbox } from 'react-aria-components';
+import { CheckboxGroupThemeContext } from './checkbox-group';
 import { CheckboxIcon, CheckboxIconProps } from './checkbox-icon';
 
 export interface CheckboxProps extends AriaCheckboxProps, CheckboxVariantProps {
@@ -30,12 +39,14 @@ export interface CheckboxProps extends AriaCheckboxProps, CheckboxVariantProps {
 }
 
 function Checkbox(props: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) {
+  const groupThemeContext = useContext(CheckboxGroupThemeContext);
+
   const {
     icon = <CheckboxIcon />,
-    color,
-    size,
-    radius,
-    lineThrough,
+    size = groupThemeContext?.size ?? 'md',
+    color = groupThemeContext?.color ?? 'primary',
+    radius = groupThemeContext?.radius,
+    lineThrough = groupThemeContext?.lineThrough ?? false,
     className,
     classNames,
     children,

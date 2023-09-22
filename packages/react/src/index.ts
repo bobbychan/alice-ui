@@ -19,7 +19,7 @@ export * from './modal';
 export * from './number-input';
 export * from './overlay-arrow';
 export * from './popover';
-export * from './radio-group';
+export * from './radio';
 export * from './ripple';
 export * from './skeleton';
 export * from './spinner';

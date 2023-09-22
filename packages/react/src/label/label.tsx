@@ -1,20 +1,28 @@
-import { ElementType, ForwardedRef, LabelHTMLAttributes, createContext } from 'react';
-import { ContextValue, createHideableComponent, useContextProps } from '../_utils/utils';
+import type { LabelVariantProps } from '@alice-ui/theme';
+import { label } from '@alice-ui/theme';
+import { ForwardedRef, forwardRef, useMemo } from 'react';
+import type { LabelProps as AriaLabelProps } from 'react-aria-components';
+import { Label as AriaLabel } from 'react-aria-components';
 
-export interface LabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
-  elementType?: string;
+export interface LabelProps extends Omit<AriaLabelProps, 'color'>, LabelVariantProps {
+  className?: string;
 }
-
-export const LabelContext = createContext<ContextValue<LabelProps, HTMLLabelElement>>({});
 
 function Label(props: LabelProps, ref: ForwardedRef<HTMLLabelElement>) {
-  [props, ref] = useContextProps(props, ref, LabelContext);
-  const { elementType, className, ...labelProps } = props;
+  const { className, color, size, ...otherProps } = props;
 
-  const Component = (elementType || 'label') as ElementType;
+  const styles = useMemo(
+    () =>
+      label({
+        size,
+        color,
+        className,
+      }),
+    [className, color, size],
+  );
 
-  return <Component className={className} {...labelProps} ref={ref} />;
+  return <AriaLabel className={styles} {...otherProps} ref={ref} />;
 }
 
-const _Label = createHideableComponent(Label);
+const _Label = forwardRef(Label);
 export { _Label as Label };

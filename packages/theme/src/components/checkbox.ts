@@ -40,14 +40,15 @@ const checkbox = tv({
       'inline-flex',
       'items-center',
       'justify-center',
-      'flex-shrink-0',
+      'shrink-0',
       'overflow-hidden',
-      'transition-transform-colors',
-      '!duration-200',
       // border
       'border-solid',
       'border-2',
       'border-default',
+      '!duration-200',
+      'transition-transform-colors',
+      'motion-reduce:transition-none',
       // state
       'group-data-[hovered=true]:bg-default-100',
       'group-data-[pressed=true]:scale-95',
@@ -192,28 +193,25 @@ const checkbox = tv({
  */
 const checkboxGroup = tv({
   slots: {
-    base: 'relative flex flex-col gap-2',
-    label: 'relative text-medium text-foreground-500',
-    wrapper: 'flex flex-col flex-wrap gap-2 data-[orientation=horizontal]:flex-row',
-    description:
-      'text-small text-foreground-400 transition-colors !duration-150 motion-reduce:transition-none',
-    errorMessage: 'text-small text-danger',
-  },
-  variants: {
-    isRequired: {
-      true: {
-        label: "after:content-['*'] after:text-danger after:ml-0.5",
-      },
-    },
-    isInvalid: {
-      true: {
-        description: 'text-danger',
-      },
-    },
-  },
-  defaultVariants: {
-    isInvalid: false,
-    isRequired: false,
+    base: ['group', 'relative', 'flex', 'flex-col', 'gap-2'],
+    label: [
+      'relative',
+      'text-md',
+      'text-foreground-500',
+      "group-data-[required=true]:after:content-['*']",
+      'group-data-[required=true]:after:text-danger',
+      'group-data-[required=true]:after:ml-0.5',
+    ],
+    wrapper: ['flex', 'flex-col', 'flex-wrap', 'gap-2', 'data-[orientation=horizontal]:flex-row'],
+    description: [
+      'text-sm',
+      'text-foreground-400',
+      'transition-colors',
+      '!duration-150',
+      'motion-reduce:transition-none',
+      'group-data-[invalid=true]:text-danger',
+    ],
+    errorMessage: ['text-sm', 'text-danger'],
   },
 });
 
