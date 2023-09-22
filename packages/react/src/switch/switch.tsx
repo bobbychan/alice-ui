@@ -34,6 +34,7 @@ export interface SwitchProps extends AriaSwitchProps, ToggleVariantProps {
    * ```
    */
   classNames?: SlotsToClasses<ToggleSlots>;
+  className?: string;
 }
 
 function Switch(props: SwitchProps, ref: ForwardedRef<HTMLInputElement>) {

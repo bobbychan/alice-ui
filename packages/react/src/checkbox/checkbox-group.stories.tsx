@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from '@storybook/react';
 
+import { checkbox } from '@alice-ui/theme';
 import React from 'react';
 import { Checkbox, CheckboxGroup, CheckboxGroupProps } from '.';
 
@@ -7,6 +8,12 @@ const meta: Meta<typeof CheckboxGroup> = {
   title: 'Components/CheckboxGroup',
   component: CheckboxGroup,
   argTypes: {
+    orientation: {
+      control: {
+        type: 'select',
+      },
+      options: ['vertical', 'horizontal'],
+    },
     color: {
       control: {
         type: 'select',
@@ -42,25 +49,18 @@ export default meta;
 type Story = StoryObj<typeof CheckboxGroup>;
 
 const defaultProps: CheckboxGroupProps = {
-  isDisabled: false,
+  ...checkbox.defaultVariants,
 };
 
-export const Default: Story = {
-  args: {
-    ...defaultProps,
-  },
-  render: (args) => (
-    <div className="flex items-center gap-4">
-      <CheckboxGroup {...args} label="Favorite sports" orientation="horizontal">
-        <Checkbox value="buenos-aires">Buenos Aires</Checkbox>
-        <Checkbox value="sydney">Sydney</Checkbox>
-        <Checkbox value="san-francisco">San Francisco</Checkbox>
-        <Checkbox value="london">London</Checkbox>
-        <Checkbox value="tokyo">Tokyo</Checkbox>
-      </CheckboxGroup>
-    </div>
-  ),
-};
+const Template = (args: CheckboxGroupProps) => (
+  <CheckboxGroup {...args}>
+    <Checkbox value="buenos-aires">Buenos Aires</Checkbox>
+    <Checkbox value="sydney">Sydney</Checkbox>
+    <Checkbox value="san-francisco">San Francisco</Checkbox>
+    <Checkbox value="london">London</Checkbox>
+    <Checkbox value="tokyo">Tokyo</Checkbox>
+  </CheckboxGroup>
+);
 
 const InvalidTemplate = (args: CheckboxGroupProps) => {
   const [isInvalid, setIsInvalid] = React.useState(true);
@@ -70,20 +70,75 @@ const InvalidTemplate = (args: CheckboxGroupProps) => {
       <CheckboxGroup
         {...args}
         isRequired
-        description="Select your pets."
-        errorMessage="Select only dogs and dragons."
+        description="Select the cities you want to visit"
         isInvalid={isInvalid}
         label="Select cities"
         onChange={(value) => {
           setIsInvalid(value.length < 1);
         }}
       >
-        <Checkbox value="dogs">Dogs</Checkbox>
-        <Checkbox value="cats">Cats</Checkbox>
-        <Checkbox value="dragons">Dragons</Checkbox>
+        <Checkbox value="buenos-aires">Buenos Aires</Checkbox>
+        <Checkbox value="sydney">Sydney</Checkbox>
+        <Checkbox value="san-francisco">San Francisco</Checkbox>
+        <Checkbox value="london">London</Checkbox>
+        <Checkbox value="tokyo">Tokyo</Checkbox>
       </CheckboxGroup>
     </>
   );
+};
+
+export const Default: Story = {
+  args: {
+    ...defaultProps,
+    label: 'Select cities',
+  },
+  render: Template,
+};
+
+export const DefaultValue = {
+  render: Template,
+
+  args: {
+    ...defaultProps,
+    label: 'Select cities',
+    defaultValue: ['buenos-aires', 'london'],
+  },
+};
+
+export const Horizontal = {
+  render: Template,
+
+  args: {
+    label: 'Select cities',
+    orientation: 'horizontal',
+  },
+};
+
+export const IsDisabled = {
+  render: Template,
+
+  args: {
+    label: 'Select cities',
+    isDisabled: true,
+  },
+};
+
+export const LineThrough = {
+  render: Template,
+
+  args: {
+    label: 'Select cities',
+    lineThrough: true,
+  },
+};
+
+export const WithDescription = {
+  render: Template,
+
+  args: {
+    ...defaultProps,
+    description: 'Select the cities you want to visit',
+  },
 };
 
 export const IsInvalid = {
@@ -91,5 +146,14 @@ export const IsInvalid = {
 
   args: {
     ...defaultProps,
+  },
+};
+
+export const WithErrorMessage = {
+  render: Template,
+
+  args: {
+    ...defaultProps,
+    errorMessage: 'The selected cities cannot be visited at the same time',
   },
 };

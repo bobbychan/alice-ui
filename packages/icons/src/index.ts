@@ -1,5 +1,6 @@
 export * from './check-circle';
 export * from './check-circle-filled';
+export * from './close';
 export * from './close-circle';
 export * from './close-circle-filled';
 export * from './close-filled';

@@ -4,10 +4,12 @@ import { ForwardedRef, forwardRef, useMemo } from 'react';
 import type { LinkProps as AriaLinkProps } from 'react-aria-components';
 import { Link as AriaLink } from 'react-aria-components';
 
-export interface LinkProps extends AriaLinkProps, LinkVariantProps {}
+export interface LinkProps extends AriaLinkProps, LinkVariantProps {
+  className?: string;
+}
 
 function Link(props: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) {
-  const { className, size, color, underline, isBlock, isDisabled, ...otherProps } = props;
+  const { className, size, color, underline, isBlock, ...otherProps } = props;
 
   const styles = useMemo(
     () =>
@@ -16,10 +18,9 @@ function Link(props: LinkProps, ref: ForwardedRef<HTMLAnchorElement>) {
         color,
         underline,
         isBlock,
-        isDisabled,
-        className: typeof className === 'function' ? '' : className,
+        className,
       }),
-    [className, color, isBlock, isDisabled, size, underline],
+    [className, color, isBlock, size, underline],
   );
 
   return <AriaLink className={styles} {...otherProps} ref={ref} />;

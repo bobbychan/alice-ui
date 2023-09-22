@@ -4,7 +4,7 @@ import { Label } from './label';
 export type { LabelProps } from './label';
 
 // export context
-export { LabelContext } from './label';
+export { LabelContext } from 'react-aria-components';
 
 // export component
 export { Label };

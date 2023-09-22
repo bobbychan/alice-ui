@@ -3,7 +3,7 @@ import { dataFocusVisibleClasses } from '../utils';
 import { tv } from '../utils/tv';
 
 /**
- * Link component
+ * Link wrapper **Tailwind Variants** component
  *
  * @example
  * <a className={link({ color: "secondary", isBlock: true })} href="#" />
@@ -11,6 +11,9 @@ import { tv } from '../utils/tv';
 const link = tv({
   base: [
     'relative inline-flex items-center outline-none tap-highlight-transparent',
+    // disabled
+    'data-[disabled=true]:opacity-disabled',
+    'data-[disabled=true]:pointer-events-none',
     // focus ring
     ...dataFocusVisibleClasses,
   ],
@@ -50,12 +53,6 @@ const link = tv({
         'after:absolute',
       ],
       false: 'hover:opacity-80 active:opacity-50 transition-opacity',
-    },
-    isDisabled: {
-      true: 'opacity-50 cursor-default pointer-events-none',
-    },
-    disableAnimation: {
-      true: 'after:transition-none transition-none',
     },
   },
   compoundVariants: [
@@ -99,8 +96,6 @@ const link = tv({
     size: 'md',
     isBlock: false,
     underline: 'none',
-    isDisabled: false,
-    disableAnimation: false,
   },
 });
 
