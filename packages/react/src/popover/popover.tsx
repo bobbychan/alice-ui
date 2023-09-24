@@ -1,158 +1,81 @@
-import { filterDOMProps, mergeProps } from '@react-aria/utils';
-import { ForwardedRef, RefObject, createContext, forwardRef, useContext } from 'react';
-import {
-  AriaPopoverProps,
-  DismissButton,
-  Overlay,
-  PlacementAxis,
-  PositionProps,
-  usePopover,
-} from 'react-aria';
-import { OverlayTriggerProps, OverlayTriggerState, useOverlayTriggerState } from 'react-stately';
-import {
-  ContextValue,
-  HiddenContext,
-  RenderProps,
-  SlotProps,
-  forwardRefType,
-  useContextProps,
-  useEnterAnimation,
-  useExitAnimation,
-  useRenderProps,
-} from '../_utils/utils';
-import { OverlayArrowContext } from '../overlay-arrow';
+import { clsx } from '@alice-ui/shared-utils';
+import type { PopoverSlots, PopoverVariantProps, SlotsToClasses } from '@alice-ui/theme';
+import { popover } from '@alice-ui/theme';
+import { ReactNode, useMemo } from 'react';
+import type { PopoverProps as AriaPopoverProps } from 'react-aria-components';
+import { Popover as AriaPopover, Dialog, OverlayArrow } from 'react-aria-components';
 
-export interface PopoverProps
-  extends Omit<PositionProps, 'isOpen'>,
-    Omit<AriaPopoverProps, 'popoverRef' | 'triggerRef'>,
-    OverlayTriggerProps,
-    RenderProps<PopoverRenderProps>,
-    SlotProps {
+export interface PopoverProps extends Omit<AriaPopoverProps, 'children'>, PopoverVariantProps {
+  children?: ReactNode;
   /**
-   * The ref for the element which the popover positions itself with respect to.
+   * Whether the element should render an arrow.
+   * @default false
+   */
+  showArrow?: boolean;
+  /**
+   * Classname or List of classes to change the classNames of the element.
+   * if `className` is passed, it will be added to the base slot.
    *
-   * When used within a trigger component such as DialogTrigger, MenuTrigger, Select, etc.,
-   * this is set automatically. It is only required when used standalone.
+   * @example
+   * ```ts
+   * <Popover classNames={{
+   *    base:"base-classes",
+   *    backdrop: "backdrop-classes",
+   *    arrow: "arrow-classes",
+   * }} />
+   * ```
    */
-  triggerRef?: RefObject<Element>;
+  classNames?: SlotsToClasses<PopoverSlots>;
 }
 
-export interface PopoverRenderProps {
-  /**
-   * The placement of the popover relative to the trigger.
-   * @selector [data-placement="left | right | top | bottom"]
-   */
-  placement: PlacementAxis;
-  /**
-   * Whether the popover is currently entering. Use this to apply animations.
-   * @selector [data-entering]
-   */
-  isEntering: boolean;
-  /**
-   * Whether the popover is currently exiting. Use this to apply animations.
-   * @selector [data-exiting]
-   */
-  isExiting: boolean;
-}
+function Popover(props: PopoverProps) {
+  const {
+    children,
+    showArrow = false,
+    isNonModal = false,
+    placement = 'bottom',
+    color,
+    size,
+    radius,
+    shadow,
+    classNames,
+    className,
+    ...otherProps
+  } = props;
 
-interface PopoverContextValue extends PopoverProps {
-  state?: OverlayTriggerState;
-  triggerRef?: RefObject<Element>;
-}
+  const slots = useMemo(
+    () => popover({ color, size, radius, shadow }),
+    [color, size, radius, shadow],
+  );
 
-export const PopoverContext = createContext<ContextValue<PopoverContextValue, HTMLElement>>(null);
+  const baseStyles = clsx(classNames?.base, className);
 
-function Popover(props: PopoverProps, ref: ForwardedRef<HTMLElement>) {
-  [props, ref] = useContextProps(props, ref, PopoverContext);
-  const ctx = props as PopoverContextValue;
-  const localState = useOverlayTriggerState(props);
-  const state =
-    props.isOpen != null || props.defaultOpen != null || !ctx?.state ? localState : ctx.state;
-  const isExiting = useExitAnimation(ref, state.isOpen);
-  const isHidden = useContext(HiddenContext);
+  const arrowContent = useMemo(() => {
+    if (!showArrow) return null;
 
-  // If we are in a hidden tree, we still need to preserve our children.
-  if (isHidden) {
-    let children = props.children;
-    if (typeof children === 'function') {
-      children = children({
-        placement: 'bottom',
-        isEntering: false,
-        isExiting: false,
-      });
-    }
-
-    return <>{children}</>;
-  }
-
-  if (state && !state.isOpen && !isExiting) {
-    return null;
-  }
+    return (
+      <OverlayArrow className={slots.arrow({ class: classNames?.arrow })}>
+        <svg width={12} height={12} viewBox="0 0 12 12">
+          <path d="M0 0 L6 6 L12 0" />
+        </svg>
+      </OverlayArrow>
+    );
+  }, [classNames?.arrow, showArrow, slots]);
 
   return (
-    <PopoverInner
-      {...props}
-      triggerRef={ctx.triggerRef!}
-      state={state}
-      popoverRef={ref}
-      isExiting={isExiting}
-    />
+    <AriaPopover
+      isNonModal={isNonModal}
+      placement={placement}
+      {...otherProps}
+      className={slots.base({ class: baseStyles })}
+    >
+      {arrowContent}
+      <Dialog className="outline-none">{children}</Dialog>
+    </AriaPopover>
   );
 }
 
 /**
  * A popover is an overlay element positioned relative to a trigger.
  */
-const _Popover = (forwardRef as forwardRefType)(Popover);
-export { _Popover as Popover };
-
-interface PopoverInnerProps extends AriaPopoverProps, RenderProps<PopoverRenderProps>, SlotProps {
-  state: OverlayTriggerState;
-  isExiting: boolean;
-}
-
-function PopoverInner({ state, isExiting, ...props }: PopoverInnerProps) {
-  const { popoverProps, underlayProps, arrowProps, placement } = usePopover(
-    {
-      ...props,
-      offset: props.offset ?? 8,
-    },
-    state,
-  );
-
-  const ref = props.popoverRef as RefObject<HTMLDivElement>;
-  const isEntering = useEnterAnimation(ref, !!placement);
-  const renderProps = useRenderProps({
-    ...props,
-    defaultClassName: 'react-aria-Popover',
-    values: {
-      placement,
-      isEntering,
-      isExiting,
-    },
-  });
-
-  const style = { ...renderProps.style, ...popoverProps.style };
-
-  return (
-    <Overlay isExiting={isExiting}>
-      {!props.isNonModal && <div {...underlayProps} style={{ position: 'fixed', inset: 0 }} />}
-      <div
-        {...mergeProps(filterDOMProps(props as any), popoverProps)}
-        {...renderProps}
-        ref={ref}
-        slot={props.slot}
-        style={style}
-        data-placement={placement}
-        data-entering={isEntering || undefined}
-        data-exiting={isExiting || undefined}
-      >
-        {!props.isNonModal && <DismissButton onDismiss={state.close} />}
-        <OverlayArrowContext.Provider value={{ arrowProps, placement }}>
-          {renderProps.children}
-        </OverlayArrowContext.Provider>
-        <DismissButton onDismiss={state.close} />
-      </div>
-    </Overlay>
-  );
-}
+export { Popover };
