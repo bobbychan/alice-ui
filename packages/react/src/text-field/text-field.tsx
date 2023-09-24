@@ -1,108 +1,176 @@
-import { dataAttr } from '@alice-ui/shared-utils';
+import { clsx } from '@alice-ui/shared-utils';
+import type { SlotsToClasses, TextFieldSlots } from '@alice-ui/theme';
+import { textField } from '@alice-ui/theme';
 import { filterDOMProps } from '@react-aria/utils';
-import { ForwardedRef, createContext, forwardRef, useCallback, useRef, useState } from 'react';
-import { AriaTextFieldProps, useTextField } from 'react-aria';
+import { useControlledState } from '@react-stately/utils';
+import type { Orientation } from '@react-types/shared';
 import {
-  ContextValue,
-  DOMProps,
+  ForwardedRef,
+  createContext,
+  forwardRef,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
+import { AriaTextFieldProps, useTextField } from 'react-aria';
+import type { ContextValue, SlotProps } from 'react-aria-components';
+import {
+  InputContext,
+  LabelContext,
   Provider,
-  RenderProps,
-  SlotProps,
-  forwardRefType,
+  TextAreaContext,
+  TextContext,
   useContextProps,
-  useRenderProps,
-  useSlot,
-} from '../_utils/utils';
-import { InputContext } from '../input';
-import { LabelContext } from '../label';
-import { TextContext } from '../text';
-import { TextAreaContext } from '../textarea';
-
-export interface TextFieldRenderProps {
-  /**
-   * Whether the text field is disabled.
-   * @selector [data-disabled]
-   */
-  isDisabled: boolean;
-  /**
-   * Whether the value is invalid.
-   * @selector [data-invalid]
-   */
-  isInvalid: boolean;
-}
+} from 'react-aria-components';
+import { DOMProps, forwardRefType, removeDataAttributes, useSlot } from '../_utils/utils';
 
 export interface TextFieldProps
   extends Omit<
       AriaTextFieldProps,
       'label' | 'placeholder' | 'description' | 'errorMessage' | 'validationState'
     >,
-    Omit<DOMProps, 'style' | 'className' | 'children'>,
-    SlotProps,
-    RenderProps<TextFieldRenderProps> {
+    DOMProps,
+    SlotProps {
+  /**
+   * The axis the text field items should align with.
+   * @default "vertical"
+   */
+  orientation?: Orientation;
   /** Whether the value is invalid. */
   isInvalid?: boolean;
+  /**
+   * React aria onChange event.
+   */
+  onValueChange?: (value: string) => void;
+  /**
+   * Callback fired when the value is cleared.
+   * if you pass this prop, the clear button will be shown.
+   */
+  onClear?: () => void;
+  /**
+   * Classname or List of classes to change the classNames of the element.
+   * if `className` is passed, it will be added to the base slot.
+   *
+   * @example
+   * ```ts
+   * <div classNames={{
+   *    base:"base-classes",
+   *    label: "label-classes",
+   *    description: "description-classes",
+   *    errorMessage: "error-message-classes",
+   * }} />
+   * ```
+   */
+  classNames?: SlotsToClasses<TextFieldSlots>;
 }
 
 export const TextFieldContext = createContext<ContextValue<TextFieldProps, HTMLDivElement>>(null);
 
 function TextField(props: TextFieldProps, ref: ForwardedRef<HTMLDivElement>) {
   [props, ref] = useContextProps(props, ref, TextFieldContext);
-  const inputRef = useRef(null);
-  const [labelRef, label] = useSlot();
-  const [inputElementType, setInputElementType] = useState('input');
-  const { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField<any>(
+  let inputRef = useRef(null);
+  let [labelRef, label] = useSlot();
+  let [inputElementType, setInputElementType] = useState('input');
+
+  const { onValueChange = () => {}, onClear, className, classNames, children } = props;
+
+  const handleValueChange = useCallback(
+    (value: string | undefined) => {
+      onValueChange(value ?? '');
+    },
+    [onValueChange],
+  );
+
+  const [inputValue, setInputValue] = useControlledState<string | undefined>(
+    props.value,
+    props.defaultValue,
+    handleValueChange,
+  );
+
+  const handleValueClear = useCallback(() => {
+    setInputValue('');
+    onClear?.();
+  }, [onClear, setInputValue]);
+
+  let { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField<any>(
     {
-      ...props,
+      ...removeDataAttributes(props),
       inputElementType,
       label,
+      onChange: setInputValue,
     },
     inputRef,
   );
 
   // Intercept setting the input ref so we can determine what kind of element we have.
   // useTextField uses this to determine what props to include.
-  const inputOrTextAreaRef = useCallback((el: any) => {
+  let inputOrTextAreaRef = useCallback((el: any) => {
     inputRef.current = el;
     if (el) {
       setInputElementType(el instanceof HTMLTextAreaElement ? 'textarea' : 'input');
     }
   }, []);
 
-  const renderProps = useRenderProps({
-    ...props,
-    values: {
-      isDisabled: props.isDisabled || false,
-      isInvalid: props.isInvalid || false,
-    },
-    defaultClassName: 'react-aria-TextField',
-  });
+  const baseStyles = clsx(classNames?.base, className);
+  const slots = useMemo(() => textField(), []);
 
   return (
     <div
       {...filterDOMProps(props)}
-      {...renderProps}
+      className={slots.base({ class: baseStyles })}
       ref={ref}
-      slot={props.slot}
-      data-disabled={dataAttr(props.isDisabled)}
-      data-invalid={dataAttr(props.isInvalid)}
+      slot={props.slot || undefined}
+      data-disabled={props.isDisabled || undefined}
+      data-invalid={props.isInvalid || undefined}
+      data-required={props.isRequired || undefined}
+      data-readonly={props.isReadOnly || undefined}
+      data-orientation={props.orientation || 'vertical'}
     >
       <Provider
         values={[
-          [LabelContext, { ...labelProps, ref: labelRef }],
-          [InputContext, { ...inputProps, ref: inputOrTextAreaRef }],
-          [TextAreaContext, { ...inputProps, ref: inputOrTextAreaRef }],
+          [
+            LabelContext,
+            { ...labelProps, className: slots.label({ class: classNames?.label }), ref: labelRef },
+          ],
+          [
+            InputContext,
+            {
+              ...inputProps,
+              'data-value': inputValue,
+              onClear: onClear ? handleValueClear : undefined,
+              ref: inputOrTextAreaRef,
+            },
+          ],
+          [
+            TextAreaContext,
+            {
+              ...inputProps,
+              'data-value': inputValue,
+              onClear: onClear ? handleValueClear : undefined,
+              ref: inputOrTextAreaRef,
+            },
+          ],
           [
             TextContext,
             {
               slots: {
-                description: descriptionProps,
-                errorMessage: errorMessageProps,
+                description: {
+                  elementType: 'div',
+                  className: slots.description({ class: classNames?.description }),
+                  ...descriptionProps,
+                },
+                errorMessage: {
+                  elementType: 'div',
+                  className: slots.errorMessage({ class: classNames?.errorMessage }),
+                  ...errorMessageProps,
+                },
               },
             },
           ],
         ]}
       >
-        {renderProps.children}
+        {children}
       </Provider>
     </div>
   );

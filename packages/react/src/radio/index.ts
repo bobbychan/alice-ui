@@ -7,7 +7,7 @@ export type { RadioProps } from './radio';
 export type { RadioGroupProps } from './radio-group';
 
 // export context
-export { RadioContext, RadioGroupContext } from 'react-aria-components';
+export { RadioContext, RadioGroupContext, RadioGroupStateContext } from 'react-aria-components';
 
 // export component
 export { Radio, RadioGroup };

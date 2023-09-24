@@ -9,7 +9,11 @@ export type { CheckboxGroupProps } from './checkbox-group';
 export type { CheckboxIconProps } from './checkbox-icon';
 
 // export context
-export { CheckboxContext, CheckboxGroupContext } from 'react-aria-components';
+export {
+  CheckboxContext,
+  CheckboxGroupContext,
+  CheckboxGroupStateContext,
+} from 'react-aria-components';
 
 // export component
 export { Checkbox, CheckboxGroup, CheckboxIcon };

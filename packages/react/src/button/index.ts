@@ -5,5 +5,8 @@ import { IconButton } from './icon-button';
 export type { ButtonProps } from './button';
 export type { IconButtonProps } from './icon-button';
 
+// export context
+export { ButtonContext } from 'react-aria-components';
+
 // export component
 export { Button, IconButton };
