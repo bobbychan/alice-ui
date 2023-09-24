@@ -45,11 +45,13 @@
     "@react-aria/focus": "^3.14.1",
     "@react-aria/interactions": "^3.18.0",
     "@react-aria/utils": "^3.20.0",
+    "@react-stately/utils": "^3.7.0",
     "@react-types/shared": "^3.20.0",
     "framer-motion": "^10.16.1",
     "react-aria": "^3.28.0",
     "react-aria-components": "1.0.0-nightly.4153",
-    "react-stately": "^3.26.0"
+    "react-stately": "^3.26.0",
+    "react-textarea-autosize": "^8.5.3"
   },
   "devDependencies": {
     "clean-package": "^2.2.0",

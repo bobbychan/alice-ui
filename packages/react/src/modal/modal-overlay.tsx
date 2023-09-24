@@ -9,8 +9,7 @@ import {
   useExitAnimation,
   useRenderProps,
 } from '../_utils/utils';
-import { ModalOverlayProps } from './modal';
-import { InternalModalContext, ModalContext, ModalContextValue } from './modal-content';
+import { InternalModalContext, ModalContext, ModalContextValue, ModalOverlayProps } from './modal';
 
 interface ModalOverlayInnerProps extends ModalOverlayProps {
   overlayRef: RefObject<HTMLDivElement>;

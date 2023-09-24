@@ -1,86 +1,103 @@
-import { dataAttr } from '@alice-ui/shared-utils';
-import { createContext, ForwardedRef, InputHTMLAttributes } from 'react';
-import { mergeProps, useFocusRing, useHover } from 'react-aria';
-import {
-  ContextValue,
-  createHideableComponent,
-  StyleRenderProps,
-  useContextProps,
-  useRenderProps,
-} from '../_utils/utils';
-
-export interface InputRenderProps {
-  /**
-   * Whether the input is currently hovered with a mouse.
-   * @selector [data-hovered]
-   */
-  isHovered: boolean;
-  /**
-   * Whether the input is focused, either via a mouse or keyboard.
-   * @selector [data-focused]
-   */
-  isFocused: boolean;
-  /**
-   * Whether the input is keyboard focused.
-   * @selector [data-focus-visible]
-   */
-  isFocusVisible: boolean;
-  /**
-   * Whether the input is disabled.
-   * @selector [data-disabled]
-   */
-  isDisabled: boolean;
-  /**
-   * Whether the input is invalid.
-   * @selector [data-invalid]
-   */
-  isInvalid: boolean;
-}
+import { CloseFilledIcon } from '@alice-ui/icons';
+import { clsx } from '@alice-ui/shared-utils';
+import type { InputSlots, InputVariantProps, SlotsToClasses } from '@alice-ui/theme';
+import { input } from '@alice-ui/theme';
+import { ForwardedRef, InputHTMLAttributes, forwardRef, useMemo } from 'react';
+import { InputContext, useContextProps } from 'react-aria-components';
+import { useInput } from './use-input';
 
 export interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'className' | 'style'>,
-    StyleRenderProps<InputRenderProps> {}
-
-export const InputContext = createContext<ContextValue<InputProps, HTMLInputElement>>({});
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'color' | 'size'>,
+    InputVariantProps {
+  /**
+   * Element to be rendered in the left side of the input.
+   */
+  startContent?: React.ReactNode;
+  /**
+   * Element to be rendered in the right side of the input.
+   * if you pass this prop and the `onClear` prop, the passed element
+   * will have the clear button props and it will be rendered instead of the
+   * default clear button.
+   */
+  endContent?: React.ReactNode;
+  /**
+   * Classname or List of classes to change the classNames of the element.
+   * if `className` is passed, it will be added to the base slot.
+   *
+   * @example
+   * ```ts
+   * <Input classNames={{
+   *    base:"base-classes",
+   *    input: "input-classes",
+   *    clearButton: "clear-button-classes",
+   * }} />
+   * ```
+   */
+  classNames?: SlotsToClasses<InputSlots>;
+  /**
+   * Callback fired when the value is cleared.
+   * if you pass this prop, the clear button will be shown.
+   */
+  onClear?: () => void;
+  'data-value'?: string;
+}
 
 function Input(props: InputProps, ref: ForwardedRef<HTMLInputElement>) {
   [props, ref] = useContextProps(props, ref, InputContext);
 
-  const { hoverProps, isHovered } = useHover({});
-  const { isFocused, isFocusVisible, focusProps } = useFocusRing({
-    isTextInput: true,
-    autoFocus: props.autoFocus,
+  const {
+    classNames,
+    className,
+    color,
+    size,
+    radius,
+    variant,
+    fullWidth,
+    startContent,
+    endContent,
+    ...otherProps
+  } = props;
+
+  const { getInputWrapperProps, getInputProps, getClearButtonProps } = useInput({
+    ...otherProps,
+    ref,
   });
 
-  const isInvalid = !!props['aria-invalid'] && props['aria-invalid'] !== 'false';
-  const renderProps = useRenderProps({
-    ...props,
-    values: {
-      isHovered,
-      isFocused,
-      isFocusVisible,
-      isDisabled: props.disabled || false,
-      isInvalid,
-    },
-    defaultClassName: 'react-aria-Input',
-  });
+  const isClearable = !!props.onClear;
+
+  const slots = useMemo(
+    () => input({ color, size, radius, variant, fullWidth, isClearable }),
+    [color, fullWidth, radius, size, variant, isClearable],
+  );
+
+  const end = useMemo(() => {
+    if (isClearable) {
+      return (
+        <span
+          {...getClearButtonProps()}
+          className={slots.clearButton({ class: classNames?.clearButton })}
+        >
+          {endContent || <CloseFilledIcon />}
+        </span>
+      );
+    }
+
+    return endContent;
+  }, [classNames?.clearButton, endContent, getClearButtonProps, isClearable, slots]);
+
+  const baseStyles = clsx(classNames?.base, className);
 
   return (
-    <input
-      {...mergeProps(props, focusProps, hoverProps)}
-      {...renderProps}
-      ref={ref}
-      data-focused={dataAttr(isFocused)}
-      data-disabled={dataAttr(props.disabled)}
-      data-hovered={dataAttr(isHovered)}
-      data-focus-visible={dataAttr(isFocusVisible)}
-      data-invalid={dataAttr(isInvalid)}
-    />
+    <div className={slots.base({ class: baseStyles })} {...getInputWrapperProps()}>
+      {startContent}
+      <input {...getInputProps()} className={slots.input({ class: classNames?.input })} />
+      {end}
+    </div>
   );
 }
 
 /**
  * An input allows a user to input text.
  */
-const _Input = createHideableComponent(Input);
+const _Input = forwardRef(Input);
 export { _Input as Input };

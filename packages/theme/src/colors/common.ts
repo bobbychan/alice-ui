@@ -1,15 +1,15 @@
-import {blue} from "./blue";
-import {green} from "./green";
-import {pink} from "./pink";
-import {purple} from "./purple";
-import {red} from "./red";
-import {yellow} from "./yellow";
-import {cyan} from "./cyan";
-import {zinc} from "./zinc";
+import { blue } from './blue';
+import { cyan } from './cyan';
+import { green } from './green';
+import { pink } from './pink';
+import { purple } from './purple';
+import { red } from './red';
+import { yellow } from './yellow';
+import { zinc } from './zinc';
 
 export const commonColors = {
-  white: "#ffffff",
-  black: "#000000",
+  white: '#ffffff',
+  black: '#000000',
   blue,
   green,
   pink,
