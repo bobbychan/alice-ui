@@ -1,9 +1,7 @@
-import { Tooltip } from './tooltip';
-import { TooltipTrigger } from './tooltip-trigger';
+import { Tooltip, TooltipTrigger } from './tooltip';
 
 // export types
-export type { TooltipProps, TooltipRenderProps } from './tooltip';
-export type { TooltipTriggerComponentProps } from './tooltip-trigger';
+export type { TooltipProps } from './tooltip';
 
 // export component
 export { Tooltip, TooltipTrigger };
