@@ -5,6 +5,25 @@ import React from 'react';
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalProps } from '.';
 import { Button } from '../button';
 
+const TemplateContent = () => (
+  <>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non risus
+      hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor quam.
+    </p>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non risus
+      hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor quam.
+    </p>
+    <p>
+      Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit dolor adipisicing.
+      Mollit dolor eiusmod sunt ex incididunt cillum quis. Velit duis sit officia eiusmod Lorem
+      aliqua enim laboris do dolor eiusmod. Et mollit incididunt nisi consectetur esse laborum
+      eiusmod pariatur proident Lorem eiusmod et. Culpa deserunt nostrud ad veniam.
+    </p>
+  </>
+);
+
 const meta: Meta<typeof Modal> = {
   title: 'Components/Modal',
   component: Modal,
@@ -69,9 +88,9 @@ const Template = (args: ModalProps) => {
         <ModalContent>
           {({ close }) => (
             <>
-              <ModalHeader>Notice</ModalHeader>
+              <ModalHeader>Modal Title</ModalHeader>
               <ModalBody>
-                <p>Click outside to close this dialog.</p>
+                <TemplateContent />
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="flat" onPress={close}>

@@ -43,6 +43,11 @@ const meta: Meta<typeof Tooltip> = {
         type: 'boolean',
       },
     },
+    showArrow: {
+      control: {
+        type: 'boolean',
+      },
+    },
     defaultOpen: {
       control: {
         type: 'boolean',

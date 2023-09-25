@@ -43,7 +43,7 @@ const modal = tv({
       'data-[placement=bottom]:[--slide-exit:100%]',
       // tablet/desktop animation vars
       'sm:[--scale-enter:100%]',
-      'sm:[--scale-exit:103%]',
+      'sm:[--scale-exit:105%]',
       'sm:[--slide-enter:0px]',
       'sm:[--slide-exit:0px]',
     ],
@@ -61,7 +61,7 @@ const modal = tv({
       'sm:my-16',
     ],
     backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-screen'],
-    dialog: ['outline-none'],
+    dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden'],
     header: 'flex py-4 px-6 flex-initial text-large font-semibold',
     body: 'flex flex-1 flex-col gap-3 px-6 py-2 overflow-y-auto',
     footer: 'flex flex-row gap-2 px-6 py-4 justify-end',
@@ -158,6 +158,20 @@ const modal = tv({
         ],
       },
     },
+    scrollBehavior: {
+      normal: {
+        base: 'overflow-y-hidden',
+      },
+      inside: {
+        wrapper: 'overflow-y-hidden',
+        base: 'max-h-[calc(100%_-_7.5rem)]',
+        body: 'overflow-y-auto',
+      },
+      outside: {
+        wrapper: 'items-start sm:items-start overflow-y-auto',
+        base: 'my-16',
+      },
+    },
   },
   defaultVariants: {
     size: 'md',
@@ -165,6 +179,7 @@ const modal = tv({
     shadow: 'sm',
     placement: 'auto',
     backdrop: 'opaque',
+    scrollBehavior: 'normal',
   },
 });
 
