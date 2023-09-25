@@ -1,87 +1,89 @@
-import { DOMAttributes } from '@react-types/shared';
-import { ForwardedRef, RefObject, createContext, forwardRef, useContext } from 'react';
-import { AriaModalOverlayProps } from 'react-aria';
-import { OverlayTriggerProps, OverlayTriggerState } from 'react-stately';
-import { ContextValue, RenderProps, SlotProps, forwardRefType } from '../_utils/utils';
-import { ModalContent } from './modal-content';
-import { ModalOverlay } from './modal-overlay';
+import { clsx } from '@alice-ui/shared-utils';
+import type { ModalSlots, ModalVariantProps, SlotsToClasses } from '@alice-ui/theme';
+import { modal } from '@alice-ui/theme';
+import type { HTMLMotionProps } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import { createContext, useMemo } from 'react';
+import type { ModalOverlayProps } from 'react-aria-components';
+import { Modal as AriaModal, ModalOverlay } from 'react-aria-components';
+import { scaleInOut } from './modal-transition';
 
-export interface ModalOverlayProps
-  extends AriaModalOverlayProps,
-    OverlayTriggerProps,
-    RenderProps<ModalRenderProps>,
-    SlotProps {}
-
-export interface ModalRenderProps {
+export interface ModalProps extends ModalOverlayProps, ModalVariantProps {
   /**
-   * Whether the modal is currently entering. Use this to apply animations.
-   * @selector [data-entering]
+   * The props to modify the framer motion animation. Use the `variants` API to create your own animation.
    */
-  isEntering: boolean;
+  motionProps?: HTMLMotionProps<'section'>;
   /**
-   * Whether the modal is currently exiting. Use this to apply animations.
-   * @selector [data-exiting]
+   * Classname or List of classes to change the classNames of the element.
+   * if `className` is passed, it will be added to the base slot.
+   *
+   * @example
+   * ```ts
+   * <Tooltip classNames={{
+   *    backdrop:"backdrop-classes",
+   *    base: "base-classes",
+   * }} />
+   * ```
    */
-  isExiting: boolean;
-  /**
-   * State of the modal.
-   */
-  state: OverlayTriggerState;
-}
-
-export interface ModalContextValue extends ModalOverlayProps {
-  state?: OverlayTriggerState;
+  classNames?: SlotsToClasses<ModalSlots>;
 }
 
 interface InternalModalContextValue {
-  modalProps: DOMAttributes;
-  modalRef: RefObject<HTMLDivElement>;
-  isExiting: boolean;
-  isDismissable?: boolean;
-  state: OverlayTriggerState;
+  slots: ReturnType<typeof modal>;
+  classNames?: SlotsToClasses<ModalSlots>;
 }
 
-export const ModalContext = createContext<ContextValue<ModalContextValue, HTMLDivElement>>(null);
-export const InternalModalContext = createContext<InternalModalContextValue | null>(null);
+export const InternalModalContext = createContext<InternalModalContextValue>(
+  {} as InternalModalContextValue,
+);
 
-function Modal(props: ModalOverlayProps, ref: ForwardedRef<HTMLDivElement>) {
-  const ctx = useContext(InternalModalContext);
-
-  if (ctx) {
-    return (
-      <ModalContent {...props} modalRef={ref}>
-        {props.children}
-      </ModalContent>
-    );
-  }
-
+function Modal(props: ModalProps) {
   const {
-    isDismissable,
-    isKeyboardDismissDisabled,
-    isOpen,
-    defaultOpen,
-    onOpenChange,
     children,
+    classNames,
+    className,
+    size,
+    radius,
+    placement,
+    shadow,
+    backdrop = 'opaque',
+    motionProps,
     ...otherProps
   } = props;
 
+  const slots = useMemo(
+    () => modal({ size, radius, placement, shadow, backdrop }),
+    [backdrop, placement, radius, shadow, size],
+  );
+
+  const baseStyles = clsx(classNames?.base, className);
+
   return (
-    <ModalOverlay
-      isDismissable={isDismissable}
-      isKeyboardDismissDisabled={isKeyboardDismissDisabled}
-      isOpen={isOpen}
-      defaultOpen={defaultOpen}
-      onOpenChange={onOpenChange}
-    >
-      <ModalContent {...otherProps} modalRef={ref}>
-        {children}
-      </ModalContent>
-    </ModalOverlay>
+    <InternalModalContext.Provider value={{ slots, classNames }}>
+      <ModalOverlay {...otherProps} className={slots.backdrop({ class: classNames?.backdrop })}>
+        {({ state }) => (
+          <AnimatePresence>
+            {state.isOpen && (
+              <motion.div
+                className={slots.wrapper({ class: classNames?.wrapper })}
+                data-placement={placement}
+                animate="enter"
+                exit="exit"
+                initial="exit"
+                variants={scaleInOut}
+                {...motionProps}
+              >
+                <AriaModal className={slots.base({ class: baseStyles })}>{children}</AriaModal>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        )}
+      </ModalOverlay>
+    </InternalModalContext.Provider>
   );
 }
 
 /**
  * A modal is an overlay element which blocks interaction with elements outside it.
  */
-const _Modal = /*#__PURE__*/ (forwardRef as forwardRefType)(Modal);
-export { _Modal as Modal };
+export { Modal };

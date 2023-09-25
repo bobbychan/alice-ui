@@ -1,40 +1,19 @@
-import { filterDOMProps, mergeProps, mergeRefs, useObjectRef } from '@react-aria/utils';
-import { ForwardedRef, useContext, useMemo } from 'react';
-import { DismissButton } from 'react-aria';
-import { RenderProps, useEnterAnimation, useRenderProps } from '../_utils/utils';
-import { InternalModalContext, ModalRenderProps } from './modal';
+import { clsx } from '@alice-ui/shared-utils';
+import { useContext } from 'react';
+import { Dialog, DialogProps } from 'react-aria-components';
+import { InternalModalContext } from './modal';
 
-export interface ModalContentProps extends RenderProps<ModalRenderProps> {
-  modalRef: ForwardedRef<HTMLDivElement>;
-}
+export interface ModalContentProps extends DialogProps {}
 
-export function ModalContent(props: ModalContentProps) {
-  const { modalProps, modalRef, isExiting, isDismissable, state } =
-    useContext(InternalModalContext)!;
-  const mergedRefs = useMemo(() => mergeRefs(props.modalRef, modalRef), [props.modalRef, modalRef]);
-
-  const ref = useObjectRef(mergedRefs);
-  const entering = useEnterAnimation(ref);
-  const renderProps = useRenderProps({
-    ...props,
-    defaultClassName: 'react-aria-Modal',
-    values: {
-      isEntering: entering,
-      isExiting,
-      state,
-    },
-  });
+function ModalContent(props: ModalContentProps) {
+  const { slots, classNames } = useContext(InternalModalContext);
+  const { className, children } = props;
 
   return (
-    <div
-      {...mergeProps(filterDOMProps(props as any), modalProps)}
-      {...renderProps}
-      ref={ref}
-      data-entering={entering || undefined}
-      data-exiting={isExiting || undefined}
-    >
-      {isDismissable && <DismissButton onDismiss={state.close} />}
-      {renderProps.children}
-    </div>
+    <Dialog className={slots.dialog({ class: clsx(classNames?.dialog, className) })}>
+      {children}
+    </Dialog>
   );
 }
+
+export { ModalContent };
