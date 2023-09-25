@@ -7,7 +7,6 @@ export * from './checkbox';
 export * from './chip';
 export * from './dialog';
 export * from './divider';
-export * from './heading';
 export * from './image';
 export * from './input';
 export * from './link';

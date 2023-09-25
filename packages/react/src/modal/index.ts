@@ -1,11 +1,15 @@
 import { Modal } from './modal';
-import { ModalOverlay } from './modal-overlay';
+import { ModalBody } from './modal-body';
+import { ModalContent } from './modal-content';
+import { ModalFooter } from './modal-footer';
+import { ModalHeader } from './modal-header';
 
 // export types
-export type { ModalOverlayProps, ModalRenderProps } from './modal';
+export type { ModalOverlayProps } from 'react-aria-components';
+export type { ModalProps } from './modal';
 
 // export context
-export { ModalContext } from './modal';
+export { ModalContext } from 'react-aria-components';
 
 // export component
-export { Modal, ModalOverlay };
+export { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader };

@@ -8,6 +8,7 @@ export * from './divider';
 export * from './image';
 export * from './input';
 export * from './link';
+export * from './modal';
 export * from './popover';
 export * from './radio';
 export * from './skeleton';
