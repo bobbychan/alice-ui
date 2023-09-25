@@ -27,6 +27,16 @@ export const animations = {
         'backdrop-filter': 'blur(12px)',
       },
     },
+    popover: {
+      '0%': {
+        opacity: '0',
+        transform: 'var(--popover-origin)',
+      },
+      '100%': {
+        opacity: '1',
+        transform: 'translateY(0)',
+      },
+    },
     shimmer: {
       '100%': {
         transform: 'translateX(100%)',

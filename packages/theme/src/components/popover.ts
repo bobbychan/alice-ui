@@ -32,10 +32,24 @@ const popover = tv({
       'py-2',
       'outline-none',
       'box-border',
+      // top
+      'data-[placement=top]:[--popover-origin:translateY(8px)]',
+      'data-[placement=top]:mb-1',
+      // bottom
+      'data-[placement=bottom]:[--popover-origin:translateY(-8px)]',
+      'data-[placement=bottom]:mt-1',
+      // left
+      'data-[placement=left]:[--popover-origin:translateX(8px)]',
+      'data-[placement=left]:mr-1',
+      // right
+      'data-[placement=right]:[--popover-origin:translateX(-8px)]',
+      'data-[placement=right]:ml-1',
+      // animate
+      'data-[entering=true]:animate-[popover_0.2s]',
+      'data-[exiting=true]:animate-[popover_0.2s_ease-in_reverse]',
       // focus ring
       ...dataFocusVisibleClasses,
     ],
-    backdrop: ['hidden'],
     arrow: [
       'absolute',
       // top

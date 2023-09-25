@@ -43,6 +43,11 @@ const meta: Meta<typeof Popover> = {
         type: 'boolean',
       },
     },
+    showArrow: {
+      control: {
+        type: 'boolean',
+      },
+    },
     defaultOpen: {
       control: {
         type: 'boolean',

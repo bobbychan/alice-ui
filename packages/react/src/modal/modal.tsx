@@ -47,13 +47,14 @@ function Modal(props: ModalProps) {
     placement,
     shadow,
     backdrop = 'opaque',
+    scrollBehavior,
     motionProps,
     ...otherProps
   } = props;
 
   const slots = useMemo(
-    () => modal({ size, radius, placement, shadow, backdrop }),
-    [backdrop, placement, radius, shadow, size],
+    () => modal({ size, radius, placement, shadow, scrollBehavior, backdrop }),
+    [backdrop, placement, radius, scrollBehavior, shadow, size],
   );
 
   const baseStyles = clsx(classNames?.base, className);
