@@ -185,5 +185,6 @@ const modal = tv({
 
 export type ModalVariantProps = VariantProps<typeof modal>;
 export type ModalSlots = keyof ReturnType<typeof modal>;
+export type ModalReturnType = ReturnType<typeof modal>;
 
 export { modal };
