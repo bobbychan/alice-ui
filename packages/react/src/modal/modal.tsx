@@ -1,5 +1,10 @@
 import { clsx } from '@alice-ui/shared-utils';
-import type { ModalSlots, ModalVariantProps, SlotsToClasses } from '@alice-ui/theme';
+import type {
+  ModalReturnType,
+  ModalSlots,
+  ModalVariantProps,
+  SlotsToClasses,
+} from '@alice-ui/theme';
 import { modal } from '@alice-ui/theme';
 import type { HTMLMotionProps } from 'framer-motion';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -29,7 +34,7 @@ export interface ModalProps extends ModalOverlayProps, ModalVariantProps {
 }
 
 interface InternalModalContextValue {
-  slots: ReturnType<typeof modal>;
+  slots: ModalReturnType;
   classNames?: SlotsToClasses<ModalSlots>;
 }
 

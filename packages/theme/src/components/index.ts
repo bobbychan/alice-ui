@@ -13,5 +13,6 @@ export * from './popover';
 export * from './radio';
 export * from './skeleton';
 export * from './spinner';
+export * from './tabs';
 export * from './text-field';
 export * from './toggle';
