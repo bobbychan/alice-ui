@@ -2,7 +2,7 @@ import { CheckCircleFilledIcon, InfoFilledIcon } from '@alice-ui/icons';
 import { avatar } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Avatar } from '.';
+import { Avatar } from '../src/avatar';
 
 const meta: Meta<typeof Avatar> = {
   title: 'Components/Avatar',

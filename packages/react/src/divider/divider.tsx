@@ -1,35 +1,11 @@
 import { divider } from '@alice-ui/theme';
-import {
-  ElementType,
-  ForwardedRef,
-  HTMLAttributes,
-  createContext,
-  forwardRef,
-  useMemo,
-} from 'react';
-import { SeparatorProps, useSeparator } from 'react-aria';
-import { ContextValue, useContextProps } from 'react-aria-components';
+import { useMemo } from 'react';
+import { Separator, SeparatorProps } from 'react-aria-components';
 
-export interface DividerProps extends HTMLAttributes<HTMLHRElement>, SeparatorProps {
-  elementType?: string;
-}
+export interface DividerProps extends SeparatorProps {}
 
-export const DividerContext = createContext<ContextValue<DividerProps, HTMLHRElement>>({});
-
-function Divider(props: DividerProps, ref: ForwardedRef<HTMLHRElement>) {
-  [props, ref] = useContextProps(props, ref, DividerContext);
-  let { elementType, className, orientation, ...otherProps } = props;
-
-  let Component = (elementType || 'hr') as ElementType;
-
-  if (Component === 'hr' && orientation === 'vertical') {
-    Component = 'div';
-  }
-
-  const { separatorProps } = useSeparator({
-    elementType: typeof Component === 'string' ? Component : 'hr',
-    orientation,
-  });
+function Divider(props: DividerProps) {
+  let { className, orientation, ...otherProps } = props;
 
   const styles = useMemo(
     () =>
@@ -40,17 +16,6 @@ function Divider(props: DividerProps, ref: ForwardedRef<HTMLHRElement>) {
     [orientation, className],
   );
 
-  return (
-    <Component
-      className={styles}
-      role="separator"
-      data-orientation={orientation}
-      {...separatorProps}
-      {...otherProps}
-      ref={ref}
-    />
-  );
+  return <Separator className={styles} data-orientation={orientation} {...otherProps} />;
 }
-
-const _Divider = forwardRef(Divider);
-export { _Divider as Divider };
+export { Divider };

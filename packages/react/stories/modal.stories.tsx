@@ -2,8 +2,8 @@ import { modal } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
 
 import React from 'react';
-import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalProps } from '.';
-import { Button } from '../button';
+import { Button } from '../src/button';
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalProps } from '../src/modal';
 
 const TemplateContent = () => (
   <>

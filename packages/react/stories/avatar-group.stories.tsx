@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Avatar, AvatarGroup, AvatarGroupProps } from '.';
+import { Avatar, AvatarGroup, AvatarGroupProps } from '../src/avatar';
 
 const meta: Meta<typeof AvatarGroup> = {
   title: 'Components/AvatarGroup',

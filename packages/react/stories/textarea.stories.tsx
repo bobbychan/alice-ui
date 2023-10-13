@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import { input } from '@alice-ui/theme';
-import { TextArea, TextAreaProps } from '.';
+import { TextArea, TextAreaProps } from '../src/input';
 
 const meta: Meta<typeof TextArea> = {
   title: 'Components/TextArea',
@@ -32,13 +32,6 @@ const meta: Meta<typeof TextArea> = {
       options: ['sm', 'md', 'lg'],
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex h-screen w-screen items-center justify-center">
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export default meta;

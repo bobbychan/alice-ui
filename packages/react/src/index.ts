@@ -10,6 +10,7 @@ export * from './divider';
 export * from './image';
 export * from './input';
 export * from './link';
+export * from './menu';
 export * from './modal';
 export * from './number-input';
 export * from './overlay-arrow';
@@ -21,3 +22,5 @@ export * from './spinner';
 export * from './switch';
 export * from './text-field';
 export * from './tooltip';
+
+export { Collection } from 'react-aria-components';

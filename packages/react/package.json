@@ -12,7 +12,8 @@
   "license": "MIT",
   "main": "src/index.ts",
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "publishConfig": {
     "access": "public"
@@ -23,7 +24,7 @@
     "directory": "packages/react"
   },
   "scripts": {
-    "build": "tsup src --dts && rimraf dist/**/*.stories.*",
+    "build": "tsup src --dts",
     "build:fast": "tsup src",
     "dev": "pnpm build:fast -- --watch",
     "lint": "eslint \"src/**/*.ts*\"",
@@ -34,7 +35,8 @@
   },
   "peerDependencies": {
     "framer-motion": ">=4.0.0",
-    "react": ">=18"
+    "react": ">=18",
+    "react-dom": ">=18"
   },
   "dependencies": {
     "@alice-ui/hooks": "workspace:*",
@@ -42,15 +44,16 @@
     "@alice-ui/react-utils": "workspace:*",
     "@alice-ui/shared-utils": "workspace:*",
     "@alice-ui/theme": "workspace:*",
-    "@react-aria/focus": "^3.14.1",
-    "@react-aria/interactions": "^3.18.0",
-    "@react-aria/utils": "^3.20.0",
-    "@react-stately/utils": "^3.7.0",
-    "@react-types/shared": "^3.20.0",
+    "@react-aria/focus": "^3.14.2",
+    "@react-aria/interactions": "^3.19.0",
+    "@react-aria/overlays": "^3.18.0",
+    "@react-aria/utils": "^3.21.0",
+    "@react-stately/utils": "^3.8.0",
+    "@react-types/shared": "^3.21.0",
     "framer-motion": "^10.16.1",
-    "react-aria": "^3.28.0",
-    "react-aria-components": "1.0.0-nightly.4153",
-    "react-stately": "^3.26.0",
+    "react-aria": "^3.29.0",
+    "react-aria-components": "1.0.0-beta.1",
+    "react-stately": "^3.27.0",
     "react-textarea-autosize": "^8.5.3"
   },
   "devDependencies": {

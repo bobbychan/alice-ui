@@ -60,6 +60,7 @@ const popover = tv({
       // right
       '[&>svg]:data-[placement=right]:rotate-90',
     ],
+    content: ['outline-none', 'w-full'],
   },
   variants: {
     size: {

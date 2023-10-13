@@ -1,6 +1,6 @@
 import { CheckCircleIcon, ExclamationCircleFilledIcon, InfoIcon } from '@alice-ui/icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Button } from '.';
+import { Button } from '../src/button';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -240,7 +240,7 @@ export const Loading: Story = {
         <Button
           {...args}
           spinnerPlacement="end"
-          onClick={async () => {
+          onPress={async () => {
             await new Promise((resolve) => setTimeout(resolve, 3000));
           }}
         >

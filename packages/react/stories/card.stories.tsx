@@ -1,9 +1,9 @@
 import { card } from '@alice-ui/theme';
 import type { Meta, StoryObj } from '@storybook/react';
-import { Card, CardBody, CardFooter, CardHeader, CardProps } from '.';
-import { Button } from '../button';
-import { Image } from '../image';
-import { Link } from '../link';
+import { Button } from '../src/button';
+import { Card, CardBody, CardFooter, CardHeader, CardProps } from '../src/card';
+import { Image } from '../src/image';
+import { Link } from '../src/link';
 
 const meta: Meta<typeof Card> = {
   title: 'Components/Card',

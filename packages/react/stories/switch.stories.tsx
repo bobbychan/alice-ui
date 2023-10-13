@@ -2,8 +2,8 @@ import { MoonFilledIcon, SunFilledIcon } from '@alice-ui/icons';
 import { clsx } from '@alice-ui/shared-utils';
 import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
-import { Switch, SwitchProps } from '.';
-import { SwitchThumbIconProps } from './switch';
+import { Switch, SwitchProps } from '../src/switch';
+import { SwitchThumbIconProps } from '../src/switch/switch';
 
 const meta: Meta<typeof Switch> = {
   title: 'Components/Switch',
