@@ -3,9 +3,11 @@
   "version": "1.0.4",
   "keywords": [
     "react",
+    "react-aria",
+    "react-aria-components",
     "react-component",
     "react-ui",
-    "typescript"
+    "tailwindcss"
   ],
   "homepage": "https://github.com/bobbychan/alice-ui#readme",
   "sideEffects": false,
