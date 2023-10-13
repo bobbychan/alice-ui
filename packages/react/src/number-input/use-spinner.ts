@@ -21,7 +21,7 @@ type Action = 'increment' | 'decrement';
  * @param decrement the function to decrement
  */
 
-export function useSpinner(increment: Function, decrement: Function) {
+export function useSpinner(increment: () => void, decrement: () => void) {
   /**
    * To keep incrementing/decrementing on press, we call that `spinning`
    */

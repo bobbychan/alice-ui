@@ -15,9 +15,7 @@ import { Ripple, useRipple } from '../ripple';
 import type { SpinnerProps } from '../spinner';
 import { Spinner } from '../spinner';
 
-export interface ButtonProps
-  extends AriaButtonProps,
-    Omit<ButtonVariantProps, 'isInGroup' | 'isIconOnly'> {
+export interface ButtonProps extends AriaButtonProps, Omit<ButtonVariantProps, 'isInGroup'> {
   /**
    * Whether the button should display a ripple effect on press.
    * @default false
@@ -75,7 +73,7 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
   const { onClick: onRippleClickHandler, ripples } = useRipple();
 
   const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLButtonElement>) => {
+    (e: React.MouseEvent<HTMLDivElement>) => {
       if (disableRipple || disableAnimation || isLoading) return;
       onRippleClickHandler(e);
     },
@@ -110,7 +108,8 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
   const rightIconNode = getIconClone(rightIcon);
 
   return (
-    <AriaButton ref={ref} className={styles} {...otherProps} onClick={handleClick}>
+    // @ts-ignore
+    <AriaButton ref={ref} className={styles} {...otherProps}>
       {({ isDisabled }) => (
         <>
           {leftIconNode}
@@ -118,7 +117,12 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
           <>{children}</>
           {isLoading && spinnerPlacement === 'end' && spinner}
           {rightIconNode}
-          {(!disableRipple || !isDisabled) && <Ripple ripples={ripples} />}
+          {(!disableRipple || !isDisabled) && (
+            <>
+              <div aria-hidden className="absolute inset-0 h-full w-full" onClick={handleClick} />
+              <Ripple ripples={ripples} />
+            </>
+          )}
         </>
       )}
     </AriaButton>

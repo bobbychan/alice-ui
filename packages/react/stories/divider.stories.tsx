@@ -1,7 +1,7 @@
 import { divider } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Divider, DividerProps } from '.';
+import { Divider, DividerProps } from '../src/divider';
 
 const meta: Meta<typeof Divider> = {
   title: 'Components/Divider',

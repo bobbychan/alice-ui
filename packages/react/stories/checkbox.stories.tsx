@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { checkbox } from '@alice-ui/theme';
 import React from 'react';
-import { Checkbox, CheckboxIconProps, CheckboxProps } from '.';
+import { Checkbox, CheckboxIconProps, CheckboxProps } from '../src/checkbox';
 
 const meta: Meta<typeof Checkbox> = {
   title: 'Components/Checkbox',

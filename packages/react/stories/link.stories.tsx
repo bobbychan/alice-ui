@@ -1,7 +1,7 @@
 import { VariantProps, tv } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
 
-import { Link, LinkProps } from '.';
+import { Link, LinkProps } from '../src/link';
 
 const meta: Meta<typeof Link> = {
   title: 'Components/Link',

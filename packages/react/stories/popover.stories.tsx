@@ -1,13 +1,12 @@
 import { Meta, StoryObj } from '@storybook/react';
 
 import { popover } from '@alice-ui/theme';
-import React from 'react';
-import { Tooltip, TooltipProps, TooltipTrigger } from '.';
-import { Button } from '../button';
+import { Button } from '../src/button';
+import { Popover, PopoverProps, PopoverTrigger } from '../src/popover';
 
-const meta: Meta<typeof Tooltip> = {
-  title: 'Components/Tooltip',
-  component: Tooltip,
+const meta: Meta<typeof Popover> = {
+  title: 'Components/Popover',
+  component: Popover,
   argTypes: {
     size: {
       control: {
@@ -69,45 +68,23 @@ const meta: Meta<typeof Tooltip> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Tooltip>;
+type Story = StoryObj<typeof Popover>;
 
-const defaultProps: TooltipProps = {
+const defaultProps: PopoverProps = {
   ...popover.defaultVariants,
 };
 
-const Template = (args: TooltipProps) => (
-  <TooltipTrigger>
-    <Button>Hover me</Button>
-    <Tooltip {...args}>This is an example tooltip</Tooltip>
-  </TooltipTrigger>
+const Template = (args: PopoverProps) => (
+  <PopoverTrigger>
+    <Button color="primary">Button</Button>
+    <Popover {...args}>This is an example popover.</Popover>
+  </PopoverTrigger>
 );
-
-const ControlledTemplate = (args: TooltipProps) => {
-  const [isOpen, setIsOpen] = React.useState(false);
-
-  return (
-    <div className="flex flex-col items-center gap-2">
-      <TooltipTrigger isOpen={isOpen} onOpenChange={setIsOpen}>
-        <Button>{isOpen ? 'Close' : 'Open'}</Button>
-        <Tooltip {...args}>This is an example tooltip</Tooltip>
-      </TooltipTrigger>
-    </div>
-  );
-};
 
 export const Default: Story = {
   render: Template,
 
   args: {
     ...defaultProps,
-  },
-};
-
-export const Controlled: Story = {
-  render: ControlledTemplate,
-
-  args: {
-    ...defaultProps,
-    showArrow: true,
   },
 };

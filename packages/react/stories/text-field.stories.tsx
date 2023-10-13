@@ -1,8 +1,8 @@
 import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Label, Text } from 'react-aria-components';
-import { Input, TextArea } from '..';
-import { TextField, TextFieldProps } from '../text-field';
+import { Input, TextArea } from '../src';
+import { TextField, TextFieldProps } from '../src/text-field';
 
 const meta: Meta<typeof TextField> = {
   title: 'Components/TextField',

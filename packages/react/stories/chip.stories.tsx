@@ -1,10 +1,10 @@
 import { CheckCircleFilledIcon } from '@alice-ui/icons';
 import { chip } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
-import { Avatar } from '../avatar';
+import { Avatar } from '../src/avatar';
 
-import { Chip } from '.';
-import { ChipProps } from './chip';
+import { Chip } from '../src/chip';
+import { ChipProps } from '../src/chip/chip';
 
 const meta: Meta<typeof Chip> = {
   title: 'Components/Chip',

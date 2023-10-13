@@ -1,0 +1,282 @@
+import type { VariantProps } from 'tailwind-variants';
+
+import { dataFocusVisibleClasses } from '../utils';
+import { tv } from '../utils/tv';
+
+const menu = tv({
+  slots: {
+    base: ['w-full', 'flex', 'flex-col', 'gap-0.5', 'p-1', 'outline-none'],
+    popover: [
+      'p-1',
+      'min-w-[200px]',
+      // top
+      'data-[placement=top]:mb-0',
+      // bottom
+      'data-[placement=bottom]:mt-0',
+      // left
+      'data-[placement=left]:mr-0',
+      // right
+      'data-[placement=right]:ml-0',
+    ],
+  },
+});
+
+const menuSection = tv({
+  slots: {
+    base: ['relative', 'mb-2', 'last:mb-0'],
+    header: ['text-tiny', 'text-foreground-500', 'pl-1', 'pb-1'],
+  },
+});
+
+const menuItem = tv({
+  slots: {
+    base: [
+      'flex',
+      'group',
+      'gap-2',
+      'items-center',
+      'justify-between',
+      'relative',
+      'px-2',
+      'py-1.5',
+      'w-full',
+      'h-full',
+      'box-border',
+      'rounded-small',
+      'subpixel-antialiased',
+      'outline-none',
+      'cursor-pointer',
+      'tap-highlight-transparent',
+      'data-[focus-visible=true]:dark:ring-offset-background-content1',
+      'data-[disabled=true]:opacity-disabled',
+      'data-[disabled=true]:pointer-events-none',
+      // focus ring
+      ...dataFocusVisibleClasses,
+    ],
+    wrapper: 'w-full flex flex-col items-start justify-center',
+    title: 'flex-1 text-small font-normal truncate',
+    description: ['w-full', 'text-tiny', 'text-foreground-500', 'group-hover:text-current'],
+    selectedIcon: ['text-inherit', 'w-3', 'h-3', 'flex-shrink-0'],
+    shortcut: [
+      'px-1',
+      'py-0.5',
+      'rounded',
+      'font-sans',
+      'text-foreground-500',
+      'text-tiny',
+      'border',
+      'border-default-300',
+      'group-hover:border-current',
+    ],
+  },
+  variants: {
+    variant: {
+      solid: {
+        base: '',
+      },
+      bordered: {
+        base: ['border-2', 'border-transparent', 'bg-transparent'],
+      },
+      faded: {
+        base: ['border border-transparent hover:border-default data-[hovered=true]:bg-default-100'],
+      },
+      flat: {
+        base: '',
+      },
+    },
+    color: {
+      default: {},
+      primary: {},
+      secondary: {},
+      success: {},
+      warning: {},
+      danger: {},
+    },
+  },
+  defaultVariants: {
+    variant: 'solid',
+    color: 'default',
+  },
+  compoundVariants: [
+    // solid / color
+    {
+      variant: 'solid',
+      color: 'default',
+      class: {
+        base: ['data-[hovered=true]:bg-default', 'data-[hovered=true]:text-default-foreground'],
+      },
+    },
+    {
+      variant: 'solid',
+      color: 'primary',
+      class: {
+        base: ['data-[hovered=true]:bg-primary data-[hovered=true]:text-primary-foreground'],
+      },
+    },
+    {
+      variant: 'solid',
+      color: 'secondary',
+      class: {
+        base: ['data-[hovered=true]:bg-secondary data-[hovered=true]:text-secondary-foreground'],
+      },
+    },
+    {
+      variant: 'solid',
+      color: 'success',
+      class: {
+        base: ['data-[hovered=true]:bg-success data-[hovered=true]:text-success-foreground'],
+      },
+    },
+    {
+      variant: 'solid',
+      color: 'warning',
+      class: {
+        base: ['data-[hovered=true]:bg-warning data-[hovered=true]:text-warning-foreground'],
+      },
+    },
+    {
+      variant: 'solid',
+      color: 'danger',
+      class: {
+        base: ['data-[hovered=true]:bg-danger data-[hovered=true]:text-danger-foreground'],
+      },
+    },
+    // bordered / color
+    {
+      variant: 'bordered',
+      color: 'default',
+      class: {
+        base: ['data-[hovered=true]:border-default'],
+      },
+    },
+    {
+      variant: 'bordered',
+      color: 'primary',
+      class: {
+        base: ['data-[hovered=true]:border-primary data-[hovered=true]:text-primary'],
+      },
+    },
+    {
+      variant: 'bordered',
+      color: 'secondary',
+      class: {
+        base: ['data-[hovered=true]:border-secondary data-[hovered=true]:text-secondary'],
+      },
+    },
+    {
+      variant: 'bordered',
+      color: 'success',
+      class: {
+        base: ['data-[hovered=true]:border-success data-[hovered=true]:text-success'],
+      },
+    },
+    {
+      variant: 'bordered',
+      color: 'warning',
+      class: {
+        base: ['data-[hovered=true]:border-warning data-[hovered=true]:text-warning'],
+      },
+    },
+    {
+      variant: 'bordered',
+      color: 'danger',
+      class: {
+        base: ['data-[hovered=true]:border-danger data-[hovered=true]:text-danger'],
+      },
+    },
+    // flat / color
+    {
+      variant: 'flat',
+      color: 'default',
+      class: {
+        base: ['data-[hovered=true]:bg-default/40', 'data-[hovered=true]:text-default-foreground'],
+      },
+    },
+    {
+      variant: 'flat',
+      color: 'primary',
+      class: {
+        base: ['data-[hovered=true]:bg-primary/20 data-[hovered=true]:text-primary'],
+      },
+    },
+    {
+      variant: 'flat',
+      color: 'secondary',
+      class: {
+        base: ['data-[hovered=true]:bg-secondary/20 data-[hovered=true]:text-secondary'],
+      },
+    },
+    {
+      variant: 'flat',
+      color: 'success',
+      class: {
+        base: ['data-[hovered=true]:bg-success/20 data-[hovered=true]:text-success'],
+      },
+    },
+    {
+      variant: 'flat',
+      color: 'warning',
+      class: {
+        base: ['data-[hovered=true]:bg-warning/20 data-[hovered=true]:text-warning'],
+      },
+    },
+    {
+      variant: 'flat',
+      color: 'danger',
+      class: {
+        base: ['data-[hovered=true]:bg-danger/20 data-[hovered=true]:text-danger'],
+      },
+    },
+    // faded / color
+    {
+      variant: 'faded',
+      color: 'default',
+      class: {
+        base: ['data-[hovered=true]:text-default-foreground'],
+      },
+    },
+    {
+      variant: 'faded',
+      color: 'primary',
+      class: {
+        base: ['data-[hovered=true]:text-primary'],
+      },
+    },
+    {
+      variant: 'faded',
+      color: 'secondary',
+      class: {
+        base: ['data-[hovered=true]:text-secondary'],
+      },
+    },
+    {
+      variant: 'faded',
+      color: 'success',
+      class: {
+        base: ['data-[hovered=true]:text-success'],
+      },
+    },
+    {
+      variant: 'faded',
+      color: 'warning',
+      class: {
+        base: ['data-[hovered=true]:text-warning'],
+      },
+    },
+    {
+      variant: 'faded',
+      color: 'danger',
+      class: {
+        base: ['data-[hovered=true]:text-danger'],
+      },
+    },
+  ],
+});
+
+export type MenuVariantProps = VariantProps<typeof menu>;
+export type MenuSlots = keyof ReturnType<typeof menu>;
+export type MenuItemVariantProps = VariantProps<typeof menuItem>;
+export type MenuItemSlots = keyof ReturnType<typeof menuItem>;
+export type MenuSectionSlots = keyof ReturnType<typeof menuSection>;
+
+export { menu, menuItem, menuSection };

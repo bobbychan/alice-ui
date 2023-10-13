@@ -5,7 +5,7 @@ import { clsx } from '@alice-ui/shared-utils';
 import { button, radio } from '@alice-ui/theme';
 import React, { useContext } from 'react';
 import { RadioGroupStateContext } from 'react-aria-components';
-import { Radio, RadioGroup, RadioGroupProps, RadioProps } from '.';
+import { Radio, RadioGroup, RadioGroupProps, RadioProps } from '../src/radio';
 
 const meta: Meta<typeof RadioGroup> = {
   title: 'Components/RadioGroup',

@@ -1,11 +1,26 @@
 import { clsx } from '@alice-ui/shared-utils';
 import type { PopoverSlots, PopoverVariantProps, SlotsToClasses } from '@alice-ui/theme';
 import { popover } from '@alice-ui/theme';
-import { ReactNode, useMemo } from 'react';
-import type { PopoverProps as AriaPopoverProps } from 'react-aria-components';
-import { Popover as AriaPopover, Dialog, OverlayArrow } from 'react-aria-components';
+import { PressResponder } from '@react-aria/interactions';
+import { ReactNode, useMemo, useRef } from 'react';
+import { useOverlayTrigger } from 'react-aria';
+import {
+  Dialog,
+  DialogContext,
+  OverlayArrow,
+  OverlayTriggerStateContext,
+  PopoverContext,
+  Provider,
+} from 'react-aria-components';
+import { OverlayTriggerProps, useOverlayTriggerState } from 'react-stately';
+import type { BasePopoverProps } from './base-popover';
+import { BasePopover } from './base-popover';
 
-export interface PopoverProps extends Omit<AriaPopoverProps, 'children'>, PopoverVariantProps {
+export interface PopoverTriggerProps extends OverlayTriggerProps {
+  children: ReactNode;
+}
+
+export interface PopoverProps extends Omit<BasePopoverProps, 'children'>, PopoverVariantProps {
   children?: ReactNode;
   /**
    * Whether the element should render an arrow.
@@ -28,11 +43,35 @@ export interface PopoverProps extends Omit<AriaPopoverProps, 'children'>, Popove
   classNames?: SlotsToClasses<PopoverSlots>;
 }
 
+/**
+ * A PopoverTrigger opens a popover when a trigger element is pressed.
+ */
+export function PopoverTrigger(props: PopoverTriggerProps) {
+  let state = useOverlayTriggerState(props);
+
+  let buttonRef = useRef<HTMLButtonElement>(null);
+  let { triggerProps, overlayProps } = useOverlayTrigger({ type: 'dialog' }, state, buttonRef);
+
+  return (
+    <Provider
+      values={[
+        [OverlayTriggerStateContext, state],
+        [DialogContext, overlayProps],
+        [PopoverContext, { triggerRef: buttonRef }],
+      ]}
+    >
+      <PressResponder {...triggerProps} ref={buttonRef} isPressed={state.isOpen}>
+        {props.children}
+      </PressResponder>
+    </Provider>
+  );
+}
+
 function Popover(props: PopoverProps) {
   const {
     children,
     showArrow = false,
-    isNonModal = false,
+    isNonModal = true,
     placement = 'bottom',
     color,
     size,
@@ -63,15 +102,15 @@ function Popover(props: PopoverProps) {
   }, [classNames?.arrow, showArrow, slots]);
 
   return (
-    <AriaPopover
+    <BasePopover
       isNonModal={isNonModal}
       placement={placement}
       {...otherProps}
       className={slots.base({ class: baseStyles })}
     >
       {arrowContent}
-      <Dialog className="outline-none">{children}</Dialog>
-    </AriaPopover>
+      <Dialog className={slots.content({ class: classNames?.content })}>{children}</Dialog>
+    </BasePopover>
   );
 }
 

@@ -3,7 +3,7 @@ import { tabs } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
 
 import { Collection } from 'react-aria-components';
-import { Tab, TabList, TabPanel, Tabs, TabsProps } from '.';
+import { Tab, TabList, TabPanel, Tabs, TabsProps } from '../src/tabs';
 
 const meta: Meta<typeof Tabs> = {
   title: 'Components/Tabs',

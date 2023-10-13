@@ -1,10 +1,10 @@
-import { Dialog, DialogTrigger } from 'react-aria-components';
+import { Dialog, DialogTrigger } from './dialog';
 
 // export types
-export type { DialogProps, DialogTriggerProps } from 'react-aria-components';
+export type { DialogProps, DialogTriggerProps } from './dialog';
 
 // export context
-export { DialogContext } from 'react-aria-components';
+export { DialogContext } from './dialog';
 
 // export component
 export { Dialog, DialogTrigger };

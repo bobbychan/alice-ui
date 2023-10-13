@@ -1,10 +1,11 @@
-import { Popover } from './popover';
+import { BasePopover } from './base-popover';
+import { Popover, PopoverTrigger } from './popover';
 
 // export types
-export type { PopoverProps } from './popover';
+export type { PopoverProps, PopoverTriggerProps } from './popover';
 
-// export context
-export { PopoverContext } from 'react-aria-components';
+// export hooks
+export { usePopover } from './use-popover';
 
 // export component
-export { Popover };
+export { BasePopover, Popover, PopoverTrigger };

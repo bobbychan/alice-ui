@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/react';
 
 import { checkbox } from '@alice-ui/theme';
 import React from 'react';
-import { Checkbox, CheckboxGroup, CheckboxGroupProps } from '.';
+import { Checkbox, CheckboxGroup, CheckboxGroupProps } from '../src/checkbox';
 
 const meta: Meta<typeof CheckboxGroup> = {
   title: 'Components/CheckboxGroup',
