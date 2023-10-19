@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- Rewrite using React Aria Components.
+- Rewrite using React Aria Components
 - Updated dependencies
   - @alice-ui/shared-utils@1.0.2
   - @alice-ui/theme@1.0.2
