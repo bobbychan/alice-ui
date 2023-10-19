@@ -255,9 +255,6 @@ importers:
       '@react-types/shared':
         specifier: ^3.21.0
         version: 3.21.0(react@18.2.0)
-      framer-motion:
-        specifier: ^10.16.1
-        version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -280,6 +277,9 @@ importers:
       clean-package:
         specifier: ^2.2.0
         version: 2.2.0
+      framer-motion:
+        specifier: ^10.16.1
+        version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
       rimraf:
         specifier: ^5.0.1
         version: 5.0.5
@@ -2093,11 +2093,13 @@ packages:
     requiresBuild: true
     dependencies:
       '@emotion/memoize': 0.7.4
+    dev: true
     optional: true
 
   /@emotion/memoize@0.7.4:
     resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
     requiresBuild: true
+    dev: true
     optional: true
 
   /@emotion/use-insertion-effect-with-fallbacks@1.0.1(react@18.2.0):
@@ -8708,6 +8710,7 @@ packages:
       tslib: 2.6.2
     optionalDependencies:
       '@emotion/is-prop-valid': 0.8.8
+    dev: true
 
   /fresh@0.5.2:
     resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
