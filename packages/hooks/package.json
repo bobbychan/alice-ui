@@ -1,6 +1,6 @@
 {
   "name": "@alice-ui/hooks",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A set of react hooks for state and UI management",
   "homepage": "https://github.com/bobbychan/alice-ui#readme",
   "license": "MIT",

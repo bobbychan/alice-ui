@@ -90,8 +90,11 @@ importers:
       turbo:
         specifier: latest
         version: 1.10.15
+      typescript:
+        specifier: ^5.0.2
+        version: 5.2.2
 
-  apps/docs:
+  apps/storybook:
     dependencies:
       '@alice-ui/react':
         specifier: workspace:*

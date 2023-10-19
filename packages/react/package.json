@@ -1,6 +1,6 @@
 {
   "name": "@alice-ui/react",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "keywords": [
     "react",
     "react-aria",
@@ -52,7 +52,6 @@
     "@react-aria/utils": "^3.21.0",
     "@react-stately/utils": "^3.8.0",
     "@react-types/shared": "^3.21.0",
-    "framer-motion": "^10.16.1",
     "react-aria": "^3.29.0",
     "react-aria-components": "1.0.0-beta.2",
     "react-stately": "^3.27.0",
@@ -60,7 +59,8 @@
   },
   "devDependencies": {
     "clean-package": "^2.2.0",
-    "rimraf": "^5.0.1"
+    "rimraf": "^5.0.1",
+    "framer-motion": "^10.16.1"
   },
   "clean-package": "../../clean-package.config.json"
 }
