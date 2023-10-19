@@ -36,19 +36,7 @@ export interface ChipProps extends Omit<HTMLAttributes<HTMLDivElement>, 'color'>
    */
   endContent?: React.ReactNode;
   /**
-   * Classname or List of classes to change the classNames of the element.
-   * if `className` is passed, it will be added to the base slot.
-   *
-   * @example
-   * ```ts
-   * <Chip classNames={{
-   *    base:"base-classes",
-   *    dot: "dot-classes",
-   *    content: "content-classes",
-   *    avatar: "avatar-classes",
-   *    closeButton: "close-button-classes",
-   * }} />
-   * ```
+   * Classes object to style the chip and its children.
    */
   classNames?: SlotsToClasses<ChipSlots>;
   /**

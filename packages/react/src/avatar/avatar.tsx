@@ -18,7 +18,7 @@ import { AvatarIcon } from './avatar-icon';
 const safeText = (text: string): string => {
   if (text?.length <= 3) return text;
 
-  return text?.slice(0, 2);
+  return text?.slice(0, 3);
 };
 
 export interface AvatarProps
@@ -74,19 +74,7 @@ export interface AvatarProps
    */
   imgProps?: React.ImgHTMLAttributes<HTMLImageElement>;
   /**
-   * Classname or List of classes to change the classNames of the avatar.
-   * if `className` is passed, it will be added to the base slot.
-   *
-   * @example
-   * ```ts
-   * <Avatar classNames={{
-   *    base:"base-classes",
-   *    img: "image-classes",
-   *    name: "name-classes",
-   *    icon: "icon-classes",
-   *    fallback: "fallback-classes"
-   * }} />
-   * ```
+   * Classes object to style the avatar and its children.
    */
   classNames?: SlotsToClasses<AvatarSlots>;
 }
@@ -139,7 +127,7 @@ function Avatar(props: AvatarProps, ref: ForwardedRef<HTMLSpanElement>) {
         isInGroup: ctx?.isInGroup,
         isInGridGroup: ctx?.isGrid ?? false,
       }),
-    [color, radius, size, isBordered, isDisabled],
+    [color, radius, size, isBordered, isDisabled, ctx?.isInGroup, ctx?.isGrid],
   );
   const baseStyles = clsx(classNames?.base, className);
 
@@ -167,7 +155,7 @@ function Avatar(props: AvatarProps, ref: ForwardedRef<HTMLSpanElement>) {
         {icon}
       </span>
     );
-  }, [showFallback, src, fallbackComponent, classNames, name]);
+  }, [showFallback, src, fallbackComponent, classNames, name, icon, alt, slots, getInitials]);
 
   return (
     <Component

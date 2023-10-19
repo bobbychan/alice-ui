@@ -41,18 +41,7 @@ export interface Props extends HTMLAttributes<HTMLButtonElement> {
    */
   allowTextSelectionOnPress?: boolean;
   /**
-   * Classname or List of classes to change the classNames of the element.
-   * if `className` is passed, it will be added to the base slot.
-   *
-   * @example
-   * ```ts
-   * <Card classNames={{
-   *    base:"base-classes",
-   *    header: "dot-classes",
-   *    body: "content-classes",
-   *    footer: "avatar-classes",
-   * }} />
-   * ```
+   * Classes object to style the card and its children.
    */
   classNames?: SlotsToClasses<CardSlots>;
 }

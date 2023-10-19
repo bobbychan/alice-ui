@@ -1,5 +1,4 @@
 import { Meta, StoryObj } from '@storybook/react';
-
 import React from 'react';
 import type { Selection } from 'react-aria-components';
 import { Collection, MenuTrigger } from 'react-aria-components';
@@ -119,40 +118,38 @@ const SelectionTemplate = (args: MenuProps<object>) => {
   );
 };
 
-const WithSectionsTemplate = (args: MenuProps<object>) => {
-  return (
-    <MenuTrigger>
-      <Button color="primary" aria-label="Menu">
-        Menu
-      </Button>
-      <Menu {...args}>
-        <MenuSection title="Actions">
-          <MenuItem id="new" description="Create a new file" shortcut="⌘N">
-            New file
-          </MenuItem>
-          <MenuItem id="copy" description="Copy the file link" shortcut="⌘C">
-            Copy link
-          </MenuItem>
-          <MenuItem id="edit" description="Allows you to edit the file" shortcut="⌘⇧E">
-            Edit file
-          </MenuItem>
-        </MenuSection>
-        <Divider className="mb-2" />
-        <MenuSection title="Danger zone">
-          <MenuItem
-            id="delete"
-            description="Permanently delete the file"
-            shortcut="⌘⇧D"
-            className="text-danger"
-            color="danger"
-          >
-            Delete file
-          </MenuItem>
-        </MenuSection>
-      </Menu>
-    </MenuTrigger>
-  );
-};
+const WithSectionsTemplate = (args: MenuProps<object>) => (
+  <MenuTrigger>
+    <Button color="primary" aria-label="Menu">
+      Menu
+    </Button>
+    <Menu {...args}>
+      <MenuSection title="Actions">
+        <MenuItem id="new" description="Create a new file" shortcut="⌘N">
+          New file
+        </MenuItem>
+        <MenuItem id="copy" description="Copy the file link" shortcut="⌘C">
+          Copy link
+        </MenuItem>
+        <MenuItem id="edit" description="Allows you to edit the file" shortcut="⌘⇧E">
+          Edit file
+        </MenuItem>
+      </MenuSection>
+      <Divider className="mb-2" />
+      <MenuSection title="Danger zone">
+        <MenuItem
+          id="delete"
+          description="Permanently delete the file"
+          shortcut="⌘⇧D"
+          className="text-danger"
+          color="danger"
+        >
+          Delete file
+        </MenuItem>
+      </MenuSection>
+    </Menu>
+  </MenuTrigger>
+);
 
 const DynamicTemplate = (args: MenuProps<object>) => {
   let [selected, setSelected] = React.useState<Selection>(new Set([1, 3]));
@@ -170,15 +167,6 @@ const DynamicTemplate = (args: MenuProps<object>) => {
         { id: 2, name: 'index.ts' },
         { id: 3, name: 'package.json' },
         { id: 4, name: 'license.txt' },
-      ],
-    },
-    {
-      name: 'Center Panel',
-      id: 'center',
-      children: [
-        { id: 5, name: 'test.ts' },
-        { id: 6, name: 'test.json' },
-        { id: 7, name: 'test.txt' },
       ],
     },
   ];

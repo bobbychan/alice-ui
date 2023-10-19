@@ -8,6 +8,9 @@ import { ModalHeader } from './modal-header';
 export type { ModalOverlayProps } from 'react-aria-components';
 export type { ModalProps } from './modal';
 
+// export hooks
+export { useDisclosure } from './use-disclosure';
+
 // export context
 export { ModalContext } from 'react-aria-components';
 

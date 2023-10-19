@@ -55,13 +55,13 @@ const avatar = tv({
   variants: {
     size: {
       sm: {
-        base: 'w-8 h-8 text-tiny',
+        base: 'w-8 h-8 text-xs',
       },
       md: {
-        base: 'w-10 h-10 text-tiny',
+        base: 'w-10 h-10 text-xs',
       },
       lg: {
-        base: 'w-14 h-14 text-small',
+        base: 'w-14 h-14 text-sm',
       },
     },
     color: {

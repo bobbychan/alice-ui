@@ -1,6 +1,5 @@
-/* eslint-disable react/display-name */
 import { Meta, StoryObj } from '@storybook/react';
-
+import React from 'react';
 import { Avatar, AvatarGroup, AvatarGroupProps } from '../src/avatar';
 
 const meta: Meta<typeof AvatarGroup> = {
@@ -20,6 +19,13 @@ const meta: Meta<typeof AvatarGroup> = {
       options: ['sm', 'md', 'lg'],
     },
   },
+  decorators: [
+    (Story) => (
+      <div className="flex h-screen w-screen items-center justify-center">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default meta;

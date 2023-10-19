@@ -6,6 +6,7 @@ import { useControlledState } from '@react-stately/utils';
 import type { Orientation } from '@react-types/shared';
 import {
   ForwardedRef,
+  ReactNode,
   createContext,
   forwardRef,
   useCallback,
@@ -17,10 +18,10 @@ import { AriaTextFieldProps, useTextField } from 'react-aria';
 import type { ContextValue, SlotProps } from 'react-aria-components';
 import {
   InputContext,
-  LabelContext,
+  Label,
   Provider,
+  Text,
   TextAreaContext,
-  TextContext,
   useContextProps,
 } from 'react-aria-components';
 import { DOMProps, forwardRefType, removeDataAttributes, useSlot } from '../_utils/utils';
@@ -32,6 +33,18 @@ export interface TextFieldProps
     >,
     DOMProps,
     SlotProps {
+  /**
+   * The content to display as the labe
+   */
+  label?: ReactNode;
+  /**
+   * The description of the text field.
+   */
+  description?: ReactNode;
+  /**
+   * The error message of the text field.
+   */
+  errorMessage?: ReactNode;
   /**
    * The axis the text field items should align with.
    * @default "vertical"
@@ -49,18 +62,7 @@ export interface TextFieldProps
    */
   onClear?: () => void;
   /**
-   * Classname or List of classes to change the classNames of the element.
-   * if `className` is passed, it will be added to the base slot.
-   *
-   * @example
-   * ```ts
-   * <div classNames={{
-   *    base:"base-classes",
-   *    label: "label-classes",
-   *    description: "description-classes",
-   *    errorMessage: "error-message-classes",
-   * }} />
-   * ```
+   * Classes object to style the text field and its children.
    */
   classNames?: SlotsToClasses<TextFieldSlots>;
 }
@@ -73,7 +75,16 @@ function TextField(props: TextFieldProps, ref: ForwardedRef<HTMLDivElement>) {
   let [labelRef, label] = useSlot();
   let [inputElementType, setInputElementType] = useState('input');
 
-  const { onValueChange = () => {}, onClear, className, classNames, children } = props;
+  const {
+    onValueChange = () => {},
+    onClear,
+    className,
+    classNames,
+    children,
+    label: labelValue,
+    description,
+    errorMessage,
+  } = props;
 
   const handleValueChange = useCallback(
     (value: string | undefined) => {
@@ -115,6 +126,41 @@ function TextField(props: TextFieldProps, ref: ForwardedRef<HTMLDivElement>) {
   const baseStyles = clsx(classNames?.base, className);
   const slots = useMemo(() => textField(), []);
 
+  const hasHelper = !!description || !!errorMessage;
+
+  const helpComponent = useMemo(() => {
+    if (!hasHelper) return null;
+
+    return errorMessage ? (
+      <Text
+        slot="errorMessage"
+        elementType="div"
+        className={slots.errorMessage({ class: classNames?.errorMessage })}
+        {...errorMessageProps}
+      >
+        {errorMessage}
+      </Text>
+    ) : description ? (
+      <Text
+        slot="description"
+        elementType="div"
+        className={slots.description({ class: classNames?.description })}
+        {...descriptionProps}
+      >
+        {description}
+      </Text>
+    ) : null;
+  }, [
+    classNames?.description,
+    classNames?.errorMessage,
+    description,
+    descriptionProps,
+    errorMessage,
+    errorMessageProps,
+    hasHelper,
+    slots,
+  ]);
+
   return (
     <div
       {...filterDOMProps(props)}
@@ -129,10 +175,6 @@ function TextField(props: TextFieldProps, ref: ForwardedRef<HTMLDivElement>) {
     >
       <Provider
         values={[
-          [
-            LabelContext,
-            { ...labelProps, className: slots.label({ class: classNames?.label }), ref: labelRef },
-          ],
           [
             InputContext,
             {
@@ -151,26 +193,19 @@ function TextField(props: TextFieldProps, ref: ForwardedRef<HTMLDivElement>) {
               ref: inputOrTextAreaRef,
             },
           ],
-          [
-            TextContext,
-            {
-              slots: {
-                description: {
-                  elementType: 'div',
-                  className: slots.description({ class: classNames?.description }),
-                  ...descriptionProps,
-                },
-                errorMessage: {
-                  elementType: 'div',
-                  className: slots.errorMessage({ class: classNames?.errorMessage }),
-                  ...errorMessageProps,
-                },
-              },
-            },
-          ],
         ]}
       >
+        {labelValue && (
+          <Label
+            {...labelProps}
+            ref={labelRef}
+            className={slots.label({ class: classNames?.label })}
+          >
+            {labelValue}
+          </Label>
+        )}
         {children}
+        {helpComponent}
       </Provider>
     </div>
   );

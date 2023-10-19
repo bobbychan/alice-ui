@@ -21,18 +21,7 @@ export interface CheckboxProps extends AriaCheckboxProps, CheckboxVariantProps {
    */
   icon?: ReactNode | ((props: CheckboxIconProps) => ReactNode);
   /**
-   * Classname or List of classes to change the classNames of the element.
-   * if `className` is passed, it will be added to the base slot.
-   *
-   * @example
-   * ```ts
-   * <Checkbox classNames={{
-   *    base:"base-classes",
-   *    control: "control-classes",
-   *    icon: "icon-classes",
-   *    label: "label-classes",
-   * }} />
-   * ```
+   * Classes object to style the checkbox and its children.
    */
   classNames?: SlotsToClasses<CheckboxSlots>;
   className?: string;

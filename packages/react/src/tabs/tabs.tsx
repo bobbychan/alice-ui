@@ -27,18 +27,7 @@ export interface TabsProps extends AriaTabsProps, TabsVariantProps {
    */
   disableCursorAnimation?: boolean;
   /**
-   * Classname or List of classes to change the classNames of the element.
-   * if `className` is passed, it will be added to the base slot.
-   *
-   * @example
-   * ```ts
-   * <Tabs classNames={{
-   *    base:"base-classes", // main wrapper (tabs + panels)
-   *    tabList: "tab-list-classes", // tabs wrapper
-   *    tab: "tab-classes", // tab item
-   *    panel: "panel-classes", // tab panel
-   * }} />
-   * ``
+   * Classes object to style the tabs and its children.
    */
   classNames?: SlotsToClasses<TabsSlots>;
 }

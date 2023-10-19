@@ -1,7 +1,6 @@
 import { CloseIcon } from '@alice-ui/icons';
-import { Meta, StoryObj } from '@storybook/react';
-
 import { checkbox } from '@alice-ui/theme';
+import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Checkbox, CheckboxIconProps, CheckboxProps } from '../src/checkbox';
 

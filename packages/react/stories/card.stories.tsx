@@ -1,5 +1,6 @@
 import { card } from '@alice-ui/theme';
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { Button } from '../src/button';
 import { Card, CardBody, CardFooter, CardHeader, CardProps } from '../src/card';
 import { Image } from '../src/image';

@@ -20,16 +20,7 @@ export interface TooltipProps extends Omit<AriaTooltipProps, 'children'>, Popove
    */
   showArrow?: boolean;
   /**
-   * Classname or List of classes to change the classNames of the element.
-   * if `className` is passed, it will be added to the base slot.
-   *
-   * @example
-   * ```ts
-   * <Tooltip classNames={{
-   *    base:"base-classes",
-   *    arrow: "arrow-classes",
-   * }} />
-   * ```
+   * The tooltips classNames.
    */
   classNames?: SlotsToClasses<PopoverSlots>;
 }

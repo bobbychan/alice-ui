@@ -30,17 +30,7 @@ export interface RadioProps extends AriaRadioProps, RadioVariantProps {
    */
   isDisplayControl?: boolean;
   /**
-   * Classname or List of classes to change the classNames of the element.
-   * if `className` is passed, it will be added to the base slot.
-   *
-   * @example
-   * ```ts
-   * <Radio classNames={{
-   *    base:"base-classes",
-   *    control: "control-classes",
-   *    label: "label-classes",
-   * }} />
-   * ```
+   * Classes object to style the radio and its children.
    */
   classNames?: SlotsToClasses<RadioSlots>;
   className?: string;

@@ -1,8 +1,7 @@
-import { mergeProps, mergeRefs, useLayoutEffect, useObjectRef } from '@react-aria/utils';
+import { useLayoutEffect } from '@react-aria/utils';
 import { AriaLabelingProps, DOMProps as SharedDOMProps } from '@react-types/shared';
 import React, {
   CSSProperties,
-  Context,
   ForwardedRef,
   ReactNode,
   Ref,
@@ -11,7 +10,6 @@ import React, {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
@@ -26,92 +24,6 @@ declare function forwardRef<T, P = object>(
 ): (props: P & React.RefAttributes<T>) => React.ReactElement | null;
 
 export type forwardRefType = typeof forwardRef;
-
-export const slotCallbackSymbol = Symbol('callback');
-export const defaultSlot = Symbol('default');
-
-interface SlottedValue<T> {
-  slots?: Record<string | symbol, T>;
-  [slotCallbackSymbol]?: (value: T) => void;
-}
-
-export type SlottedContextValue<T> = SlottedValue<T> | T | null | undefined;
-export type ContextValue<T, E extends Element> = SlottedContextValue<WithRef<T, E>>;
-
-type ProviderValue<T> = [Context<T>, T];
-type ProviderValues<A, B, C, D, E, F, G, H, I, J> =
-  | [ProviderValue<A>]
-  | [ProviderValue<A>, ProviderValue<B>]
-  | [ProviderValue<A>, ProviderValue<B>, ProviderValue<C>]
-  | [ProviderValue<A>, ProviderValue<B>, ProviderValue<C>, ProviderValue<D>]
-  | [ProviderValue<A>, ProviderValue<B>, ProviderValue<C>, ProviderValue<D>, ProviderValue<E>]
-  | [
-      ProviderValue<A>,
-      ProviderValue<B>,
-      ProviderValue<C>,
-      ProviderValue<D>,
-      ProviderValue<E>,
-      ProviderValue<F>,
-    ]
-  | [
-      ProviderValue<A>,
-      ProviderValue<B>,
-      ProviderValue<C>,
-      ProviderValue<D>,
-      ProviderValue<E>,
-      ProviderValue<F>,
-      ProviderValue<G>,
-    ]
-  | [
-      ProviderValue<A>,
-      ProviderValue<B>,
-      ProviderValue<C>,
-      ProviderValue<D>,
-      ProviderValue<E>,
-      ProviderValue<F>,
-      ProviderValue<G>,
-      ProviderValue<H>,
-    ]
-  | [
-      ProviderValue<A>,
-      ProviderValue<B>,
-      ProviderValue<C>,
-      ProviderValue<D>,
-      ProviderValue<E>,
-      ProviderValue<F>,
-      ProviderValue<G>,
-      ProviderValue<H>,
-      ProviderValue<I>,
-    ]
-  | [
-      ProviderValue<A>,
-      ProviderValue<B>,
-      ProviderValue<C>,
-      ProviderValue<D>,
-      ProviderValue<E>,
-      ProviderValue<F>,
-      ProviderValue<G>,
-      ProviderValue<H>,
-      ProviderValue<I>,
-      ProviderValue<J>,
-    ];
-
-interface ProviderProps<A, B, C, D, E, F, G, H, I, J> {
-  values: ProviderValues<A, B, C, D, E, F, G, H, I, J>;
-  children: ReactNode;
-}
-
-export function Provider<A, B, C, D, E, F, G, H, I, J>({
-  values,
-  children,
-}: ProviderProps<A, B, C, D, E, F, G, H, I, J>): JSX.Element {
-  for (let [Context, value] of values) {
-    // @ts-ignore
-    children = <Context.Provider value={value}>{children}</Context.Provider>;
-  }
-
-  return children as JSX.Element;
-}
 
 export interface StyleProps {
   /** The CSS [className](https://developer.mozilla.org/en-US/docs/Web/API/Element/className) for the element. */
@@ -181,62 +93,6 @@ export function useRenderProps<T>(props: RenderPropsHookOptions<T>) {
 }
 
 export type WithRef<T, E> = T & { ref?: ForwardedRef<E> };
-export interface SlotProps {
-  /**
-   * A slot name for the component. Slots allow the component to receive props from a parent component.
-   * An explicit `null` value indicates that the local props completely override all props received from a parent.
-   */
-  slot?: string | null;
-}
-
-export function useSlottedContext<T>(
-  context: Context<SlottedContextValue<T>>,
-  slot?: string | null,
-): T | null | undefined {
-  let ctx = useContext(context);
-  if (slot === null) {
-    // An explicit `null` slot means don't use context.
-    return null;
-  }
-  if (ctx && typeof ctx === 'object' && 'slots' in ctx && ctx.slots) {
-    if (!slot && !ctx.slots[defaultSlot]) {
-      throw new Error('A slot prop is required');
-    }
-    let slotKey = slot || defaultSlot;
-    if (!ctx.slots[slotKey]) {
-      // @ts-ignore
-      throw new Error(
-        `Invalid slot "${slot}". Valid slot names are ` +
-          new Intl.ListFormat().format(Object.keys(ctx.slots).map((p) => `"${p}"`)) +
-          '.',
-      );
-    }
-    return ctx.slots[slotKey];
-  }
-  // @ts-ignore
-  return ctx;
-}
-
-export function useContextProps<T, U extends SlotProps, E extends Element>(
-  props: T & SlotProps,
-  ref: ForwardedRef<E>,
-  context: Context<ContextValue<U, E>>,
-): [T, RefObject<E>] {
-  let ctx = useSlottedContext(context, props.slot) || {};
-  // @ts-ignore - TS says "Type 'unique symbol' cannot be used as an index type." but not sure why.
-  let { ref: contextRef, [slotCallbackSymbol]: callback, ...contextProps } = ctx;
-  let mergedRef = useObjectRef(useMemo(() => mergeRefs(ref, contextRef), [ref, contextRef]));
-  let mergedProps = mergeProps(contextProps, props) as unknown as T;
-
-  // A parent component might need the props from a child, so call slot callback if needed.
-  useEffect(() => {
-    if (callback) {
-      callback(props);
-    }
-  }, [callback, props]);
-
-  return [mergedProps, mergedRef];
-}
 
 export function useSlot(): [RefCallback<Element>, boolean] {
   // Assume we do have the slot in the initial render.

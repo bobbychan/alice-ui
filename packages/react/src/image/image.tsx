@@ -41,16 +41,7 @@ export interface ImageProps extends ImgHTMLAttributes<HTMLImageElement>, ImageVa
    */
   removeWrapper?: boolean;
   /**
-   * Classname or List of classes to change the classNames of the element.
-   * if `className` is passed, it will be added to the base slot.
-   *
-   * @example
-   * ```ts
-   * <Image classNames={{
-   *    base:"base-classes", // image classes
-   *    wrapper: "wrapper-classes",
-   * }} />
-   * ```
+   * Classes object to style the image.
    */
   classNames?: SlotsToClasses<ImageSlots>;
 }

@@ -1,11 +1,9 @@
 import { Meta, StoryObj } from '@storybook/react';
-
 import { Skeleton } from '../src/skeleton/skeleton';
 
 const meta: Meta<typeof Skeleton> = {
   title: 'Components/Skeleton',
   component: Skeleton,
-  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: { type: 'select' },

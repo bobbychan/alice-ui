@@ -123,7 +123,7 @@ const checkbox = tv({
     size: {
       sm: {
         control: ['w-4 h-4', 'rounded-[calc(theme(borderRadius.medium)*0.5)]'],
-        label: 'text-small',
+        label: 'text-sm',
         icon: 'w-3 h-2',
       },
       md: {
@@ -133,7 +133,7 @@ const checkbox = tv({
       },
       lg: {
         control: ['w-6 h-6', 'rounded-[calc(theme(borderRadius.medium)*0.7)]'],
-        label: 'text-large',
+        label: 'text-lg',
         icon: 'w-5 h-4',
       },
     },

@@ -30,7 +30,9 @@
     "react": ">=18"
   },
   "dependencies": {
-    "@alice-ui/shared-utils": "workspace:*"
+    "@alice-ui/shared-utils": "workspace:*",
+    "lodash.debounce": "^4.0.8",
+    "@types/lodash.debounce": "^4.0.8"
   },
   "devDependencies": {
     "clean-package": "^2.2.0",

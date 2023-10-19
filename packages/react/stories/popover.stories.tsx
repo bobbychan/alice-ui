@@ -1,6 +1,6 @@
-import { Meta, StoryObj } from '@storybook/react';
-
 import { popover } from '@alice-ui/theme';
+import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { Button } from '../src/button';
 import { Popover, PopoverProps, PopoverTrigger } from '../src/popover';
 

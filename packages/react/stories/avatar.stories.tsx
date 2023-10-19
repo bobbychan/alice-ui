@@ -1,6 +1,7 @@
 import { CheckCircleFilledIcon, InfoFilledIcon } from '@alice-ui/icons';
 import { avatar } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 
 import { Avatar } from '../src/avatar';
 
@@ -42,11 +43,29 @@ export const Default: Story = {
   },
 };
 
-export const WithText = {
+export const WithText: Story = {
+  render: (args) => (
+    <div className="flex items-center space-x-2">
+      <Avatar {...args} />
+      <Avatar
+        {...args}
+        getInitials={(name) => name.slice(0, 1)}
+        className="text-2xl"
+        color="warning"
+      />
+      <Avatar
+        {...args}
+        getInitials={(name) => name.slice(0, 2)}
+        size="lg"
+        className="text-2xl"
+        color="success"
+      />
+    </div>
+  ),
   args: {
     ...defaultProps,
     name: 'APPLE',
-    color: 'danger',
+    color: 'primary',
   },
 };
 
@@ -97,15 +116,6 @@ export const Custom = {
 export const CustomSize = {
   args: {
     ...defaultProps,
-    classNames: {
-      base: 'w-32 h-32 text-base',
-    },
-  },
-};
-
-export const CustomSizeImg = {
-  args: {
-    ...defaultProps,
     src: 'https://i.pravatar.cc/300?u=a042581f4e29026705d',
     name: 'Junior',
     classNames: {
@@ -114,29 +124,23 @@ export const CustomSizeImg = {
   },
 };
 
-export const DefaultIcon = {
+export const IconFallback: Story = {
   args: {
     ...defaultProps,
-    classNames: {
-      icon: 'text-default-400',
-    },
-  },
-};
-
-export const IconFallback = {
-  args: {
-    ...defaultProps,
-    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330',
+    src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
     showFallback: true,
+    size: 'lg',
+    fallback: <div>Andy</div>,
   },
 };
 
 export const InitialsFallback = {
   args: {
     ...defaultProps,
-    src: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c61',
+    src: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb',
     name: 'Junior',
     showFallback: true,
+    size: 'lg',
   },
 };
 
@@ -146,7 +150,7 @@ export const CustomFallback = {
     src: 'https://images.unsplash.com/broken',
     showFallback: true,
     fallback: (
-      <InfoFilledIcon className="text-default-500 h-6 w-6 animate-pulse" fill="currentColor" />
+      <InfoFilledIcon className="text-danger-500 h-6 w-6 animate-pulse" fill="currentColor" />
     ),
   },
 };

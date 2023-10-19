@@ -1,5 +1,6 @@
 import { CheckCircleIcon, ExclamationCircleFilledIcon, InfoIcon } from '@alice-ui/icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { Button } from '../src/button';
 
 const meta: Meta<typeof Button> = {
@@ -73,14 +74,10 @@ export const Colors: Story = {
       >
         Default
       </Button>
-      <Button {...args} color="primary" spinnerPlacement="end" spinnerProps={{ variant: 'bars' }}>
+      <Button {...args} color="primary">
         Primary
       </Button>
-      <Button
-        {...args}
-        color="secondary"
-        leftIcon={<CheckCircleIcon className="h-5 w-5 shrink-0" />}
-      >
+      <Button {...args} color="secondary">
         Secondary
       </Button>
       <Button {...args} color="success">

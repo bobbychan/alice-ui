@@ -12,6 +12,7 @@ export * from './menu';
 export * from './modal';
 export * from './popover';
 export * from './radio';
+export * from './select';
 export * from './skeleton';
 export * from './spinner';
 export * from './tabs';
