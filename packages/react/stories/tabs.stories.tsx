@@ -1,7 +1,7 @@
 import { MoonFilledIcon, SunFilledIcon } from '@alice-ui/icons';
 import { tabs } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
-
+import React from 'react';
 import { Collection } from 'react-aria-components';
 import { Tab, TabList, TabPanel, Tabs, TabsProps } from '../src/tabs';
 

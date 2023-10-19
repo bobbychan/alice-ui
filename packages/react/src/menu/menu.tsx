@@ -11,16 +11,7 @@ import { MenuItemProps } from './menu-item';
 export interface MenuProps<T> extends AriaMenuProps<T>, MenuVariantProps {
   placement?: Placement;
   /**
-   * Classname or List of classes to change the classNames of the element.
-   * if `className` is passed, it will be added to the base slot.
-   *
-   * @example
-   * ```ts
-   * <Menu classNames={{
-   *    base:"base-classes",
-   *    popover: "popover-classes",
-   * }} />
-   * ```
+   * Classes object to style the menu and its children.
    */
   classNames?: SlotsToClasses<MenuSlots>;
   /**

@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { Alert, AlertIcon, AlertProps } from '../src/alert';
 
 const meta: Meta<typeof Alert> = {
   title: 'Components/Alert',
   component: Alert,
-  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: {
@@ -67,12 +67,6 @@ const Template = (args: AlertProps) => (
     </Alert>
   </div>
 );
-
-export const Default: Story = {
-  args: {
-    children: <div className="[mask-image: `${}`]">A simple default alert — check it out!</div>,
-  },
-};
 
 export const Flat: Story = {
   args: {

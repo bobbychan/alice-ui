@@ -1,6 +1,7 @@
+'use client';
+
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { FC } from 'react';
-
 import { RippleType } from './use-ripple';
 
 export interface RippleProps {

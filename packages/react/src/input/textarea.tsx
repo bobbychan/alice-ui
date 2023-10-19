@@ -44,17 +44,7 @@ export interface TextAreaProps
    */
   onHeightChange?: (height: number, meta: TextareaHeightChangeMeta) => void;
   /**
-   * Classname or List of classes to change the classNames of the element.
-   * if `className` is passed, it will be added to the base slot.
-   *
-   * @example
-   * ```ts
-   * <Input classNames={{
-   *    base:"base-classes",
-   *    input: "input-classes",
-   *    clearButton: "clear-button-classes",
-   * }} />
-   * ```
+   * Classes object to style the textarea and its children.
    */
   classNames?: SlotsToClasses<InputSlots>;
   /**

@@ -4,13 +4,8 @@
 
 import { createContext, CSSProperties, ForwardedRef, forwardRef, HTMLAttributes } from 'react';
 import { PlacementAxis } from 'react-aria';
-import {
-  ContextValue,
-  forwardRefType,
-  RenderProps,
-  useContextProps,
-  useRenderProps,
-} from '../_utils/utils';
+import { ContextValue, useContextProps } from 'react-aria-components';
+import { forwardRefType, RenderProps, useRenderProps } from '../_utils/utils';
 
 interface OverlayArrowContextValue extends OverlayArrowProps {
   placement: PlacementAxis;

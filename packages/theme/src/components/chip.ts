@@ -87,15 +87,15 @@ const chip = tv({
     },
     size: {
       sm: {
-        base: 'px-1 h-6 text-small',
+        base: 'px-1 h-6 text-xs',
         content: 'px-1',
         closeButton: 'text-medium',
         avatar: 'w-4 h-4',
       },
       md: {
-        base: 'px-1 h-7 text-small',
+        base: 'px-1 h-7 text-sm',
         content: 'px-2',
-        closeButton: 'text-large',
+        closeButton: 'text-lg',
         avatar: 'w-5 h-5',
       },
       lg: {

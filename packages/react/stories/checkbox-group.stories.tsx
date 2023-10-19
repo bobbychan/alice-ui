@@ -1,6 +1,5 @@
-import { Meta, StoryObj } from '@storybook/react';
-
 import { checkbox } from '@alice-ui/theme';
+import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Checkbox, CheckboxGroup, CheckboxGroupProps } from '../src/checkbox';
 

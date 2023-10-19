@@ -1,28 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "include": [
-    "src",
-    "index.ts",
-    "stories/alert.stories.tsx",
-    "stories/avatar-group.stories.tsx",
-    "stories/button.stories.tsx",
-    "stories/card.stories.tsx",
-    "stories/checkbox-group.stories.tsx",
-    "stories/chip.stories.tsx",
-    "src/divider",
-    "stories/divider.stories.tsx",
-    "stories/image.stories.tsx",
-    "stories/input.stories.tsx",
-    "stories/link.stories.tsx",
-    "stories/menu.stories.tsx",
-    "stories/modal.stories.tsx",
-    "stories/popover.stories.tsx",
-    "stories/radio.stories.tsx",
-    "stories/skeleton.stories.tsx",
-    "stories/spinner.stories.tsx",
-    "stories/switch.stories.tsx",
-    "stories/tabs.stories.tsx",
-    "stories/text-field.stories.tsx",
-    "stories/tooltip.stories.tsx"
-  ]
+  "include": ["src", "index.ts"]
 }

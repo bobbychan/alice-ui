@@ -1,3 +1,5 @@
+'use client';
+
 import { clsx } from '@alice-ui/shared-utils';
 import type {
   ModalReturnType,
@@ -19,16 +21,7 @@ export interface ModalProps extends ModalOverlayProps, ModalVariantProps {
    */
   motionProps?: HTMLMotionProps<'section'>;
   /**
-   * Classname or List of classes to change the classNames of the element.
-   * if `className` is passed, it will be added to the base slot.
-   *
-   * @example
-   * ```ts
-   * <Tooltip classNames={{
-   *    backdrop:"backdrop-classes",
-   *    base: "base-classes",
-   * }} />
-   * ```
+   * Classes object to style the modal and its children.
    */
   classNames?: SlotsToClasses<ModalSlots>;
 }

@@ -1,7 +1,7 @@
-import { Meta, StoryObj } from '@storybook/react';
-
 import { MoonFilledIcon } from '@alice-ui/icons';
 import { input } from '@alice-ui/theme';
+import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { Input, InputProps } from '../src/input';
 
 const meta: Meta<typeof Input> = {

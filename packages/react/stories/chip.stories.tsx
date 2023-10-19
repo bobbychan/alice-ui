@@ -1,8 +1,8 @@
 import { CheckCircleFilledIcon } from '@alice-ui/icons';
 import { chip } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { Avatar } from '../src/avatar';
-
 import { Chip } from '../src/chip';
 import { ChipProps } from '../src/chip/chip';
 

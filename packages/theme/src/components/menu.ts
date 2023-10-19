@@ -5,7 +5,7 @@ import { tv } from '../utils/tv';
 
 const menu = tv({
   slots: {
-    base: ['w-full', 'flex', 'flex-col', 'gap-0.5', 'p-1', 'outline-none'],
+    base: ['w-full', 'flex', 'flex-col', 'gap-0.5', 'p-1', 'outline-none', 'overflow-auto'],
     popover: [
       'p-1',
       'min-w-[200px]',
@@ -23,8 +23,8 @@ const menu = tv({
 
 const menuSection = tv({
   slots: {
-    base: ['relative', 'mb-2', 'last:mb-0'],
-    header: ['text-tiny', 'text-foreground-500', 'pl-1', 'pb-1'],
+    base: ['group'],
+    header: ['text-xs', 'text-foreground-500', 'p-2'],
   },
 });
 
@@ -38,6 +38,7 @@ const menuItem = tv({
       'justify-between',
       'relative',
       'px-2',
+      'group-data-[group=true]:pl-5',
       'py-1.5',
       'w-full',
       'h-full',
@@ -54,8 +55,8 @@ const menuItem = tv({
       ...dataFocusVisibleClasses,
     ],
     wrapper: 'w-full flex flex-col items-start justify-center',
-    title: 'flex-1 text-small font-normal truncate',
-    description: ['w-full', 'text-tiny', 'text-foreground-500', 'group-hover:text-current'],
+    title: 'flex-1 text-sm font-normal truncate',
+    description: ['w-full', 'text-xs', 'text-foreground-500', 'group-hover:text-current'],
     selectedIcon: ['text-inherit', 'w-3', 'h-3', 'flex-shrink-0'],
     shortcut: [
       'px-1',
@@ -63,7 +64,7 @@ const menuItem = tv({
       'rounded',
       'font-sans',
       'text-foreground-500',
-      'text-tiny',
+      'text-xs',
       'border',
       'border-default-300',
       'group-hover:border-current',
