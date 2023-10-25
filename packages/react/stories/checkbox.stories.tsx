@@ -1,4 +1,4 @@
-import { CloseIcon } from '@alice-ui/icons';
+import { XMarkIcon } from '@alice-ui/icons';
 import { checkbox } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
@@ -93,14 +93,14 @@ export const DefaultSelected: Story = {
 export const CustomIconNode: Story = {
   args: {
     ...defaultProps,
-    icon: <CloseIcon />,
+    icon: <XMarkIcon />,
   },
 };
 
 export const CustomIconFunction: Story = {
   args: {
     ...defaultProps,
-    icon: (props: CheckboxIconProps) => <CloseIcon {...props} />,
+    icon: (props: CheckboxIconProps) => <XMarkIcon {...props} />,
   },
 };
 
