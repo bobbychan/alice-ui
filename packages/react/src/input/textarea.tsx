@@ -1,4 +1,4 @@
-import { CloseFilledIcon } from '@alice-ui/icons';
+import { XCircleFilledIcon } from '@alice-ui/icons';
 import { clsx } from '@alice-ui/shared-utils';
 import type { InputSlots, InputVariantProps, SlotsToClasses } from '@alice-ui/theme';
 import { input } from '@alice-ui/theme';
@@ -96,7 +96,7 @@ function TextArea(props: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) 
           {...getClearButtonProps()}
           className={slots.clearButton({ class: classNames?.clearButton })}
         >
-          {<CloseFilledIcon />}
+          {<XCircleFilledIcon />}
         </span>
       ) : null,
     [classNames?.clearButton, getClearButtonProps, isClearable, slots],

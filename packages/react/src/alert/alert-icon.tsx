@@ -1,12 +1,12 @@
 import {
   CheckCircleFilledIcon,
   CheckCircleIcon,
-  CloseCircleFilledIcon,
-  CloseCircleIcon,
   ExclamationCircleFilledIcon,
   ExclamationCircleIcon,
   InfoFilledIcon,
   InfoIcon,
+  XCircleFilledIcon,
+  XCircleIcon,
 } from '@alice-ui/icons';
 import { clsx } from '@alice-ui/shared-utils';
 
@@ -19,7 +19,7 @@ const ICONS = {
   info: { outline: InfoIcon, filled: InfoFilledIcon },
   warning: { outline: ExclamationCircleIcon, filled: ExclamationCircleFilledIcon },
   success: { outline: CheckCircleIcon, filled: CheckCircleFilledIcon },
-  error: { outline: CloseCircleIcon, filled: CloseCircleFilledIcon },
+  error: { outline: XCircleIcon, filled: XCircleFilledIcon },
 };
 
 const AlertIcon = (props: AlertIconProps) => {

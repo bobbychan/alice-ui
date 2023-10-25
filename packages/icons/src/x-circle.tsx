@@ -1,6 +1,6 @@
 import { IconProps } from './types';
 
-export const ChevronRightIcon = ({ strokeWidth = 1.5, ...props }: IconProps) => (
+export const XCircleIcon = (props: IconProps) => (
   <svg
     aria-hidden="true"
     fill="none"
@@ -9,12 +9,14 @@ export const ChevronRightIcon = ({ strokeWidth = 1.5, ...props }: IconProps) => 
     stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
-    strokeWidth={strokeWidth}
+    strokeWidth={2}
     viewBox="0 0 24 24"
     width="1em"
     height="1em"
     {...props}
   >
-    <path d="m9 18 6-6-6-6" />
+    <circle cx="12" cy="12" r="10" />
+    <path d="m15 9-6 6" />
+    <path d="m9 9 6 6" />
   </svg>
 );

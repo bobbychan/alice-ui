@@ -1,20 +1,21 @@
 import { IconProps } from './types';
 
-export const CloseIcon = (props: IconProps) => (
+export const PlusIcon = (props: IconProps) => (
   <svg
-    viewBox="0 0 24 24"
+    aria-hidden="true"
     fill="none"
+    focusable="false"
     role="presentation"
     stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"
     strokeWidth={2}
-    aria-hidden="true"
-    focusable="false"
+    viewBox="0 0 24 24"
     width="1em"
     height="1em"
     {...props}
   >
-    <path d="M18 6L6 18M6 6l12 12" />
+    <path d="M5 12h14" />
+    <path d="M12 5v14" />
   </svg>
 );

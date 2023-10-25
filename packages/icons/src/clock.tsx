@@ -1,6 +1,6 @@
 import { IconProps } from './types';
 
-export const ChevronRightIcon = ({ strokeWidth = 1.5, ...props }: IconProps) => (
+export const ClockIcon = ({ strokeWidth = 1.5, ...props }: IconProps) => (
   <svg
     aria-hidden="true"
     fill="none"
@@ -15,6 +15,7 @@ export const ChevronRightIcon = ({ strokeWidth = 1.5, ...props }: IconProps) => 
     height="1em"
     {...props}
   >
-    <path d="m9 18 6-6-6-6" />
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 6 12 12 16 14" />
   </svg>
 );

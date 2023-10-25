@@ -1,4 +1,4 @@
-import { CloseFilledIcon } from '@alice-ui/icons';
+import { XCircleFilledIcon } from '@alice-ui/icons';
 import { clsx } from '@alice-ui/shared-utils';
 import type { ChipSlots, ChipVariantProps, SlotsToClasses } from '@alice-ui/theme';
 import { chip, filterVariantProps } from '@alice-ui/theme';
@@ -147,7 +147,7 @@ function Chip(props: ChipProps, ref: ForwardedRef<HTMLDivElement>) {
           className={slots.closeButton({ class: classNames?.closeButton })}
           {...mergeProps(closePressProps, closeFocusProps)}
         >
-          {endContent || <CloseFilledIcon />}
+          {endContent || <XCircleFilledIcon />}
         </span>
       );
     }
