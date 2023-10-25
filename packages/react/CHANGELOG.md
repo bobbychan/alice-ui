@@ -1,5 +1,15 @@
 # @alice-ui/react
 
+## 1.0.7
+
+### Patch Changes
+
+- [#25](https://github.com/bobbychan/alice-ui/pull/25) [`5cdd9b3`](https://github.com/bobbychan/alice-ui/commit/5cdd9b3d3d099bb1a0e1dc22754996ba9c7f1d60) Thanks [@bobbychan](https://github.com/bobbychan)! - add/remove some icons
+
+- Updated dependencies [[`5cdd9b3`](https://github.com/bobbychan/alice-ui/commit/5cdd9b3d3d099bb1a0e1dc22754996ba9c7f1d60)]:
+  - @alice-ui/react-utils@1.0.2
+  - @alice-ui/icons@1.0.3
+
 ## 1.0.6
 
 ### Patch Changes
