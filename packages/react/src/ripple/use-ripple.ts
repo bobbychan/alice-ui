@@ -34,7 +34,7 @@ export function useRipple(props: UseRippleProps = {}) {
     return () => {
       timeoutIds.forEach((id) => clearTimeout(id));
     };
-  }, [ripples]);
+  }, [removeAfter, ripples]);
 
   const onClick = useCallback((event: React.MouseEvent<HTMLElement, MouseEvent>) => {
     const trigger = event.currentTarget;

@@ -35,14 +35,14 @@ export function useDisclosure(props: UseDisclosureProps = {}) {
       setIsOpen(false);
     }
     onClosePropCallbackRef?.();
-  }, [isControlled, onClosePropCallbackRef]);
+  }, [isControlled, onClosePropCallbackRef, setIsOpen]);
 
   const onOpen = useCallback(() => {
     if (!isControlled) {
       setIsOpen(true);
     }
     onOpenPropCallbackRef?.();
-  }, [isControlled, onOpenPropCallbackRef]);
+  }, [isControlled, onOpenPropCallbackRef, setIsOpen]);
 
   const onOpenChange = useCallback(() => {
     const action = isOpen ? onClose : onOpen;
