@@ -12,6 +12,10 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+          run_install: false
       - uses: actions/checkout@v4
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
