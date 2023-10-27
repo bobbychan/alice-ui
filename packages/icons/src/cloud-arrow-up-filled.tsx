@@ -3,12 +3,11 @@ import { IconProps } from './types';
 export const CloudArrowUpFilledIcon = (props: IconProps) => (
   <svg
     aria-hidden="true"
-    fill="none"
     focusable="false"
-    role="presentation"
-    viewBox="0 0 24 24"
-    height="1em"
     width="1em"
+    height="1em"
+    viewBox="0 0 24 24"
+    fill="none"
     {...props}
   >
     <path

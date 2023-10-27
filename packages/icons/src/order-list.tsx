@@ -2,13 +2,13 @@ import { IconProps } from './types';
 
 export const OrderListIcon = (props: IconProps) => (
   <svg
-    fill="currentColor"
-    viewBox="0 0 1024 1024"
-    strokeWidth={1.5}
     aria-hidden="true"
     focusable="false"
     width="1em"
     height="1em"
+    viewBox="0 0 1024 1024"
+    fill="currentColor"
+    strokeWidth={1.5}
     {...props}
   >
     <path d="M496 704H368c-17.6 0-32 14.4-32 32s14.4 32 32 32h128c17.6 0 32-14.4 32-32s-14.4-32-32-32z m160-160H368c-17.6 0-32 14.4-32 32s14.4 32 32 32h288c17.6 0 32-14.4 32-32s-14.4-32-32-32z m0-160H368c-17.6 0-32 14.4-32 32s14.4 32 32 32h288c17.6 0 32-14.4 32-32s-14.4-32-32-32z"></path>

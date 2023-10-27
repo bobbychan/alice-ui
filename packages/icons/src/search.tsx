@@ -1,6 +1,6 @@
 import { IconProps } from './types';
 
-export const MinusIcon = (props: IconProps) => (
+export const SearchIcon = (props: IconProps) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -14,6 +14,7 @@ export const MinusIcon = (props: IconProps) => (
     strokeLinejoin="round"
     {...props}
   >
-    <path d="M5 12h14" />
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.3-4.3" />
   </svg>
 );

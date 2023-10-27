@@ -5,7 +5,6 @@ env:
 on:
   push:
     paths:
-      - '.changeset/**'
       - 'packages/react/stories/**'
     branches:
       - main

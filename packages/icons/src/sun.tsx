@@ -2,12 +2,11 @@ import { IconProps } from './types';
 
 export const SunIcon = (props: IconProps) => (
   <svg
-    viewBox="0 0 512 512"
     aria-hidden="true"
     focusable="false"
-    role="presentation"
     width="1em"
     height="1em"
+    viewBox="0 0 512 512"
     {...props}
   >
     <path
