@@ -22,6 +22,7 @@ export const Default: Story = {
     const iconNames = Object.keys(Icons);
 
     const iconElements = iconNames.map((iconName, index) => {
+      // @ts-ignore
       const Icon = Icons[iconName];
       return (
         <div key={index}>
