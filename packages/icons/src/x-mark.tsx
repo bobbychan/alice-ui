@@ -5,7 +5,6 @@ export const XMarkIcon = (props: IconProps) => (
     aria-hidden="true"
     fill="none"
     focusable="false"
-    role="presentation"
     stroke="currentColor"
     strokeLinecap="round"
     strokeLinejoin="round"

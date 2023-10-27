@@ -2,14 +2,14 @@ import { IconProps } from './types';
 
 export const ExclamationCircleIcon = (props: IconProps) => (
   <svg
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={1.5}
-    stroke="currentColor"
     aria-hidden="true"
     focusable="false"
     width="1em"
     height="1em"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth={1.5}
     {...props}
   >
     <path

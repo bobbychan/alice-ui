@@ -2,7 +2,8 @@ import { IconProps } from './types';
 
 export const CopyIcon = (props: IconProps) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
     width="1em"
     height="1em"
     viewBox="0 0 24 24"

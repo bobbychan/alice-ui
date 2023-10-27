@@ -2,12 +2,12 @@ import { IconProps } from './types';
 
 export const XCircleFilledIcon = (props: IconProps) => (
   <svg
-    fill="currentColor"
-    viewBox="0 0 24 24"
     aria-hidden="true"
     focusable="false"
     width="1em"
     height="1em"
+    viewBox="0 0 24 24"
+    fill="currentColor"
     {...props}
   >
     <path
