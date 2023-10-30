@@ -33,9 +33,6 @@
     "react": ">=18",
     "framer-motion": ">=4.0.0"
   },
-  "dependencies": {
-    "@alice-ui/theme": "workspace:*"
-  },
   "devDependencies": {
     "clean-package": "2.2.0",
     "framer-motion": "^10.16.1",
