@@ -14,6 +14,7 @@ export * from './menu';
 export * from './modal';
 export * from './number-input';
 export * from './popover';
+export * from './provider';
 export * from './radio';
 export * from './ripple';
 export * from './select';
@@ -23,4 +24,5 @@ export * from './switch';
 export * from './text-field';
 export * from './tooltip';
 
-export { Collection, Label, RouterProvider, Text } from 'react-aria-components';
+export * from '@alice-ui/theme';
+export { Collection, Label, Text } from 'react-aria-components';
