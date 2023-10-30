@@ -24,5 +24,4 @@ export * from './switch';
 export * from './text-field';
 export * from './tooltip';
 
-export * from '@alice-ui/theme';
 export { Collection, Label, Text } from 'react-aria-components';
