@@ -1,5 +1,11 @@
 # @alice-ui/react
 
+## 1.0.9
+
+### Patch Changes
+
+- [#29](https://github.com/bobbychan/alice-ui/pull/29) [`10c08be`](https://github.com/bobbychan/alice-ui/commit/10c08be672329afd4e570bed783e41d852173647) Thanks [@bobbychan](https://github.com/bobbychan)! - add Provider component
+
 ## 1.0.8
 
 ### Patch Changes
