@@ -1,5 +1,11 @@
 # @alice-ui/ripple
 
+## 1.0.4
+
+### Patch Changes
+
+- [`54cc31a`](https://github.com/bobbychan/alice-ui/commit/54cc31ada5f5b884d71865688945d7543d9ddd1f) Thanks [@bobbychan](https://github.com/bobbychan)! - remove useless dependencies
+
 ## 1.0.3
 
 ### Patch Changes
