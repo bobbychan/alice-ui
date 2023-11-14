@@ -19,6 +19,7 @@ export * from './heart-filled';
 export * from './home';
 export * from './info';
 export * from './info-filled';
+export * from './list';
 export * from './map-pin';
 export * from './minus';
 export * from './moon';

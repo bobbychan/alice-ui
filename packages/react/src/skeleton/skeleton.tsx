@@ -1,5 +1,5 @@
-import { dataAttr } from '@alice-ui/shared-utils';
-import type { SkeletonVariantProps } from '@alice-ui/theme';
+import { clsx, dataAttr } from '@alice-ui/shared-utils';
+import type { SkeletonSlots, SkeletonVariantProps, SlotsToClasses } from '@alice-ui/theme';
 import { skeleton } from '@alice-ui/theme';
 import { ForwardedRef, HTMLAttributes, forwardRef, useMemo } from 'react';
 
@@ -9,25 +9,30 @@ export interface SkeletonProps extends HTMLAttributes<HTMLDivElement>, SkeletonV
    * @default false
    */
   isLoaded?: boolean;
+  classNames?: SlotsToClasses<SkeletonSlots>;
 }
 
 function Skeleton(props: SkeletonProps, ref: ForwardedRef<HTMLDivElement>) {
-  const { isLoaded, className, variant, children, ...skeletonProps } = props;
+  const { isLoaded = false, className, classNames, variant, children, ...skeletonProps } = props;
 
-  const styles = useMemo(
+  const slots = useMemo(
     () =>
       skeleton({
         variant,
-        className,
       }),
-    [className, variant],
+    [variant],
   );
 
+  const baseStyles = clsx(classNames?.base, className);
+
   return (
-    <div {...skeletonProps} ref={ref} className={styles} data-loaded={dataAttr(isLoaded)}>
-      <div className="opacity-0 transition-opacity !duration-300 group-data-[loaded=true]:opacity-100 motion-reduce:transition-none">
-        {children}
-      </div>
+    <div
+      {...skeletonProps}
+      ref={ref}
+      className={slots.base({ class: baseStyles })}
+      data-loaded={dataAttr(isLoaded)}
+    >
+      <div className={slots.content({ class: classNames?.content })}>{children}</div>
     </div>
   );
 }
