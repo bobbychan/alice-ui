@@ -1,5 +1,15 @@
 # @alice-ui/react
 
+## 1.0.11
+
+### Patch Changes
+
+- [#36](https://github.com/bobbychan/alice-ui/pull/36) [`bd20901`](https://github.com/bobbychan/alice-ui/commit/bd20901b359795772bf8bf8f5552d6c594e01755) Thanks [@bobbychan](https://github.com/bobbychan)! - Fixed some style issues
+
+- Updated dependencies [[`bd20901`](https://github.com/bobbychan/alice-ui/commit/bd20901b359795772bf8bf8f5552d6c594e01755)]:
+  - @alice-ui/icons@1.0.5
+  - @alice-ui/theme@1.0.4
+
 ## 1.0.10
 
 ### Patch Changes
