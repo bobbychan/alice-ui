@@ -52,7 +52,7 @@ const button = tv({
       ghost: 'border-2 bg-transparent',
     },
     size: {
-      sm: 'px-3 min-w-[4rem] h-8 text-xs gap-2 rounded-[6px]',
+      sm: 'px-3 min-w-[4rem] h-8 text-xs gap-1 rounded-[6px]',
       md: 'px-4 min-w-[5rem] h-10 text-sm gap-2 rounded-[8px]',
       lg: 'px-6 min-w-[6rem] h-12 text-base gap-3 rounded-[12px]',
     },

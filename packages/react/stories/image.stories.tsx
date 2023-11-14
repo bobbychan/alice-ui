@@ -45,7 +45,7 @@ const LoadingTemplate = (args: ImageProps) => {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const time = 2500;
+    const time = !args.disableSkeleton ? 2500 : 500;
 
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -66,10 +66,7 @@ export const Default: Story = {
     height: 200,
   },
   render: (args) => (
-    <Image
-      {...args}
-      src="https://app.requestly.io/delay/3000/https://images.unsplash.com/photo-1691246806224-a6e9dde3678d"
-    />
+    <Image {...args} src="https://images.unsplash.com/photo-1691246806224-a6e9dde3678d" />
   ),
 };
 
@@ -90,7 +87,7 @@ export const AnimatedLoad = {
     width: 200,
     height: 300,
     radius: 'lg',
-    src: 'https://app.requestly.io/delay/3000/https://images.unsplash.com/photo-1539571696357-5a69c17a67c6',
+    src: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6',
   },
 };
 
@@ -102,7 +99,7 @@ export const Fallback = {
     width: 200,
     height: 300,
     radius: 'lg',
-    src: 'https://app.requestly.io/delay/3000/https://images.unsplash.com/photo-1539571696357-5a69c17a67c6',
+    src: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6',
     fallbackSrc: 'https://via.placeholder.com/200x300',
   },
 };
@@ -115,7 +112,7 @@ export const Skeleton = {
     width: 300,
     height: 450,
     radius: 'lg',
-    src: 'https://app.requestly.io/delay/3000/https://images.unsplash.com/photo-1494790108377-be9c29b29330',
+    src: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330',
     disableSkeleton: false,
   },
 };
