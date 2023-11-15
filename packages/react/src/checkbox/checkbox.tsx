@@ -1,3 +1,5 @@
+'use client';
+
 import { clsx } from '@alice-ui/shared-utils';
 import type { CheckboxSlots, CheckboxVariantProps, SlotsToClasses } from '@alice-ui/theme';
 import { checkbox } from '@alice-ui/theme';

@@ -1,3 +1,5 @@
+'use client';
+
 import { ChevronDownIcon } from '@alice-ui/icons';
 import { clsx } from '@alice-ui/shared-utils';
 import { SelectSlots, SelectVariantProps, SlotsToClasses, select } from '@alice-ui/theme';

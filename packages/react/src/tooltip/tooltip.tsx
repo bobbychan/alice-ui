@@ -1,3 +1,5 @@
+'use client';
+
 import { clsx } from '@alice-ui/shared-utils';
 import type { PopoverSlots, PopoverVariantProps, SlotsToClasses } from '@alice-ui/theme';
 import { popover } from '@alice-ui/theme';

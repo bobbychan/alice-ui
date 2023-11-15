@@ -1,6 +1,7 @@
 /**
  * This code comes from react-aria-components
  */
+'use client';
 
 import { createContext, CSSProperties, ForwardedRef, forwardRef, HTMLAttributes } from 'react';
 import { PlacementAxis } from 'react-aria';

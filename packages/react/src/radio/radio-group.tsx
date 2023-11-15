@@ -1,3 +1,5 @@
+'use client';
+
 import { clsx } from '@alice-ui/shared-utils';
 import type { RadioGroupSlots, SlotsToClasses } from '@alice-ui/theme';
 import { RadioVariantProps, radioGroup } from '@alice-ui/theme';

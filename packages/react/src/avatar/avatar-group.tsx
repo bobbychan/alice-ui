@@ -1,3 +1,5 @@
+'use client';
+
 import { getValidChildren } from '@alice-ui/react-utils';
 import { clsx, compact } from '@alice-ui/shared-utils';
 import { avatarGroup } from '@alice-ui/theme';

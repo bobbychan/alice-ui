@@ -1,3 +1,5 @@
+'use client';
+
 import { divider } from '@alice-ui/theme';
 import { useMemo } from 'react';
 import { Separator, SeparatorProps } from 'react-aria-components';

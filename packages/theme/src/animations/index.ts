@@ -37,7 +37,7 @@ export const animations = {
         transform: 'translateY(0)',
       },
     },
-    shimmer: {
+    wave: {
       '100%': {
         transform: 'translateX(100%)',
       },
