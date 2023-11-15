@@ -1,5 +1,14 @@
 # @alice-ui/react
 
+## 1.0.12
+
+### Patch Changes
+
+- [#38](https://github.com/bobbychan/alice-ui/pull/38) [`3279925`](https://github.com/bobbychan/alice-ui/commit/32799254872e193da723b47748f3dda9941df056) Thanks [@bobbychan](https://github.com/bobbychan)! - add use client to component
+
+- Updated dependencies [[`3279925`](https://github.com/bobbychan/alice-ui/commit/32799254872e193da723b47748f3dda9941df056)]:
+  - @alice-ui/theme@1.0.5
+
 ## 1.0.11
 
 ### Patch Changes
