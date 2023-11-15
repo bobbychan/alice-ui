@@ -3,8 +3,8 @@
 import { clsx } from '@alice-ui/shared-utils';
 import { MenuItemSlots, MenuItemVariantProps, SlotsToClasses, menuItem } from '@alice-ui/theme';
 import { ReactNode, useContext, useMemo } from 'react';
-import type { ItemProps } from 'react-aria-components';
-import { Item, Keyboard, Text } from 'react-aria-components';
+import type { MenuItemProps as AriaMenuItemProps } from 'react-aria-components';
+import { MenuItem as AriaMenuItem, Keyboard, Text } from 'react-aria-components';
 import { InternalMenuContext } from './menu';
 import { MenuSelectedIcon } from './menu-selected-icon';
 
@@ -24,7 +24,7 @@ export type MenuItemSelectedIconProps = {
   isDisabled?: boolean;
 };
 
-export interface MenuItemProps extends ItemProps, MenuItemVariantProps {
+export interface MenuItemProps extends AriaMenuItemProps, MenuItemVariantProps {
   /**
    * The menu item subtitle.
    */
@@ -90,7 +90,7 @@ export function MenuItem(props: MenuItemProps) {
   const baseStyles = clsx(classNames?.base, className);
 
   return (
-    <Item {...otherProps} className={slots.base({ class: baseStyles })}>
+    <AriaMenuItem {...otherProps} className={slots.base({ class: baseStyles })}>
       {({ isSelected, isDisabled, selectionMode }) => {
         const selectedContent = () => {
           const defaultIcon = <MenuSelectedIcon isSelected={isSelected} />;
@@ -141,6 +141,6 @@ export function MenuItem(props: MenuItemProps) {
           </>
         );
       }}
-    </Item>
+    </AriaMenuItem>
   );
 }
