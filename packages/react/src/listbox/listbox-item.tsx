@@ -1,8 +1,10 @@
+'use client';
+
 import { clsx } from '@alice-ui/shared-utils';
 import { MenuItemSlots, MenuItemVariantProps, SlotsToClasses, menuItem } from '@alice-ui/theme';
 import { ReactNode, useContext, useMemo } from 'react';
-import type { ItemProps } from 'react-aria-components';
-import { Item, Text } from 'react-aria-components';
+import type { ListBoxItemProps as AriaListBoxItemProps } from 'react-aria-components';
+import { ListBoxItem as AriaListBoxItem, Text } from 'react-aria-components';
 import { InternalListBoxContext } from './listbox';
 import { ListBoxSelectedIcon } from './listbox-selected-icon';
 
@@ -22,7 +24,7 @@ export type ListBoxItemSelectedIconProps = {
   isDisabled?: boolean;
 };
 
-export interface ListBoxItemProps extends ItemProps, MenuItemVariantProps {
+export interface ListBoxItemProps extends AriaListBoxItemProps, MenuItemVariantProps {
   /**
    * The menu item subtitle.
    */
@@ -70,7 +72,7 @@ export function ListBoxItem(props: ListBoxItemProps) {
   const baseStyles = clsx(classNames?.base, className);
 
   return (
-    <Item {...otherProps} className={slots.base({ class: baseStyles })}>
+    <AriaListBoxItem {...otherProps} className={slots.base({ class: baseStyles })}>
       {({ isSelected, isDisabled, selectionMode }) => {
         const selectedContent = () => {
           const defaultIcon = <ListBoxSelectedIcon isSelected={isSelected} />;
@@ -116,6 +118,6 @@ export function ListBoxItem(props: ListBoxItemProps) {
           </>
         );
       }}
-    </Item>
+    </AriaListBoxItem>
   );
 }

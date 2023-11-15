@@ -1,3 +1,5 @@
+'use client';
+
 import { useImage } from '@alice-ui/hooks';
 import { clsx, dataAttr } from '@alice-ui/shared-utils';
 import { AvatarSlots, AvatarVariantProps, SlotsToClasses, avatar } from '@alice-ui/theme';

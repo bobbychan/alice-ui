@@ -1,3 +1,5 @@
+'use client';
+
 import { clsx } from '@alice-ui/shared-utils';
 import type { SlotsToClasses, TextFieldSlots } from '@alice-ui/theme';
 import { textField } from '@alice-ui/theme';
@@ -24,13 +26,25 @@ import {
   TextAreaContext,
   useContextProps,
 } from 'react-aria-components';
-import { DOMProps, forwardRefType, removeDataAttributes, useSlot } from '../_utils/utils';
+import {
+  DOMProps,
+  RACValidation,
+  forwardRefType,
+  removeDataAttributes,
+  useSlot,
+} from '../_utils/utils';
 
 export interface TextFieldProps
   extends Omit<
       AriaTextFieldProps,
-      'label' | 'placeholder' | 'description' | 'errorMessage' | 'validationState'
+      | 'label'
+      | 'placeholder'
+      | 'description'
+      | 'errorMessage'
+      | 'validationState'
+      | 'validationBehavior'
     >,
+    RACValidation,
     DOMProps,
     SlotProps {
   /**
@@ -93,7 +107,7 @@ function TextField(props: TextFieldProps, ref: ForwardedRef<HTMLDivElement>) {
     [onValueChange],
   );
 
-  const [inputValue, setInputValue] = useControlledState<string | undefined>(
+  const [inputValue, setInputValue] = useControlledState<any>(
     props.value,
     props.defaultValue,
     handleValueChange,

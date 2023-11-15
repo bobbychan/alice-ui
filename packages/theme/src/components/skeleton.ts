@@ -18,27 +18,19 @@ const skeleton = tv({
       'relative',
       'overflow-hidden',
       'bg-content3 dark:bg-content2',
-      '!duration-300',
-      'transition-[background]',
       'data-[loaded=true]:bg-transparent',
     ],
-    content: [
-      'opacity-0',
-      'group-data-[loaded=true]:opacity-100',
-      'transition-opacity',
-      'motion-reduce:transition-none',
-      '!duration-300',
-    ],
+    content: ['opacity-0', 'group-data-[loaded=true]:opacity-100'],
   },
   variants: {
     variant: {
-      shimmer: {
+      wave: {
         base: [
           'before:opacity-100',
           'before:absolute',
           'before:inset-0',
           'before:-translate-x-full',
-          'before:animate-[shimmer_2s_infinite]',
+          'before:animate-[wave_2s_infinite]',
           'before:border-t',
           'before:border-content4/30',
           'before:bg-gradient-to-r',
@@ -56,9 +48,26 @@ const skeleton = tv({
         base: 'animate-pulse data-[loaded=true]:animate-none',
       },
     },
+
+    disableAnimation: {
+      true: {
+        base: 'before:transition-none animate-none before:animate-none',
+        content: 'transition-none',
+      },
+      false: {
+        base: [
+          'transition-[background]',
+          '!duration-300',
+          'before:transition-opacity',
+          'before:!duration-300',
+        ],
+        content: ['transition-opacity', 'motion-reduce:transition-none', '!duration-300'],
+      },
+    },
   },
   defaultVariants: {
-    variant: 'shimmer',
+    variant: 'wave',
+    disableAnimation: false,
   },
 });
 

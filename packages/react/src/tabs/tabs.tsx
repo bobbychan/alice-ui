@@ -1,3 +1,5 @@
+'use client';
+
 import { clsx } from '@alice-ui/shared-utils';
 import type { SlotsToClasses, TabsReturnType, TabsSlots, TabsVariantProps } from '@alice-ui/theme';
 import { filterVariantProps, tabs } from '@alice-ui/theme';

@@ -1,3 +1,5 @@
+'use client';
+
 import { XCircleFilledIcon } from '@alice-ui/icons';
 import { clsx } from '@alice-ui/shared-utils';
 import type { ChipSlots, ChipVariantProps, SlotsToClasses } from '@alice-ui/theme';

@@ -1,3 +1,5 @@
+'use client';
+
 import { clsx, dataAttr } from '@alice-ui/shared-utils';
 import {
   CardReturnType,

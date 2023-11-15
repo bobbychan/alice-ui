@@ -7,7 +7,12 @@ const meta: Meta<typeof Skeleton> = {
   argTypes: {
     variant: {
       control: { type: 'select' },
-      options: ['shimmer', 'pulse'],
+      options: ['wave', 'pulse'],
+    },
+    disableAnimation: {
+      control: {
+        type: 'boolean',
+      },
     },
     isLoaded: {
       control: {

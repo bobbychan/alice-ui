@@ -1,3 +1,5 @@
+'use client';
+
 import { clsx } from '@alice-ui/shared-utils';
 import { useContext } from 'react';
 import { Dialog, DialogProps } from 'react-aria-components';

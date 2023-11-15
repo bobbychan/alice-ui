@@ -283,3 +283,14 @@ export function useDOMRef<T extends HTMLElement = HTMLElement>(
 
   return domRef;
 }
+
+// Override base type to change the default.
+export interface RACValidation {
+  /**
+   * Whether to use native HTML form validation to prevent form submission
+   * when the value is missing or invalid, or mark the field as required
+   * or invalid via ARIA.
+   * @default 'native'
+   */
+  validationBehavior?: 'native' | 'aria';
+}

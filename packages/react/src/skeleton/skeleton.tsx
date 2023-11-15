@@ -13,14 +13,23 @@ export interface SkeletonProps extends HTMLAttributes<HTMLDivElement>, SkeletonV
 }
 
 function Skeleton(props: SkeletonProps, ref: ForwardedRef<HTMLDivElement>) {
-  const { isLoaded = false, className, classNames, variant, children, ...skeletonProps } = props;
+  const {
+    isLoaded = false,
+    disableAnimation = false,
+    className,
+    classNames,
+    variant,
+    children,
+    ...skeletonProps
+  } = props;
 
   const slots = useMemo(
     () =>
       skeleton({
         variant,
+        disableAnimation,
       }),
-    [variant],
+    [disableAnimation, variant],
   );
 
   const baseStyles = clsx(classNames?.base, className);
