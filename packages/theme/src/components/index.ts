@@ -10,6 +10,7 @@ export * from './input';
 export * from './link';
 export * from './menu';
 export * from './modal';
+export * from './number-input';
 export * from './popover';
 export * from './radio';
 export * from './select';

@@ -25,4 +25,4 @@ export * from './text-field';
 export * from './tooltip';
 
 export * from '@alice-ui/theme';
-export { Collection, Label, Text } from 'react-aria-components';
+export { Collection, FileTrigger, Label, Text } from 'react-aria-components';

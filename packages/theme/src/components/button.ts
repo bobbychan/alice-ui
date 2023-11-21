@@ -38,6 +38,8 @@ const button = tv({
     'subpixel-antialiased',
     'overflow-hidden',
     'tap-highlight-transparent',
+    'data-[disabled=true]:opacity-50',
+    'data-[disabled=true]:pointer-events-none',
     // focus ring
     ...dataFocusVisibleClasses,
   ],
@@ -74,9 +76,6 @@ const button = tv({
     fullWidth: {
       true: 'w-full',
     },
-    isDisabled: {
-      true: 'opacity-50 pointer-events-none',
-    },
     isInGroup: {
       true: '[&:not(:first-child):not(:last-child)]:rounded-none',
     },
@@ -93,7 +92,6 @@ const button = tv({
     size: 'md',
     color: 'default',
     fullWidth: false,
-    isDisabled: false,
     isInGroup: false,
     disableAnimation: false,
   },
