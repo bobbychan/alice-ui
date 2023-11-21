@@ -22,7 +22,6 @@ function IconButton(props: IconButtonProps, ref: ForwardedRef<HTMLButtonElement>
     color,
     size = 'md',
     radius,
-    isDisabled,
     disableAnimation,
     className,
     children,
@@ -37,11 +36,10 @@ function IconButton(props: IconButtonProps, ref: ForwardedRef<HTMLButtonElement>
         color,
         variant,
         radius,
-        isDisabled,
         disableAnimation,
         className,
       }),
-    [className, color, disableAnimation, isDisabled, radius, size, variant],
+    [className, color, disableAnimation, radius, size, variant],
   );
 
   const element = children;

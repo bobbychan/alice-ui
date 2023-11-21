@@ -58,7 +58,6 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
     color,
     size = 'md',
     radius,
-    isDisabled,
     fullWidth,
     isLoading,
     spinner = <Spinner color="current" size="sm" {...props.spinnerProps} />,
@@ -90,11 +89,10 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
         variant,
         radius,
         fullWidth,
-        isDisabled,
         disableAnimation,
         className,
       }),
-    [className, color, disableAnimation, fullWidth, isDisabled, radius, size, variant],
+    [className, color, disableAnimation, fullWidth, radius, size, variant],
   );
 
   const getIconClone = (icon: ReactNode) =>
