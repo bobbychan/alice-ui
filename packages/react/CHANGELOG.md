@@ -1,5 +1,14 @@
 # @alice-ui/react
 
+## 1.0.13
+
+### Patch Changes
+
+- [#40](https://github.com/bobbychan/alice-ui/pull/40) [`6cb72ff`](https://github.com/bobbychan/alice-ui/commit/6cb72ffb6df4dffaeb654b46ae92c2b3ecf09ce1) Thanks [@bobbychan](https://github.com/bobbychan)! - add number input component
+
+- Updated dependencies [[`6cb72ff`](https://github.com/bobbychan/alice-ui/commit/6cb72ffb6df4dffaeb654b46ae92c2b3ecf09ce1)]:
+  - @alice-ui/theme@1.0.6
+
 ## 1.0.12
 
 ### Patch Changes
