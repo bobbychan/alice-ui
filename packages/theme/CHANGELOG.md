@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.7
+
+### Patch Changes
+
+- [#42](https://github.com/bobbychan/alice-ui/pull/42) [`a2ee17f`](https://github.com/bobbychan/alice-ui/commit/a2ee17f2f73337c1474eba841621a607c200fe59) Thanks [@bobbychan](https://github.com/bobbychan)! - Add CloseButton component
+
 ## 1.0.6
 
 ### Patch Changes
