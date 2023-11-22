@@ -97,11 +97,11 @@ const Template = (args: ModalProps) => {
                 <TemplateContent />
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="flat" onPress={close}>
+                <Button color="danger" variant="light" onPress={close}>
                   Close
                 </Button>
                 <Button color="primary" onPress={close}>
-                  Sign in
+                  Action
                 </Button>
               </ModalFooter>
             </>
