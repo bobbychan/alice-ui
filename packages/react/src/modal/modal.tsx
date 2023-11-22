@@ -11,7 +11,7 @@ import { modal } from '@alice-ui/theme';
 import type { HTMLMotionProps } from 'framer-motion';
 import { AnimatePresence, motion } from 'framer-motion';
 import { createContext, useMemo } from 'react';
-import type { ModalOverlayProps } from 'react-aria-components';
+import type { ModalOverlayProps, ModalRenderProps } from 'react-aria-components';
 import { Modal as AriaModal, ModalOverlay } from 'react-aria-components';
 import { scaleInOut } from './modal-transition';
 
@@ -29,6 +29,7 @@ export interface ModalProps extends ModalOverlayProps, ModalVariantProps {
 interface InternalModalContextValue {
   slots: ModalReturnType;
   classNames?: SlotsToClasses<ModalSlots>;
+  state: ModalRenderProps['state'];
 }
 
 export const InternalModalContext = createContext<InternalModalContextValue>(
@@ -58,9 +59,9 @@ function Modal(props: ModalProps) {
   const baseStyles = clsx(classNames?.base, className);
 
   return (
-    <InternalModalContext.Provider value={{ slots, classNames }}>
-      <ModalOverlay {...otherProps} className={slots.backdrop({ class: classNames?.backdrop })}>
-        {({ state }) => (
+    <ModalOverlay {...otherProps} className={slots.backdrop({ class: classNames?.backdrop })}>
+      {({ state }) => (
+        <InternalModalContext.Provider value={{ slots, classNames, state }}>
           <AnimatePresence>
             {state.isOpen && (
               <motion.div
@@ -76,9 +77,9 @@ function Modal(props: ModalProps) {
               </motion.div>
             )}
           </AnimatePresence>
-        )}
-      </ModalOverlay>
-    </InternalModalContext.Provider>
+        </InternalModalContext.Provider>
+      )}
+    </ModalOverlay>
   );
 }
 

@@ -54,9 +54,9 @@ const button = tv({
       ghost: 'border-2 bg-transparent',
     },
     size: {
-      sm: 'px-3 min-w-[4rem] h-8 text-xs gap-1 rounded-[6px]',
-      md: 'px-4 min-w-[5rem] h-10 text-sm gap-2 rounded-[8px]',
-      lg: 'px-6 min-w-[6rem] h-12 text-base gap-3 rounded-[12px]',
+      sm: ['px-3', 'min-w-[4rem]', 'h-8', 'text-xs', 'gap-1', 'rounded-[6px]'],
+      md: ['px-4', 'min-w-[5rem]', 'h-10', 'text-sm', 'gap-2', 'rounded-[8px]'],
+      lg: ['px-6', 'min-w-[6rem]', 'h-12', 'text-base', 'gap-3', 'rounded-[12px]'],
     },
     color: {
       default: '',
@@ -342,17 +342,17 @@ const button = tv({
     {
       isIconOnly: true,
       size: 'sm',
-      class: 'min-w-[32px] w-8 h-8 text-[20px]',
+      class: ['min-w-[2rem]', 'w-8', 'h-8', 'text-[1.25rem]'],
     },
     {
       isIconOnly: true,
       size: 'md',
-      class: 'min-w-[40px] w-10 h-10 text-[24px]',
+      class: ['min-w-[2.5rem]', 'w-10', 'h-10', 'text-[1.5rem]'],
     },
     {
       isIconOnly: true,
       size: 'lg',
-      class: 'min-w-[48px] w-12 h-12 text-[28px]',
+      class: ['min-w-[3rem]', 'w-12', 'h-12', 'text-[1.75rem]'],
     },
   ],
 });
@@ -379,7 +379,31 @@ const buttonGroup = tv({
   },
 });
 
+/**
+ * CloseButton component
+ *
+ * const styles = closeButton({...})
+ */
+const closeButton = tv({
+  extend: button,
+  compoundVariants: [
+    {
+      size: 'sm',
+      class: ['min-w-[1.5rem]', 'w-6', 'h-6', 'text-[0.75rem]', 'gap-0', 'px-0'],
+    },
+    {
+      size: 'md',
+      class: ['min-w-[2rem]', 'w-8', 'h-8', 'text-[1rem]', 'gap-0', 'px-0'],
+    },
+    {
+      size: 'lg',
+      class: ['min-w-[2.5rem]', 'w-10', 'h-10', 'text-[1.25rem]', 'gap-0', 'px-0'],
+    },
+  ],
+});
+
 export type ButtonVariantProps = VariantProps<typeof button>;
 export type ButtonGroupVariantProps = VariantProps<typeof buttonGroup>;
+export type CloseButtonVariantProps = VariantProps<typeof closeButton>;
 
-export { button, buttonGroup };
+export { button, buttonGroup, closeButton };

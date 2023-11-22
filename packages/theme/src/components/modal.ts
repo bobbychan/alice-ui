@@ -21,6 +21,19 @@ import { tv } from '../utils/tv';
 
 const modal = tv({
   slots: {
+    base: [
+      'flex',
+      'flex-col',
+      'relative',
+      'z-50',
+      'w-full',
+      'box-border',
+      'bg-content1',
+      'outline-none',
+      'm-1',
+      'sm:mx-6',
+      'sm:my-16',
+    ],
     wrapper: [
       'flex',
       'w-screen',
@@ -47,24 +60,12 @@ const modal = tv({
       'sm:[--slide-enter:0px]',
       'sm:[--slide-exit:0px]',
     ],
-    base: [
-      'flex',
-      'flex-col',
-      'relative',
-      'z-50',
-      'w-full',
-      'box-border',
-      'bg-content1',
-      'outline-none',
-      'm-1',
-      'sm:mx-6',
-      'sm:my-16',
-    ],
     backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-screen'],
     dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden'],
-    header: 'flex py-4 px-6 flex-initial text-lg font-semibold',
-    body: 'flex flex-1 flex-col gap-3 px-6 py-2 overflow-y-auto',
-    footer: 'flex flex-row gap-2 px-6 py-4 justify-end',
+    header: ['flex', 'py-4', 'px-6', 'flex-initial', 'text-lg', 'font-semibold'],
+    body: ['flex', 'flex-1', 'flex-col', 'gap-3', 'px-6', 'py-2', 'overflow-y-auto'],
+    footer: ['flex', 'flex-row', 'gap-2', 'px-6', 'py-4', 'justify-end'],
+    closeButton: ['absolute', 'top-2', 'right-2'],
   },
   variants: {
     size: {

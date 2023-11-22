@@ -1,5 +1,6 @@
 import { Modal } from './modal';
 import { ModalBody } from './modal-body';
+import { ModalCloseButton } from './modal-close-button';
 import { ModalContent } from './modal-content';
 import { ModalFooter } from './modal-footer';
 import { ModalHeader } from './modal-header';
@@ -15,4 +16,4 @@ export { useDisclosure } from './use-disclosure';
 export { ModalContext } from 'react-aria-components';
 
 // export component
-export { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader };
+export { Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader };
