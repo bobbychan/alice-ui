@@ -13,7 +13,7 @@ export interface IconButtonProps
    * A11y: A label that describes the button
    */
   'aria-label': string;
-  className: string;
+  className?: string;
 }
 
 function IconButton(props: IconButtonProps, ref: ForwardedRef<HTMLButtonElement>) {

@@ -2,14 +2,18 @@ import { modal } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import { Button } from '../src/button';
-import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, ModalProps } from '../src/modal';
+import {
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalProps,
+} from '../src/modal';
 
 const TemplateContent = () => (
   <>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non risus
-      hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor quam.
-    </p>
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar risus non risus
       hendrerit venenatis. Pellentesque sit amet hendrerit risus, sed porttitor quam.
@@ -87,6 +91,7 @@ const Template = (args: ModalProps) => {
         <ModalContent>
           {({ close }) => (
             <>
+              <ModalCloseButton />
               <ModalHeader>Modal Title</ModalHeader>
               <ModalBody>
                 <TemplateContent />

@@ -17,6 +17,7 @@ function ModalHeader(props: ModalHeaderProps) {
 
   return (
     <Heading
+      slot="title"
       className={slots.header({ class: clsx(classNames?.header, className) })}
       {...otherProps}
     >
