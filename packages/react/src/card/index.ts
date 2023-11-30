@@ -1,3 +1,5 @@
+'use client';
+
 import { Card } from './card';
 import { CardBody } from './card-body';
 import { CardFooter } from './card-footer';

@@ -1,3 +1,5 @@
+'use client';
+
 import { Checkbox } from './checkbox';
 import { CheckboxGroup } from './checkbox-group';
 import { CheckboxIcon } from './checkbox-icon';

@@ -1,3 +1,5 @@
+'use client';
+
 import { Label, Text } from 'react-aria-components';
 import { TextField } from './text-field';
 

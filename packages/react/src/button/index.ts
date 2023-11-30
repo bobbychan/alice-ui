@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from './button';
 import { CloseButton } from './close-button';
 import { IconButton } from './icon-button';

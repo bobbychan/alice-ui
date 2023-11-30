@@ -1,3 +1,5 @@
+'use client';
+
 // export types
 export type { TabListProps, TabPanelProps, TabProps } from 'react-aria-components';
 export type { TabsProps } from './tabs';
