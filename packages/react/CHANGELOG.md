@@ -1,5 +1,11 @@
 # @alice-ui/react
 
+## 1.0.16
+
+### Patch Changes
+
+- [#48](https://github.com/bobbychan/alice-ui/pull/48) [`7c42852`](https://github.com/bobbychan/alice-ui/commit/7c42852b5006da25f0caf8d0cbf0efe81a7ac281) Thanks [@bobbychan](https://github.com/bobbychan)! - Add use client
+
 ## 1.0.15
 
 ### Patch Changes
