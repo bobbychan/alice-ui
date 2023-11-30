@@ -1,3 +1,5 @@
+'use client';
+
 import { Chip } from './chip';
 
 // export types

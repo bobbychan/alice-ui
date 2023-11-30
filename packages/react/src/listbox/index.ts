@@ -1,3 +1,5 @@
+'use client';
+
 import { ListBox } from './listbox';
 import { ListBoxItem } from './listbox-item';
 import { ListBoxSection } from './listbox-section';
