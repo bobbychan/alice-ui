@@ -8,14 +8,11 @@ import { ModalFooter } from './modal-footer';
 import { ModalHeader } from './modal-header';
 
 // export types
-export type { ModalOverlayProps } from 'react-aria-components';
 export type { ModalProps } from './modal';
+export type { UseDisclosureProps, UseDisclosureReturn } from './use-disclosure';
 
 // export hooks
 export { useDisclosure } from './use-disclosure';
-
-// export context
-export { ModalContext } from 'react-aria-components';
 
 // export component
 export { Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader };
