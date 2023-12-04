@@ -1,5 +1,11 @@
 # @alice-ui/react
 
+## 1.0.17
+
+### Patch Changes
+
+- [#50](https://github.com/bobbychan/alice-ui/pull/50) [`105cc10`](https://github.com/bobbychan/alice-ui/commit/105cc106ffe3761ec785e738f1eb3a58732f14dd) Thanks [@bobbychan](https://github.com/bobbychan)! - export useDisclosure type
+
 ## 1.0.16
 
 ### Patch Changes
