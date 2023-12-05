@@ -2,6 +2,7 @@
 
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { FC } from 'react';
+import { useIsSSR } from 'react-aria';
 import { RippleType } from './use-ripple';
 
 export interface RippleProps {
@@ -16,6 +17,12 @@ const clamp = (value: number, min: number, max: number) => {
 };
 
 const Ripple: FC<RippleProps> = ({ ripples = [], motionProps, color = 'currentColor', style }) => {
+  const isSSR = useIsSSR();
+
+  if (isSSR) {
+    return null;
+  }
+
   return (
     <>
       {ripples.map((ripple) => {

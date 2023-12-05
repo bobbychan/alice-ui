@@ -9,10 +9,13 @@ export interface ModalContentProps extends DialogProps {}
 
 function ModalContent(props: ModalContentProps) {
   const { slots, classNames } = useContext(InternalModalContext);
-  const { className, children } = props;
+  const { className, children, ...otherProps } = props;
 
   return (
-    <Dialog className={slots.dialog({ class: clsx(classNames?.dialog, className) })}>
+    <Dialog
+      className={slots.dialog({ class: clsx(classNames?.dialog, className) })}
+      {...otherProps}
+    >
       {children}
     </Dialog>
   );
