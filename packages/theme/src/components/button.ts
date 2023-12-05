@@ -404,6 +404,6 @@ const closeButton = tv({
 
 export type ButtonVariantProps = VariantProps<typeof button>;
 export type ButtonGroupVariantProps = VariantProps<typeof buttonGroup>;
-export type CloseButtonVariantProps = VariantProps<typeof closeButton>;
+export type CloseButtonVariantProps = VariantProps<typeof closeButton> & ButtonVariantProps;
 
 export { button, buttonGroup, closeButton };
