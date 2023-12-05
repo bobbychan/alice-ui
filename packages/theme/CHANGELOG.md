@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.9
+
+### Patch Changes
+
+- [#52](https://github.com/bobbychan/alice-ui/pull/52) [`02d0964`](https://github.com/bobbychan/alice-ui/commit/02d0964f148f40f404b307e3d0475433f4d9616c) Thanks [@bobbychan](https://github.com/bobbychan)! - Fixed the problem of modal-content not passing parameters
+
 ## 1.0.8
 
 ### Patch Changes
