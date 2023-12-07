@@ -4,7 +4,11 @@ import { XMarkIcon } from '@alice-ui/icons';
 import { ForwardedRef, forwardRef } from 'react';
 import { IconButton, IconButtonProps } from './icon-button';
 
-function CloseButton(props: IconButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
+export interface CloseButtonProps extends Omit<IconButtonProps, 'aria-label'> {
+  'aria-label'?: string;
+}
+
+function CloseButton(props: CloseButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
   const { children = <XMarkIcon />, ...otherProps } = props;
 
   const ariaLabel = props['aria-label'] || 'Close';
