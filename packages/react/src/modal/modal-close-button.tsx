@@ -20,6 +20,7 @@ function ModalCloseButton(props: ModalCloseButtonProps, ref: ForwardedRef<HTMLBu
       onPress={callAllHandlers(onPress, () => state.close())}
       radius="full"
       variant="light"
+      size="sm"
       {...otherProps}
     >
       {children}
