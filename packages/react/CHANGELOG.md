@@ -1,5 +1,14 @@
 # @alice-ui/react
 
+## 1.0.19
+
+### Patch Changes
+
+- [#54](https://github.com/bobbychan/alice-ui/pull/54) [`488397f`](https://github.com/bobbychan/alice-ui/commit/488397fba0f0598d783aed1c9b742c221ac2cb31) Thanks [@bobbychan](https://github.com/bobbychan)! - Add xs attribute to size for button and input
+
+- Updated dependencies [[`488397f`](https://github.com/bobbychan/alice-ui/commit/488397fba0f0598d783aed1c9b742c221ac2cb31)]:
+  - @alice-ui/theme@1.0.10
+
 ## 1.0.18
 
 ### Patch Changes
