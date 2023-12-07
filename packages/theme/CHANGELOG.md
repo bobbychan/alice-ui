@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.11
+
+### Patch Changes
+
+- [#56](https://github.com/bobbychan/alice-ui/pull/56) [`9c9d9b4`](https://github.com/bobbychan/alice-ui/commit/9c9d9b47eabb295cf0b5fd763f0e40890f011cd6) Thanks [@bobbychan](https://github.com/bobbychan)! - update close button
+
 ## 1.0.10
 
 ### Patch Changes
