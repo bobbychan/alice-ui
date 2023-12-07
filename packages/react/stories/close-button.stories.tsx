@@ -5,7 +5,6 @@ import { CloseButton } from '../src/button';
 const meta: Meta<typeof CloseButton> = {
   title: 'Components/CloseButton',
   component: CloseButton,
-  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: {
@@ -23,7 +22,7 @@ const meta: Meta<typeof CloseButton> = {
       control: {
         type: 'select',
       },
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg'],
     },
     radius: {
       control: {
@@ -89,6 +88,7 @@ export const Sizes: Story = {
   },
   render: (args) => (
     <div className="flex items-center gap-4">
+      <CloseButton size="xs" {...args} />
       <CloseButton size="sm" {...args} />
       <CloseButton size="md" {...args} color="primary" />
       <CloseButton size="lg" {...args} color="secondary" />

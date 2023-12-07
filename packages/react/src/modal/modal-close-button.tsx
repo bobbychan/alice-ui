@@ -6,9 +6,7 @@ import { CloseButton, CloseButtonProps } from '../button';
 
 import { InternalModalContext } from './modal';
 
-export type ModalCloseButtonProps = CloseButtonProps;
-
-function ModalCloseButton(props: ModalCloseButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
+function ModalCloseButton(props: CloseButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
   const { children, className, onPress, ...otherProps } = props;
 
   const { slots, classNames, state } = useContext(InternalModalContext);
@@ -20,6 +18,7 @@ function ModalCloseButton(props: ModalCloseButtonProps, ref: ForwardedRef<HTMLBu
       onPress={callAllHandlers(onPress, () => state.close())}
       radius="full"
       variant="light"
+      size="sm"
       {...otherProps}
     >
       {children}

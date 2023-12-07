@@ -386,31 +386,7 @@ const buttonGroup = tv({
   },
 });
 
-/**
- * CloseButton component
- *
- * const styles = closeButton({...})
- */
-const closeButton = tv({
-  extend: button,
-  compoundVariants: [
-    {
-      size: 'sm',
-      class: ['min-w-[1.5rem]', 'w-6', 'h-6', 'text-[0.75rem]', 'gap-0', 'px-0'],
-    },
-    {
-      size: 'md',
-      class: ['min-w-[2rem]', 'w-8', 'h-8', 'text-[1rem]', 'gap-0', 'px-0'],
-    },
-    {
-      size: 'lg',
-      class: ['min-w-[2.5rem]', 'w-10', 'h-10', 'text-[1.25rem]', 'gap-0', 'px-0'],
-    },
-  ],
-});
-
 export type ButtonVariantProps = VariantProps<typeof button>;
 export type ButtonGroupVariantProps = VariantProps<typeof buttonGroup>;
-export type CloseButtonVariantProps = VariantProps<typeof closeButton> & ButtonVariantProps;
 
-export { button, buttonGroup, closeButton };
+export { button, buttonGroup };
