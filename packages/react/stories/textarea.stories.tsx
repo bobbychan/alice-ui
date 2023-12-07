@@ -1,6 +1,5 @@
 import { input } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { TextArea, TextAreaProps } from '../src/input';
 
 const meta: Meta<typeof TextArea> = {
@@ -64,5 +63,19 @@ export const Disabled = {
     defaultValue: 'input@example.com',
     variant: 'faded',
     disabled: true,
+  },
+};
+
+export const Sizes: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      <TextArea {...args} size="sm" />
+      <TextArea {...args} size="md" />
+      <TextArea {...args} size="lg" />
+    </div>
+  ),
+  args: {
+    placeholder: 'Enter your description',
+    className: 'max-w-[240px]',
   },
 };
