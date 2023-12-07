@@ -1,12 +1,10 @@
 import { CheckCircleIcon, ExclamationCircleFilledIcon, InfoIcon } from '@alice-ui/icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { IconButton } from '../src/button';
 
 const meta: Meta<typeof IconButton> = {
   title: 'Components/IconButton',
   component: IconButton,
-  tags: ['autodocs'],
   argTypes: {
     variant: {
       control: {
@@ -24,7 +22,7 @@ const meta: Meta<typeof IconButton> = {
       control: {
         type: 'select',
       },
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg'],
     },
     radius: {
       control: {
@@ -78,4 +76,26 @@ export const Colors: Story = {
       </IconButton>
     </div>
   ),
+};
+
+export const Sizes: Story = {
+  render: (args) => (
+    <div className="flex items-center gap-4">
+      <IconButton {...args} size="xs">
+        <CheckCircleIcon />
+      </IconButton>
+      <IconButton {...args} size="sm">
+        <CheckCircleIcon />
+      </IconButton>
+      <IconButton {...args} size="md">
+        <CheckCircleIcon />
+      </IconButton>
+      <IconButton {...args} size="lg">
+        <CheckCircleIcon />
+      </IconButton>
+    </div>
+  ),
+  args: {
+    'aria-label': 'Button',
+  },
 };

@@ -1,6 +1,5 @@
 import { CheckCircleIcon, ExclamationCircleFilledIcon, InfoIcon } from '@alice-ui/icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Button } from '../src/button';
 
 const meta: Meta<typeof Button> = {
@@ -24,7 +23,7 @@ const meta: Meta<typeof Button> = {
       control: {
         type: 'select',
       },
-      options: ['sm', 'md', 'lg'],
+      options: ['xs', 'sm', 'md', 'lg'],
     },
     spinnerPlacement: {
       control: {
@@ -127,6 +126,9 @@ export const Variants: Story = {
 export const Sizes: Story = {
   render: (args) => (
     <div className="flex items-center gap-4">
+      <Button {...args} size="xs">
+        Smaller
+      </Button>
       <Button {...args} size="sm">
         Small
       </Button>
