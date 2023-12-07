@@ -2,13 +2,11 @@
 
 import { callAllHandlers, clsx } from '@alice-ui/shared-utils';
 import { ForwardedRef, forwardRef, useContext } from 'react';
-import { CloseButton, CloseButtonProps } from '../button';
+import { CloseButton, IconButtonProps } from '../button';
 
 import { InternalModalContext } from './modal';
 
-export type ModalCloseButtonProps = CloseButtonProps;
-
-function ModalCloseButton(props: ModalCloseButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
+function ModalCloseButton(props: IconButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
   const { children, className, onPress, ...otherProps } = props;
 
   const { slots, classNames, state } = useContext(InternalModalContext);
