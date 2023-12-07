@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.10
+
+### Patch Changes
+
+- [#54](https://github.com/bobbychan/alice-ui/pull/54) [`488397f`](https://github.com/bobbychan/alice-ui/commit/488397fba0f0598d783aed1c9b742c221ac2cb31) Thanks [@bobbychan](https://github.com/bobbychan)! - Add xs attribute to size for button and input
+
 ## 1.0.9
 
 ### Patch Changes
