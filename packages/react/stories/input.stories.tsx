@@ -1,7 +1,6 @@
 import { MoonFilledIcon } from '@alice-ui/icons';
 import { input } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Input, InputProps } from '../src/input';
 
 const meta: Meta<typeof Input> = {
@@ -198,6 +197,21 @@ export const Default: Story = {
 
   args: {
     ...defaultProps,
+  },
+};
+
+export const Sizes: Story = {
+  render: (args) => (
+    <div className="flex flex-col gap-4">
+      <Input {...args} size="xs" />
+      <Input {...args} size="sm" />
+      <Input {...args} size="md" />
+      <Input {...args} size="lg" />
+    </div>
+  ),
+  args: {
+    ...defaultProps,
+    radius: 'full',
   },
 };
 

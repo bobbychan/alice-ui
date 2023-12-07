@@ -3,7 +3,6 @@
 import { clsx } from '@alice-ui/shared-utils';
 import type {
   ButtonVariantProps,
-  InputVariantProps,
   NumberInputSlots,
   NumberInputVariantProps,
   SlotsToClasses,
@@ -12,14 +11,14 @@ import { button, numberInput } from '@alice-ui/theme';
 import { ReactNode, useMemo } from 'react';
 import type { NumberFieldProps, ValidationResult } from 'react-aria-components';
 import { Button, FieldError, Group, Label, NumberField, Text } from 'react-aria-components';
-import { Input } from '../input';
+import { Input, InputProps } from '../input';
 
 export interface NumberInputProps extends NumberFieldProps, NumberInputVariantProps {
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   buttonProps?: ButtonVariantProps;
-  inputProps?: InputVariantProps;
+  inputProps?: InputProps;
   placeholder?: string;
   /**
    * The decrement content to display inside the button.

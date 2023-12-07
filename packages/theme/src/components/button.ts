@@ -54,6 +54,7 @@ const button = tv({
       ghost: 'border-2 bg-transparent',
     },
     size: {
+      xs: ['px-2', 'min-w-[3.5rem]', 'h-7', 'text-xs', 'gap-1', 'rounded-[4px]'],
       sm: ['px-3', 'min-w-[4rem]', 'h-8', 'text-xs', 'gap-1', 'rounded-[6px]'],
       md: ['px-4', 'min-w-[5rem]', 'h-10', 'text-sm', 'gap-2', 'rounded-[8px]'],
       lg: ['px-6', 'min-w-[6rem]', 'h-12', 'text-base', 'gap-3', 'rounded-[12px]'],
@@ -68,6 +69,7 @@ const button = tv({
     },
     radius: {
       none: 'rounded-none',
+      xs: 'rounded-[4px]',
       sm: 'rounded-[6px]',
       md: 'rounded-[8px]',
       lg: 'rounded-[12px]',
@@ -338,6 +340,11 @@ const button = tv({
       isInGroup: true,
       variant: ['bordered', 'ghost'],
       class: '[&:not(:first-child)]:ml-[calc(theme(borderWidth.2)*-1)]',
+    },
+    {
+      isIconOnly: true,
+      size: 'xs',
+      class: ['min-w-[1.75rem]', 'w-7', 'h-7', 'text-[1.125rem]'],
     },
     {
       isIconOnly: true,

@@ -8,13 +8,11 @@ import { tv } from '../utils/tv';
  *
  * @example
  * ```js
- * const {base, inputWrapper, input, clearButton} = input({...})
+ * const {base, input, clearButton} = input({...})
  *
  * <div className={base())}>
- *  <div className={inputWrapper()}>
  *    <input className={input()}/>
  *    <button className={clearButton()}>Clear</button>
- *  </div>
  * </div>
  * ```
  */
@@ -141,6 +139,10 @@ const input = tv({
       danger: {},
     },
     size: {
+      xs: {
+        base: ['h-7', 'min-h-[1.75rem]', 'px-1.5', 'rounded-[6px]'],
+        input: 'text-sm',
+      },
       sm: {
         base: ['h-8', 'min-h-[2rem]', 'px-2', 'rounded-small'],
         input: 'text-sm',
@@ -157,6 +159,9 @@ const input = tv({
     radius: {
       none: {
         base: 'rounded-none',
+      },
+      xs: {
+        base: 'rounded-[6px]',
       },
       sm: {
         base: 'rounded-small',
@@ -307,23 +312,30 @@ const input = tv({
     // radius-full & size
     {
       radius: 'full',
+      size: ['xs'],
+      class: {
+        base: 'px-2.5',
+      },
+    },
+    {
+      radius: 'full',
       size: ['sm'],
       class: {
-        inputWrapper: 'px-3',
+        base: 'px-3',
       },
     },
     {
       radius: 'full',
       size: 'md',
       class: {
-        inputWrapper: 'px-4',
+        base: 'px-4',
       },
     },
     {
       radius: 'full',
       size: 'lg',
       class: {
-        inputWrapper: 'px-5',
+        base: 'px-5',
       },
     },
   ],
