@@ -1,5 +1,11 @@
 # @alice-ui/react
 
+## 1.0.21
+
+### Patch Changes
+
+- [#58](https://github.com/bobbychan/alice-ui/pull/58) [`d2309be`](https://github.com/bobbychan/alice-ui/commit/d2309bebf7ad8ec39dfed791b31a8929b4336ea4) Thanks [@bobbychan](https://github.com/bobbychan)! - fix select ref
+
 ## 1.0.20
 
 ### Patch Changes
