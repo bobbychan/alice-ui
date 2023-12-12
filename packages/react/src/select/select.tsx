@@ -153,6 +153,8 @@ function Select<T extends object>(props: SelectProps<T>, ref: ForwardedRef<HTMLD
   );
 }
 
-const _Select = forwardRef(Select);
+const _Select = forwardRef(Select) as <T extends object>(
+  props: SelectProps<T> & { ref?: ForwardedRef<HTMLDivElement> },
+) => ReactElement;
 
 export { _Select as Select };
