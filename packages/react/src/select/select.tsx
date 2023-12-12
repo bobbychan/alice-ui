@@ -3,7 +3,7 @@
 import { ChevronDownIcon } from '@alice-ui/icons';
 import { clsx } from '@alice-ui/shared-utils';
 import { SelectSlots, SelectVariantProps, SlotsToClasses, select } from '@alice-ui/theme';
-import { ReactElement, ReactNode, cloneElement, useMemo } from 'react';
+import { ForwardedRef, ReactElement, ReactNode, cloneElement, forwardRef, useMemo } from 'react';
 import type { Placement } from 'react-aria';
 import type { SelectProps as AriaSelectProps, PopoverProps } from 'react-aria-components';
 import {
@@ -63,7 +63,7 @@ export interface SelectProps<T extends object>
   classNames?: SlotsToClasses<SelectSlots>;
 }
 
-export function Select<T extends object>(props: SelectProps<T>) {
+function Select<T extends object>(props: SelectProps<T>, ref: ForwardedRef<HTMLDivElement>) {
   const {
     children,
     className,
@@ -114,7 +114,7 @@ export function Select<T extends object>(props: SelectProps<T>) {
   }, [isLoading, clonedIcon, spinnerProps, slots, classNames?.spinner]);
 
   return (
-    <AriaSelect className={slots.base({ class: baseStyles })} {...otherProps}>
+    <AriaSelect ref={ref} className={slots.base({ class: baseStyles })} {...otherProps}>
       {label && <Label className={slots.label({ class: classNames?.label })}>{label}</Label>}
       <div className={slots.mainWrapper({ class: classNames?.mainWrapper })}>
         <Button className={slots.trigger({ class: classNames?.trigger })}>
@@ -152,3 +152,7 @@ export function Select<T extends object>(props: SelectProps<T>) {
     </AriaSelect>
   );
 }
+
+const _Select = forwardRef(Select);
+
+export { _Select as Select };
