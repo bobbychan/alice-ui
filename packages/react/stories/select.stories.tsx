@@ -1,5 +1,6 @@
 import { button, select } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { Collection } from 'react-aria-components';
 import { Select, SelectItem, SelectProps, SelectSection } from '../src/select';
 

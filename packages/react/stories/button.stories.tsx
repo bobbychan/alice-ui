@@ -1,5 +1,6 @@
 import { CheckCircleIcon, ExclamationCircleFilledIcon, InfoIcon } from '@alice-ui/icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { Button } from '../src/button';
 
 const meta: Meta<typeof Button> = {

@@ -1,5 +1,6 @@
 import { MinusIcon, PlusIcon } from '@alice-ui/icons';
 import type { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { CloseButton } from '../src/button';
 
 const meta: Meta<typeof CloseButton> = {

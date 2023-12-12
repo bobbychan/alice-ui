@@ -1,5 +1,6 @@
 import { numberInput } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
+import React from 'react';
 import { Form } from 'react-aria-components';
 import { Button } from '../src/button';
 import { NumberInput, NumberInputProps } from '../src/number-input';
