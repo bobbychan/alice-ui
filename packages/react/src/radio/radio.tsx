@@ -38,7 +38,7 @@ export interface RadioProps extends AriaRadioProps, RadioVariantProps {
   className?: string;
 }
 
-function Radio(props: RadioProps, ref: ForwardedRef<HTMLInputElement>) {
+function Radio(props: RadioProps, ref: ForwardedRef<HTMLLabelElement>) {
   const groupThemeContext = useContext(RadioGroupThemeContext);
 
   const {

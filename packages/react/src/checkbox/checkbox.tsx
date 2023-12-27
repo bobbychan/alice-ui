@@ -29,7 +29,7 @@ export interface CheckboxProps extends AriaCheckboxProps, CheckboxVariantProps {
   className?: string;
 }
 
-function Checkbox(props: CheckboxProps, ref: ForwardedRef<HTMLInputElement>) {
+function Checkbox(props: CheckboxProps, ref: ForwardedRef<HTMLLabelElement>) {
   const groupThemeContext = useContext(CheckboxGroupThemeContext);
 
   const {
