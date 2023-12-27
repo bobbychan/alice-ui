@@ -21,6 +21,7 @@ export * from './info';
 export * from './info-filled';
 export * from './list';
 export * from './map-pin';
+export * from './map-pin-filled';
 export * from './minus';
 export * from './moon';
 export * from './moon-filled';

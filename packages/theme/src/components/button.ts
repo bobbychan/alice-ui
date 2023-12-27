@@ -86,7 +86,8 @@ const button = tv({
     },
     disableAnimation: {
       true: '!transition-none',
-      false: 'active:scale-[0.97] transition-transform-colors motion-reduce:transition-none',
+      false:
+        'data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none',
     },
   },
   defaultVariants: {
@@ -257,32 +258,32 @@ const button = tv({
     {
       variant: 'light',
       color: 'default',
-      class: [colorVariants.light.default, 'hover:bg-default/40'],
+      class: [colorVariants.light.default, 'data-[hovered=true]:bg-default/40'],
     },
     {
       variant: 'light',
       color: 'primary',
-      class: [colorVariants.light.primary, 'hover:bg-primary/20'],
+      class: [colorVariants.light.primary, 'data-[hovered=true]:bg-primary/20'],
     },
     {
       variant: 'light',
       color: 'secondary',
-      class: [colorVariants.light.secondary, 'hover:bg-secondary/20'],
+      class: [colorVariants.light.secondary, 'data-[hovered=true]:bg-secondary/20'],
     },
     {
       variant: 'light',
       color: 'success',
-      class: [colorVariants.light.success, 'hover:bg-success/20'],
+      class: [colorVariants.light.success, 'data-[hovered=true]:bg-success/20'],
     },
     {
       variant: 'light',
       color: 'warning',
-      class: [colorVariants.light.warning, 'hover:bg-warning/20'],
+      class: [colorVariants.light.warning, 'data-[hovered=true]:bg-warning/20'],
     },
     {
       variant: 'light',
       color: 'danger',
-      class: [colorVariants.light.danger, 'hover:bg-danger/20'],
+      class: [colorVariants.light.danger, 'data-[hovered=true]:bg-danger/20'],
     },
     // ghost / color
     {
