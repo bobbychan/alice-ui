@@ -27,7 +27,7 @@ export interface SwitchProps extends AriaSwitchProps, ToggleVariantProps {
   className?: string;
 }
 
-function Switch(props: SwitchProps, ref: ForwardedRef<HTMLInputElement>) {
+function Switch(props: SwitchProps, ref: ForwardedRef<HTMLLabelElement>) {
   const { children, classNames, className, color, size, thumbIcon, ...otherProps } = props;
 
   const slots = useMemo(() => toggle({ color, size }), [color, size]);
