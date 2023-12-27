@@ -1,5 +1,11 @@
 # @alice-ui/icons
 
+## 1.0.6
+
+### Patch Changes
+
+- [#60](https://github.com/bobbychan/alice-ui/pull/60) [`6b43adafee58c037a162d369a3d3a2da5ad5774f`](https://github.com/bobbychan/alice-ui/commit/6b43adafee58c037a162d369a3d3a2da5ad5774f) Thanks [@bobbychan](https://github.com/bobbychan)! - upgrade dependencies
+
 ## 1.0.5
 
 ### Patch Changes
