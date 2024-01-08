@@ -5,6 +5,7 @@ export * from './card';
 export * from './checkbox';
 export * from './chip';
 export * from './divider';
+export * from './drawer';
 export * from './image';
 export * from './input';
 export * from './link';

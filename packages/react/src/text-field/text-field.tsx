@@ -121,6 +121,7 @@ function TextField(props: TextFieldProps, ref: ForwardedRef<HTMLDivElement>) {
   let { labelProps, inputProps, descriptionProps, errorMessageProps } = useTextField<any>(
     {
       ...removeDataAttributes(props),
+      value: inputValue,
       inputElementType,
       label,
       onChange: setInputValue,

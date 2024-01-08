@@ -2,6 +2,7 @@
 
 import { clsx } from '@alice-ui/shared-utils';
 import type {
+  DrawerReturnType,
   ModalReturnType,
   ModalSlots,
   ModalVariantProps,
@@ -27,7 +28,7 @@ export interface ModalProps extends ModalOverlayProps, ModalVariantProps {
 }
 
 interface InternalModalContextValue {
-  slots: ModalReturnType;
+  slots: ModalReturnType | DrawerReturnType;
   classNames?: SlotsToClasses<ModalSlots>;
   state: ModalRenderProps['state'];
 }

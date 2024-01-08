@@ -96,7 +96,7 @@ const input = tv({
           'border-2',
           'border-default-200',
           'data-[hovered=true]:border-default-400',
-          'data-[focused=true]:border-foreground',
+          'data-[focused=true]:border-default-foreground',
           'transition-colors',
           'motion-reduce:transition-none',
           'data-[invalid=true]:!border-danger',

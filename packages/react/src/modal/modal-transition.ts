@@ -14,8 +14,8 @@ export const scaleInOut = {
       },
       y: {
         type: 'spring',
-        stiffness: 200,
-        damping: 22,
+        bounce: 0,
+        duration: 0.6,
       },
     },
   },
@@ -24,7 +24,7 @@ export const scaleInOut = {
     y: 'var(--slide-exit)',
     opacity: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.4,
       ease: [0.36, 0.66, 0.4, 1],
     },
   },
