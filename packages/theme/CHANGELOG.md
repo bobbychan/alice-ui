@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.13
+
+### Patch Changes
+
+- [#62](https://github.com/bobbychan/alice-ui/pull/62) [`a704e7ed7258996c03c0768297df47ec54b51b45`](https://github.com/bobbychan/alice-ui/commit/a704e7ed7258996c03c0768297df47ec54b51b45) Thanks [@bobbychan](https://github.com/bobbychan)! - Add Drawer component
+
 ## 1.0.12
 
 ### Patch Changes
