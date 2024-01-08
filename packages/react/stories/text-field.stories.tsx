@@ -1,59 +1,58 @@
-// import { Meta, StoryObj } from '@storybook/react';
-// import React, { useCallback } from 'react';
-// import { Input, TextArea } from '../src';
-// // import { TextField, TextFieldProps } from '../src/text-field';
-// import { dataAttr } from '@alice-ui/shared-utils';
-// import { useControlledState } from '@react-stately/utils';
-// import { TextField, TextFieldProps } from 'react-aria-components';
+import { Meta, StoryObj } from '@storybook/react';
+import { useCallback } from 'react';
+import { Input } from '../src';
+// import { TextField, TextFieldProps } from '../src/text-field';
+import { dataAttr } from '@alice-ui/shared-utils';
+import { useControlledState } from '@react-stately/utils';
+import { TextField, TextFieldProps } from 'react-aria-components';
 
-// const meta: Meta<typeof TextField> = {
-//   title: 'Components/TextField',
-//   component: TextField,
-//   argTypes: {
-//     orientation: {
-//       control: {
-//         type: 'select',
-//       },
-//       options: ['vertical', 'horizontal'],
-//     },
-//   },
-//   decorators: [
-//     (Story) => (
-//       <div className="flex h-screen w-screen items-center justify-center">
-//         <Story />
-//       </div>
-//     ),
-//   ],
-// };
+const meta: Meta<typeof TextField> = {
+  title: 'Components/TextField',
+  component: TextField,
+  argTypes: {
+    // orientation: {
+    //   control: {
+    //     type: 'select',
+    //   },
+    //   options: ['vertical', 'horizontal'],
+    // },
+  },
+  decorators: [
+    (Story) => (
+      <div className="flex h-screen w-screen items-center justify-center">
+        <Story />
+      </div>
+    ),
+  ],
+};
 
-// export default meta;
-// type Story = StoryObj<typeof TextField>;
+export default meta;
+type Story = StoryObj<typeof TextField>;
 
-// const InputTemplate = (args: TextFieldProps) => {
-//   const handleValueChange = useCallback((value: string | undefined) => {
-//     console.log(value, 'xxx');
+const InputTemplate = (args: TextFieldProps) => {
+  const handleValueChange = useCallback((value: string | undefined) => {
+    console.log(value, 'val');
+    // onValueChange(value ?? '');
+  }, []);
 
-//     // onValueChange(value ?? '');
-//   }, []);
+  const [inputValue, setInputValue] = useControlledState<any>(
+    args.value,
+    args.defaultValue,
+    handleValueChange,
+  );
 
-//   const [inputValue, setInputValue] = useControlledState<any>(
-//     args.value,
-//     args.defaultValue,
-//     handleValueChange,
-//   );
-
-//   return (
-//     <TextField {...args} value={inputValue} onChange={setInputValue} label="First name">
-//       <Input
-//         data-filled={dataAttr(!!inputValue)}
-//         onClear={() => {
-//           setInputValue('');
-//           console.log('onclear');
-//         }}
-//       />
-//     </TextField>
-//   );
-// };
+  return (
+    <TextField {...args} value={inputValue} onChange={setInputValue}>
+      <Input
+        data-filled={dataAttr(!!inputValue)}
+        onClear={() => {
+          setInputValue('');
+          console.log('onclear');
+        }}
+      />
+    </TextField>
+  );
+};
 
 // const TextAreaTemplate = (args: TextFieldProps) => (
 //   <TextField {...args} label="First name">
@@ -74,16 +73,14 @@
 //   );
 // };
 
-// export const WithInput: Story = {
-//   render: InputTemplate,
+export const WithInput: Story = {
+  render: InputTemplate,
 
-//   args: {
-//     isRequired: true,
-//     label: 'hello',
-//     // eslint-disable-next-line no-console
-//     onClear: () => console.log('input cleared'),
-//   },
-// };
+  args: {
+    isRequired: true,
+    // label: 'hello',
+  },
+};
 
 // export const WithTextArea: Story = {
 //   render: TextAreaTemplate,
