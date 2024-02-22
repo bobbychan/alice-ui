@@ -1,5 +1,3 @@
-'use client';
-
 import { clsx } from '@alice-ui/shared-utils';
 import { MenuItemSlots, MenuItemVariantProps, SlotsToClasses, menuItem } from '@alice-ui/theme';
 import { ReactNode, useContext, useMemo } from 'react';

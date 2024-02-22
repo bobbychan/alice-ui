@@ -1,5 +1,3 @@
-'use client';
-
 import { FallbackStrategy, shouldShowFallbackImage, useImage } from '@alice-ui/hooks';
 import { dataAttr } from '@alice-ui/shared-utils';
 import { ForwardedRef, ImgHTMLAttributes, forwardRef } from 'react';

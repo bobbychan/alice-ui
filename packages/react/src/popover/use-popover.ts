@@ -1,4 +1,3 @@
-'use client';
 /**
  * This code comes from @react-aria/overlays
  */

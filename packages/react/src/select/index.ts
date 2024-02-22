@@ -1,5 +1,3 @@
-'use client';
-
 import type { ListBoxItemProps, ListBoxSectionProps } from '../listbox';
 
 import { ListBoxItem, ListBoxSection } from '../listbox';

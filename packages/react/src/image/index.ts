@@ -1,5 +1,3 @@
-'use client';
-
 import { BaseImage } from './base-image';
 import { Image } from './image';
 

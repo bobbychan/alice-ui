@@ -1,5 +1,3 @@
-'use client';
-
 import { callAllHandlers, clsx } from '@alice-ui/shared-utils';
 import { ForwardedRef, forwardRef, useContext } from 'react';
 import { CloseButton, CloseButtonProps } from '../button';

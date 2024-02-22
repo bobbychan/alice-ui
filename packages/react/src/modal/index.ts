@@ -1,5 +1,3 @@
-'use client';
-
 import { Modal } from './modal';
 import { ModalBody } from './modal-body';
 import { ModalCloseButton } from './modal-close-button';

@@ -1,5 +1,3 @@
-'use client';
-
 import { BasePopover } from './base-popover';
 import { Popover, PopoverTrigger } from './popover';
 

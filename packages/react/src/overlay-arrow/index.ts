@@ -1,5 +1,3 @@
-'use client';
-
 import { OverlayArrow } from './overlay-arrow';
 
 // export types

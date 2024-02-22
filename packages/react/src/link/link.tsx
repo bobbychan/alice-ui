@@ -1,5 +1,3 @@
-'use client';
-
 import type { LinkVariantProps } from '@alice-ui/theme';
 import { link } from '@alice-ui/theme';
 import { ForwardedRef, forwardRef, useMemo } from 'react';

@@ -1,5 +1,3 @@
-'use client';
-
 import { useCallbackRef } from '@alice-ui/hooks';
 import { chain } from '@react-aria/utils';
 import { useControlledState } from '@react-stately/utils';

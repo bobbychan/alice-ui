@@ -1,5 +1,3 @@
-'use client';
-
 import { clsx } from '@alice-ui/shared-utils';
 import type { SlotsToClasses, TextFieldSlots } from '@alice-ui/theme';
 import { textField } from '@alice-ui/theme';

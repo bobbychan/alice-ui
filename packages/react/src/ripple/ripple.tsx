@@ -1,5 +1,3 @@
-'use client';
-
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
 import { FC } from 'react';
 import { useIsSSR } from 'react-aria';
