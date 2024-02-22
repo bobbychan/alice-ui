@@ -1,5 +1,3 @@
-'use client';
-
 import { clsx } from '@alice-ui/shared-utils';
 import type { SlotsToClasses, ToggleSlots, ToggleVariantProps } from '@alice-ui/theme';
 import { toggle } from '@alice-ui/theme';

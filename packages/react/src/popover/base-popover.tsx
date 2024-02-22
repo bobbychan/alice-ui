@@ -1,8 +1,6 @@
 /**
  * This code comes from react-aria-components/Popover
  */
-'use client';
-
 import { filterDOMProps, mergeProps } from '@react-aria/utils';
 import { ForwardedRef, RefObject, forwardRef, useContext } from 'react';
 import { AriaPopoverProps, DismissButton, Overlay, PlacementAxis, PositionProps } from 'react-aria';

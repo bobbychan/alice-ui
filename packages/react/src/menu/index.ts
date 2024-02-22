@@ -1,5 +1,3 @@
-'use client';
-
 import { Menu } from './menu';
 import { MenuItem } from './menu-item';
 import { MenuSection } from './menu-section';

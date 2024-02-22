@@ -1,5 +1,3 @@
-'use client';
-
 import { NumberInput } from './number-input';
 
 // export types

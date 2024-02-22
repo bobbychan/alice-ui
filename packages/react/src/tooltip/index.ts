@@ -1,5 +1,3 @@
-'use client';
-
 import { Tooltip, TooltipTrigger } from './tooltip';
 
 // export types

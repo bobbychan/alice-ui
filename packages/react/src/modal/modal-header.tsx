@@ -1,5 +1,3 @@
-'use client';
-
 import { clsx } from '@alice-ui/shared-utils';
 import { useContext } from 'react';
 import { Heading, HeadingProps } from 'react-aria-components';

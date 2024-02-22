@@ -1,5 +1,3 @@
-'use client';
-
 import { dataAttr } from '@alice-ui/shared-utils';
 import { InputHTMLAttributes, Ref, TextareaHTMLAttributes, useCallback } from 'react';
 import { mergeProps, useFocusRing, useHover, usePress } from 'react-aria';

@@ -1,5 +1,3 @@
-'use client';
-
 import type { ModalProviderProps } from '@react-aria/overlays';
 
 import { I18nProvider, I18nProviderProps, OverlayProvider, RouterProvider } from 'react-aria';

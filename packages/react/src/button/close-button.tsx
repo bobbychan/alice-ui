@@ -1,5 +1,3 @@
-'use client';
-
 import { XMarkIcon } from '@alice-ui/icons';
 import { ForwardedRef, forwardRef } from 'react';
 import { IconButton, IconButtonProps } from './icon-button';

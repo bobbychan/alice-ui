@@ -1,5 +1,3 @@
-'use client';
-
 import { clsx } from '@alice-ui/shared-utils';
 import type { DrawerSlots, DrawerVariantProps, SlotsToClasses } from '@alice-ui/theme';
 import { drawer } from '@alice-ui/theme';

@@ -1,5 +1,3 @@
-'use client';
-
 import type { ButtonVariantProps } from '@alice-ui/theme';
 import { button } from '@alice-ui/theme';
 import {

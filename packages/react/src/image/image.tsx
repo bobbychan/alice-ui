@@ -1,5 +1,3 @@
-'use client';
-
 import { useImage as useImageBase } from '@alice-ui/hooks';
 import { clsx, dataAttr } from '@alice-ui/shared-utils';
 import type { ImageSlots, ImageVariantProps, SlotsToClasses } from '@alice-ui/theme';

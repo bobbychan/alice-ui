@@ -1,5 +1,3 @@
-'use client';
-
 import Ripple from './ripple';
 
 // export types
