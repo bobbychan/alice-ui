@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.15
+
+### Patch Changes
+
+- [#66](https://github.com/bobbychan/alice-ui/pull/66) [`ed66bef2e7133f1ac0a410dad964950a27283ec1`](https://github.com/bobbychan/alice-ui/commit/ed66bef2e7133f1ac0a410dad964950a27283ec1) Thanks [@bobbychan](https://github.com/bobbychan)! - Rmove all use client
+
 ## 1.0.14
 
 ### Patch Changes
