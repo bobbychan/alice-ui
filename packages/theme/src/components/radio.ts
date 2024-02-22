@@ -184,9 +184,8 @@ const radioGroup = tv({
   },
 });
 
-export type RadioGroupSlots = keyof ReturnType<typeof radioGroup>;
-
 export type RadioVariantProps = VariantProps<typeof radio>;
 export type RadioSlots = keyof ReturnType<typeof radio>;
+export type RadioGroupSlots = keyof ReturnType<typeof radioGroup>;
 
 export { radio, radioGroup };

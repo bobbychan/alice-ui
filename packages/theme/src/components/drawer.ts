@@ -15,6 +15,7 @@ const drawer = tv({
       'box-border',
       'bg-content1',
       'outline-none',
+      'overflow-hidden',
       'shadow-[0_8px_10px_-5px_rgba(0,0,0,0.2),0_16px_24px_2px_rgba(0,0,0,0.14),0_6px_30px_5px_rgba(0,0,0,0.12)]',
       // top
       'data-[placement=top]:[--slide-enter:0%]',

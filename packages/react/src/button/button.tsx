@@ -24,13 +24,13 @@ export interface ButtonProps extends AriaButtonProps, Omit<ButtonVariantProps, '
    */
   disableRipple?: boolean;
   /**
-   * Adds icon before button label.
+   * The button start content.
    */
-  leftIcon?: ReactNode;
+  startContent?: ReactNode;
   /**
-   * Adds icon after button label.
+   * The button end content.
    */
-  rightIcon?: ReactNode;
+  endContent?: ReactNode;
   /**
    * Spinner to display when loading.
    */
@@ -62,8 +62,8 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
     isLoading,
     spinner = <Spinner color="current" size="sm" {...props.spinnerProps} />,
     spinnerPlacement = 'start',
-    leftIcon,
-    rightIcon,
+    startContent: startContentProp,
+    endContent: endContentProp,
     disableAnimation,
     disableRipple,
     className,
@@ -104,19 +104,19 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
         })
       : null;
 
-  const leftIconNode = getIconClone(leftIcon);
-  const rightIconNode = getIconClone(rightIcon);
+  const startContent = getIconClone(startContentProp);
+  const endContent = getIconClone(endContentProp);
 
   return (
     // @ts-ignore
     <AriaButton ref={ref} className={styles} {...otherProps}>
       {({ isDisabled }) => (
         <>
-          {leftIconNode}
+          {startContent}
           {isLoading && spinnerPlacement === 'start' && <div className="shrink-0">{spinner}</div>}
           <>{children}</>
           {isLoading && spinnerPlacement === 'end' && spinner}
-          {rightIconNode}
+          {endContent}
           {(!disableRipple || !isDisabled) && (
             <>
               <div aria-hidden className="absolute inset-0 h-full w-full" onClick={handleClick} />

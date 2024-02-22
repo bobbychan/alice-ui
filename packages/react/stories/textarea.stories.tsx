@@ -1,6 +1,5 @@
 import { input } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { TextArea, TextAreaProps } from '../src/input';
 
 const meta: Meta<typeof TextArea> = {
@@ -30,6 +29,11 @@ const meta: Meta<typeof TextArea> = {
         type: 'select',
       },
       options: ['sm', 'md', 'lg'],
+    },
+    disableAutosize: {
+      control: {
+        type: 'boolean',
+      },
     },
   },
 };

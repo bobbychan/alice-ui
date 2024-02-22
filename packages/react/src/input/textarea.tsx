@@ -22,6 +22,11 @@ export interface TextAreaProps
   extends Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, 'color' | 'size'>,
     InputVariantProps {
   /**
+   * Whether the textarea should automatically grow vertically to accomodate content.
+   * @default false
+   */
+  disableAutosize?: boolean;
+  /**
    * Minimum number of rows to show for textarea
    * @default 3
    */
@@ -73,6 +78,7 @@ function TextArea(props: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) 
     minRows = 3,
     maxRows = 8,
     cacheMeasurements = false,
+    disableAutosize = false,
     onHeightChange,
     ...otherProps
   } = props;
@@ -106,17 +112,27 @@ function TextArea(props: TextAreaProps, ref: ForwardedRef<HTMLTextAreaElement>) 
 
   const inputProps = getInputProps();
 
+  const content = disableAutosize ? (
+    <textarea
+      {...inputProps}
+      className={slots.input({ class: classNames?.input })}
+      style={mergeProps(inputProps.style, style ?? {})}
+    />
+  ) : (
+    <TextareaAutosize
+      {...inputProps}
+      className={slots.input({ class: classNames?.input })}
+      cacheMeasurements={cacheMeasurements}
+      maxRows={maxRows}
+      minRows={minRows}
+      style={mergeProps(inputProps.style as TextareaAutoSizeStyle, style ?? {})}
+      onHeightChange={onHeightChange}
+    />
+  );
+
   return (
     <div className={slots.base({ class: baseStyles })} {...getInputWrapperProps()}>
-      <TextareaAutosize
-        {...inputProps}
-        className={slots.input({ class: classNames?.input })}
-        cacheMeasurements={cacheMeasurements}
-        maxRows={maxRows}
-        minRows={minRows}
-        style={mergeProps(inputProps.style as TextareaAutoSizeStyle, style ?? {})}
-        onHeightChange={onHeightChange}
-      />
+      {content}
       {clearButton}
     </div>
   );

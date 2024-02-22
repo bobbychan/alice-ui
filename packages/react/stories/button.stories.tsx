@@ -1,6 +1,5 @@
 import { CheckCircleIcon, ExclamationCircleFilledIcon, InfoIcon } from '@alice-ui/icons';
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Button } from '../src/button';
 
 const meta: Meta<typeof Button> = {
@@ -254,16 +253,20 @@ export const Loading: Story = {
 export const WithIcons: Story = {
   render: () => (
     <div className="flex items-center gap-4">
-      <Button color="primary" leftIcon={<CheckCircleIcon className="h-5 w-5" />}>
+      <Button color="primary" startContent={<CheckCircleIcon className="h-5 w-5" />}>
         Like
       </Button>
-      <Button color="danger" variant="bordered" leftIcon={<CheckCircleIcon className="h-5 w-5" />}>
+      <Button
+        color="danger"
+        variant="bordered"
+        startContent={<CheckCircleIcon className="h-5 w-5" />}
+      >
         Send
       </Button>
-      <Button size="sm" leftIcon={<InfoIcon className="h-4 w-4" />}>
+      <Button size="sm" startContent={<InfoIcon className="h-4 w-4" />}>
         Add
       </Button>
-      <Button rightIcon={<InfoIcon className="h-5 w-5" />}>Like</Button>
+      <Button endContent={<InfoIcon className="h-5 w-5" />}>Like</Button>
       <Button isIconOnly color="danger" aria-label="Like">
         <ExclamationCircleFilledIcon className="h-5 w-5" />
       </Button>
