@@ -48,6 +48,7 @@ const menuItem = tv({
       'outline-none',
       'cursor-pointer',
       'tap-highlight-transparent',
+      'data-[hovered=true]:transition-colors',
       'data-[focus-visible=true]:dark:ring-offset-background-content1',
       'data-[disabled=true]:opacity-disabled',
       'data-[disabled=true]:pointer-events-none',

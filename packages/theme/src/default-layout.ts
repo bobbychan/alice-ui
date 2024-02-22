@@ -36,9 +36,12 @@ export const defaultLayout: LayoutTheme = {
   },
 };
 
-export const lightLayout: LayoutTheme = {};
+export const lightLayout: LayoutTheme = {
+  hoverOpacity: '.8',
+};
 
 export const darkLayout: LayoutTheme = {
+  hoverOpacity: '.9',
   boxShadow: {
     small:
       '0 0 0 1px rgb(53 55 60), 0px 2px 10px 0px rgb(0 0 0 / 0.2), inset 0px 0px 1px 0px rgb(255 255 255 / 0.15)',

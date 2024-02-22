@@ -362,6 +362,11 @@ const button = tv({
       size: 'lg',
       class: ['min-w-[3rem]', 'w-12', 'h-12', 'text-[1.75rem]'],
     },
+    // variant / hover
+    {
+      variant: ['solid', 'faded', 'flat', 'bordered', 'shadow'],
+      class: 'data-[hovered=true]:opacity-hover',
+    },
   ],
 });
 

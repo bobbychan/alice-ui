@@ -185,6 +185,7 @@ const corePlugin = (
             large: `var(--${prefix}-radius-large)`,
           },
           opacity: {
+            hover: `var(--${prefix}-hover-opacity)`,
             disabled: `var(--${prefix}-disabled-opacity)`,
           },
           boxShadow: {
