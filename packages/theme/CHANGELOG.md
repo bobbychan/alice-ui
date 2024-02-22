@@ -1,5 +1,12 @@
 # @alice-ui/theme
 
+## 1.0.14
+
+### Patch Changes
+
+- [#64](https://github.com/bobbychan/alice-ui/pull/64) [`b89d78408e6ece7e6a8da4dd5216dee7068d45d3`](https://github.com/bobbychan/alice-ui/commit/b89d78408e6ece7e6a8da4dd5216dee7068d45d3) Thanks [@bobbychan](https://github.com/bobbychan)! - Button hover effect added
+  disableAutosize prop added to Textarea, this disable the auto resize.
+
 ## 1.0.13
 
 ### Patch Changes
