@@ -1,5 +1,12 @@
 # @alice-ui/react
 
+## 1.0.26
+
+### Patch Changes
+
+- Updated dependencies [[`2dada2f3209e519f108355e73edc0d4a511942de`](https://github.com/bobbychan/alice-ui/commit/2dada2f3209e519f108355e73edc0d4a511942de)]:
+  - @alice-ui/theme@1.0.16
+
 ## 1.0.25
 
 ### Patch Changes
