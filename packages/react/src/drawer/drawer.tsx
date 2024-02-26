@@ -7,7 +7,7 @@ import { useMemo } from 'react';
 import type { ModalOverlayProps } from 'react-aria-components';
 import { Modal as AriaModal, ModalOverlay } from 'react-aria-components';
 import { InternalModalContext } from '../modal/modal';
-import { slideHorizontal, slideVertical } from './drawer-transition';
+import { fadeInOut, slideHorizontal, slideVertical } from './drawer-transition';
 
 export interface DrawerProps extends ModalOverlayProps, DrawerVariantProps {
   /**
@@ -20,6 +20,10 @@ export interface DrawerProps extends ModalOverlayProps, DrawerVariantProps {
   classNames?: SlotsToClasses<DrawerSlots>;
 }
 
+// Wrap React Aria modal components so they support framer-motion values.
+// const MotionModal = motion(AriaModal);
+const MotionModalOverlay = motion(ModalOverlay);
+
 function Drawer(props: DrawerProps) {
   const {
     children,
@@ -28,6 +32,7 @@ function Drawer(props: DrawerProps) {
     placement,
     backdrop = 'opaque',
     motionProps,
+    isOpen,
     ...otherProps
   } = props;
 
@@ -36,29 +41,35 @@ function Drawer(props: DrawerProps) {
   const baseStyles = clsx(classNames?.base, className);
 
   return (
-    <ModalOverlay {...otherProps} className={slots.backdrop({ class: classNames?.backdrop })}>
-      {({ state }) => (
-        <InternalModalContext.Provider value={{ slots, classNames, state }}>
-          <AnimatePresence>
-            {state.isOpen && (
-              <motion.div
-                className={slots.base({ class: baseStyles })}
-                data-placement={placement}
-                animate="enter"
-                exit="exit"
-                initial="exit"
-                variants={
-                  placement === 'top' || placement === 'bottom' ? slideVertical : slideHorizontal
-                }
-                {...motionProps}
-              >
-                <AriaModal style={{ height: '100%' }}>{children}</AriaModal>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </InternalModalContext.Provider>
+    <AnimatePresence>
+      {isOpen && (
+        <MotionModalOverlay
+          isOpen
+          animate="enter"
+          exit="exit"
+          initial="exit"
+          variants={fadeInOut}
+          {...otherProps}
+          className={slots.backdrop({ class: classNames?.backdrop })}
+        >
+          <motion.div
+            className={slots.base({ class: baseStyles })}
+            data-placement={placement}
+            animate="enter"
+            exit="exit"
+            initial="exit"
+            variants={
+              placement === 'top' || placement === 'bottom' ? slideVertical : slideHorizontal
+            }
+            {...motionProps}
+          >
+            <InternalModalContext.Provider value={{ slots, classNames }}>
+              <AriaModal style={{ height: '100%' }}>{children}</AriaModal>
+            </InternalModalContext.Provider>
+          </motion.div>
+        </MotionModalOverlay>
       )}
-    </ModalOverlay>
+    </AnimatePresence>
   );
 }
 
