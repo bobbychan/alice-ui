@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.17
+
+### Patch Changes
+
+- [#70](https://github.com/bobbychan/alice-ui/pull/70) [`578a3224dc21c6ae10e181b60bf6660d2c27d219`](https://github.com/bobbychan/alice-ui/commit/578a3224dc21c6ae10e181b60bf6660d2c27d219) Thanks [@bobbychan](https://github.com/bobbychan)! - In the model use props.isOpen instead of state.isOpen
+
 ## 1.0.16
 
 ### Patch Changes
