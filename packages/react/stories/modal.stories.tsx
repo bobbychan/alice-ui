@@ -49,6 +49,12 @@ const meta: Meta<typeof Modal> = {
       },
       options: ['transparent', 'blur', 'opaque'],
     },
+    scrollBehavior: {
+      control: {
+        type: 'select',
+      },
+      options: ['inside', 'outside'],
+    },
     isDismissable: {
       control: {
         type: 'boolean',

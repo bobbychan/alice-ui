@@ -63,7 +63,7 @@ const modal = tv({
     backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-screen'],
     dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden', 'p-6'],
     header: ['text-lg', 'font-semibold'],
-    body: ['flex', 'flex-1', 'flex-col', 'gap-3', 'py-4', 'overflow-y-auto'],
+    body: ['flex', 'flex-1', 'flex-col', 'gap-3', 'py-4'],
     footer: ['flex', 'flex-row', 'gap-2', 'justify-end', 'mt-2'],
     closeButton: ['absolute', 'top-2', 'right-2'],
   },
@@ -160,9 +160,6 @@ const modal = tv({
       },
     },
     scrollBehavior: {
-      normal: {
-        base: 'overflow-y-hidden',
-      },
       inside: {
         wrapper: 'overflow-y-hidden',
         base: 'max-h-[calc(100%_-_7.5rem)]',
@@ -180,7 +177,7 @@ const modal = tv({
     shadow: 'sm',
     placement: 'auto',
     backdrop: 'opaque',
-    scrollBehavior: 'normal',
+    scrollBehavior: 'outside',
   },
 });
 

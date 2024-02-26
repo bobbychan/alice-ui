@@ -1,13 +1,14 @@
 import { callAllHandlers, clsx } from '@alice-ui/shared-utils';
 import { ForwardedRef, forwardRef, useContext } from 'react';
+import { OverlayTriggerStateContext } from 'react-aria-components';
 import { CloseButton, CloseButtonProps } from '../button';
 
 import { InternalModalContext } from './modal';
 
 function ModalCloseButton(props: CloseButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
   const { children, className, onPress, ...otherProps } = props;
-
-  const { slots, classNames, state } = useContext(InternalModalContext);
+  const state = useContext(OverlayTriggerStateContext);
+  const { slots, classNames } = useContext(InternalModalContext);
 
   return (
     <CloseButton
