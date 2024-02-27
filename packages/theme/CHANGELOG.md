@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.19
+
+### Patch Changes
+
+- [#74](https://github.com/bobbychan/alice-ui/pull/74) [`0628c65ca80d0bcc77d1f3f365e33c5a91936f4c`](https://github.com/bobbychan/alice-ui/commit/0628c65ca80d0bcc77d1f3f365e33c5a91936f4c) Thanks [@bobbychan](https://github.com/bobbychan)! - fix chip style
+
 ## 1.0.18
 
 ### Patch Changes
