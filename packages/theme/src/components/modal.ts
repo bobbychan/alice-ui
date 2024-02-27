@@ -7,13 +7,16 @@ import { tv } from '../utils/tv';
  *
  * @example
  * ```js
- * const {base, backdrop} = modal({...})
+ * const {base, backdrop, header, body, footer} = modal({...})
  *
  * <div>
  *    <button>Open Modal</button>
- *    <div className={backdrop()}/>
- *    <div className={base()}>
- *       modal content
+ *    <div className={backdrop()}>
+ *      <div className={base()}>
+ *       <div className={header()}>Header</div>
+ *       <div className={body()}>Body</div>
+ *       <div className={footer()}>Footer</div>
+ *      </div>
  *    </div>
  * </div>
  * ```
@@ -160,6 +163,9 @@ const modal = tv({
       },
     },
     scrollBehavior: {
+      normal: {
+        base: 'overflow-y-hidden',
+      },
       inside: {
         wrapper: 'overflow-y-hidden',
         base: 'max-h-[calc(100%_-_7.5rem)]',
@@ -177,7 +183,7 @@ const modal = tv({
     shadow: 'sm',
     placement: 'auto',
     backdrop: 'opaque',
-    scrollBehavior: 'outside',
+    scrollBehavior: 'normal',
   },
 });
 

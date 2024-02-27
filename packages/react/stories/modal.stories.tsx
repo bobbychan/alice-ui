@@ -53,7 +53,7 @@ const meta: Meta<typeof Modal> = {
       control: {
         type: 'select',
       },
-      options: ['inside', 'outside'],
+      options: ['normal', 'inside', 'outside'],
     },
     isDismissable: {
       control: {
