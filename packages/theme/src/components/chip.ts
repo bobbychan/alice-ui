@@ -51,18 +51,18 @@ const chip = tv({
     variant: {
       solid: {},
       bordered: {
-        base: 'border-medium bg-transparent',
+        base: 'border-2 bg-transparent',
       },
       light: {
         base: 'bg-transparent',
       },
       flat: {},
       faded: {
-        base: 'border-medium',
+        base: 'border-2',
       },
       shadow: {},
       dot: {
-        base: 'border-medium border-default text-foreground bg-transparent',
+        base: 'border-2 border-default text-foreground bg-transparent',
       },
     },
     color: {
@@ -89,7 +89,7 @@ const chip = tv({
       sm: {
         base: 'px-1 h-6 text-xs',
         content: 'px-1',
-        closeButton: 'text-medium',
+        closeButton: 'text-base',
         avatar: 'w-4 h-4',
       },
       md: {
@@ -99,7 +99,7 @@ const chip = tv({
         avatar: 'w-5 h-5',
       },
       lg: {
-        base: 'px-2 h-8 text-medium',
+        base: 'px-2 h-8 text-base',
         content: 'px-2',
         closeButton: 'text-xl',
         avatar: 'w-6 h-6',
