@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.18
+
+### Patch Changes
+
+- [#72](https://github.com/bobbychan/alice-ui/pull/72) [`c530204fe7a8e47a0693efea78a8c2bf5826030e`](https://github.com/bobbychan/alice-ui/commit/c530204fe7a8e47a0693efea78a8c2bf5826030e) Thanks [@bobbychan](https://github.com/bobbychan)! - fix modal style
+
 ## 1.0.17
 
 ### Patch Changes
