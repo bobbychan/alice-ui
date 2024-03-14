@@ -1,5 +1,11 @@
 # @alice-ui/react
 
+## 1.0.30
+
+### Patch Changes
+
+- [#76](https://github.com/bobbychan/alice-ui/pull/76) [`fd52d9867ebfe3e8fb028bd3185956f7c57542b4`](https://github.com/bobbychan/alice-ui/commit/fd52d9867ebfe3e8fb028bd3185956f7c57542b4) Thanks [@bobbychan](https://github.com/bobbychan)! - export tabs component
+
 ## 1.0.29
 
 ### Patch Changes
