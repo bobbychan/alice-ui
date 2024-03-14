@@ -22,6 +22,7 @@ export * from './select';
 export * from './skeleton';
 export * from './spinner';
 export * from './switch';
+export * from './tabs';
 export * from './text-field';
 export * from './tooltip';
 
