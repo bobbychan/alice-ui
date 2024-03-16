@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.20
+
+### Patch Changes
+
+- [#78](https://github.com/bobbychan/alice-ui/pull/78) [`7d387a7571762428360c5ad321e59091a779ef6d`](https://github.com/bobbychan/alice-ui/commit/7d387a7571762428360c5ad321e59091a779ef6d) Thanks [@bobbychan](https://github.com/bobbychan)! - fix tabs style
+
 ## 1.0.19
 
 ### Patch Changes
