@@ -1,81 +1,83 @@
-# Turborepo starter
+# AliceUI
 
-This is an official starter Turborepo.
+React Aria Components + Tailwindcss + Tailwind Variants = Alice UI
 
-## Using this example
+## Installation
+
+Requirements:
+
+- [React 18](https://reactjs.org/) or later
+- [Tailwind CSS 3](https://tailwindcss.com/) or later
+- [Framer Motion 4](https://www.framer.com/motion/) or later
+
+---
+
+To use AliceUI in your project, you need to follow the following steps:
+
+### Install Packages
 
 Run the following command:
 
 ```sh
-npx create-turbo@latest
+pnpm add @alice-ui/react framer-motion
 ```
 
-## What's inside?
+### Tailwind CSS Setup
 
-This Turborepo includes the following packages/apps:
+AliceUI is built on top of Tailwind CSS, so you need to install Tailwind CSS first. You can follow the officia [installation guide](https://tailwindcss.com/docs/installation) to install Tailwind CSS. Then you need to add the following code to your `tailwind.config.js` file:
 
-### Apps and Packages
+```js
+// tailwind.config.js
+const { aliceui } = require('@alice-ui/react');
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    // ...
+    './node_modules/@alice-ui/theme/dist/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {},
+  },
+  darkMode: 'selector',
+  plugins: [aliceui()],
+};
 ```
 
-### Develop
+### Provider Setup
 
-To develop all apps and packages, run the following command:
+It is essential to add the `NextUIProvider` at the `root` of your application.
 
+```jsx
+import React from 'react';
+
+// 1. import `AliceUIProvider` component
+import { AliceUIProvider } from '@alice-ui/react';
+
+function App() {
+  // 2. Wrap AliceUIProvider at the root of your app
+  return (
+    <AliceUIProvider>
+      <YourApplication />
+    </AliceUIProvider>
+  );
+}
 ```
-cd my-turborepo
-pnpm dev
+
+### Setup pnpm (optional)
+
+If you are using pnpm, you need to add the following code to your `.npmrc` file:
+
+```bash
+public-hoist-pattern[]=*@alice-ui/*
 ```
 
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
+After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
 
 ## Useful Links
 
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+- [NextUI](https://nextui.org)
+- [TailwindCSS](https://tailwindcss.com)
+- [Tailwind Variants](https://www.tailwind-variants.org)
+- [React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html)
+- [Framer Motion](https://www.framer.com/motion)

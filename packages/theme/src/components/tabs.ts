@@ -83,7 +83,7 @@ const tabs = tv({
         cursor: 'inset-0',
       },
       underlined: {
-        tabList: ['bg-transparent', 'dark:bg-transparent', 'p-0'],
+        tabList: ['bg-transparent', 'dark:bg-transparent'],
         cursor: ['h-[2px]', 'w-full', 'bottom-0'],
       },
       light: {
