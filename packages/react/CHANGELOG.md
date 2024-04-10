@@ -1,5 +1,11 @@
 # @alice-ui/react
 
+## 1.0.32
+
+### Patch Changes
+
+- [#80](https://github.com/bobbychan/alice-ui/pull/80) [`ebc76726c8bb9656b7868a79d8fa646314ff39de`](https://github.com/bobbychan/alice-ui/commit/ebc76726c8bb9656b7868a79d8fa646314ff39de) Thanks [@bobbychan](https://github.com/bobbychan)! - Fixed Modal component without forwardRef
+
 ## 1.0.31
 
 ### Patch Changes
