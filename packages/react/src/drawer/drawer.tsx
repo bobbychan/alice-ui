@@ -3,7 +3,7 @@ import type { DrawerSlots, DrawerVariantProps, SlotsToClasses } from '@alice-ui/
 import { drawer } from '@alice-ui/theme';
 import type { HTMLMotionProps } from 'framer-motion';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useMemo } from 'react';
+import { ForwardedRef, forwardRef, useMemo } from 'react';
 import type { ModalOverlayProps } from 'react-aria-components';
 import { Modal as AriaModal, ModalOverlay } from 'react-aria-components';
 import { InternalModalContext } from '../modal/modal';
@@ -24,7 +24,7 @@ export interface DrawerProps extends ModalOverlayProps, DrawerVariantProps {
 // const MotionModal = motion(AriaModal);
 const MotionModalOverlay = motion(ModalOverlay);
 
-function Drawer(props: DrawerProps) {
+function Drawer(props: DrawerProps, ref: ForwardedRef<HTMLDivElement>) {
   const {
     children,
     classNames,
@@ -64,7 +64,9 @@ function Drawer(props: DrawerProps) {
             {...motionProps}
           >
             <InternalModalContext.Provider value={{ slots, classNames }}>
-              <AriaModal style={{ height: '100%' }}>{children}</AriaModal>
+              <AriaModal ref={ref} style={{ height: '100%' }}>
+                {children}
+              </AriaModal>
             </InternalModalContext.Provider>
           </motion.div>
         </MotionModalOverlay>
@@ -73,4 +75,5 @@ function Drawer(props: DrawerProps) {
   );
 }
 
-export { Drawer };
+const _Drawer = forwardRef(Drawer);
+export { _Drawer as Drawer };
