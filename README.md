@@ -46,7 +46,7 @@ module.exports = {
 
 ### Provider Setup
 
-It is essential to add the `NextUIProvider` at the `root` of your application.
+It is essential to add the `AliceUIProvider` at the `root` of your application.
 
 ```jsx
 import React from 'react';

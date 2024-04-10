@@ -9,7 +9,7 @@ import type {
 import { modal } from '@alice-ui/theme';
 import type { HTMLMotionProps } from 'framer-motion';
 import { AnimatePresence, motion } from 'framer-motion';
-import { createContext, useMemo } from 'react';
+import { ForwardedRef, createContext, forwardRef, useMemo } from 'react';
 import type { ModalOverlayProps } from 'react-aria-components';
 import { Modal as AriaModal, ModalOverlay } from 'react-aria-components';
 import { fadeInOut, scaleInOut } from './modal-transition';
@@ -39,7 +39,7 @@ export const InternalModalContext = createContext<InternalModalContextValue>(
 // const MotionModal = motion(AriaModal);
 const MotionModalOverlay = motion(ModalOverlay);
 
-function Modal(props: ModalProps) {
+function Modal(props: ModalProps, ref: ForwardedRef<HTMLDivElement>) {
   const {
     children,
     classNames,
@@ -84,7 +84,9 @@ function Modal(props: ModalProps) {
             {...motionProps}
           >
             <InternalModalContext.Provider value={{ slots, classNames }}>
-              <AriaModal className={slots.base({ class: baseStyles })}>{children}</AriaModal>
+              <AriaModal ref={ref} className={slots.base({ class: baseStyles })}>
+                {children}
+              </AriaModal>
             </InternalModalContext.Provider>
           </motion.div>
         </MotionModalOverlay>
@@ -96,4 +98,5 @@ function Modal(props: ModalProps) {
 /**
  * A modal is an overlay element which blocks interaction with elements outside it.
  */
-export { Modal };
+const _Modal = forwardRef(Modal);
+export { _Modal as Modal };
