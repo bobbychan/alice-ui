@@ -8,7 +8,7 @@ import type {
 } from '@alice-ui/theme';
 import { modal } from '@alice-ui/theme';
 import type { HTMLMotionProps } from 'framer-motion';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion';
 import { ForwardedRef, createContext, forwardRef, useMemo } from 'react';
 import type { ModalOverlayProps } from 'react-aria-components';
 import { Modal as AriaModal, ModalOverlay } from 'react-aria-components';
@@ -37,7 +37,7 @@ export const InternalModalContext = createContext<InternalModalContextValue>(
 
 // Wrap React Aria modal components so they support framer-motion values.
 // const MotionModal = motion(AriaModal);
-const MotionModalOverlay = motion(ModalOverlay);
+const MotionModalOverlay = m(ModalOverlay);
 
 function Modal(props: ModalProps, ref: ForwardedRef<HTMLDivElement>) {
   const {
@@ -65,31 +65,33 @@ function Modal(props: ModalProps, ref: ForwardedRef<HTMLDivElement>) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <MotionModalOverlay
-          isOpen
-          animate="enter"
-          exit="exit"
-          initial="exit"
-          variants={fadeInOut}
-          {...otherProps}
-          className={slots.backdrop({ class: classNames?.backdrop })}
-        >
-          <motion.div
-            className={slots.wrapper({ class: classNames?.wrapper })}
-            data-placement={placement}
+        <LazyMotion features={domAnimation}>
+          <MotionModalOverlay
+            isOpen
             animate="enter"
             exit="exit"
             initial="exit"
-            variants={scaleInOut}
-            {...motionProps}
+            variants={fadeInOut}
+            {...otherProps}
+            className={slots.backdrop({ class: classNames?.backdrop })}
           >
-            <InternalModalContext.Provider value={{ slots, classNames }}>
-              <AriaModal ref={ref} className={slots.base({ class: baseStyles })}>
-                {children}
-              </AriaModal>
-            </InternalModalContext.Provider>
-          </motion.div>
-        </MotionModalOverlay>
+            <m.div
+              className={slots.wrapper({ class: classNames?.wrapper })}
+              data-placement={placement}
+              animate="enter"
+              exit="exit"
+              initial="exit"
+              variants={scaleInOut}
+              {...motionProps}
+            >
+              <InternalModalContext.Provider value={{ slots, classNames }}>
+                <AriaModal ref={ref} className={slots.base({ class: baseStyles })}>
+                  {children}
+                </AriaModal>
+              </InternalModalContext.Provider>
+            </m.div>
+          </MotionModalOverlay>
+        </LazyMotion>
       )}
     </AnimatePresence>
   );

@@ -1,7 +1,8 @@
+import { useIsMounted } from '@alice-ui/hooks';
 import { clsx } from '@alice-ui/shared-utils';
 import type { SlotsToClasses, TabsReturnType, TabsSlots, TabsVariantProps } from '@alice-ui/theme';
 import { filterVariantProps, tabs } from '@alice-ui/theme';
-import { HTMLMotionProps, LayoutGroup, motion } from 'framer-motion';
+import { HTMLMotionProps, LayoutGroup, LazyMotion, domMax, m } from 'framer-motion';
 import { createContext, useContext, useId, useMemo } from 'react';
 import type {
   TabsProps as AriaTabsProps,
@@ -77,6 +78,10 @@ function Tab(props: TabProps) {
     useContext(InternalTabsContext);
   const { children } = props;
 
+  const [, isMounted] = useIsMounted({
+    rerender: true,
+  });
+
   return (
     <AriaTab
       {...props}
@@ -87,19 +92,20 @@ function Tab(props: TabProps) {
     >
       {(renderProps) => (
         <>
-          {renderProps.isSelected && !disableCursorAnimation ? (
-            <motion.span
-              className={slots.cursor({ class: classNames?.cursor })}
-              layoutDependency={false}
-              initial={false}
-              layoutId="cursor"
-              transition={{
-                type: 'spring',
-                bounce: 0.18,
-                duration: 0.6,
-              }}
-              {...motionProps}
-            />
+          {renderProps.isSelected && !disableCursorAnimation && isMounted ? (
+            <LazyMotion features={domMax}>
+              <m.span
+                className={slots.cursor({ class: classNames?.cursor })}
+                layoutDependency={false}
+                layoutId="cursor"
+                transition={{
+                  type: 'spring',
+                  bounce: 0.15,
+                  duration: 0.5,
+                }}
+                {...motionProps}
+              />
+            </LazyMotion>
           ) : null}
           <div className={slots.tabContent({ class: classNames?.tabContent })}>
             {typeof children === 'function' ? children(renderProps) : children}

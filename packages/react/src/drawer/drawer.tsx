@@ -2,7 +2,7 @@ import { clsx } from '@alice-ui/shared-utils';
 import type { DrawerSlots, DrawerVariantProps, SlotsToClasses } from '@alice-ui/theme';
 import { drawer } from '@alice-ui/theme';
 import type { HTMLMotionProps } from 'framer-motion';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, LazyMotion, domAnimation, m } from 'framer-motion';
 import { ForwardedRef, forwardRef, useMemo } from 'react';
 import type { ModalOverlayProps } from 'react-aria-components';
 import { Modal as AriaModal, ModalOverlay } from 'react-aria-components';
@@ -22,7 +22,7 @@ export interface DrawerProps extends ModalOverlayProps, DrawerVariantProps {
 
 // Wrap React Aria modal components so they support framer-motion values.
 // const MotionModal = motion(AriaModal);
-const MotionModalOverlay = motion(ModalOverlay);
+const MotionModalOverlay = m(ModalOverlay);
 
 function Drawer(props: DrawerProps, ref: ForwardedRef<HTMLDivElement>) {
   const {
@@ -43,33 +43,35 @@ function Drawer(props: DrawerProps, ref: ForwardedRef<HTMLDivElement>) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <MotionModalOverlay
-          isOpen
-          animate="enter"
-          exit="exit"
-          initial="exit"
-          variants={fadeInOut}
-          {...otherProps}
-          className={slots.backdrop({ class: classNames?.backdrop })}
-        >
-          <motion.div
-            className={slots.base({ class: baseStyles })}
-            data-placement={placement}
+        <LazyMotion features={domAnimation}>
+          <MotionModalOverlay
+            isOpen
             animate="enter"
             exit="exit"
             initial="exit"
-            variants={
-              placement === 'top' || placement === 'bottom' ? slideVertical : slideHorizontal
-            }
-            {...motionProps}
+            variants={fadeInOut}
+            {...otherProps}
+            className={slots.backdrop({ class: classNames?.backdrop })}
           >
-            <InternalModalContext.Provider value={{ slots, classNames }}>
-              <AriaModal ref={ref} style={{ height: '100%' }}>
-                {children}
-              </AriaModal>
-            </InternalModalContext.Provider>
-          </motion.div>
-        </MotionModalOverlay>
+            <m.div
+              className={slots.base({ class: baseStyles })}
+              data-placement={placement}
+              animate="enter"
+              exit="exit"
+              initial="exit"
+              variants={
+                placement === 'top' || placement === 'bottom' ? slideVertical : slideHorizontal
+              }
+              {...motionProps}
+            >
+              <InternalModalContext.Provider value={{ slots, classNames }}>
+                <AriaModal ref={ref} style={{ height: '100%' }}>
+                  {children}
+                </AriaModal>
+              </InternalModalContext.Provider>
+            </m.div>
+          </MotionModalOverlay>
+        </LazyMotion>
       )}
     </AnimatePresence>
   );
