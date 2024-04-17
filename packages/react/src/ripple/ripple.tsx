@@ -1,4 +1,4 @@
-import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion';
+import { AnimatePresence, HTMLMotionProps, LazyMotion, domAnimation, m } from 'framer-motion';
 import { FC } from 'react';
 import { useIsSSR } from 'react-aria';
 import { RippleType } from './use-ripple';
@@ -28,27 +28,31 @@ const Ripple: FC<RippleProps> = ({ ripples = [], motionProps, color = 'currentCo
 
         return (
           <AnimatePresence key={ripple.key} mode="popLayout">
-            <motion.span
-              animate={{ transform: 'scale(2)', opacity: 0 }}
-              className="react-aria-Ripple"
-              exit={{ opacity: 0 }}
-              initial={{ transform: 'scale(0)', opacity: 0.35 }}
-              style={{
-                position: 'absolute',
-                backgroundColor: color,
-                borderRadius: '100%',
-                transformOrigin: 'center',
-                pointerEvents: 'none',
-                zIndex: 10,
-                top: ripple.y,
-                left: ripple.x,
-                width: `${ripple.size}px`,
-                height: `${ripple.size}px`,
-                ...style,
-              }}
-              transition={{ duration }}
-              {...motionProps}
-            />
+            <>
+              <LazyMotion features={domAnimation}>
+                <m.span
+                  animate={{ transform: 'scale(2)', opacity: 0 }}
+                  className="react-aria-Ripple"
+                  exit={{ opacity: 0 }}
+                  initial={{ transform: 'scale(0)', opacity: 0.35 }}
+                  style={{
+                    position: 'absolute',
+                    backgroundColor: color,
+                    borderRadius: '100%',
+                    transformOrigin: 'center',
+                    pointerEvents: 'none',
+                    zIndex: 10,
+                    top: ripple.y,
+                    left: ripple.x,
+                    width: `${ripple.size}px`,
+                    height: `${ripple.size}px`,
+                    ...style,
+                  }}
+                  transition={{ duration }}
+                  {...motionProps}
+                />
+              </LazyMotion>
+            </>
           </AnimatePresence>
         );
       })}
