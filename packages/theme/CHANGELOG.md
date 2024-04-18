@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.21
+
+### Patch Changes
+
+- [`ff8fc2257bd30d6226f9df1ad47a85286cd9aad1`](https://github.com/bobbychan/alice-ui/commit/ff8fc2257bd30d6226f9df1ad47a85286cd9aad1) Thanks [@bobbychan](https://github.com/bobbychan)! - fix drawer scroll
+
 ## 1.0.20
 
 ### Patch Changes
