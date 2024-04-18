@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.22
+
+### Patch Changes
+
+- [#89](https://github.com/bobbychan/alice-ui/pull/89) [`2c49261c7951984ca2cfe9b2955e93a6c56dc946`](https://github.com/bobbychan/alice-ui/commit/2c49261c7951984ca2cfe9b2955e93a6c56dc946) Thanks [@bobbychan](https://github.com/bobbychan)! - remove drawer body flex
+
 ## 1.0.21
 
 ### Patch Changes
