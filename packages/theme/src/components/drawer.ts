@@ -31,7 +31,7 @@ const drawer = tv({
       'data-[placement=right]:[--slide-exit:100%]',
     ],
     backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-screen'],
-    dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden', 'p-6', 'h-full'],
+    dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden', 'p-6', 'h-full', 'max-h-dvh'],
     header: ['text-lg', 'font-semibold'],
     body: ['flex', 'flex-1', 'flex-col', 'gap-3', 'py-4', 'overflow-y-auto'],
     footer: ['flex', 'flex-row', 'gap-2', 'justify-end', 'mt-2'],
