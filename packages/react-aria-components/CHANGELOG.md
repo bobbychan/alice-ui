@@ -1,5 +1,12 @@
 # @alice-ui/react-aria-components
 
+## 1.0.29
+
+### Patch Changes
+
+- Updated dependencies [[`f8967a5137bcfeeca06a12eca0a74562b01bea84`](https://github.com/bobbychan/alice-ui/commit/f8967a5137bcfeeca06a12eca0a74562b01bea84)]:
+  - @alice-ui/react@1.0.34
+
 ## 1.0.28
 
 ### Patch Changes
