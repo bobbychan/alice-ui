@@ -1,5 +1,11 @@
 # @alice-ui/react
 
+## 1.0.34
+
+### Patch Changes
+
+- [#86](https://github.com/bobbychan/alice-ui/pull/86) [`f8967a5137bcfeeca06a12eca0a74562b01bea84`](https://github.com/bobbychan/alice-ui/commit/f8967a5137bcfeeca06a12eca0a74562b01bea84) Thanks [@bobbychan](https://github.com/bobbychan)! - update github action config
+
 ## 1.0.33
 
 ### Patch Changes
