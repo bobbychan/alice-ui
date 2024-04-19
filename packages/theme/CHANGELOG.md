@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.23
+
+### Patch Changes
+
+- [#91](https://github.com/bobbychan/alice-ui/pull/91) [`6ae637b48d62f230acf1cd0e4e763b948276ab3c`](https://github.com/bobbychan/alice-ui/commit/6ae637b48d62f230acf1cd0e4e763b948276ab3c) Thanks [@bobbychan](https://github.com/bobbychan)! - add RTL support to some component
+
 ## 1.0.22
 
 ### Patch Changes
