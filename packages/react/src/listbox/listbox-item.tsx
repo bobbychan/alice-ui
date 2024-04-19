@@ -104,7 +104,7 @@ export function ListBoxItem(props: ListBoxItemProps) {
                 <>{children}</>
               </Text>
             )}
-            {isSelected && selectionMode !== 'none' && (
+            {selectionMode !== 'none' && (
               <span
                 aria-hidden="true"
                 className={slots.selectedIcon({ class: classNames?.selectedIcon })}

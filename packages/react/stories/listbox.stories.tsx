@@ -43,10 +43,16 @@ const defaultProps: ListBoxProps<object> = {
 const Template = (args: ListBoxProps<object>) => {
   return (
     <ListBox {...args}>
-      <ListBoxItem id="new">New file</ListBoxItem>
-      <ListBoxItem id="copy">Copy link</ListBoxItem>
-      <ListBoxItem id="edit">Edit file</ListBoxItem>
-      <ListBoxItem id="delete" className="text-danger" color="danger">
+      <ListBoxItem id="new" textValue="new">
+        New file
+      </ListBoxItem>
+      <ListBoxItem id="copy" textValue="copy">
+        Copy link
+      </ListBoxItem>
+      <ListBoxItem id="edit" textValue="edit">
+        Edit file
+      </ListBoxItem>
+      <ListBoxItem id="delete" textValue="delete" className="text-danger" color="danger">
         Delete file
       </ListBoxItem>
     </ListBox>
@@ -87,9 +93,15 @@ const SelectionTemplate = (args: ListBoxProps<object>) => {
       selectedKeys={selected}
       onSelectionChange={setSelected}
     >
-      <ListBoxItem id="left">Left</ListBoxItem>
-      <ListBoxItem id="center">Center</ListBoxItem>
-      <ListBoxItem id="right">Right</ListBoxItem>
+      <ListBoxItem id="left" textValue="left">
+        Left
+      </ListBoxItem>
+      <ListBoxItem id="center" textValue="center">
+        Center
+      </ListBoxItem>
+      <ListBoxItem id="right" textValue="right">
+        Right
+      </ListBoxItem>
     </ListBox>
   );
 };

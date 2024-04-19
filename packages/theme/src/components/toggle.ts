@@ -51,6 +51,9 @@ const toggle = tv({
       'overflow-hidden',
       'bg-default-200',
       'rounded-full',
+      'mr-2',
+      'rtl:ml-2',
+      'rtl:mr-[unset]',
       'transition-background',
       'motion-reduce:transition-none',
       // focus ring
@@ -69,7 +72,7 @@ const toggle = tv({
       'motion-reduce:transition-none',
     ],
     thumbIcon: 'text-black',
-    label: 'relative ml-2 text-foreground select-none',
+    label: 'relative text-foreground select-none',
   },
   variants: {
     color: {
@@ -117,6 +120,8 @@ const toggle = tv({
           'w-4 h-4 text-xs',
           //selected
           'group-data-[selected=true]:ml-4',
+          'rtl:group-data-[selected=true]:ml-0',
+          'rtl:group-data-[selected=true]:mr-4',
         ],
         label: 'text-sm',
       },
@@ -126,6 +131,8 @@ const toggle = tv({
           'w-5 h-5 text-sm',
           //selected
           'group-data-[selected=true]:ml-5',
+          'rtl:group-data-[selected=true]:ml-0',
+          'rtl:group-data-[selected=true]:mr-5',
         ],
         label: 'text-base',
       },
@@ -135,6 +142,8 @@ const toggle = tv({
           'w-6 h-6 text-base',
           //selected
           'group-data-[selected=true]:ml-6',
+          'rtl:group-data-[selected=true]:ml-0',
+          'rtl:group-data-[selected=true]:mr-6',
         ],
         label: 'text-lg',
       },
@@ -148,19 +157,34 @@ const toggle = tv({
     {
       size: 'sm',
       class: {
-        thumb: ['group-data-[pressed=true]:w-5', 'group-data-[selected]:group-data-[pressed]:ml-3'],
+        thumb: [
+          'group-data-[pressed=true]:w-5',
+          'group-data-[selected]:group-data-[pressed]:ml-3',
+          'rtl:group-data-[selected]:group-data-[pressed]:ml-0',
+          'rtl:group-data-[selected]:group-data-[pressed]:mr-3',
+        ],
       },
     },
     {
       size: 'md',
       class: {
-        thumb: ['group-data-[pressed=true]:w-6', 'group-data-[selected]:group-data-[pressed]:ml-4'],
+        thumb: [
+          'group-data-[pressed=true]:w-6',
+          'group-data-[selected]:group-data-[pressed]:ml-4',
+          'rtl:group-data-[selected]:group-data-[pressed]:ml-0',
+          'rtl:group-data-[selected]:group-data-[pressed]:mr-4',
+        ],
       },
     },
     {
       size: 'lg',
       class: {
-        thumb: ['group-data-[pressed=true]:w-7', 'group-data-[selected]:group-data-[pressed]:ml-5'],
+        thumb: [
+          'group-data-[pressed=true]:w-7',
+          'group-data-[selected]:group-data-[pressed]:ml-5',
+          'rtl:group-data-[selected]:group-data-[pressed]:ml-0',
+          'rtl:group-data-[selected]:group-data-[pressed]:mr-5',
+        ],
       },
     },
   ],

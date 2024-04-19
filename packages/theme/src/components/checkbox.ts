@@ -42,6 +42,9 @@ const checkbox = tv({
       'justify-center',
       'shrink-0',
       'overflow-hidden',
+      'mr-2',
+      'rtl:ml-2',
+      'rtl:mr-[unset]',
       // border
       'border-solid',
       'border-2',
@@ -67,7 +70,6 @@ const checkbox = tv({
     ],
     label: [
       'relative',
-      'ml-2',
       'text-foreground',
       'select-none',
       'transition-colors',

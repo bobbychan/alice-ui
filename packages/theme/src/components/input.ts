@@ -53,6 +53,8 @@ const input = tv({
       'hidden',
       'absolute',
       'right-3',
+      'rtl:right-auto',
+      'rtl:left-3',
       'appearance-none',
       'outline-none',
       'select-none',
@@ -183,7 +185,7 @@ const input = tv({
     },
     isClearable: {
       true: {
-        input: 'peer pr-6',
+        input: 'peer pr-6 rtl:pr-0 rtl:pl-6',
         clearButton: 'peer-data-[filled=true]:opacity-70 peer-data-[filled=true]:block',
       },
     },

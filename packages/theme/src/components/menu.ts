@@ -80,7 +80,14 @@ const menuItem = tv({
         base: ['border-2', 'border-transparent', 'bg-transparent'],
       },
       faded: {
-        base: ['border border-transparent hover:border-default data-[hovered=true]:bg-default-100'],
+        base: [
+          'border',
+          'border-transparent',
+          'hover:border-default',
+          'data-[hovered=true]:bg-default-100',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:border-default',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-default-100',
+        ],
       },
       flat: {
         base: '',
@@ -105,42 +112,72 @@ const menuItem = tv({
       variant: 'solid',
       color: 'default',
       class: {
-        base: ['data-[hovered=true]:bg-default', 'data-[hovered=true]:text-default-foreground'],
+        base: [
+          'data-[hovered=true]:bg-default',
+          'data-[hovered=true]:text-default-foreground',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-default',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-default-foreground',
+        ],
       },
     },
     {
       variant: 'solid',
       color: 'primary',
       class: {
-        base: ['data-[hovered=true]:bg-primary data-[hovered=true]:text-primary-foreground'],
+        base: [
+          'data-[hovered=true]:bg-primary',
+          'data-[hovered=true]:text-primary-foreground',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-primary',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-primary-foreground',
+        ],
       },
     },
     {
       variant: 'solid',
       color: 'secondary',
       class: {
-        base: ['data-[hovered=true]:bg-secondary data-[hovered=true]:text-secondary-foreground'],
+        base: [
+          'data-[hovered=true]:bg-secondary',
+          'data-[hovered=true]:text-secondary-foreground',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-secondary',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-secondary-foreground',
+        ],
       },
     },
     {
       variant: 'solid',
       color: 'success',
       class: {
-        base: ['data-[hovered=true]:bg-success data-[hovered=true]:text-success-foreground'],
+        base: [
+          'data-[hovered=true]:bg-success',
+          'data-[hovered=true]:text-success-foreground',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-success',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-success-foreground',
+        ],
       },
     },
     {
       variant: 'solid',
       color: 'warning',
       class: {
-        base: ['data-[hovered=true]:bg-warning data-[hovered=true]:text-warning-foreground'],
+        base: [
+          'data-[hovered=true]:bg-warning',
+          'data-[hovered=true]:text-warning-foreground',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-warning',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-warning-foreground',
+        ],
       },
     },
     {
       variant: 'solid',
       color: 'danger',
       class: {
-        base: ['data-[hovered=true]:bg-danger data-[hovered=true]:text-danger-foreground'],
+        base: [
+          'data-[hovered=true]:bg-danger',
+          'data-[hovered=true]:text-danger-foreground',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-danger',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-danger-foreground',
+        ],
       },
     },
     // bordered / color
@@ -148,42 +185,70 @@ const menuItem = tv({
       variant: 'bordered',
       color: 'default',
       class: {
-        base: ['data-[hovered=true]:border-default'],
+        base: [
+          'data-[hovered=true]:border-default',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:border-default',
+        ],
       },
     },
     {
       variant: 'bordered',
       color: 'primary',
       class: {
-        base: ['data-[hovered=true]:border-primary data-[hovered=true]:text-primary'],
+        base: [
+          'data-[hovered=true]:border-primary',
+          'data-[hovered=true]:text-primary',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:border-primary',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-primary',
+        ],
       },
     },
     {
       variant: 'bordered',
       color: 'secondary',
       class: {
-        base: ['data-[hovered=true]:border-secondary data-[hovered=true]:text-secondary'],
+        base: [
+          'data-[hovered=true]:border-secondary',
+          'data-[hovered=true]:text-secondary',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:border-secondary',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-secondary',
+        ],
       },
     },
     {
       variant: 'bordered',
       color: 'success',
       class: {
-        base: ['data-[hovered=true]:border-success data-[hovered=true]:text-success'],
+        base: [
+          'data-[hovered=true]:border-success',
+          'data-[hovered=true]:text-success',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:border-success',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-success',
+        ],
       },
     },
     {
       variant: 'bordered',
       color: 'warning',
       class: {
-        base: ['data-[hovered=true]:border-warning data-[hovered=true]:text-warning'],
+        base: [
+          'data-[hovered=true]:border-warning',
+          'data-[hovered=true]:text-warning',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:border-warning',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-warning',
+        ],
       },
     },
     {
       variant: 'bordered',
       color: 'danger',
       class: {
-        base: ['data-[hovered=true]:border-danger data-[hovered=true]:text-danger'],
+        base: [
+          'data-[hovered=true]:border-danger',
+          'data-[hovered=true]:text-danger',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:border-danger',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-danger',
+        ],
       },
     },
     // flat / color
@@ -191,42 +256,72 @@ const menuItem = tv({
       variant: 'flat',
       color: 'default',
       class: {
-        base: ['data-[hovered=true]:bg-default/40', 'data-[hovered=true]:text-default-foreground'],
+        base: [
+          'data-[hovered=true]:bg-default/40',
+          'data-[hovered=true]:text-default-foreground',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-default/40',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-default-foreground',
+        ],
       },
     },
     {
       variant: 'flat',
       color: 'primary',
       class: {
-        base: ['data-[hovered=true]:bg-primary/20 data-[hovered=true]:text-primary'],
+        base: [
+          'data-[hovered=true]:bg-primary/20',
+          'data-[hovered=true]:text-primary',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-primary/20',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-primary',
+        ],
       },
     },
     {
       variant: 'flat',
       color: 'secondary',
       class: {
-        base: ['data-[hovered=true]:bg-secondary/20 data-[hovered=true]:text-secondary'],
+        base: [
+          'data-[hovered=true]:bg-secondary/20',
+          'data-[hovered=true]:text-secondary',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-secondary/20',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-secondary',
+        ],
       },
     },
     {
       variant: 'flat',
       color: 'success',
       class: {
-        base: ['data-[hovered=true]:bg-success/20 data-[hovered=true]:text-success'],
+        base: [
+          'data-[hovered=true]:bg-success/20',
+          'data-[hovered=true]:text-success',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-success/20',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-success',
+        ],
       },
     },
     {
       variant: 'flat',
       color: 'warning',
       class: {
-        base: ['data-[hovered=true]:bg-warning/20 data-[hovered=true]:text-warning'],
+        base: [
+          'data-[hovered=true]:bg-warning/20',
+          'data-[hovered=true]:text-warning',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-warning/20',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-warning',
+        ],
       },
     },
     {
       variant: 'flat',
       color: 'danger',
       class: {
-        base: ['data-[hovered=true]:bg-danger/20 data-[hovered=true]:text-danger'],
+        base: [
+          'data-[hovered=true]:bg-danger/20',
+          'data-[hovered=true]:text-danger',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:bg-danger/20',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:focus:text-danger',
+        ],
       },
     },
     // faded / color
@@ -234,42 +329,60 @@ const menuItem = tv({
       variant: 'faded',
       color: 'default',
       class: {
-        base: ['data-[hovered=true]:text-default-foreground'],
+        base: [
+          'data-[hovered=true]:text-default-foreground',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:text-default-foreground',
+        ],
       },
     },
     {
       variant: 'faded',
       color: 'primary',
       class: {
-        base: ['data-[hovered=true]:text-primary'],
+        base: [
+          'data-[hovered=true]:text-primary',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:text-primary',
+        ],
       },
     },
     {
       variant: 'faded',
       color: 'secondary',
       class: {
-        base: ['data-[hovered=true]:text-secondary'],
+        base: [
+          'data-[hovered=true]:text-secondary',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:text-secondary',
+        ],
       },
     },
     {
       variant: 'faded',
       color: 'success',
       class: {
-        base: ['data-[hovered=true]:text-success'],
+        base: [
+          'data-[hovered=true]:text-success',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:text-success',
+        ],
       },
     },
     {
       variant: 'faded',
       color: 'warning',
       class: {
-        base: ['data-[hovered=true]:text-warning'],
+        base: [
+          'data-[hovered=true]:text-warning',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:text-warning',
+        ],
       },
     },
     {
       variant: 'faded',
       color: 'danger',
       class: {
-        base: ['data-[hovered=true]:text-danger'],
+        base: [
+          'data-[hovered=true]:text-danger',
+          'data-[selection-mode]:[&:not([data-selection-mode="none"])]:text-danger',
+        ],
       },
     },
   ],

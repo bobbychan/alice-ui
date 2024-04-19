@@ -31,11 +31,11 @@ const drawer = tv({
       'data-[placement=right]:[--slide-exit:100%]',
     ],
     backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-screen'],
-    dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden', 'p-6', 'h-full', 'max-h-dvh'],
-    header: ['text-lg', 'font-semibold'],
-    body: ['flex-1', 'py-4', 'overflow-y-auto'],
-    footer: ['flex', 'flex-row', 'gap-2', 'justify-end', 'mt-2'],
-    closeButton: ['absolute', 'top-2', 'right-2'],
+    dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden', 'h-full', 'max-h-dvh'],
+    header: ['text-lg', 'font-semibold', 'flex', 'py-4', 'px-6', 'flex-initial'],
+    body: ['flex-1', 'px-6', 'py-2', 'overflow-y-auto'],
+    footer: ['flex', 'flex-row', 'gap-2', 'justify-end', 'px-6', 'py-4'],
+    closeButton: ['absolute', 'top-2', 'right-2', 'rtl:left-2', 'rtl:right-[unset]'],
   },
   variants: {
     placement: {
