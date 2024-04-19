@@ -1,6 +1,5 @@
 import { button, select } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Collection } from 'react-aria-components';
 import { Select, SelectItem, SelectProps, SelectSection } from '../src/select';
 
@@ -124,14 +123,30 @@ const sectionItems: SectionItem[] = [
 
 const Template = (args: SelectProps<object>) => (
   <Select label="Favorite Animal" className="max-w-xs" {...args}>
-    <SelectItem id="aardvark">Aardvark</SelectItem>
-    <SelectItem id="cat">Cat</SelectItem>
-    <SelectItem id="dog">Dog</SelectItem>
-    <SelectItem id="kangaroo">Kangaroo</SelectItem>
-    <SelectItem id="panda">Panda</SelectItem>
-    <SelectItem id="whale">Whale</SelectItem>
-    <SelectItem id="shark">Shark</SelectItem>
-    <SelectItem id="zebra">Zebra</SelectItem>
+    <SelectItem id="aardvark" textValue="aardvark">
+      Aardvark
+    </SelectItem>
+    <SelectItem id="cat" textValue="cat">
+      Cat
+    </SelectItem>
+    <SelectItem id="dog" textValue="dog">
+      Dog
+    </SelectItem>
+    <SelectItem id="kangaroo" textValue="kangaroo">
+      Kangaroo
+    </SelectItem>
+    <SelectItem id="panda" textValue="panda">
+      Panda
+    </SelectItem>
+    <SelectItem id="whale" textValue="whale">
+      Whale
+    </SelectItem>
+    <SelectItem id="shark" textValue="shark">
+      Shark
+    </SelectItem>
+    <SelectItem id="zebra" textValue="zebra">
+      Zebra
+    </SelectItem>
   </Select>
 );
 

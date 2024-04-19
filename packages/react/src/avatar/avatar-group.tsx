@@ -89,7 +89,7 @@ function AvatarGroup(props: AvatarGroupProps, ref: ForwardedRef<HTMLDivElement>)
 
     const childProps = {
       className: clsx(
-        isFirstAvatar ? 'ml-0' : !isGrid ? '-ml-2' : '',
+        isFirstAvatar ? 'ms-0' : !isGrid ? '-ms-2' : '',
         isLastAvatar && remainingCount < 1 ? 'hover:-translate-x-0' : '',
       ),
     };

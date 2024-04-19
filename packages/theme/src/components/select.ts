@@ -43,8 +43,16 @@ const select = tv({
       'data-[disabled=true]:pointer-events-none',
     ],
     value: 'font-normal opacity-100 data-[placeholder=true]:opacity-60',
-    spinner: 'absolute right-3',
-    selectorIcon: ['absolute', 'right-3', 'w-4', 'h-4', 'group-data-[invalid=true]:text-danger'],
+    spinner: ['absolute', 'right-3', 'rtl:left-3', 'rtl:right-[unset]'],
+    selectorIcon: [
+      'absolute',
+      'right-3',
+      'rtl:left-3',
+      'rtl:right-[unset]',
+      'w-4',
+      'h-4',
+      'group-data-[invalid=true]:text-danger',
+    ],
     popover: [
       'p-1',
       'overflow-hidden',

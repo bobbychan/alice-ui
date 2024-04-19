@@ -143,7 +143,7 @@ function Select<T extends object>(props: SelectProps<T>, ref: ForwardedRef<HTMLD
         className={slots.popover({ class: classNames?.popover })}
         {...popoverProps}
       >
-        <ListBox {...listBoxProps} items={items}>
+        <ListBox {...listBoxProps} variant="flat" color="default" items={items}>
           {children}
         </ListBox>
       </Popover>
