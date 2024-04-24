@@ -276,9 +276,6 @@ importers:
       clean-package:
         specifier: ^2.2.0
         version: 2.2.0
-      framer-motion:
-        specifier: ^11.1.2
-        version: 11.1.2(react-dom@18.2.0)(react@18.2.0)
       rimraf:
         specifier: ^5.0.1
         version: 5.0.5

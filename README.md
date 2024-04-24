@@ -8,7 +8,6 @@ Requirements:
 
 - [React 18](https://reactjs.org/) or later
 - [Tailwind CSS 3](https://tailwindcss.com/) or later
-- [Framer Motion 4](https://www.framer.com/motion/) or later
 
 ---
 
@@ -19,7 +18,7 @@ To use AliceUI in your project, you need to follow the following steps:
 Run the following command:
 
 ```sh
-pnpm add @alice-ui/react framer-motion
+pnpm add @alice-ui/react
 ```
 
 ### Tailwind CSS Setup
@@ -80,4 +79,3 @@ After modifying the `.npmrc` file, you need to run `pnpm install` again to ensur
 - [TailwindCSS](https://tailwindcss.com)
 - [Tailwind Variants](https://www.tailwind-variants.org)
 - [React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html)
-- [Framer Motion](https://www.framer.com/motion)

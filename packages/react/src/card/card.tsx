@@ -13,7 +13,6 @@ import {
   ElementType,
   ForwardedRef,
   HTMLAttributes,
-  MouseEvent,
   ReactNode,
   createContext,
   forwardRef,
@@ -21,7 +20,6 @@ import {
 } from 'react';
 import { useButton, useFocusRing, useHover } from 'react-aria';
 import { ContextValue, useContextProps } from 'react-aria-components';
-import { Ripple, useRipple } from '../ripple';
 
 export interface Props extends HTMLAttributes<HTMLButtonElement> {
   elementType?: string;
@@ -29,12 +27,6 @@ export interface Props extends HTMLAttributes<HTMLButtonElement> {
    * Usually the Card parts, `CardHeader`, `CardBody` and `CardFooter`.
    */
   children?: ReactNode | ReactNode[];
-  /**
-   * Whether the card should show a ripple animation on press, this prop is ignored if `disableAnimation` is true or `isPressable` is false.
-   * @default false
-   */
-  disableRipple?: boolean;
-
   /**
    * Whether the card should allow text selection on press. (only for pressable cards)
    * @default true
@@ -64,16 +56,7 @@ function Card(props: CardProps, ref: ForwardedRef<HTMLDivElement>) {
   [props, ref] = useContextProps(props, ref, CardContext);
   const ctx = props as CardContextValue;
 
-  const {
-    elementType,
-    children,
-    disableRipple = false,
-    autoFocus,
-    className,
-    classNames,
-    onPress,
-    ...cardProps
-  } = props;
+  const { elementType, children, autoFocus, className, classNames, onPress, ...cardProps } = props;
 
   const variantProps = filterVariantProps(props, card.variantKeys);
 
@@ -84,14 +67,6 @@ function Card(props: CardProps, ref: ForwardedRef<HTMLDivElement>) {
   }
 
   const baseStyles = clsx(classNames?.base, className);
-
-  const { onClick: onRippleClickHandler, ripples } = useRipple();
-
-  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
-    if (!props.disableAnimation && !disableRipple && props.isPressable) {
-      onRippleClickHandler(e);
-    }
-  };
 
   const { buttonProps, isPressed } = useButton(
     {
@@ -152,10 +127,8 @@ function Card(props: CardProps, ref: ForwardedRef<HTMLDivElement>) {
       data-hovered={dataAttr(isHovered)}
       data-focused={dataAttr(isFocused)}
       data-focus-visible={dataAttr(isFocusVisible)}
-      onClick={handleClick}
     >
       <CardContext.Provider value={context}>{children}</CardContext.Provider>
-      {ctx.isPressable && !ctx.disableAnimation && !disableRipple && <Ripple ripples={ripples} />}
     </Component>
   );
 }

@@ -36,6 +36,9 @@ const modal = tv({
       'm-1',
       'sm:mx-6',
       'sm:my-16',
+      '[--zoom-scale:0.9]',
+      'data-[entering=true]:animate-[zoom_0.2s]',
+      'data-[exiting=true]:animate-[zoom_0.2s_ease-in_reverse]',
     ],
     wrapper: [
       'flex',
@@ -46,22 +49,6 @@ const modal = tv({
       'z-50',
       'overflow-x-auto',
       'justify-center',
-      //  mobile animation vars
-      '[--scale-enter:100%]',
-      '[--scale-exit:100%]',
-      '[--slide-enter:0px]',
-      '[--slide-exit:80px]',
-      // top
-      'data-[placement=top]:[--slide-enter:0%]',
-      'data-[placement=top]:[--slide-exit:-100%]',
-      // bottom
-      'data-[placement=bottom]:[--slide-enter:0%]',
-      'data-[placement=bottom]:[--slide-exit:100%]',
-      // tablet/desktop animation vars
-      'sm:[--scale-enter:100%]',
-      'sm:[--scale-exit:105%]',
-      'sm:[--slide-enter:0px]',
-      'sm:[--slide-exit:0px]',
     ],
     backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-screen'],
     dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden'],
