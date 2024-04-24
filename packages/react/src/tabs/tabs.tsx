@@ -2,8 +2,14 @@ import { useIsMounted } from '@alice-ui/hooks';
 import { clsx } from '@alice-ui/shared-utils';
 import type { SlotsToClasses, TabsReturnType, TabsSlots, TabsVariantProps } from '@alice-ui/theme';
 import { filterVariantProps, tabs } from '@alice-ui/theme';
-import { HTMLMotionProps, LayoutGroup, LazyMotion, domMax, m } from 'framer-motion';
-import { createContext, useContext, useId, useMemo } from 'react';
+import {
+  ReactElement,
+  cloneElement,
+  createContext,
+  isValidElement,
+  useContext,
+  useMemo,
+} from 'react';
 import type {
   TabsProps as AriaTabsProps,
   TabListProps,
@@ -18,15 +24,7 @@ import {
 } from 'react-aria-components';
 
 export interface TabsProps extends AriaTabsProps, TabsVariantProps {
-  /**
-   * The props to modify the cursor motion animation. Use the `variants` API to create your own animation.
-   */
-  motionProps?: HTMLMotionProps<'span'>;
-  /**
-   * Whether the cursor should be hidden.
-   * @default false
-   */
-  disableCursorAnimation?: boolean;
+  indicator?: React.ReactNode;
   /**
    * Classes object to style the tabs and its children.
    */
@@ -34,10 +32,9 @@ export interface TabsProps extends AriaTabsProps, TabsVariantProps {
 }
 
 interface InternalTabsContextValue {
+  indicator?: React.ReactNode;
   slots: TabsReturnType;
   classNames?: SlotsToClasses<TabsSlots>;
-  motionProps?: HTMLMotionProps<'span'>;
-  disableCursorAnimation?: boolean;
 }
 
 export const InternalTabsContext = createContext<InternalTabsContextValue>(
@@ -45,7 +42,7 @@ export const InternalTabsContext = createContext<InternalTabsContextValue>(
 );
 
 function Tabs(props: TabsProps) {
-  const { className, classNames, motionProps, disableCursorAnimation, ...otherProps } = props;
+  const { className, classNames, indicator, ...otherProps } = props;
   const variantProps = filterVariantProps(props, tabs.variantKeys);
 
   const slots = useMemo(() => tabs({ ...variantProps }), [variantProps]);
@@ -53,9 +50,7 @@ function Tabs(props: TabsProps) {
   const baseStyles = clsx(classNames?.base, className);
 
   return (
-    <InternalTabsContext.Provider
-      value={{ slots, classNames, motionProps, disableCursorAnimation }}
-    >
+    <InternalTabsContext.Provider value={{ slots, classNames, indicator }}>
       <AriaTabs {...otherProps} className={slots.base({ class: baseStyles })} />
     </InternalTabsContext.Provider>
   );
@@ -64,23 +59,29 @@ function Tabs(props: TabsProps) {
 function TabList<T extends object>(props: TabListProps<T>) {
   const { slots, classNames } = useContext(InternalTabsContext);
 
-  const layoutId = useId();
-
-  return (
-    <LayoutGroup id={layoutId}>
-      <AriaTabList {...props} className={slots.tabList({ class: classNames?.tabList })} />
-    </LayoutGroup>
-  );
+  return <AriaTabList {...props} className={slots.tabList({ class: classNames?.tabList })} />;
 }
 
 function Tab(props: TabProps) {
-  const { slots, classNames, disableCursorAnimation, motionProps } =
-    useContext(InternalTabsContext);
+  const { slots, classNames, indicator } = useContext(InternalTabsContext);
   const { children } = props;
 
   const [, isMounted] = useIsMounted({
     rerender: true,
   });
+
+  const getIndicatoContent = () => {
+    if (indicator === null) {
+      return null;
+    }
+    if (indicator) {
+      if (!isValidElement(indicator)) return null;
+      return cloneElement(indicator as ReactElement, {
+        className: slots.cursor({ class: classNames?.cursor }),
+      });
+    }
+    return <span className={slots.cursor({ class: classNames?.cursor })} />;
+  };
 
   return (
     <AriaTab
@@ -92,21 +93,7 @@ function Tab(props: TabProps) {
     >
       {(renderProps) => (
         <>
-          {renderProps.isSelected && !disableCursorAnimation && isMounted ? (
-            <LazyMotion features={domMax}>
-              <m.span
-                className={slots.cursor({ class: classNames?.cursor })}
-                layoutDependency={false}
-                layoutId="cursor"
-                transition={{
-                  type: 'spring',
-                  bounce: 0.15,
-                  duration: 0.5,
-                }}
-                {...motionProps}
-              />
-            </LazyMotion>
-          ) : null}
+          {renderProps.isSelected && isMounted ? getIndicatoContent() : null}
           <div className={slots.tabContent({ class: classNames?.tabContent })}>
             {typeof children === 'function' ? children(renderProps) : children}
           </div>
