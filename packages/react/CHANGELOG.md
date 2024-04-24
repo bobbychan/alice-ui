@@ -1,5 +1,11 @@
 # @alice-ui/react
 
+## 1.0.39
+
+### Patch Changes
+
+- [#95](https://github.com/bobbychan/alice-ui/pull/95) [`00ac253817b42f1b7a3e2d0759168847744749c9`](https://github.com/bobbychan/alice-ui/commit/00ac253817b42f1b7a3e2d0759168847744749c9) Thanks [@bobbychan](https://github.com/bobbychan)! - remove framer motion
+
 ## 1.0.38
 
 ### Patch Changes
