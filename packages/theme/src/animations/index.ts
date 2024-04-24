@@ -27,6 +27,22 @@ export const animations = {
         'backdrop-filter': 'blur(12px)',
       },
     },
+    zoom: {
+      '0%': {
+        transform: 'scale(var(--zoom-scale, 0.9))',
+      },
+      '100%': {
+        transform: 'scale(1)',
+      },
+    },
+    slide: {
+      '0%': {
+        transform: 'var(--slide-enter)',
+      },
+      '100%': {
+        transform: 'translate(0)',
+      },
+    },
     popover: {
       '0%': {
         opacity: '0',

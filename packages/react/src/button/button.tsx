@@ -1,26 +1,12 @@
 import type { ButtonVariantProps } from '@alice-ui/theme';
 import { button } from '@alice-ui/theme';
-import {
-  ForwardedRef,
-  ReactNode,
-  cloneElement,
-  forwardRef,
-  isValidElement,
-  useCallback,
-  useMemo,
-} from 'react';
+import { ForwardedRef, ReactNode, cloneElement, forwardRef, isValidElement, useMemo } from 'react';
 import type { ButtonProps as AriaButtonProps } from 'react-aria-components';
 import { Button as AriaButton } from 'react-aria-components';
-import { Ripple, useRipple } from '../ripple';
 import type { SpinnerProps } from '../spinner';
 import { Spinner } from '../spinner';
 
 export interface ButtonProps extends AriaButtonProps, Omit<ButtonVariantProps, 'isInGroup'> {
-  /**
-   * Whether the button should display a ripple effect on press.
-   * @default false
-   */
-  disableRipple?: boolean;
   /**
    * The button start content.
    */
@@ -63,21 +49,10 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
     startContent: startContentProp,
     endContent: endContentProp,
     disableAnimation,
-    disableRipple,
     className,
     children,
     ...otherProps
   } = props;
-
-  const { onClick: onRippleClickHandler, ripples } = useRipple();
-
-  const handleClick = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      if (disableRipple || disableAnimation || isLoading) return;
-      onRippleClickHandler(e);
-    },
-    [disableRipple, disableAnimation, isLoading, onRippleClickHandler],
-  );
 
   const styles = useMemo(
     () =>
@@ -106,23 +81,12 @@ function Button(props: ButtonProps, ref: ForwardedRef<HTMLButtonElement>) {
   const endContent = getIconClone(endContentProp);
 
   return (
-    // @ts-ignore
     <AriaButton ref={ref} className={styles} {...otherProps}>
-      {({ isDisabled }) => (
-        <>
-          {startContent}
-          {isLoading && spinnerPlacement === 'start' && <div className="shrink-0">{spinner}</div>}
-          <>{children}</>
-          {isLoading && spinnerPlacement === 'end' && spinner}
-          {endContent}
-          {(!disableRipple || !isDisabled) && (
-            <>
-              <div aria-hidden className="absolute inset-0 h-full w-full" onClick={handleClick} />
-              <Ripple ripples={ripples} />
-            </>
-          )}
-        </>
-      )}
+      {startContent}
+      {isLoading && spinnerPlacement === 'start' && <div className="shrink-0">{spinner}</div>}
+      <>{children}</>
+      {isLoading && spinnerPlacement === 'end' && spinner}
+      {endContent}
     </AriaButton>
   );
 }

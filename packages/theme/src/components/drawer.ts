@@ -18,17 +18,16 @@ const drawer = tv({
       'overflow-hidden',
       'shadow-[0_8px_10px_-5px_rgba(0,0,0,0.2),0_16px_24px_2px_rgba(0,0,0,0.14),0_6px_30px_5px_rgba(0,0,0,0.12)]',
       // top
-      'data-[placement=top]:[--slide-enter:0%]',
-      'data-[placement=top]:[--slide-exit:-100%]',
+      'data-[placement=top]:[--slide-enter:translateY(-100%)]',
       // bottom
-      'data-[placement=bottom]:[--slide-enter:0%]',
-      'data-[placement=bottom]:[--slide-exit:100%]',
+      'data-[placement=bottom]:[--slide-enter:translateY(100%)]',
       // left
-      'data-[placement=left]:[--slide-enter:0%]',
-      'data-[placement=left]:[--slide-exit:-100%]',
+      'data-[placement=left]:[--slide-enter:translateX(-100%)]',
       // right
-      'data-[placement=right]:[--slide-enter:0%]',
-      'data-[placement=right]:[--slide-exit:100%]',
+      'data-[placement=right]:[--slide-enter:translateX(100%)]',
+      // animate
+      'data-[entering=true]:animate-[slide_0.2s]',
+      'data-[exiting=true]:animate-[slide_0.2s_ease-in_reverse]',
     ],
     backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-screen'],
     dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden', 'h-full', 'max-h-dvh'],
