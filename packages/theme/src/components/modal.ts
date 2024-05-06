@@ -52,7 +52,7 @@ const modal = tv({
     ],
     backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-screen'],
     dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden'],
-    header: ['text-lg', 'font-semibold', 'flex', 'py-4', 'px-6', 'flex-initial'],
+    header: ['text-lg', 'font-semibold', 'py-4', 'px-6'],
     body: ['flex', 'flex-1', 'flex-col', 'gap-3', 'px-6', 'py-2'],
     footer: ['flex', 'flex-row', 'gap-2', 'justify-end', 'px-6', 'py-4'],
     closeButton: ['absolute', 'top-2', 'right-2', 'rtl:left-2', 'rtl:right-[unset]'],
