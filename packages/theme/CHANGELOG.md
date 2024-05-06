@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.25
+
+### Patch Changes
+
+- [#97](https://github.com/bobbychan/alice-ui/pull/97) [`45ade4a56a937f538c3870a43f59c754597a95a1`](https://github.com/bobbychan/alice-ui/commit/45ade4a56a937f538c3870a43f59c754597a95a1) Thanks [@bobbychan](https://github.com/bobbychan)! - update react-aria-components version to 1.2.0
+
 ## 1.0.24
 
 ### Patch Changes
