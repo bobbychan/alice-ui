@@ -45,20 +45,20 @@
     "@alice-ui/react-utils": "workspace:*",
     "@alice-ui/shared-utils": "workspace:*",
     "@alice-ui/theme": "workspace:*",
-    "@react-aria/focus": "^3.17.0",
-    "@react-aria/interactions": "^3.21.2",
-    "@react-aria/overlays": "^3.22.0",
-    "@react-aria/utils": "^3.24.0",
-    "@react-stately/utils": "^3.10.0",
-    "@react-types/shared": "^3.23.0",
-    "react-aria": "^3.33.0",
-    "react-aria-components": "^1.2.0",
-    "react-stately": "^3.31.0",
+    "@react-aria/focus": "^3.17.1",
+    "@react-aria/interactions": "^3.21.3",
+    "@react-aria/overlays": "^3.22.1",
+    "@react-aria/utils": "^3.24.1",
+    "@react-stately/utils": "^3.10.1",
+    "@react-types/shared": "^3.23.1",
+    "react-aria": "^3.33.1",
+    "react-aria-components": "^1.2.1",
+    "react-stately": "^3.31.1",
     "react-textarea-autosize": "^8.5.3"
   },
   "devDependencies": {
     "clean-package": "^2.2.0",
-    "rimraf": "^5.0.1"
+    "rimraf": "^5.0.7"
   },
   "clean-package": "../../clean-package.config.json"
 }

@@ -1,4 +1,4 @@
-import flatten from 'flat';
+import { flatten } from 'flat';
 
 export function swapColorValues<T extends object>(colors: T) {
   const swappedColors = {};
