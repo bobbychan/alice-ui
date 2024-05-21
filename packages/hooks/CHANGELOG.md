@@ -1,5 +1,12 @@
 # @alice-ui/hooks
 
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies [[`2115ef8893a8b20fc7641a1a27438a8d5d997707`](https://github.com/bobbychan/alice-ui/commit/2115ef8893a8b20fc7641a1a27438a8d5d997707)]:
+  - @alice-ui/shared-utils@1.0.3
+
 ## 1.0.3
 
 ### Patch Changes
