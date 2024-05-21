@@ -29,7 +29,7 @@ const drawer = tv({
       'data-[entering=true]:animate-[slide_0.2s]',
       'data-[exiting=true]:animate-[slide_0.2s_ease-in_reverse]',
     ],
-    backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-screen'],
+    backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-dvh'],
     dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden', 'h-full', 'max-h-dvh'],
     header: ['text-lg', 'font-semibold', 'flex', 'py-4', 'px-6', 'flex-initial'],
     body: ['flex-1', 'px-6', 'py-2', 'overflow-y-auto'],

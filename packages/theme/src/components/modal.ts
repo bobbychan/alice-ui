@@ -50,7 +50,7 @@ const modal = tv({
       'overflow-x-auto',
       'justify-center',
     ],
-    backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-screen'],
+    backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-dvh'],
     dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden'],
     header: ['text-lg', 'font-semibold', 'py-4', 'px-6'],
     body: ['flex', 'flex-1', 'flex-col', 'gap-3', 'px-6', 'py-2'],
