@@ -1,5 +1,16 @@
 # @alice-ui/react
 
+## 1.0.41
+
+### Patch Changes
+
+- [#100](https://github.com/bobbychan/alice-ui/pull/100) [`2115ef8893a8b20fc7641a1a27438a8d5d997707`](https://github.com/bobbychan/alice-ui/commit/2115ef8893a8b20fc7641a1a27438a8d5d997707) Thanks [@bobbychan](https://github.com/bobbychan)! - upgrade dependencies
+
+- Updated dependencies [[`2115ef8893a8b20fc7641a1a27438a8d5d997707`](https://github.com/bobbychan/alice-ui/commit/2115ef8893a8b20fc7641a1a27438a8d5d997707)]:
+  - @alice-ui/shared-utils@1.0.3
+  - @alice-ui/theme@1.0.26
+  - @alice-ui/hooks@1.0.4
+
 ## 1.0.40
 
 ### Patch Changes
