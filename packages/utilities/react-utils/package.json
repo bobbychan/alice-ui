@@ -35,8 +35,12 @@
   "peerDependencies": {
     "react": ">=18"
   },
+  "dependencies": {
+    "@alice-ui/shared-utils": "workspace:*"
+  },
   "devDependencies": {
-    "clean-package": "2.2.0"
+    "clean-package": "2.2.0",
+    "react": "^18.0.0"
   },
   "clean-package": "../../../clean-package.config.json"
 }
