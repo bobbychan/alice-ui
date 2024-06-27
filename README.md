@@ -79,3 +79,5 @@ After modifying the `.npmrc` file, you need to run `pnpm install` again to ensur
 - [TailwindCSS](https://tailwindcss.com)
 - [Tailwind Variants](https://www.tailwind-variants.org)
 - [React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html)
+
+This project is tested with BrowserStack
