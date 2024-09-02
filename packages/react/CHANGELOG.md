@@ -1,5 +1,14 @@
 # @alice-ui/react
 
+## 1.0.43
+
+### Patch Changes
+
+- [#105](https://github.com/bobbychan/alice-ui/pull/105) [`14a74a98a3b5ae0c838bcfc7229dada771a5c8d4`](https://github.com/bobbychan/alice-ui/commit/14a74a98a3b5ae0c838bcfc7229dada771a5c8d4) Thanks [@bobbychan](https://github.com/bobbychan)! - Add ref to the NumberInput component
+
+- Updated dependencies [[`14a74a98a3b5ae0c838bcfc7229dada771a5c8d4`](https://github.com/bobbychan/alice-ui/commit/14a74a98a3b5ae0c838bcfc7229dada771a5c8d4)]:
+  - @alice-ui/hooks@1.0.5
+
 ## 1.0.42
 
 ### Patch Changes
