@@ -6,7 +6,7 @@ import type {
   SlotsToClasses,
 } from '@alice-ui/theme';
 import { button, numberInput } from '@alice-ui/theme';
-import { ReactNode, useMemo } from 'react';
+import { ForwardedRef, forwardRef, ReactNode, useMemo } from 'react';
 import type { NumberFieldProps, ValidationResult } from 'react-aria-components';
 import { Button, FieldError, Group, Label, NumberField, Text } from 'react-aria-components';
 import { Input, InputProps } from '../input';
@@ -32,7 +32,7 @@ export interface NumberInputProps extends NumberFieldProps, NumberInputVariantPr
   classNames?: SlotsToClasses<NumberInputSlots>;
 }
 
-function NumberInput(props: NumberInputProps) {
+function NumberInput(props: NumberInputProps, ref: ForwardedRef<HTMLDivElement>) {
   const {
     className,
     classNames,
@@ -68,7 +68,7 @@ function NumberInput(props: NumberInputProps) {
   const baseStyles = clsx(classNames?.base, className);
 
   return (
-    <NumberField className={slots.base({ class: baseStyles })} {...otherProps}>
+    <NumberField ref={ref} className={slots.base({ class: baseStyles })} {...otherProps}>
       {label && <Label className={slots.label({ class: classNames?.label })}>{label}</Label>}
       <Group className={slots.wrapper({ class: classNames?.wrapper })}>
         <Button
@@ -104,4 +104,6 @@ function NumberInput(props: NumberInputProps) {
   );
 }
 
-export { NumberInput };
+const _NumberInput = forwardRef(NumberInput);
+
+export { _NumberInput as NumberInput };
