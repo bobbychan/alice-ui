@@ -1,5 +1,11 @@
 # @alice-ui/react
 
+## 1.0.45
+
+### Patch Changes
+
+- [#109](https://github.com/bobbychan/alice-ui/pull/109) [`a3ed018c5137650c1433f35692bee37b0b0a732a`](https://github.com/bobbychan/alice-ui/commit/a3ed018c5137650c1433f35692bee37b0b0a732a) Thanks [@bobbychan](https://github.com/bobbychan)! - add Intl.ListFormat polyfill
+
 ## 1.0.44
 
 ### Patch Changes
