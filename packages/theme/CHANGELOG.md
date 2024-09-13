@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.27
+
+### Patch Changes
+
+- [#107](https://github.com/bobbychan/alice-ui/pull/107) [`20e265733ec16afca9f2d4e20795a36ca814086d`](https://github.com/bobbychan/alice-ui/commit/20e265733ec16afca9f2d4e20795a36ca814086d) Thanks [@bobbychan](https://github.com/bobbychan)! - Add @formatjs/intl-listformat
+
 ## 1.0.26
 
 ### Patch Changes
