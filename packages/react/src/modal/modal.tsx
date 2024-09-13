@@ -10,9 +10,6 @@ import { modal } from '@alice-ui/theme';
 import { ForwardedRef, createContext, forwardRef, useMemo } from 'react';
 import type { ModalOverlayProps } from 'react-aria-components';
 import { Modal as AriaModal, ModalOverlay } from 'react-aria-components';
-// https://github.com/adobe/react-spectrum/issues/5720
-import '@formatjs/intl-listformat/locale-data/en';
-import '@formatjs/intl-listformat/polyfill';
 
 export interface ModalProps extends ModalOverlayProps, ModalVariantProps {
   /**
