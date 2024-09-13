@@ -1,5 +1,11 @@
 # @alice-ui/react
 
+## 1.0.46
+
+### Patch Changes
+
+- [#111](https://github.com/bobbychan/alice-ui/pull/111) [`bd72405d22147732396f1e736f28d7fe8c8f5c12`](https://github.com/bobbychan/alice-ui/commit/bd72405d22147732396f1e736f28d7fe8c8f5c12) Thanks [@bobbychan](https://github.com/bobbychan)! - remove @formatjs/intl-listformat
+
 ## 1.0.45
 
 ### Patch Changes
