@@ -45,7 +45,6 @@
     "@alice-ui/react-utils": "workspace:*",
     "@alice-ui/shared-utils": "workspace:*",
     "@alice-ui/theme": "workspace:*",
-    "@formatjs/intl-listformat": "^7.5.7",
     "@react-aria/focus": "^3.18.2",
     "@react-aria/interactions": "^3.22.2",
     "@react-aria/overlays": "^3.23.2",
