@@ -3,4 +3,4 @@
 '@alice-ui/theme': patch
 ---
 
-feat: support tailwindcss v4
+support tailwindcss v4
