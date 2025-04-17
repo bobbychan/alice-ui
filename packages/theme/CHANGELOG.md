@@ -1,5 +1,11 @@
 # @alice-ui/theme
 
+## 1.0.30
+
+### Patch Changes
+
+- [#118](https://github.com/bobbychan/alice-ui/pull/118) [`f59ad2e465c9d76b692484cf60b99a38ed32b0d6`](https://github.com/bobbychan/alice-ui/commit/f59ad2e465c9d76b692484cf60b99a38ed32b0d6) Thanks [@bobbychan](https://github.com/bobbychan)! - update plugin
+
 ## 1.0.29
 
 ### Patch Changes
