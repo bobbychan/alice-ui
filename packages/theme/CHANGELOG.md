@@ -1,5 +1,13 @@
 # @alice-ui/theme
 
+## 1.0.29
+
+### Patch Changes
+
+- [#116](https://github.com/bobbychan/alice-ui/pull/116) [`546ddbeaf9869aefbcf21c09c691ab28cb68de18`](https://github.com/bobbychan/alice-ui/commit/546ddbeaf9869aefbcf21c09c691ab28cb68de18) Thanks [@bobbychan](https://github.com/bobbychan)! - fix plugin error
+
+- [#115](https://github.com/bobbychan/alice-ui/pull/115) [`3551070dd59712834282835d24c017760682f290`](https://github.com/bobbychan/alice-ui/commit/3551070dd59712834282835d24c017760682f290) Thanks [@bobbychan](https://github.com/bobbychan)! - fix tailwindcss plugin path
+
 ## 1.0.28
 
 ### Patch Changes
