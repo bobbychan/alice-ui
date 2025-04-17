@@ -5,7 +5,6 @@ import get from 'lodash.get';
 import kebabCase from 'lodash.kebabcase';
 import mapKeys from 'lodash.mapkeys';
 import omit from 'lodash.omit';
-// @ts-ignore
 import plugin from 'tailwindcss/plugin';
 
 import { animations } from './animations';
