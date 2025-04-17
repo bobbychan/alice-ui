@@ -5,7 +5,7 @@ import { tv } from '../utils/tv';
 
 const menu = tv({
   slots: {
-    base: ['w-full', 'flex', 'flex-col', 'gap-0.5', 'p-1', 'outline-none', 'overflow-auto'],
+    base: ['w-full', 'flex', 'flex-col', 'gap-0.5', 'p-1', 'outline-hidden', 'overflow-auto'],
     popover: [
       'p-1',
       'min-w-[200px]',
@@ -45,7 +45,7 @@ const menuItem = tv({
       'box-border',
       'rounded-small',
       'subpixel-antialiased',
-      'outline-none',
+      'outline-hidden',
       'cursor-pointer',
       'tap-highlight-transparent',
       'data-[hovered=true]:transition-colors',
@@ -58,11 +58,11 @@ const menuItem = tv({
     wrapper: 'w-full flex flex-col items-start justify-center',
     title: 'flex-1 text-sm font-normal truncate',
     description: ['w-full', 'text-xs', 'text-foreground-500', 'group-hover:text-current'],
-    selectedIcon: ['text-inherit', 'w-3', 'h-3', 'flex-shrink-0'],
+    selectedIcon: ['text-inherit', 'w-3', 'h-3', 'shrink-0'],
     shortcut: [
       'px-1',
       'py-0.5',
-      'rounded',
+      'rounded-sm',
       'font-sans',
       'text-foreground-500',
       'text-xs',

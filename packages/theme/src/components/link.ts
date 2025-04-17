@@ -10,7 +10,7 @@ import { tv } from '../utils/tv';
  */
 const link = tv({
   base: [
-    'relative inline-flex items-center outline-none tap-highlight-transparent',
+    'relative inline-flex items-center outline-hidden tap-highlight-transparent',
     // disabled
     'data-[disabled=true]:opacity-disabled',
     'data-[disabled=true]:pointer-events-none',

@@ -1,7 +1,6 @@
 import { MoonFilledIcon } from '@alice-ui/icons';
 import { input } from '@alice-ui/theme';
 import { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import { Input, InputProps } from '../src/input';
 
 const meta: Meta<typeof Input> = {
@@ -62,7 +61,7 @@ const StartContentTemplate = (args: InputProps) => (
       {...args}
       placeholder="Sleep Time"
       startContent={
-        <MoonFilledIcon className="text-default-400 pointer-events-none flex-shrink-0 text-2xl" />
+        <MoonFilledIcon className="text-default-400 pointer-events-none shrink-0 text-2xl" />
       }
     />
     <Input
@@ -93,7 +92,7 @@ const EndContentTemplate = (args: InputProps) => (
     <Input
       {...args}
       endContent={
-        <MoonFilledIcon className="text-default-400 pointer-events-none flex-shrink-0 text-2xl" />
+        <MoonFilledIcon className="text-default-400 pointer-events-none shrink-0 text-2xl" />
       }
       placeholder="Sleep Time"
     />
@@ -130,7 +129,7 @@ const StartAndEndContentTemplate = (args: InputProps) => (
         </div>
       }
       startContent={
-        <MoonFilledIcon className="text-default-400 pointer-events-none flex-shrink-0 text-xl" />
+        <MoonFilledIcon className="text-default-400 pointer-events-none shrink-0 text-xl" />
       }
     />
     <Input
@@ -141,7 +140,7 @@ const StartAndEndContentTemplate = (args: InputProps) => (
             Currency
           </label>
           <select
-            className="text-default-400 border-0 bg-transparent text-sm outline-none"
+            className="text-default-400 border-0 bg-transparent text-sm outline-hidden"
             id="currency"
             name="currency"
           >

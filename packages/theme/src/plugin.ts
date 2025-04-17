@@ -23,6 +23,7 @@ import { flattenThemeObject } from './utils/object';
  */
 const isBaseTheme = (theme: string) => theme === 'light' || theme === 'dark';
 const DEFAULT_PREFIX = 'aliceui';
+const parsedColorsCache: Record<string, number[]> = {};
 
 // @internal
 const resolveConfig = (
@@ -33,29 +34,20 @@ const resolveConfig = (
   const resolved: {
     variants: { name: string; definition: string[] }[];
     utilities: Record<string, Record<string, any>>;
-    colors: Record<
-      string,
-      ({
-        opacityValue,
-        opacityVariable,
-      }: {
-        opacityValue: string;
-        opacityVariable: string;
-      }) => string
-    >;
+    colors: Record<string, string>;
   } = {
     variants: [],
     utilities: {},
     colors: {},
   };
 
-  forEach(themes, ({ extend, layout, colors }: ConfigTheme, themeName: string) => {
-    let cssSelector = `.${themeName},[data-theme="${themeName}"]`;
+  for (const [themeName, { extend, layout, colors }] of Object.entries(themes)) {
+    let cssSelector = `.${themeName}`;
     const scheme = themeName === 'light' || themeName === 'dark' ? themeName : extend;
 
     // if the theme is the default theme, add the selector to the root element
     if (themeName === defaultTheme) {
-      cssSelector = `:root,${cssSelector}`;
+      cssSelector = `${cssSelector}`;
     }
 
     resolved.utilities[cssSelector] = scheme
@@ -65,9 +57,9 @@ const resolveConfig = (
       : {};
 
     // flatten color definitions
-    const flatColors = flattenThemeObject(colors);
+    const flatColors = flattenThemeObject(colors) as Record<string, string>;
 
-    const flatLayout = layout ? mapKeys(layout, (value, key) => kebabCase(key)) : {};
+    const flatLayout = layout ? mapKeys(layout, (_, key) => kebabCase(key)) : {};
 
     // resolved.variants
     resolved.variants.push({
@@ -78,61 +70,58 @@ const resolveConfig = (
     /**
      * Colors
      */
-    forEach(flatColors, (colorValue, colorName) => {
+    for (const [colorName, colorValue] of Object.entries(flatColors)) {
       if (!colorValue) return;
 
       try {
-        const [h, s, l, defaultAlphaValue] = Color(colorValue).hsl().round().array();
-        const nextuiColorVariable = `--${prefix}-${colorName}`;
-        const nextuiOpacityVariable = `--${prefix}-${colorName}-opacity`;
+        const parsedColor =
+          parsedColorsCache[colorValue] || Color(colorValue).hsl().round(2).array();
+
+        parsedColorsCache[colorValue] = parsedColor;
+
+        const [h, s, l, defaultAlphaValue] = parsedColor;
+        const herouiColorVariable = `--${prefix}-${colorName}`;
 
         // set the css variable in "@layer utilities"
-        resolved.utilities[cssSelector]![nextuiColorVariable] = `${h} ${s}% ${l}%`;
-        // if an alpha value was provided in the color definition, store it in a css variable
-        if (typeof defaultAlphaValue === 'number') {
-          resolved.utilities[cssSelector]![nextuiOpacityVariable] = defaultAlphaValue.toFixed(2);
-        }
+        resolved.utilities[cssSelector]![herouiColorVariable] = `${h} ${s}% ${l}%`;
         // set the dynamic color in tailwind config theme.colors
-        resolved.colors[colorName] = ({ opacityVariable, opacityValue }) => {
-          // if the opacity is set  with a slash (e.g. bg-primary/90), use the provided value
-          if (!isNaN(+opacityValue)) {
-            return `hsl(var(${nextuiColorVariable}) / ${opacityValue})`;
-          }
-          // if no opacityValue was provided (=it is not parsable to a number)
-          // the nextuiOpacityVariable (opacity defined in the color definition rgb(0, 0, 0, 0.5)) should have the priority
-          // over the tw class based opacity(e.g. "bg-opacity-90")
-          // This is how tailwind behaves as for v3.2.4
-          if (opacityVariable) {
-            return `hsl(var(${nextuiColorVariable}) / var(${nextuiOpacityVariable}, var(${opacityVariable})))`;
-          }
-
-          return `hsl(var(${nextuiColorVariable}) / var(${nextuiOpacityVariable}, 1))`;
-        };
+        resolved.colors[colorName] = `hsl(var(${herouiColorVariable}) / ${
+          defaultAlphaValue ?? '<alpha-value>'
+        })`;
       } catch (error: any) {
         // eslint-disable-next-line no-console
         console.log('error', error?.message);
       }
-    });
+    }
 
     /**
      * Layout
      */
-    forEach(flatLayout, (value, key) => {
+    /**
+     * Layout
+     */
+    for (const [key, value] of Object.entries(flatLayout)) {
       if (!value) return;
 
+      const layoutVariablePrefix = `--${prefix}-${key}`;
+
       if (typeof value === 'object') {
-        forEach(value, (v, k) => {
-          const layoutVariable = `--${prefix}-${key}-${k}`;
+        for (const [nestedKey, nestedValue] of Object.entries(value)) {
+          const nestedLayoutVariable = `${layoutVariablePrefix}-${nestedKey}`;
 
-          resolved.utilities[cssSelector]![layoutVariable] = v;
-        });
+          resolved.utilities[cssSelector]![nestedLayoutVariable] = nestedValue;
+        }
       } else {
-        const layoutVariable = `--${prefix}-${key}`;
+        // Handle opacity values and other singular layout values
+        const formattedValue =
+          layoutVariablePrefix.includes('opacity') && typeof value === 'number'
+            ? value.toString().replace(/^0\./, '.')
+            : value;
 
-        resolved.utilities[cssSelector]![layoutVariable] = value;
+        resolved.utilities[cssSelector]![layoutVariablePrefix] = formattedValue;
       }
-    });
-  });
+    }
+  }
 
   return resolved;
 };
@@ -154,8 +143,9 @@ const corePlugin = (
         },
       });
       // add the css variables to "@layer utilities"
-      addUtilities({ ...resolved.utilities, ...utilities });
-      resolved.variants.forEach((variant) => {
+      addUtilities({ ...resolved?.utilities, ...utilities });
+      // add the theme as variant e.g. "[theme-name]:text-2xl"
+      resolved?.variants.forEach((variant) => {
         addVariant(variant.name, variant.definition);
       });
     },
@@ -165,7 +155,7 @@ const corePlugin = (
         extend: {
           colors: {
             ...(addCommonColors ? commonColors : {}),
-            ...resolved.colors,
+            ...resolved?.colors,
           },
           height: {
             divider: `var(--${prefix}-divider-weight)`,
