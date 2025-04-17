@@ -1,11 +1,7 @@
+import { kebabCase, mapKeys, omit } from '@heroui/shared-utils';
 import Color from 'color';
 import deepMerge from 'deepmerge';
-import forEach from 'lodash.foreach';
-import get from 'lodash.get';
-import kebabCase from 'lodash.kebabcase';
-import mapKeys from 'lodash.mapkeys';
-import omit from 'lodash.omit';
-import plugin from 'tailwindcss/plugin';
+import plugin from 'tailwindcss/plugin.js';
 
 import { animations } from './animations';
 import { commonColors, semanticColors } from './colors';
@@ -35,20 +31,30 @@ const resolveConfig = (
     variants: { name: string; definition: string[] }[];
     utilities: Record<string, Record<string, any>>;
     colors: Record<string, string>;
+    baseStyles: Record<string, Record<string, any>>;
   } = {
     variants: [],
     utilities: {},
     colors: {},
+    baseStyles: {},
   };
 
   for (const [themeName, { extend, layout, colors }] of Object.entries(themes)) {
     let cssSelector = `.${themeName}`;
     const scheme = themeName === 'light' || themeName === 'dark' ? themeName : extend;
+    let baseSelector = '';
 
     // if the theme is the default theme, add the selector to the root element
     if (themeName === defaultTheme) {
-      cssSelector = `${cssSelector}`;
+      baseSelector = `:root, [data-theme=${themeName}]`;
     }
+
+    baseSelector &&
+      (resolved.baseStyles[baseSelector] = scheme
+        ? {
+            'color-scheme': scheme,
+          }
+        : {});
 
     resolved.utilities[cssSelector] = scheme
       ? {
@@ -84,6 +90,8 @@ const resolveConfig = (
 
         // set the css variable in "@layer utilities"
         resolved.utilities[cssSelector]![herouiColorVariable] = `${h} ${s}% ${l}%`;
+        baseSelector &&
+          (resolved.baseStyles[baseSelector]![herouiColorVariable] = `${h} ${s}% ${l}%`);
         // set the dynamic color in tailwind config theme.colors
         resolved.colors[colorName] = `hsl(var(${herouiColorVariable}) / ${
           defaultAlphaValue ?? '<alpha-value>'
@@ -97,9 +105,6 @@ const resolveConfig = (
     /**
      * Layout
      */
-    /**
-     * Layout
-     */
     for (const [key, value] of Object.entries(flatLayout)) {
       if (!value) return;
 
@@ -110,6 +115,7 @@ const resolveConfig = (
           const nestedLayoutVariable = `${layoutVariablePrefix}-${nestedKey}`;
 
           resolved.utilities[cssSelector]![nestedLayoutVariable] = nestedValue;
+          baseSelector && (resolved.baseStyles[baseSelector]![nestedLayoutVariable] = nestedValue);
         }
       } else {
         // Handle opacity values and other singular layout values
@@ -119,6 +125,7 @@ const resolveConfig = (
             : value;
 
         resolved.utilities[cssSelector]![layoutVariablePrefix] = formattedValue;
+        baseSelector && (resolved.baseStyles[baseSelector]![layoutVariablePrefix] = formattedValue);
       }
     }
   }
@@ -142,6 +149,10 @@ const corePlugin = (
           ...baseStyles(prefix),
         },
       });
+
+      // add the base styles to "@layer base"
+      addBase({ ...resolved?.baseStyles });
+
       // add the css variables to "@layer utilities"
       addUtilities({ ...resolved?.utilities, ...utilities });
       // add the theme as variant e.g. "[theme-name]:text-2xl"
@@ -204,8 +215,8 @@ export const aliceui = (config: PluginConfig = {}): ReturnType<typeof plugin> =>
     addCommonColors = false,
   } = config;
 
-  const userLightColors = get(themeObject, 'light.colors', {});
-  const userDarkColors = get(themeObject, 'dark.colors', {});
+  const userLightColors = themeObject?.light?.colors || {};
+  const userDarkColors = themeObject?.dark?.colors || {};
 
   const defaultLayoutObj =
     userLayout && typeof userLayout === 'object'
@@ -224,9 +235,9 @@ export const aliceui = (config: PluginConfig = {}): ReturnType<typeof plugin> =>
   };
 
   // get other themes from the config different from light and dark
-  const otherThemes = omit(themeObject, ['light', 'dark']) || {};
+  let otherThemes = omit(themeObject, ['light', 'dark']) || {};
 
-  forEach(otherThemes, ({ extend, colors, layout }, themeName) => {
+  Object.entries(otherThemes).forEach(([themeName, { extend, colors, layout }]) => {
     const baseTheme = extend && isBaseTheme(extend) ? extend : defaultExtendTheme;
 
     if (colors && typeof colors === 'object') {
@@ -241,12 +252,12 @@ export const aliceui = (config: PluginConfig = {}): ReturnType<typeof plugin> =>
   });
 
   const light: ConfigTheme = {
-    layout: deepMerge(baseLayouts.light, get(themeObject, 'light.layout', {})),
+    layout: deepMerge(baseLayouts.light, themeObject?.light?.layout || {}),
     colors: deepMerge(semanticColors.light, userLightColors),
   };
 
   const dark = {
-    layout: deepMerge(baseLayouts.dark, get(themeObject, 'dark.layout', {})),
+    layout: deepMerge(baseLayouts.dark, themeObject?.dark?.layout || {}),
     colors: deepMerge(semanticColors.dark, userDarkColors),
   };
 
