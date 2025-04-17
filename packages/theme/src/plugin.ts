@@ -5,7 +5,7 @@ import get from 'lodash.get';
 import kebabCase from 'lodash.kebabcase';
 import mapKeys from 'lodash.mapkeys';
 import omit from 'lodash.omit';
-import plugin from 'tailwindcss/plugin';
+import plugin from 'tailwindcss/dist/plugin';
 
 import { animations } from './animations';
 import { commonColors, semanticColors } from './colors';
