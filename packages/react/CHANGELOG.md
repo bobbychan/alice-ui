@@ -1,5 +1,14 @@
 # @alice-ui/react
 
+## 1.0.47
+
+### Patch Changes
+
+- [#113](https://github.com/bobbychan/alice-ui/pull/113) [`4a46938330f6da2a6c3092525fcf7fe6544079db`](https://github.com/bobbychan/alice-ui/commit/4a46938330f6da2a6c3092525fcf7fe6544079db) Thanks [@bobbychan](https://github.com/bobbychan)! - support tailwindcss v4
+
+- Updated dependencies [[`4a46938330f6da2a6c3092525fcf7fe6544079db`](https://github.com/bobbychan/alice-ui/commit/4a46938330f6da2a6c3092525fcf7fe6544079db)]:
+  - @alice-ui/theme@1.0.28
+
 ## 1.0.46
 
 ### Patch Changes
