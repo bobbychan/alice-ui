@@ -14,7 +14,7 @@ function ModalCloseButton(props: CloseButtonProps, ref: ForwardedRef<HTMLButtonE
     <CloseButton
       ref={ref}
       className={slots.closeButton({ class: clsx(classNames?.closeButton, className) })}
-      onPress={callAllHandlers(onPress, () => state.close())}
+      onPress={callAllHandlers(onPress, () => state?.close())}
       radius="full"
       variant="light"
       size="sm"
