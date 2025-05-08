@@ -48,7 +48,7 @@ const tabs = tv({
       'justify-center',
       'items-center',
       'whitespace-nowrap',
-      'outline-hidden',
+      'outline-none',
       'cursor-pointer',
       'transition-opacity',
       'tap-highlight-transparent',
@@ -71,7 +71,7 @@ const tabs = tv({
     panel: [
       'py-3',
       'px-1',
-      'outline-hidden',
+      'outline-none',
       // focus ring
       ...dataFocusVisibleClasses,
     ],
@@ -96,7 +96,7 @@ const tabs = tv({
           'dark:bg-transparent',
           'border-2',
           'border-default-200',
-          'shadow-xs',
+          'shadow-sm',
         ],
         cursor: 'inset-0',
       },

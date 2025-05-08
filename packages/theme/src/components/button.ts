@@ -30,7 +30,7 @@ const button = tv({
     'justify-center',
     'box-border',
     'appearance-none',
-    'outline-hidden',
+    'outline-none',
     'select-none',
     'whitespace-nowrap',
     'min-w-max',
@@ -340,7 +340,7 @@ const button = tv({
     {
       isInGroup: true,
       variant: ['bordered', 'ghost'],
-      class: '[&:not(:first-child)]:ml-[calc(theme(spacing.0.5)*-1)]',
+      class: '[&:not(:first-child)]:ml-[calc(theme(borderWidth.2)*-1)]',
     },
     {
       isIconOnly: true,

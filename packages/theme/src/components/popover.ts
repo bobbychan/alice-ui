@@ -30,7 +30,7 @@ const popover = tv({
       'subpixel-antialiased',
       'px-4',
       'py-2',
-      'outline-hidden',
+      'outline-none',
       'box-border',
       // top
       'data-[placement=top]:[--popover-origin:translateY(8px)]',
@@ -60,7 +60,7 @@ const popover = tv({
       // right
       '[&>svg]:data-[placement=right]:rotate-90',
     ],
-    content: ['outline-hidden', 'w-full'],
+    content: ['outline-none', 'w-full'],
   },
   variants: {
     size: {
