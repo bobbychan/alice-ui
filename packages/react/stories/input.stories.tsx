@@ -140,7 +140,7 @@ const StartAndEndContentTemplate = (args: InputProps) => (
             Currency
           </label>
           <select
-            className="text-default-400 border-0 bg-transparent text-sm outline-hidden"
+            className="text-default-400 border-0 bg-transparent text-sm outline-none"
             id="currency"
             name="currency"
           >

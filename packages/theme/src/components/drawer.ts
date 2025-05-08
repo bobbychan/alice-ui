@@ -14,7 +14,7 @@ const drawer = tv({
       'z-50',
       'box-border',
       'bg-content1',
-      'outline-hidden',
+      'outline-none',
       'overflow-hidden',
       'shadow-[0_8px_10px_-5px_rgba(0,0,0,0.2),0_16px_24px_2px_rgba(0,0,0,0.14),0_6px_30px_5px_rgba(0,0,0,0.12)]',
       // top
@@ -30,7 +30,7 @@ const drawer = tv({
       'data-[exiting=true]:animate-[slide_0.2s_ease-in_reverse]',
     ],
     backdrop: ['z-50', 'fixed', 'inset-0', 'w-screen', 'h-dvh'],
-    dialog: ['outline-hidden', 'flex', 'flex-col', 'overflow-hidden', 'h-full', 'max-h-dvh'],
+    dialog: ['outline-none', 'flex', 'flex-col', 'overflow-hidden', 'h-full', 'max-h-dvh'],
     header: ['text-lg', 'font-semibold', 'flex', 'py-4', 'px-6', 'flex-initial'],
     body: ['flex-1', 'px-6', 'py-2', 'overflow-y-auto'],
     footer: ['flex', 'flex-row', 'gap-2', 'justify-end', 'px-6', 'py-4'],

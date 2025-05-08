@@ -124,17 +124,17 @@ const checkbox = tv({
     },
     size: {
       sm: {
-        control: ['w-4 h-4', 'rounded-[calc(theme(spacing.3)*0.5)]'],
+        control: ['w-4 h-4', 'rounded-[calc(theme(borderRadius.medium)*0.5)]'],
         label: 'text-sm',
         icon: 'w-3 h-2',
       },
       md: {
-        control: ['w-5 h-5', 'rounded-[calc(theme(spacing.3)*0.6)]'],
+        control: ['w-5 h-5', 'rounded-[calc(theme(borderRadius.medium)*0.6)]'],
         label: 'text-medium',
         icon: 'w-4 h-3',
       },
       lg: {
-        control: ['w-6 h-6', 'rounded-[calc(theme(spacing.3)*0.7)]'],
+        control: ['w-6 h-6', 'rounded-[calc(theme(borderRadius.medium)*0.7)]'],
         label: 'text-lg',
         icon: 'w-5 h-4',
       },
@@ -144,13 +144,13 @@ const checkbox = tv({
         control: 'rounded-none',
       },
       sm: {
-        control: ['rounded-[calc(theme(spacing.3)*0.5)]'],
+        control: ['rounded-[calc(theme(borderRadius.medium)*0.5)]'],
       },
       md: {
-        control: ['rounded-[calc(theme(spacing.3)*0.6)]'],
+        control: ['rounded-[calc(theme(borderRadius.medium)*0.6)]'],
       },
       lg: {
-        control: ['rounded-[calc(theme(spacing.3)*0.7)]'],
+        control: ['rounded-[calc(theme(borderRadius.medium)*0.7)]'],
       },
       full: {
         control: 'rounded-full',

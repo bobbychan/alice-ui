@@ -37,7 +37,7 @@ const chip = tv({
     closeButton: [
       'z-10',
       'appearance-none',
-      'outline-hidden',
+      'outline-none',
       'select-none',
       'transition-opacity',
       'opacity-70',
