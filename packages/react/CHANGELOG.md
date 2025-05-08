@@ -1,5 +1,14 @@
 # @alice-ui/react
 
+## 1.0.50
+
+### Patch Changes
+
+- [#120](https://github.com/bobbychan/alice-ui/pull/120) [`3f39d333d9aeecb16b95e910ed3f0a6d6cac17f9`](https://github.com/bobbychan/alice-ui/commit/3f39d333d9aeecb16b95e910ed3f0a6d6cac17f9) Thanks [@bobbychan](https://github.com/bobbychan)! - Downgrade to tailwindcss3
+
+- Updated dependencies [[`3f39d333d9aeecb16b95e910ed3f0a6d6cac17f9`](https://github.com/bobbychan/alice-ui/commit/3f39d333d9aeecb16b95e910ed3f0a6d6cac17f9)]:
+  - @alice-ui/theme@1.0.31
+
 ## 1.0.49
 
 ### Patch Changes
