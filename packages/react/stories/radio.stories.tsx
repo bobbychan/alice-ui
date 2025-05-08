@@ -263,7 +263,7 @@ const CustomRadio = (props: RadioProps) => {
 
   const groupState = useContext(RadioGroupStateContext);
 
-  const isSelected = groupState.selectedValue === otherProps.value;
+  const isSelected = groupState?.selectedValue === otherProps.value;
 
   return (
     <Radio

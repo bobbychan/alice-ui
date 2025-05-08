@@ -42,7 +42,7 @@ export interface BasePopoverRenderProps {
    * The placement of the popover relative to the trigger.
    * @selector [data-placement="left | right | top | bottom"]
    */
-  placement: PlacementAxis;
+  placement: PlacementAxis | null;
   /**
    * Whether the popover is currently entering. Use this to apply animations.
    * @selector [data-entering]
@@ -144,7 +144,7 @@ function PopoverInner({ state, isExiting, ...props }: PopoverInnerProps) {
         data-exiting={isExiting || undefined}
       >
         {!props.isNonModal && <DismissButton onDismiss={state.close} />}
-        <OverlayArrowContext.Provider value={{ ...arrowProps, placement }}>
+        <OverlayArrowContext.Provider value={{ ...arrowProps, placement: placement ?? 'bottom' }}>
           {renderProps.children}
         </OverlayArrowContext.Provider>
         <DismissButton onDismiss={state.close} />
