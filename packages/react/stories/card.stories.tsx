@@ -137,7 +137,7 @@ export const WithAbsImageHeader: Story = {
     <Card {...args} className="max-w-[330px]">
       <CardHeader className="absolute top-2 z-20">
         <div className="flex flex-col">
-          <p className="text-xs font-bold text-white/60 uppercase">What to watch</p>
+          <p className="text-xs font-bold uppercase text-white/60">What to watch</p>
           <p className="text-2xl text-white">Stream the Apple event</p>
         </div>
       </CardHeader>
@@ -160,7 +160,7 @@ export const WithAbsImgHeaderFooter: Story = {
     <div className="flex space-x-4">
       <Card isFooterBlurred className="col-span-12 h-[300px] w-full sm:col-span-5">
         <CardHeader className="absolute top-1 z-10 flex-col items-start">
-          <p className="text-tiny font-bold text-white/60 uppercase">New</p>
+          <p className="text-tiny font-bold uppercase text-white/60">New</p>
           <h4 className="text-2xl font-medium text-black">Acme camera</h4>
         </CardHeader>
         <Image
@@ -169,7 +169,7 @@ export const WithAbsImgHeaderFooter: Story = {
           className="z-0 h-full w-full -translate-y-6 scale-125 object-cover"
           src="https://images.unsplash.com/photo-1580428180098-24b353d7e9d9"
         />
-        <CardFooter className="absolute bottom-0 z-10 justify-between border-t-1 border-zinc-100/50 bg-white/30">
+        <CardFooter className="border-t-1 absolute bottom-0 z-10 justify-between border-zinc-100/50 bg-white/30">
           <div>
             <p className="text-tiny text-black">Available soon.</p>
             <p className="text-tiny text-black">Get notified.</p>
@@ -181,7 +181,7 @@ export const WithAbsImgHeaderFooter: Story = {
       </Card>
       <Card isFooterBlurred className="col-span-12 h-[300px] w-full sm:col-span-7">
         <CardHeader className="absolute top-1 z-10 flex-col items-start">
-          <p className="text-tiny font-bold text-white/60 uppercase">Pro anywhere</p>
+          <p className="text-tiny font-bold uppercase text-white/60">Pro anywhere</p>
           <h4 className="text-xl font-medium text-white/90">it’s our most portable pro laptop</h4>
         </CardHeader>
         <Image
@@ -190,7 +190,7 @@ export const WithAbsImgHeaderFooter: Story = {
           className="z-0 h-full w-full object-cover"
           src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2"
         />
-        <CardFooter className="border-default-600 dark:border-default-100 absolute bottom-0 z-10 border-t-1 bg-black/40">
+        <CardFooter className="border-default-600 dark:border-default-100 border-t-1 absolute bottom-0 z-10 bg-black/40">
           <div className="flex flex-grow items-center gap-2">
             <Image
               alt="Breathing app icon"
@@ -219,7 +219,7 @@ export const CoverImg: Story = {
     <div className="grid max-w-[900px] grid-cols-12 grid-rows-2 gap-2 px-8">
       <Card {...args} className="col-span-12 sm:col-span-4">
         <CardHeader className="absolute top-1 z-10 flex-col !items-start">
-          <p className="text-xs font-bold text-white/60 uppercase">What to watch</p>
+          <p className="text-xs font-bold uppercase text-white/60">What to watch</p>
           <h4 className="text-lg font-medium text-white">Stream the Acme event</h4>
         </CardHeader>
         <img
@@ -230,7 +230,7 @@ export const CoverImg: Story = {
       </Card>
       <Card {...args} className="col-span-12 sm:col-span-4">
         <CardHeader className="absolute top-1 z-10 flex-col !items-start">
-          <p className="text-xs font-bold text-white/60 uppercase">Plant a tree</p>
+          <p className="text-xs font-bold uppercase text-white/60">Plant a tree</p>
           <h4 className="text-lg font-medium text-white">Contribute to the planet</h4>
         </CardHeader>
         <img
@@ -241,7 +241,7 @@ export const CoverImg: Story = {
       </Card>
       <Card {...args} className="col-span-12 sm:col-span-4">
         <CardHeader className="absolute top-1 z-10 flex-col !items-start">
-          <p className="text-xs font-bold text-white/60 uppercase">Supercharged</p>
+          <p className="text-xs font-bold uppercase text-white/60">Supercharged</p>
           <h4 className="text-lg font-medium text-white">Creates beauty like a beast</h4>
         </CardHeader>
         <img
@@ -252,7 +252,7 @@ export const CoverImg: Story = {
       </Card>
       <Card {...args} isFooterBlurred className="col-span-12 h-[400px] w-full sm:col-span-5">
         <CardHeader className="absolute top-1 z-10 flex-col items-start">
-          <p className="text-xs font-bold text-white/60 uppercase">New</p>
+          <p className="text-xs font-bold uppercase text-white/60">New</p>
           <h4 className="text-2xl font-medium text-black">Acme camera</h4>
         </CardHeader>
         <img
@@ -272,7 +272,7 @@ export const CoverImg: Story = {
       </Card>
       <Card {...args} isFooterBlurred className="col-span-12 h-[400px] w-full sm:col-span-7">
         <CardHeader className="absolute top-1 z-10 flex-col items-start">
-          <p className="text-xs font-bold text-white/60 uppercase">Your day your way</p>
+          <p className="text-xs font-bold uppercase text-white/60">Your day your way</p>
           <h4 className="text-2xl font-medium text-white/90">Your checklist for better sleep</h4>
         </CardHeader>
         <img
@@ -305,7 +305,7 @@ export const CoverImg: Story = {
 export const CenterImg: Story = {
   render: (args) => (
     <Card {...args} className="max-w-fit px-0 py-4">
-      <CardHeader className="flex-col !items-start px-4 pt-2 pb-0">
+      <CardHeader className="flex-col !items-start px-4 pb-0 pt-2">
         <p className="text-xs font-bold uppercase">Daily Mix</p>
         <small className="text-default-500">12 Tracks</small>
         <h4 className="text-lg font-bold">Frontend Radio</h4>
@@ -435,7 +435,7 @@ const CenterImgWithHeaderTemplate = (args: CardProps) => {
         <div key={index}>
           <Card {...args} isPressable className="h-[200px] w-[200px]">
             <CardHeader className="p-0">
-              <h5 className="pt-3 pl-6">{item.title}</h5>
+              <h5 className="pl-6 pt-3">{item.title}</h5>
             </CardHeader>
             <CardBody className="h-full justify-center">
               <img alt={item.title} className="w-[180px]" src={item.img} />
