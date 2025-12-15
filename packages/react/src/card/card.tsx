@@ -73,7 +73,7 @@ function Card(props: CardProps, ref: ForwardedRef<HTMLDivElement>) {
       elementType: Component,
       onPress,
       isDisabled: !props.isPressable,
-      ...cardProps,
+      // ...cardProps,
     },
     ref,
   );
