@@ -1,5 +1,11 @@
 # @alice-ui/react
 
+## 1.0.51
+
+### Patch Changes
+
+- [`2076350bd000dc56708d105bfa6563e7e418a85c`](https://github.com/bobbychan/alice-ui/commit/2076350bd000dc56708d105bfa6563e7e418a85c) Thanks [@bobbychan](https://github.com/bobbychan)! - Package version locked
+
 ## 1.0.50
 
 ### Patch Changes
