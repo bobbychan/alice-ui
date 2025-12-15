@@ -15,8 +15,8 @@
   "dependencies": {
     "@alice-ui/react": "workspace:*",
     "@alice-ui/theme": "workspace:*",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^18",
+    "react-dom": "^18"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "^8.6.12",
@@ -26,8 +26,8 @@
     "@storybook/react": "^8.6.12",
     "@storybook/react-vite": "^8.6.12",
     "@storybook/testing-library": "^0.2.0",
-    "@types/react": "^19.1.0",
-    "@types/react-dom": "^19.1.0",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "@vitejs/plugin-react": "^4.2.1",
