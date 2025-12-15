@@ -196,7 +196,8 @@ export const Static: Story = {
   },
 };
 
-export const Dynamic = {
+export const Dynamic: Story = {
+  // @ts-ignore
   render: DynamicTemplate,
 
   args: {

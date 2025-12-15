@@ -2,6 +2,8 @@
 
 React Aria Components + Tailwindcss + Tailwind Variants = Alice UI
 
+> ⚠️ **This library is no longer maintained** - Please use [Vela UI](https://github.com/vela-ui/vela-ui) instead.
+
 ## Installation
 
 Requirements:

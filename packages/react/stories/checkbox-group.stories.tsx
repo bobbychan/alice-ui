@@ -94,7 +94,7 @@ export const Default: Story = {
   render: Template,
 };
 
-export const DefaultValue = {
+export const DefaultValue: Story = {
   render: Template,
 
   args: {
@@ -131,7 +131,7 @@ export const LineThrough = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: Template,
 
   args: {
@@ -140,7 +140,7 @@ export const WithDescription = {
   },
 };
 
-export const IsInvalid = {
+export const IsInvalid: Story = {
   render: InvalidTemplate,
 
   args: {
@@ -148,7 +148,7 @@ export const IsInvalid = {
   },
 };
 
-export const WithErrorMessage = {
+export const WithErrorMessage: Story = {
   render: Template,
 
   args: {

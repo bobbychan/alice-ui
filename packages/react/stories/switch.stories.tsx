@@ -90,7 +90,7 @@ export const Default: Story = {
   ),
 };
 
-export const IsReadOnly = {
+export const IsReadOnly: Story = {
   args: {
     ...defaultProps,
     isReadOnly: true,
@@ -98,7 +98,7 @@ export const IsReadOnly = {
   },
 };
 
-export const WithLabel = {
+export const WithLabel: Story = {
   args: {
     ...defaultProps,
     children: 'Bluetooth',
@@ -118,7 +118,7 @@ export const WiththumbIcon: Story = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -126,7 +126,7 @@ export const Controlled = {
   },
 };
 
-export const WithClassNames = {
+export const WithClassNames: Story = {
   render: CustomWithClassNamesTemplate,
 
   args: {

@@ -476,6 +476,7 @@ export function useNumberInput(props: UseNumberInputProps = {}) {
     [counter.isAtMin, keepWithinRange, spinDown, spinner.stop, isDisabled],
   );
 
+  // @ts-ignore
   const getInputProps: PropGetter<InputDOMAttributes, InputDOMAttributes> = useCallback(
     (props = {}, ref = null) => ({
       name,
